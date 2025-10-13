@@ -748,6 +748,7 @@ body {
 
 /* ====== Responsive Mobile ====== */
 @media (max-width: 600px) {
+
   .hero-inner {
     flex-direction: column-reverse;
     gap: 8px; /* reduzindo gap entre hero-content e hero-image */
@@ -792,7 +793,7 @@ body {
     gap: 10px;
   }
   .curriculo-left {
-    max-height: 530px;
+     max-height: none;
   }
   .card h4 {
     text-align: center;
