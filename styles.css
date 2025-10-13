@@ -1,0 +1,868 @@
+/* ====== Reset e Base ====== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  color: #0b2233;
+  background: linear-gradient(180deg, #f7fbfc 0%, #eef7f8 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.45;
+  font-size: 16px;
+}
+
+/* ====== Container ====== */
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+/* ====== Header ====== */
+.site-header {
+  background: linear-gradient(90deg, #002e3a 0%, #005f66 100%);
+  color: #fff;
+  padding: 18px 0;
+  box-shadow: 0 6px 18px rgba(3, 18, 20, 0.12);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.brand h1 {
+  font-size: 1.6rem;
+  letter-spacing: 0.6px;
+  margin-bottom: 2px;
+}
+.brand .job {
+  opacity: 0.9;
+  font-size: 0.9rem;
+}
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.main-nav a {
+  color: #dff6f3;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: all 0.18s ease;
+}
+.main-nav a:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-3px);
+}
+
+/* ====== Buttons ====== */
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.btn.primary {
+  background: linear-gradient(135deg, #00bfae, #008080);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 128, 128, 0.25);
+}
+.btn.primary:hover {
+  background: linear-gradient(135deg, #00c8b4, #00a094);
+  box-shadow: 0 6px 16px rgba(0, 128, 128, 0.35);
+}
+.btn.outline:hover {
+  background: rgba(0, 128, 128, 0.05);
+  border-color: rgba(0, 128, 128, 0.25);
+  color: #007f7a;
+}
+
+/* ====== Hero ====== */
+.hero {
+  padding: 40px 0;
+  display: flex;
+  align-items: center;
+}
+.hero-inner {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero-content {
+  flex: 1 1 560px;
+}
+.hero-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #002e3a;
+}
+.hero-content h2 span {
+  color: #007f7a;
+}
+.lead {
+  font-size: 1.05rem;
+  color: #184249;
+  margin-bottom: 14px;
+}
+.hero-cta {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.hero-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #000;
+  margin-top: 20px;
+}
+.hero-image img.hero-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.5s ease;
+}
+.hero-image img.hero-avatar:hover {
+  transform: scale(1.05);
+}
+.avatar-placeholder {
+  width: 220px;
+  height: 220px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #cfeee6, #e9fbfa);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 3rem;
+  color: #004b45;
+  box-shadow: 0 8px 24px rgba(3, 18, 20, 0.12);
+}
+
+/* ====== Cards ====== */
+.card,
+.project-card,
+.swot-card {
+  background: #fff;
+  padding: 16px 20px;
+  border-radius: 14px;
+  box-shadow: 0 6px 22px rgba(3, 18, 20, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.25s ease;
+}
+.card:hover,
+.project-card:hover,
+.swot-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 12px 28px rgba(3, 18, 20, 0.12);
+  background: #fefefe;
+}
+
+/* ====== Skills ====== */
+.skills {
+  padding: 40px 0;
+}
+
+.skills h3 {
+  text-align: center;
+  font-size: 1.6rem;
+  color: #003f3a;
+  margin-bottom: 20px;
+}
+
+.skills .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.skills .skill-card {
+  height: 100%;
+  padding: 18px 16px; /* um pouco mais de padding interno */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card {
+  background: linear-gradient(180deg, #ffffff, #f8fcfc);
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(3, 18, 20, 0.05);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border 0.25s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(0, 128, 128, 0.12);
+  border-color: #00bfae;
+  background: linear-gradient(180deg, #faffff, #f0fdfc);
+}
+
+/* Borda animada sutil */
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 1.5px;
+  background: linear-gradient(135deg, #00bfae, #00ffd5, #00bfae);
+  background-size: 300% 300%;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderFlow 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+/* Ativa brilho quando entra na tela */
+.skill-card[data-aos="fade-up"].aos-animate::before {
+  opacity: 1;
+  animation: borderFlow 5s linear infinite,
+    borderGlow 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes borderGlow {
+  from {
+    box-shadow: 0 0 8px rgba(0, 255, 213, 0.15), 0 0 16px rgba(0, 191, 174, 0.2);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(0, 255, 213, 0.35),
+      0 0 40px rgba(0, 191, 174, 0.35);
+  }
+}
+
+/* ====== Skill Titles ====== */
+.skill-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #004b45;
+  margin-bottom: 12px;
+  z-index: 2;
+}
+
+/* ====== Skill Badges ====== */
+.skill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  z-index: 2;
+}
+
+.skill-badges img {
+  height: 28px;
+  border-radius: 6px;
+  transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+  background: #fff;
+}
+
+.skill-badges img:hover {
+  transform: translateY(-3px) scale(1.05);
+  filter: brightness(1.15);
+  box-shadow: 0 4px 10px rgba(0, 128, 128, 0.25);
+}
+
+/* ====== Projects ====== */
+.projects {
+  margin-top: -30px;
+}
+
+.projects h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #000;
+  font-size: 1.8rem;
+  letter-spacing: 0.6px;
+}
+
+.projects,
+.projetos-detalhe {
+  padding: 28px 0;
+}
+.projects .projects-grid,
+.projetos-detalhe .projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+.projects .project-card {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+.projetos-detalhe .project-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.projetos-detalhe .project-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 14px;
+}
+.project-info {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.project-info h4 {
+  color: #003f3a;
+  font-size: 1.1rem;
+}
+.project-info p {
+  color: #345;
+  font-size: 0.95rem;
+}
+.project-links {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+.project-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  background: #e8f7f3;
+  border-bottom: 1px solid #cfeee6;
+}
+
+/* ====== SWOT ====== */
+.swot-section h3 {
+  text-align: center;
+  margin-bottom: 32px;
+  color: #000;
+  font-size: 1.6rem;
+  letter-spacing: 0.6px;
+}
+
+.swot-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-top: 14px;
+}
+
+.swot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  align-items: stretch; /* força os cards a terem mesma altura */
+}
+
+.swot-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  transition: transform 0.35s ease;
+}
+
+/* Padronização dos cards */
+.swot-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 12px 22px;
+  box-shadow: 0 6px 22px rgba(3, 18, 20, 0.06);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+.swot-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(3, 18, 20, 0.12);
+}
+
+/* Borda animada ao hover (desktop) */
+.swot-card:hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  padding: 1.5px;
+  background: linear-gradient(
+    135deg,
+    #00bfae,
+    #00ffd5,
+    #00bfae,
+    #0091a6,
+    #00bfae
+  );
+  background-size: 300% 300%;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderFlow 4s linear infinite;
+  z-index: -1;
+}
+
+/* Animação */
+@keyframes borderFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Transformação suave no hover/ativo */
+.swot-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 128, 128, 0.12);
+}
+
+/* Cores */
+.swot-card.strengths {
+  background: linear-gradient(180deg, #e7f9f2, #f7fffb);
+}
+.swot-card.weaknesses {
+  background: linear-gradient(180deg, #fff4f5, #fffafc);
+}
+.swot-card.opportunities {
+  background: linear-gradient(180deg, #fffdf0, #ffffff);
+}
+.swot-card.threats {
+  background: linear-gradient(180deg, #f2f3f4, #ffffff);
+}
+
+/* ====== SWOT Chart ====== */
+#swotChartContainer {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 380px;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* Overlay com GIF */
+#swotChartContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  background: linear-gradient(
+      rgba(0, 128, 128, 0.35),
+      rgba(53, 9, 97, 0.25),
+      rgba(41, 9, 74, 0.25)
+    ),
+    url("img/Ti.gif") center/cover no-repeat;
+  z-index: 1;
+}
+
+/* Canvas do Chart — linhas removidas */
+#swotChartContainer canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 14px;
+  z-index: 2;
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+}
+
+/* Tornar visível quando carregado */
+#swotChartContainer canvas.visible {
+  opacity: 1;
+}
+
+/* Chart.js personalizado para remover linhas */
+#swotChartContainer canvas {
+  --chart-grid-color: transparent;
+}
+
+/* ====== Currículo ====== */
+.curriculo-page {
+  padding: 28px 0 60px;
+}
+.curriculo-top {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 18px 0;
+  flex-wrap: wrap;
+}
+.curriculo-left {
+  flex: 1 1 640px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.curriculo-right {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.curriculo-right .card {
+  background: rgb(255, 255, 255);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.curriculo-right .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.curriculo-right .card h4 {
+  color: #000;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 4px;
+  letter-spacing: 0.4px;
+}
+
+.curriculo-right .skill-category {
+  margin-bottom: 12px;
+}
+
+.curriculo-right .skill-category h5 {
+  font-size: 0.95rem;
+  color: #000;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.curriculo-right .skill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.curriculo-right .skill-badges img {
+  border-radius: 6px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 28px;
+}
+
+.curriculo-right .skill-badges img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 6px rgba(0, 191, 255, 0.4);
+}
+
+/* ====== Footer ====== */
+.site-footer {
+  background: #002e3a;
+  color: #cfeee6;
+  padding: 18px 0;
+  margin-top: 30px;
+}
+
+/* ====== Back to Top ====== */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #001f26;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 0 12px #00f0d1, 0 0 24px #00ffd8, 0 0 36px #00aaff;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: all 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  z-index: 100;
+}
+.back-to-top::after {
+  content: "↑";
+  font-weight: bold;
+  font-size: 1.7rem;
+  background: linear-gradient(45deg, #00f0d1, #00ffd8, #00aaff, #00f0d1);
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 3s ease infinite, floatRotate 3s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+.back-to-top:hover::after {
+  transform: translateY(-3px) scale(1.3) rotate(0deg);
+}
+.back-to-top:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 18px #00f0d1, 0 0 36px #00ffd8, 0 0 54px #00aaff;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  animation: neonPulseUltra 1.5s infinite alternate;
+}
+
+/* ====== Social Icons ====== */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  margin-bottom: 4px;
+}
+.social-icons img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+}
+.social-icons img:hover {
+  transform: translateY(-2px) scale(1.05);
+  filter: brightness(1.15);
+  box-shadow: 0 4px 12px rgba(0, 128, 128, 0.2);
+}
+.social-icons a.email img {
+  border-radius: 0;
+}
+
+/* ====== Email Button ====== */
+.email-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  background: linear-gradient(135deg, #00bfae, #008080);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(0, 128, 128, 0.25);
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.email-btn img {
+  width: 20px;
+  height: 20px;
+  border-radius: 0;
+  transition: transform 0.25s ease;
+}
+.email-btn:hover {
+  background: linear-gradient(135deg, #00c8b4, #00a094);
+  box-shadow: 0 5px 14px rgba(0, 128, 128, 0.35);
+  transform: translateY(-1.5px);
+}
+.email-btn:hover img {
+  transform: rotate(-5deg) scale(1.05);
+}
+
+/* ====== Animations ====== */
+@keyframes neonPulseUltra {
+  0% {
+    box-shadow: 0 0 12px #00f0d1, 0 0 24px #00ffd8, 0 0 36px #00aaff;
+  }
+  50% {
+    box-shadow: 0 0 18px #00f0d1, 0 0 36px #00ffd8, 0 0 54px #00aaff;
+  }
+  100% {
+    box-shadow: 0 0 12px #00f0d1, 0 0 24px #00ffd8, 0 0 36px #00aaff;
+  }
+}
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes floatRotate {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-4px) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(6deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* ====== Responsive Mobile ====== */
+@media (max-width: 600px) {
+  .hero-inner {
+    flex-direction: column-reverse;
+    gap: 8px; /* reduzindo gap entre hero-content e hero-image */
+    text-align: center;
+  }
+  .hero-image {
+    margin-top: 12px; /* já está no CSS, mantém próximo ao conteúdo */
+    margin-bottom: 0; /* reduz espaço extra */
+  }
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+  .hero-content {
+    max-height: 280px;
+  }
+  .lead {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+  .hero-cta {
+    margin-bottom: 4px; /* antes era implícito ou maior */
+  }
+
+  .social-icons {
+    margin-top: 2px; /* diminui o espaço entre botões e conteúdo */
+    margin-bottom: 2px; /* opcional, ajusta proximidade da seção seguinte */
+  }
+  .container {
+    margin-top: 45px;
+  }
+
+  .hero .container {
+    padding-bottom: 0;
+  }
+
+  .curriculo-top {
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+  .curriculo-right {
+    width: 100%;
+    gap: 10px;
+  }
+  .curriculo-left {
+    max-height: 530px;
+  }
+  .card h4 {
+    text-align: center;
+  }
+
+  .skills .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .skill-card {
+    padding: 16px;
+  }
+
+  .skill-badges img {
+    height: 24px;
+  }
+
+  /* SWOT — ativa carrossel */
+  .swot-wrapper {
+    overflow: visible;
+  }
+  .swot-track {
+    display: grid;
+    grid-template-columns: 1fr; /* cada card ocupa 100% */
+    gap: 12px; /* mesmo espaçamento do currículo */
+  }
+
+  .swot-card {
+    min-width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px 14px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .project-card img {
+    height: 120px;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+  header nav ul {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.95rem;
+  }
+
+  footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+
+  .social-icons img {
+    width: 28px;
+    height: 28px;
+  }
+  .email-btn {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+  .email-btn img {
+    width: 18px;
+    height: 18px;
+  }
+}
