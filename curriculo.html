@@ -62,7 +62,7 @@
             software e hardware (robótica e IoT).
           </p>
 
-              <h3>Contato</h3>
+          <h3>Contato</h3>
           <div class="social-icons">
             <a
               href="https://github.com/tirolasca"
@@ -115,57 +115,105 @@
             </li>
           </ul>
 
-          <!-- ===== EXPERIÊNCIAS PROFISSIONAIS  ===== -->
-          <h2>Experiências Profissionais</h2>
-          <div class="experience-card">
-            <h4>Desenvolvedor de Software — Freelance</h4>
-            <p class="muted">2023 – Presente</p>
-            <ul>
-              <li>
-                Desenvolvimento de aplicações web full-stack utilizando React,
-                Node.js e MySQL.
-              </li>
-              <li>
-                Criação de dashboards interativos e automações para clientes
-                diversos.
-              </li>
-              <li>
-                Integração de hardware e software em projetos de IoT e robótica.
-              </li>
-            </ul>
-          </div>
+          <!-- ===== EXPERIÊNCIAS PROFISSIONAIS ===== -->
+          <div class="container">
+            <h3 class="animated-title" data-aos="zoom-in">
+              Experiências Profissionais
+            </h3>
 
-          <!-- estagio -->
-          <div class="experience-card">
-            <h4>Estagiário em Desenvolvimento — FATEC</h4>
-            <p class="muted">2022 – 2023</p>
-            <ul>
-              <li>
-                Participação em projetos acadêmicos com Python, Flask e MySQL.
-              </li>
-              <li>
-                Desenvolvimento de APIs e painéis de visualização de dados.
-              </li>
-              <li>
-                Colaboração em equipe para prototipagem de sistemas web e
-                mobile.
-              </li>
-            </ul>
-          </div>
+            <div class="timeline">
+              <!-- Consultor de TI -->
+              <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-icon">💡</div>
+                <div class="timeline-content">
+                  <h4>Consultor de TI — Freelancer</h4>
+                  <p class="muted">09/2025 – Atual</p>
+                  <ul class="details">
+                    <li>
+                      Mapeamento de processos operacionais e comerciais para
+                      identificar oportunidades de automação.
+                    </li>
+                    <li>
+                      Criação de sistemas e planilhas automatizadas para
+                      controle de vendas, atendimento e contratos.
+                    </li>
+                    <li>
+                      Implantação de ferramentas digitais para otimizar a
+                      comunicação e o acompanhamento de clientes.
+                    </li>
+                    <li>
+                      Desenvolvimento de rotinas automatizadas para envio de
+                      propostas e geração de relatórios.
+                    </li>
+                    <li>
+                      Treinamento e suporte técnico contínuo às equipes,
+                      garantindo eficiência nas soluções implantadas.
+                    </li>
+                  </ul>
+                  <button class="toggle-btn">Ver mais detalhes</button>
+                </div>
+              </div>
 
-          <div class="experience-card">
-            <h4>Suporte Técnico de Redes — SENAC</h4>
-            <p class="muted">2021 – 2022</p>
-            <ul>
-              <li>Manutenção e configuração de redes locais e servidores.</li>
-              <li>
-                Monitoramento de protocolos e segurança de infraestrutura.
-              </li>
-              <li>
-                Assistência na instalação de sistemas e hardwares em
-                laboratório.
-              </li>
-            </ul>
+              <!-- Freelancer Planilhas -->
+              <div class="timeline-item" data-aos="fade-left">
+                <div class="timeline-icon">📊</div>
+                <div class="timeline-content">
+                  <h4>Freelancer — Criação de Planilhas Automatizadas</h4>
+                  <p class="muted">05/2025 – 07/2025</p>
+                  <ul class="details">
+                    <li>
+                      Desenvolvimento de dashboards interativos e planilhas com
+                      recursos avançados do Excel.
+                    </li>
+                    <li>
+                      Aplicação de fórmulas complexas para análise e geração de
+                      insights.
+                    </li>
+                    <li>
+                      Integração e estruturação de bases de dados para análise e
+                      tomada de decisão.
+                    </li>
+                    <li>
+                      Automatização de processos manuais, reduzindo erros e
+                      aumentando a produtividade.
+                    </li>
+                    <li>
+                      Suporte às equipes na interpretação e uso das planilhas
+                      desenvolvidas.
+                    </li>
+                  </ul>
+                  <button class="toggle-btn">Ver mais detalhes</button>
+                </div>
+              </div>
+
+              <!-- Estágio Reflora -->
+              <div class="timeline-item" data-aos="fade-right">
+                <div class="timeline-icon">🏗️</div>
+                <div class="timeline-content">
+                  <h4>Estagiário Administrativo — Reflora Construção Civil</h4>
+                  <p class="muted">07/2023 – 09/2023</p>
+                  <ul class="details">
+                    <li>
+                      Suporte a gestores na coleta e análise de dados para
+                      acompanhamento de projetos.
+                    </li>
+                    <li>
+                      Criação e validação de relatórios e planilhas garantindo
+                      precisão e integridade dos dados.
+                    </li>
+                    <li>
+                      Elaboração de gráficos e relatórios para análise de
+                      desempenho.
+                    </li>
+                    <li>
+                      Manutenção e atualização de bases de dados e sistemas
+                      internos.
+                    </li>
+                  </ul>
+                  <button class="toggle-btn">Ver mais detalhes</button>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="download-cv">
@@ -481,6 +529,17 @@
         document
           .querySelector("#swotChartContainer canvas")
           .classList.add("visible");
+      });
+
+      // Expandir e recolher detalhes
+      document.querySelectorAll(".toggle-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const details = btn.previousElementSibling;
+          details.classList.toggle("show");
+          btn.textContent = details.classList.contains("show")
+            ? "Ocultar detalhes"
+            : "Ver mais detalhes";
+        });
       });
     </script>
   </body>
