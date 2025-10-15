@@ -12,7 +12,7 @@
       property="og:description"
       content="Conheça o portfólio de Lucas Santos: projetos, habilidades e experiência em Desenvolvimento de Sistemas."
     />
-    <meta property="og:image" content="img/og-image.jpg" />
+    <meta property="og:image" content="img/Eu.jpg" />
     <meta property="og:type" content="website" />
     <title>Lucas Santos — Portfólio</title>
 
@@ -22,7 +22,14 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preload" href="styles.css" as="style" />
+
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
 
   <body>
@@ -65,39 +72,41 @@
               >
             </div>
             <div class="social-icons">
-              <!-- github -->
-              <a 
+              <a
+                href="https://wa.me/5512981718913"
+                target="_blank"
+                rel="noopener"
+                class="social-btn"
+                title="WhatsApp"
+              >
+                <i class="fab fa-whatsapp fa-2x"></i>
+              </a>
+
+              <a
                 href="https://github.com/tirolasca"
                 target="_blank"
                 rel="noopener"
                 class="social-btn"
+                title="GitHub"
               >
-                <img src="img/Github.png" alt="GitHub" width="32" height="32" />
+                <i class="fab fa-github fa-2x"></i>
               </a>
+
               <a
                 href="https://www.linkedin.com/in/lucas-santostec/"
                 target="_blank"
                 rel="noopener"
                 class="social-btn"
+                title="LinkedIn"
               >
-                <img
-                  src="img/Linkedin.png"
-                  alt="LinkedIn"
-                  width="32"
-                  height="32"
-                />
+                <i class="fab fa-linkedin fa-2x"></i>
               </a>
               <a
                 href="mailto:lucasnascimento1245@gmail.com"
                 class="social-btn email"
+                title="E-mail"
               >
-                <img
-                  src="img/Email.png"
-                  alt="Email"
-                  title="Email"
-                  width="32"
-                  height="32"
-                />
+                <i class="fa-solid fa-envelope fa-2x"></i>
               </a>
             </div>
           </div>
@@ -110,10 +119,12 @@
       <!-- ===== SKILLS ===== -->
       <section class="skills" data-aos="fade-up">
         <div class="container">
-          <h3 id="titulo">Habilidades rápidas</h3>
+          <h3 id="titulo">
+            <i class="fa-solid fa-gears"></i> Habilidades rápidas
+          </h3>
           <div class="skills-grid">
             <div class="skill-card">
-              <h4>Frontend 💻</h4>
+              <h4><i class="fa-brands fa-html5"></i> Frontend</h4>
               <div class="skill-badges">
                 <img
                   src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
@@ -128,14 +139,14 @@
                   alt="React"
                 />
                 <img
-                  src="https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white"
-                  alt="PHP"
+                  src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
+                  alt="JavaScript"
                 />
               </div>
             </div>
 
             <div class="skill-card">
-              <h4>Backend ⚙️</h4>
+              <h4><i class="fa-solid fa-code"></i> Backend</h4>
               <div class="skill-badges">
                 <img
                   src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"
@@ -150,14 +161,14 @@
                   alt="Node.js"
                 />
                 <img
-                  src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
-                  alt="JavaScript"
+                  src="https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white"
+                  alt="PHP"
                 />
               </div>
             </div>
 
             <div class="skill-card">
-              <h4>Bancos de Dados 🗄️</h4>
+              <h4><i class="fa-solid fa-database"></i> Bancos de Dados</h4>
               <div class="skill-badges">
                 <img
                   src="https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white"
@@ -168,22 +179,24 @@
                   alt="SQL Server"
                 />
                 <img
-                  src="https://img.shields.io/badge/bitcoin-2F3134?style=for-the-badge&logo=bitcoin&logoColor=whit"
+                  src="https://img.shields.io/badge/Blockchain.com-121D33?logo=blockchaindotcom&logoColor=fff&style=for-the-badge"
                   alt="Blockchain"
                 />
               </div>
             </div>
 
             <div class="skill-card">
-              <h4>Redes & Infraestrutura 🌐</h4>
+              <h4>
+                <i class="fa-solid fa-network-wired"></i> Redes & Infraestrutura
+              </h4>
               <div class="skill-badges">
                 <img
                   src="https://img.shields.io/badge/cisco-%23049fd9.svg?style=for-the-badge&logo=cisco&logoColor=black"
                   alt="Cisco"
                 />
                 <img
-                  src="https://img.shields.io/badge/Servidores-6A1B9A?style=for-the-badge&logoColor=white"
-                  alt="Servidores"
+                  src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"
+                  alt="Linux"
                 />
                 <img
                   src="https://img.shields.io/badge/Protocolos-FF6F00?style=for-the-badge&logoColor=white"
@@ -193,7 +206,10 @@
             </div>
 
             <div class="skill-card">
-              <h4>Ferramentas & Controle de Versão 🧰</h4>
+              <h4>
+                <i class="fa-solid fa-tools"></i> Ferramentas & Controle de
+                Versão
+              </h4>
               <div class="skill-badges">
                 <img
                   src="https://img.shields.io/badge/Git-F05033?style=for-the-badge&logo=git&logoColor=white"
@@ -203,10 +219,7 @@
                   src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"
                   alt="GitHub"
                 />
-                <img
-                  src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black"
-                  alt="Linux"
-                />
+
                 <img
                   src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=black"
                   alt="VS Code"
@@ -215,11 +228,17 @@
                   src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"
                   alt="Vercel"
                 />
+                <img
+                  src="https://img.shields.io/badge/Xampp-F37623?style=for-the-badge&logo=xampp&logoColor=white"
+                  alt="Xampp"
+                />
               </div>
             </div>
 
             <div class="skill-card">
-              <h4>Inteligência Artificial & Bots 🤖</h4>
+              <h4>
+                <i class="fa-solid fa-robot"></i> Inteligência Artificial & Bots
+              </h4>
               <div class="skill-badges">
                 <img
                   src="https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white"
@@ -255,14 +274,16 @@
                     href="https://nasasjc.vercel.app"
                     target="_blank"
                     class="btn small primary"
-                    >🌐 Ver Projeto</a
                   >
+                    <i class="fa-solid fa-globe"></i> Ver Projeto
+                  </a>
                   <a
                     href="https://github.com/tirolasca/NASA.git"
                     target="_blank"
                     class="btn small outline"
-                    >GitHub</a
                   >
+                    <i class="fa-brands fa-github"></i> GitHub
+                  </a>
                 </div>
               </div>
             </div>
@@ -281,14 +302,16 @@
                     href="https://janosys-project-api1.vercel.app"
                     target="_blank"
                     class="btn small primary"
-                    >🌐 Ver Projeto</a
                   >
+                    <i class="fa-solid fa-globe"></i> Ver Projeto
+                  </a>
                   <a
                     href="https://github.com/janosystime/Janosys-Project.git"
                     target="_blank"
                     class="btn small outline"
-                    >GitHub</a
                   >
+                    <i class="fa-brands fa-github"></i> GitHub
+                  </a>
                 </div>
               </div>
             </div>
@@ -304,7 +327,7 @@
           <div class="swot-wrapper">
             <div class="swot-track">
               <div class="swot-card strengths">
-                <h4>Forças</h4>
+                <h4><i class="fa-solid fa-dumbbell"></i> Forças</h4>
                 <ul>
                   <li>Domínio Full Stack</li>
                   <li>Boa colaboração em equipe</li>
@@ -313,7 +336,9 @@
               </div>
 
               <div class="swot-card weaknesses">
-                <h4>Fraquezas</h4>
+                <h4>
+                  <i class="fa-solid fa-triangle-exclamation"></i> Fraquezas
+                </h4>
                 <ul>
                   <li>Experiência limitada em estágios</li>
                   <li>Atualização constante em frameworks recentes</li>
@@ -321,15 +346,15 @@
               </div>
 
               <div class="swot-card opportunities">
-                <h4>Oportunidades</h4>
+                <h4><i class="fa-solid fa-rocket"></i> Oportunidades</h4>
                 <ul>
                   <li>Expansão em mobile e cloud</li>
-                  <li>Aprendizado de novas linguagens (Go, Rust)</li>
+                  <li>Aprendizado de linguagens novas e emergentes</li>
                 </ul>
               </div>
 
               <div class="swot-card threats">
-                <h4>Ameaças</h4>
+                <h4><i class="fa-solid fa-bolt"></i> Ameaças</h4>
                 <ul>
                   <li>Concorrência alta</li>
                   <li>Rápida evolução tecnológica</li>
@@ -347,33 +372,40 @@
           <p>Entre em contato comigo pelas redes abaixo:</p>
           <div class="social-icons">
             <a
-              href="mailto:lucasnascimento1245@gmail.com"
-              class="btn primary email-btn"
+              href="https://wa.me/5512981718913"
+              target="_blank"
+              rel="noopener"
+              class="btn primary wpp-btn"
+              title="WhatsApp"
             >
-              <img
-                src="img/Email.png"
-                alt="Email"
-                title="Email"
-                width="22"
-                height="22"
-              />
-              Envie um email
+              <i class="fab fa-whatsapp fa-2x"></i>
+
+              Mande uma mensagem
             </a>
             <a
               href="https://github.com/tirolasca"
               target="_blank"
               rel="noopener"
               class="social-btn"
+              title="GitHub"
             >
-              <img src="img/Github.png" alt="GitHub" title="GitHub" />
+              <i class="fab fa-github fa-2x"></i>
             </a>
             <a
-              href="https://linkedin.com/in/lucas-santostec"
+              href="https://www.linkedin.com/in/lucas-santostec/"
               target="_blank"
               rel="noopener"
               class="social-btn"
+              title="LinkedIn"
             >
-              <img src="img/Linkedin.png" alt="LinkedIn" title="LinkedIn" />
+              <i class="fab fa-linkedin fa-2x"></i>
+            </a>
+            <a
+              href="mailto:lucasnascimento1245@gmail.com"
+              class="social-btn email"
+              title="E-mail"
+            >
+              <i class="fa-solid fa-envelope fa-2x"></i>
             </a>
           </div>
         </div>
@@ -393,9 +425,28 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
       AOS.init({ once: true, duration: 700 });
+
+      const backToTop = document.querySelector(".back-to-top");
+
       window.addEventListener("scroll", () => {
-        const btn = document.querySelector(".back-to-top");
-        btn.classList.toggle("visible", window.scrollY > 250);
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.body.offsetHeight;
+
+        // mostra/esconde botão
+        backToTop.classList.toggle("visible", scrollY > 250);
+
+        // calcula distância do bottom para não sobrepor conteúdo final
+        const offsetFromBottom = 20; // distância mínima
+        const safeBottom = Math.max(
+          offsetFromBottom,
+          documentHeight - (scrollY + windowHeight + 50)
+        );
+        backToTop.style.bottom = safeBottom + "px";
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
       const fadeElements = document.querySelectorAll(
