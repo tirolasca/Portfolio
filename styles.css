@@ -832,7 +832,7 @@ h4 {
 
 /* Ícones mantêm o brilho ao passar o mouse */
 .timeline-icon {
-  background: #001f26;
+  background: #fff;
   border: 2px solid #00f0d1;
   font-size: 1.4rem;
   border-radius: 50%;
@@ -1272,6 +1272,14 @@ h4 {
     list-style-position: inside;
   }
 
+  .animated-title {
+    left: 16%;
+  }
+
+  .animated-title::after {
+    left: 36.4%;
+  }
+
   .btn.download {
     justify-content: center; /* centraliza conteúdo */
     gap: 0.4rem; /* reduz espaço entre ícone e texto */
@@ -1303,7 +1311,7 @@ h4 {
 
   .swot-card {
     min-width: 100%;
-    padding: 8px 10px;
+    padding: 8px 25px;
   }
 
   /* ==== PROJETOS ==== */
@@ -1413,8 +1421,8 @@ h4 {
 
   /* ==== BACK TO TOP BUTTON ==== */
   .back-to-top {
-    width: 32px; /* ligeiramente menor */
-    height: 32px;
+    width: 36px;
+    height: 36px;
     bottom: 60px; /* afasta do conteúdo inferior */
     right: 12px; /* mais afastado da borda */
   }
