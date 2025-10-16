@@ -383,14 +383,11 @@ h4 {
 }
 
 /* ====== SWOT ====== */
-.swot-section h3,
-.swot-section h2 {
+.titulo-swot {
   text-align: center;
-  margin-bottom: 28px;
-  color: #031214;
-  font-size: 1.7rem;
-  letter-spacing: 0.6px;
-  font-weight: 700;
+  font-size: 1.6rem;
+  color: #003f3a;
+  margin-bottom: 20px;
 }
 
 /* Container e grid */
