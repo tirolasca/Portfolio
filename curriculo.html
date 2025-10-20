@@ -43,16 +43,27 @@
   </head>
 
   <body>
+    <!-- ===== HEADER ===== -->
     <header class="site-header">
       <div class="container header-inner">
         <div class="brand">
-          <h1>Lucas Santos</h1>
-          <p class="job">Desenvolvedor de Software</p>
+          <a href="index.html">
+            <img
+              src="img/Logo.png"
+              alt="Logo Lucas Santos"
+              class="logo-header"
+            />
+          </a>
+          <div class="brand-text">
+            <h1>Lucas Santos</h1>
+            <p class="job">Desenvolvedor de Software</p>
+          </div>
         </div>
+
         <nav class="main-nav" aria-label="Menu principal">
           <ul>
             <li><a href="index.html">Início</a></li>
-            <li><a href="curriculo.html" class="active">Currículo</a></li>
+            <li><a href="curriculo.html">Currículo</a></li>
             <li><a href="#contato" class="cta">Contato</a></li>
           </ul>
         </nav>
@@ -122,18 +133,20 @@
             <h3><i class="fa-solid fa-graduation-cap"></i> Formação</h3>
             <ul class="list">
               <li>
-  <i class="fa-solid fa-laptop-code"></i>
-  <strong>Desenvolvimento de Software Multiplataforma</strong> — FATEC - 08/2025 - 07/2028 (Cursando)
-</li>
-<li>
-  <i class="fa-solid fa-graduation-cap"></i>
-  <strong>Técnico em Desenvolvimento de Sistemas</strong> — ETEC - 03/2023 - 07/2024
-</li>
-<li>
-  <i class="fa-solid fa-network-wired"></i>
-  <strong>Técnico em Redes de Computadores</strong> — SENAC - 02/2023 - 07/2024
-</li>
-
+                <i class="fa-solid fa-laptop-code"></i>
+                <strong>Desenvolvimento de Software Multiplataforma</strong> —
+                FATEC - 08/2025 - 07/2028 (Cursando)
+              </li>
+              <li>
+                <i class="fa-solid fa-graduation-cap"></i>
+                <strong>Técnico em Desenvolvimento de Sistemas</strong> — ETEC -
+                03/2023 - 07/2024
+              </li>
+              <li>
+                <i class="fa-solid fa-network-wired"></i>
+                <strong>Técnico em Redes de Computadores</strong> — SENAC -
+                02/2023 - 07/2024
+              </li>
             </ul>
           </div>
           <!-- Experiências -->
@@ -406,17 +419,24 @@
         <!-- ===== PROJECTS ===== -->
         <section class="projects" id="projetos">
           <div class="container">
-            <h3>Projetos</h3>
+            <h3><i class="fa-solid fa-folder-open"></i> Projetos</h3>
             <div class="projects-grid">
               <div class="project-card">
-                <img src="img/Planet.png" alt="Projeto NASA" loading="lazy" />
+                <img src="img/Planet.png" alt="Projeto NASA" />
                 <div class="project-info">
-                  <h4>NASA Exoplanet Dashboard</h4>
-                  <p class="muted">Space Apps Challenge — NASA</p>
+                  <h4>
+                    <i class="fa-solid fa-satellite"></i> NASA Exoplanet
+                    Dashboard
+                  </h4>
+                  <p class="muted">
+                    <i class="fa-solid fa-user-astronaut"></i> Space Apps
+                    Challenge — NASA
+                  </p>
                   <p>
-                    Dashboard interativo de exoplanetas com HTML, CSS e
-                    JavaScript, apresentando visualizações claras de dados
-                    astronômicos e design responsivo. Hospedado na Vercel.
+                    <i class="fa-solid fa-chart-line"></i> Dashboard interativo
+                    de exoplanetas com HTML, CSS e JavaScript, apresentando
+                    visualizações claras de dados astronômicos e design
+                    responsivo. Hospedado na Vercel.
                   </p>
                   <div class="project-links">
                     <a
@@ -438,17 +458,17 @@
               </div>
 
               <div class="project-card">
-                <img
-                  src="img/Janosys.png"
-                  alt="Janosys Project"
-                  loading="lazy"
-                />
+                <img src="img/Janosys.png" alt="Janosys Project" />
                 <div class="project-info">
-                  <h4>Janosys API</h4>
-                  <p class="muted">Trabalho acadêmico — FATEC</p>
+                  <h4><i class="fa-solid fa-database"></i> Janosys API</h4>
+                  <p class="muted">
+                    <i class="fa-solid fa-building-columns"></i> Trabalho
+                    acadêmico — FATEC
+                  </p>
                   <p>
-                    Dashboard de dados do Censo 2022 com Python, Flask e MySQL,
-                    focado em visualização e análise de informações públicas.
+                    <i class="fa-solid fa-code-branch"></i> Dashboard de dados
+                    do Censo 2022 com Python, Flask e MySQL, focado em
+                    visualização e análise de informações públicas.
                   </p>
                   <div class="project-links">
                     <a
@@ -525,9 +545,19 @@
       </div>
     </main>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© 2025 Lucas Santos. Todos os direitos reservados.</p>
+        <div class="footer-brand">
+          <a href="index.html">
+            <img
+              src="img/Logo.png"
+              alt="Logo Lucas Santos"
+              class="footer-logo"
+            />
+          </a>
+          <p>2025 Lucas Santos. Todos os direitos reservados.</p>
+        </div>
       </div>
     </footer>
 

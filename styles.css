@@ -24,32 +24,59 @@ body {
   margin: 0 auto;
 }
 
-/* ====== Header ====== */
+/* ===== Header ===== */
 .site-header {
   background: linear-gradient(90deg, #004550 0%, #007a83 100%);
   color: #fff;
-  padding: 18px 0;
+  padding: 15px 0; /* substitui margin negativa */
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 10;
 }
+
 .header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
 }
-.brand h1 {
-  font-size: 1.7rem;
-  font-weight: 700;
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* espaço entre logo e textos */
 }
-.brand .job {
-  font-size: 0.95rem;
-  opacity: 0.9;
+
+.brand .logo-header {
+  width: 70px; /* ajuste conforme necessário */
+  height: auto;
 }
+
+.brand-text h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.brand-text .job {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #dff6f3;
+}
+
+/* Menu de navegação */
 .main-nav ul {
   display: flex;
   list-style: none;
   gap: 16px;
+  margin: 0;
+  padding: 0;
 }
+
 .main-nav a {
   color: #dff6f3;
   text-decoration: none;
@@ -58,6 +85,7 @@ body {
   border-radius: 8px;
   transition: all 0.2s ease;
 }
+
 .main-nav a:hover,
 .main-nav a.active {
   background: rgba(255, 255, 255, 0.15);
@@ -110,56 +138,77 @@ h4 {
   color: #007f7a;
 }
 
-/* ====== Hero ====== */
+/* ===== HERO ===== */
 .hero {
-  padding: 40px 0;
+  padding: 70px 0;
+  background: linear-gradient(135deg, #f7fffd 0%, #e6fafa 100%);
   display: flex;
   align-items: center;
 }
+
 .hero-inner {
   display: flex;
-  gap: 24px;
-  align-items: center;
   justify-content: space-between;
-}
-.hero-content {
-  flex: 1 1 560px;
-}
-.hero-content h2 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: #002e3a;
-}
-.hero-content h2 span {
-  color: #007f7a;
-}
-.lead {
-  font-size: 1.05rem;
-  color: #184249;
-  margin-bottom: 14px;
-}
-.hero-cta {
-  display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 40px;
   flex-wrap: wrap;
 }
-.hero-image {
+
+/* ==== Conteúdo ==== */
+.hero-content {
+  flex: 1 1 520px;
+  animation: fadeIn 0.9s ease forwards;
+}
+
+.hero-content h2 {
+  font-size: 2.6rem;
+  color: #002e3a;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.hero-content h2 span {
+  color: #00bfae;
+}
+
+.hero-subtitle {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 200px;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 8px 0 12px;
+  color: #073235;
+  font-weight: 600;
+}
+
+.hero-subtitle img.hero-logo {
+  width: 40px; /* ajuste o tamanho conforme necessário */
+  height: auto;
+  margin-right: -2px;
+  flex-shrink: 0;
+}
+
+.lead {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #184249;
+  margin-bottom: 22px;
+}
+/* ==== Imagem ==== */
+.hero-image {
+  width: 240px;
+  height: 240px;
   border-radius: 50%;
   overflow: hidden;
-  background: #000;
-  margin-top: 20px;
+  background: linear-gradient(135deg, #00bfae, #007f7a);
+  box-shadow: 0 8px 30px rgba(0, 128, 128, 0.25);
+  transition: transform 0.5s ease;
 }
-.hero-image img.hero-avatar {
+.hero-avatar {
   width: 100%;
   height: 100%;
   object-fit: cover;
   border-radius: 50%;
-  transition: transform 0.5s ease;
 }
 .hero-image img.hero-avatar:hover {
   transform: scale(1.05);
@@ -176,6 +225,17 @@ h4 {
   font-size: 3rem;
   color: #004b45;
   box-shadow: 0 8px 24px rgba(3, 18, 20, 0.12);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ====== Cards ====== */
@@ -1112,12 +1172,89 @@ h4 {
   transform: translateY(-2px);
 }
 
-/* ====== Footer ====== */
+/* ===== CONTATO ===== */
+.contact {
+  background: #f5f7fa;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #004550;
+}
+
+.contact p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.contact-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: #fff;
+}
+
+/* Cores individuais para cada rede */
+.contact-btn.whatsapp {
+  background: #25d366;
+}
+.contact-btn.github {
+  background: #181717;
+}
+.contact-btn.linkedin {
+  background: #0077b5;
+}
+.contact-btn.email {
+  background: #ff6b6b;
+}
+
+/* Hover efeito */
+.contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Footer ===== */
 .site-footer {
   background: #004550;
   color: #dff6f3;
-  padding: 16px 0;
-  margin-top: 30px;
+  padding: 10px 0;
+  margin-top: 20px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap; /* permite quebrar no mobile */
+  text-align: center;
+}
+
+.footer-logo {
+  width: 40px; /* ajuste conforme necessário */
+  height: auto;
 }
 
 /* ====== Back to Top ====== */
@@ -1220,6 +1357,18 @@ h4 {
     text-align: center;
   }
 
+  .hero-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero-content h3.hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero-subtitle .hero-logo {
+    width: 50px;
+  }
+
   .hero-content {
     max-width: 100%;
   }
@@ -1255,7 +1404,7 @@ h4 {
 
   .social-icons {
     justify-content: center;
-    margin-top: 4px;
+    margin-top: 15px;
     margin-bottom: 4px;
   }
 
@@ -1265,6 +1414,10 @@ h4 {
 
   .hero .container {
     padding-bottom: 0;
+  }
+
+  #titulo {
+    margin-top: -8rem;
   }
 
   /* ===== CURRÍCULO ===== */
@@ -1426,7 +1579,15 @@ h4 {
   footer {
     flex-direction: column;
     text-align: center;
-    gap: 8px;
+  }
+
+  .footer-brand {
+    flex-direction: column; /* logo abaixo do texto no mobile */
+  }
+
+  .footer-logo {
+    width: 50px;
+    margin-top: -30px;
   }
 
   /* ==== SOCIAL BUTTONS ==== */
@@ -1459,10 +1620,12 @@ h4 {
     gap: 0.4rem;
   }
 
-  /* ==== EMAIL BUTTON ==== */
-  .email-btn {
-    padding: 4px 10px;
-    font-size: 0.85rem;
+   .contact-buttons {
+    flex-direction: column;
+  }
+
+  .contact-btn {
+    justify-content: center;
   }
 
   /* ==== BACK TO TOP BUTTON ==== */
@@ -1482,6 +1645,9 @@ h4 {
     padding: 10px 12px;
   }
 
+  .list li {
+    margin-left: 8px;
+  }
   /* ==== NOVA SEÇÃO ==== */
   .nova-secao {
     margin-bottom: 16px; /* evita sobreposição */

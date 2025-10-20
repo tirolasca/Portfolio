@@ -12,9 +12,13 @@
       property="og:description"
       content="Conheça o portfólio de Lucas Santos: projetos, habilidades e experiência em Desenvolvimento de Sistemas."
     />
-    <meta property="og:image" content="img/Eu.jpg" />
+    <meta property="og:image" content="img/Logo_favicon.png" />
     <meta property="og:type" content="website" />
     <title>Lucas Santos — Portfólio</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/Logo.png" type="image/png" />
+    <link rel="shortcut icon" href="img/Logo.png" type="image/png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
@@ -37,9 +41,19 @@
     <header class="site-header">
       <div class="container header-inner">
         <div class="brand">
-          <h1>Lucas Santos</h1>
-          <p class="job">Desenvolvedor de Software</p>
+          <a href="index.html">
+            <img
+              src="img/Logo.png"
+              alt="Logo Lucas Santos"
+              class="logo-header"
+            />
+          </a>
+          <div class="brand-text">
+            <h1>Lucas Santos</h1>
+            <p class="job">Desenvolvedor de Software</p>
+          </div>
         </div>
+
         <nav class="main-nav" aria-label="Menu principal">
           <ul>
             <li><a href="index.html">Início</a></li>
@@ -54,23 +68,34 @@
       <!-- ===== HERO ===== -->
       <section class="hero" id="home">
         <div class="container hero-inner" data-aos="fade-up">
+          <!-- ==== Conteúdo principal ==== -->
           <div class="hero-content">
-            <h2>Olá — eu sou <span>Lucas Santos</span></h2>
+            <h2>👋 Olá, eu sou <span>Lucas Santos</span></h2>
+            <h3 class="hero-subtitle">
+              <img src="img/Logo.png" alt="Logo" class="hero-logo" />
+              Desenvolvedor de Software
+            </h3>
+
             <p class="lead">
-              Sou desenvolvedor de software formado em Desenvolvimento de
-              Sistemas e Redes de Computadores, atualmente cursando
-              <strong>Desenvolvimento de Software Multiplataforma</strong>.
-              Apaixonado por tecnologia, busco aprimorar minhas habilidades em
-              <strong>programação full stack</strong> e inovação digital.
+              Sou formado em <strong>Desenvolvimento de Sistemas</strong> e
+              <strong>Redes de Computadores</strong>, e atualmente curso
+              <strong>Desenvolvimento de Software Multiplataforma</strong> na
+              FATEC. Tenho paixão por tecnologia e busco unir
+              <strong>inovação</strong>, <strong>desempenho</strong> e
+              <strong>impacto real</strong> em cada projeto.
             </p>
+
+            <!-- ==== Botões ==== -->
             <div class="hero-cta">
-              <a href="curriculo.html" class="btn primary"
-                >Ver Currículo completo</a
-              >
-              <a href="Currículo - Lucas.pdf" class="btn outline" download
-                >Baixar PDF</a
-              >
+              <a href="curriculo.html" class="btn primary">
+                <i class="fa-solid fa-user"></i> Ver Currículo Completo
+              </a>
+              <a href="Currículo - Lucas.pdf" class="btn outline" download>
+                <i class="fa-solid fa-file-arrow-down"></i> Baixar PDF
+              </a>
             </div>
+
+            <!-- ==== Ícones sociais ==== -->
             <div class="social-icons">
               <a
                 href="https://wa.me/5512981718913"
@@ -101,17 +126,24 @@
               >
                 <i class="fab fa-linkedin fa-2x"></i>
               </a>
+
               <a
                 href="mailto:lucasnascimento1245@gmail.com"
-                class="social-btn email"
+                class="social-btn"
                 title="E-mail"
               >
                 <i class="fa-solid fa-envelope fa-2x"></i>
               </a>
             </div>
           </div>
-          <div class="hero-image" aria-hidden="true" data-aos="fade-left">
-            <img src="img/Eu.jpg" alt="Lucas Santos" class="hero-avatar" />
+
+          <!-- ==== Imagem de perfil ==== -->
+          <div class="hero-image" data-aos="fade-left">
+            <img
+              src="https://media.licdn.com/dms/image/v2/D4D03AQHmlKgvoJ3eaQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1679140235731?e=1762387200&v=beta&t=N17d3Yt1akPPRANAeU7y40RQ86mzWdzza5JdBorFkuU"
+              alt="Lucas Santos"
+              class="hero-avatar"
+            />
           </div>
         </div>
       </section>
@@ -257,17 +289,23 @@
       <!-- ===== PROJECTS ===== -->
       <section class="projects" id="projetos">
         <div class="container">
-          <h3>Projetos</h3>
+          <h3><i class="fa-solid fa-folder-open"></i> Projetos</h3>
           <div class="projects-grid">
             <div class="project-card">
               <img src="img/Planet.png" alt="Projeto NASA" />
               <div class="project-info">
-                <h4>NASA Exoplanet Dashboard</h4>
-                <p class="muted">Space Apps Challenge — NASA</p>
+                <h4>
+                  <i class="fa-solid fa-satellite"></i> NASA Exoplanet Dashboard
+                </h4>
+                <p class="muted">
+                  <i class="fa-solid fa-user-astronaut"></i> Space Apps
+                  Challenge — NASA
+                </p>
                 <p>
-                  Dashboard interativo de exoplanetas com HTML, CSS e
-                  JavaScript, apresentando visualizações claras de dados
-                  astronômicos e design responsivo. Hospedado na Vercel.
+                  <i class="fa-solid fa-chart-line"></i> Dashboard interativo de
+                  exoplanetas com HTML, CSS e JavaScript, apresentando
+                  visualizações claras de dados astronômicos e design
+                  responsivo. Hospedado na Vercel.
                 </p>
                 <div class="project-links">
                   <a
@@ -291,11 +329,15 @@
             <div class="project-card">
               <img src="img/Janosys.png" alt="Janosys Project" />
               <div class="project-info">
-                <h4>Janosys API</h4>
-                <p class="muted">Trabalho acadêmico — FATEC</p>
+                <h4><i class="fa-solid fa-database"></i> Janosys API</h4>
+                <p class="muted">
+                  <i class="fa-solid fa-building-columns"></i> Trabalho
+                  acadêmico — FATEC
+                </p>
                 <p>
-                  Dashboard de dados do Censo 2022 com Python, Flask e MySQL,
-                  focado em visualização e análise de informações públicas.
+                  <i class="fa-solid fa-code-branch"></i> Dashboard de dados do
+                  Censo 2022 com Python, Flask e MySQL, focado em visualização e
+                  análise de informações públicas.
                 </p>
                 <div class="project-links">
                   <a
@@ -322,7 +364,10 @@
       <!-- ===== SWOT ===== -->
       <section class="swot-section" data-aos="fade-up">
         <div class="container">
-          <h3 class="titulo-swot">Autoanálise Profissional (SWOT)</h3>
+          <h3 class="titulo-swot">
+            <i class="fa-solid fa-magnifying-glass-chart"></i> Autoanálise
+            Profissional (SWOT)
+          </h3>
 
           <div class="swot-wrapper">
             <div class="swot-track">
@@ -365,57 +410,69 @@
         </div>
       </section>
 
-      <!-- ===== CONTATO ===== -->
-      <section class="contact" id="contato">
-        <div class="container">
-          <h3>Vamos conversar?</h3>
-          <p>Entre em contato comigo pelas redes abaixo:</p>
-          <div class="social-icons">
-            <a
-              href="https://wa.me/5512981718913"
-              target="_blank"
-              rel="noopener"
-              class="btn primary wpp-btn"
-              title="WhatsApp"
-            >
-              <i class="fab fa-whatsapp fa-2x"></i>
+    <!-- ===== CONTATO ===== -->
+<section class="contact" id="contato">
+  <div class="container contact-inner">
+    <h3><i class="fa-solid fa-comments"></i> Vamos conversar?</h3>
+    <p>Entre em contato comigo através das redes abaixo ou envie uma mensagem diretamente!</p>
 
-              Mande uma mensagem
-            </a>
-            <a
-              href="https://github.com/tirolasca"
-              target="_blank"
-              rel="noopener"
-              class="social-btn"
-              title="GitHub"
-            >
-              <i class="fab fa-github fa-2x"></i>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/lucas-santostec/"
-              target="_blank"
-              rel="noopener"
-              class="social-btn"
-              title="LinkedIn"
-            >
-              <i class="fab fa-linkedin fa-2x"></i>
-            </a>
-            <a
-              href="mailto:lucasnascimento1245@gmail.com"
-              class="social-btn email"
-              title="E-mail"
-            >
-              <i class="fa-solid fa-envelope fa-2x"></i>
-            </a>
-          </div>
-        </div>
-      </section>
+    <div class="contact-buttons">
+      <a
+        href="https://wa.me/5512981718913"
+        target="_blank"
+        rel="noopener"
+        class="btn contact-btn whatsapp"
+        title="WhatsApp"
+      >
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+
+      <a
+        href="https://github.com/tirolasca"
+        target="_blank"
+        rel="noopener"
+        class="btn contact-btn github"
+        title="GitHub"
+      >
+        <i class="fab fa-github"></i> GitHub
+      </a>
+
+      <a
+        href="https://www.linkedin.com/in/lucas-santostec/"
+        target="_blank"
+        rel="noopener"
+        class="btn contact-btn linkedin"
+        title="LinkedIn"
+      >
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+
+      <a
+        href="mailto:lucasnascimento1245@gmail.com"
+        class="btn contact-btn email"
+        title="E-mail"
+      >
+        <i class="fa-solid fa-envelope"></i> E-mail
+      </a>
+    </div>
+  </div>
+</section>
+
     </main>
 
     <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>© 2025 Lucas Santos. Todos os direitos reservados.</p>
+        <div class="footer-brand">
+          <a href="index.html">
+            <img
+              src="img/Logo.png"
+              alt="Logo Lucas Santos"
+              class="footer-logo"
+            />
+          </a>
+          <p>2025 Lucas Santos. Todos os direitos reservados.</p>
+        </div>
       </div>
     </footer>
 
@@ -423,47 +480,60 @@
 
     <!-- ===== SCRIPTS ===== -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
     <script>
-      AOS.init({ once: true, duration: 700 });
+      document.addEventListener("DOMContentLoaded", () => {
+        // Inicializa AOS
+        if (typeof AOS !== "undefined") {
+          AOS.init({ once: true, duration: 700 });
+        } else {
+          console.warn("AOS não carregado.");
+        }
 
-      const backToTop = document.querySelector(".back-to-top");
+        // Back to top
+        const backToTop = document.querySelector(".back-to-top");
+        if (backToTop) {
+          const updateBackToTop = () => {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.body.offsetHeight;
+            backToTop.classList.toggle("visible", scrollY > 150);
+            const offsetFromBottom = 20;
+            const safeBottom = Math.max(
+              offsetFromBottom,
+              documentHeight - (scrollY + windowHeight + 50)
+            );
+            backToTop.style.bottom = safeBottom + "px";
+          };
+          window.addEventListener("scroll", updateBackToTop);
+          // chamada inicial
+          updateBackToTop();
 
-      window.addEventListener("scroll", () => {
-        const scrollY = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.body.offsetHeight;
-
-        // mostra/esconde botão
-        backToTop.classList.toggle("visible", scrollY > 250);
-
-        // calcula distância do bottom para não sobrepor conteúdo final
-        const offsetFromBottom = 20; // distância mínima
-        const safeBottom = Math.max(
-          offsetFromBottom,
-          documentHeight - (scrollY + windowHeight + 50)
-        );
-        backToTop.style.bottom = safeBottom + "px";
-      });
-
-      backToTop.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-
-      const fadeElements = document.querySelectorAll(
-        ".fade-up, .card, .skill-card, .project-card, .swot-card"
-      );
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
+          backToTop.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
           });
-        },
-        { threshold: 0.15 }
-      );
-      fadeElements.forEach((el) => observer.observe(el));
+        }
+
+        // Intersection Observer (fade)
+        const fadeElements = document.querySelectorAll(
+          ".fade-up, .card, .skill-card, .project-card, .swot-card"
+        );
+        if (fadeElements.length) {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.15 }
+          );
+          fadeElements.forEach((el) => observer.observe(el));
+        }
+      });
     </script>
   </body>
 </html>
