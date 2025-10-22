@@ -1228,7 +1228,7 @@ h4 {
 /* Hover efeito */
 .contact-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 16px rgba(0, 128, 128, 0.35);
 }
 
 /* ===== Footer ===== */
@@ -1601,18 +1601,6 @@ h4 {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
   }
 
-  /* ==== WHATSAPP BUTTON ==== */
-  .wpp-btn {
-    width: 100%; /* ocupa toda largura disponível */
-    justify-content: center; /* centraliza conteúdo */
-    padding: 10px; /* padding mais compacto */
-    font-size: 0.95rem; /* texto menor */
-  }
-
-  .wpp-btn i {
-    font-size: 1.1rem;
-    margin-right: 6px; /* garante espaçamento consistente */
-  }
   /* ==== DOWNLOAD CV BUTTON ==== */
   .btn.download {
     padding: 0.5rem 1rem;
@@ -1620,7 +1608,7 @@ h4 {
     gap: 0.4rem;
   }
 
-   .contact-buttons {
+  .contact-buttons {
     flex-direction: column;
   }
 
