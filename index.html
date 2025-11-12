@@ -543,6 +543,17 @@
           console.warn("AOS não carregado.");
         }
 
+        let scrollTimeout;
+
+        window.addEventListener("scroll", () => {
+          document.documentElement.classList.add("show-scrollbar");
+          clearTimeout(scrollTimeout);
+
+          scrollTimeout = setTimeout(() => {
+            document.documentElement.classList.remove("show-scrollbar");
+          }, 800); // desaparece 0.8s após parar de rolar
+        });
+
         // Back to top
         const backToTop = document.querySelector(".back-to-top");
         if (backToTop) {

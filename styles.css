@@ -5,10 +5,55 @@
   padding: 0;
 }
 
+/* ===== Scrollbar invisível até rolar ===== */
+
+/* Estado inicial */
 html {
   scroll-behavior: smooth;
 }
 
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Faixa (track) completamente invisível */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Polegar (thumb) invisível até rolar */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.4s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Só aparece durante a rolagem */
+html.show-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #00bfae, #007f7a);
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(0, 191, 174, 0.3);
+}
+
+/* Remove também a faixa em hover */
+::-webkit-scrollbar-track:hover {
+  background: transparent;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: none; /* remove a faixa e o thumb completamente */
+}
+
+html.show-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #00bfae transparent;
+}
+
+/* ===== Corpo da página ===== */
 body {
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
     "Helvetica Neue", Arial;
@@ -1575,7 +1620,7 @@ h4 {
     transform: translate(-50%, -100%);
     font-size: 0.9rem;
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-   
+
     z-index: 2;
   }
 
