@@ -11,6 +11,11 @@
 html {
   scroll-behavior: smooth;
 }
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
 
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
@@ -1652,6 +1657,7 @@ h4 {
 
   .container {
     margin-top: 35px;
+    padding: 0 12px;
   }
 
   .hero .container {
@@ -1663,11 +1669,6 @@ h4 {
   }
 
   /* ===== CURRÍCULO ===== */
-  .container {
-    width: 90%;
-    padding: 0 12px;
-  }
-
   .curriculo-section {
     padding: 20px 18px;
     margin: 0 8px 24px;
@@ -1776,25 +1777,56 @@ h4 {
   }
 
   /* ==== PROJETOS ==== */
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
+  .projects .projects-grid {
+    grid-template-columns: 1fr; /* uma coluna apenas */
+    gap: 1.2rem;
+    justify-items: center;
+    padding: 0 4px; /* menos padding lateral */
+  }
+
+  .project-card {
+    width: 108%; /* 🔹 aumenta horizontalmente */
+    max-width: 108%; /* ocupa mais espaço no mobile */
+    margin: 0 -4% 14px; /* remove o espaço lateral para compensar */
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* leve destaque visual */
   }
 
   .project-card img {
-    height: 120px;
+    height: auto;
+    border-radius: 12px 12px 0 0;
+  }
+
+  /* 🔹 BOTÃO PRINCIPAL (Ver Projeto) 🔹 */
+  .project-links .btn.small.primary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%; /* botão menor na horizontal */
+    margin: 0.4rem auto;
+    padding: 0.55rem 0.8rem; /* altura e largura reduzidas */
+    font-size: 0.85rem; /* texto um pouco menor */
+    border-radius: 8px;
+    gap: 2px;
+  }
+
+  .project-links .btn.small.primary i {
+    font-size: 0.9rem;
+    vertical-align: middle;
+  }
+
+  /* 🔹 CONTAINER DOS BOTÕES 🔹 */
+  .project-links {
+    display: flex;
+    flex-direction: row; /* mantém na horizontal */
+    text-align: center;
+    align-items: center;
   }
 
   .project-links .btn {
-    justify-content: center;
-    gap: 6px;
-    padding: 0.5rem 0.6rem;
-    font-size: 0.95rem;
+    flex: 1 1 auto; /* tamanho dinâmico conforme o conteúdo */
   }
 
-  .project-links .btn i {
-    font-size: 1rem;
-  }
   /* Espaçamento final entre seções */
   section {
     margin-bottom: 14px;
