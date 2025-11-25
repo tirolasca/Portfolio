@@ -53,6 +53,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/ionicons@8.7.9/dist/css/ionicons.min.css"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -80,6 +84,13 @@
             <li><a href="#contato" class="cta">Contato</a></li>
           </ul>
         </nav>
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Alterar tema"
+        >
+          <i class="fa-solid fa-sun"></i>
+        </button>
       </div>
     </header>
 
@@ -99,7 +110,7 @@
             </p>
           </div>
 
-          <div class="curriculo-section" id="contato" data-aos="fade-up">
+          <div class="curriculo-section" id="contato">
             <h3><i class="fa-solid fa-envelope"></i> Contato</h3>
 
             <div class="social-icons">
@@ -114,6 +125,7 @@
               </a>
 
               <a
+                class="social-btn github"
                 href="https://github.com/tirolasca"
                 target="_blank"
                 rel="noopener"
@@ -142,13 +154,16 @@
             </div>
           </div>
 
-          <div class="curriculo-section" data-aos="fade-up">
+          <div class="curriculo-section">
             <h3><i class="fa-solid fa-graduation-cap"></i> Formação</h3>
             <ul class="list">
               <li>
                 <i class="fa-solid fa-laptop-code"></i>
-                <strong>Desenvolvimento de Software Multiplataforma</strong> —
-                FATEC - 08/2025 - 07/2028 (Cursando)
+                <strong
+                  >Tecnólogo em Desenvolvimento de Software
+                  Multiplataforma</strong
+                >
+                — FATEC - 08/2025 - 07/2028 (Cursando)
               </li>
               <li>
                 <i class="fa-solid fa-graduation-cap"></i>
@@ -164,43 +179,38 @@
           </div>
 
           <!-- Programas Internacionais e Liderança -->
-          <div class="curriculo-section" data-aos="fade-up">
+          <div class="curriculo-section">
             <h3><i class="fa-solid fa-globe"></i> Programas e Lideranças</h3>
-            <ul class="list programas-lista">
-              <li>
-                <div class="programa-item aspire">
-                  <i class="fa-solid fa-lightbulb"></i>
-                  <div class="programa-texto">
-                    <strong
-                      >Aspire Leaders Program — Aspire Institute
-                      (Harvard)</strong
-                    ><br />
-                    <span class="muted">Setembro 2025 – Atual</span><br />
-                    Participação em programa global de liderança, com foco em
-                    <strong>autoconhecimento, impacto social</strong> e
-                    desenvolvimento de
-                    <strong>competências profissionais e colaborativas</strong>.
-                    Conectado a uma rede internacional de líderes em ascensão.
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="programa-item sfl">
-                  <i class="fa-solid fa-fire"></i>
-                  <div class="programa-texto">
-                    <strong
-                      >Students For Liberty — Programa de Liderança (SFL
-                      Brasil)</strong
-                    ><br />
-                    <span class="muted">Setembro 2025 – Atual</span><br />
-                    Desenvolvimento de projetos e eventos voltados à
-                    <strong>educação, inovação e liberdade individual</strong>,
-                    com ênfase em <strong>networking, liderança jovem</strong> e
-                    comunicação estratégica.
-                  </div>
-                </div>
-              </li>
-            </ul>
+
+            <div class="programa-item aspire">
+              <i class="fa-solid fa-lightbulb"></i>
+              <div class="programa-texto">
+                <strong
+                  >Aspire Leaders Program — Aspire Institute (Harvard)</strong
+                ><br />
+                <span class="muted">Setembro 2025 – Atual</span><br />
+                Participação em programa global de liderança, com foco em
+                <strong>autoconhecimento, impacto social</strong> e
+                desenvolvimento de
+                <strong>competências profissionais e colaborativas</strong>.
+                Conectado a uma rede internacional de líderes em ascensão.
+              </div>
+            </div>
+
+            <div class="programa-item sfl">
+              <i class="fa-solid fa-fire"></i>
+              <div class="programa-texto">
+                <strong
+                  >Students For Liberty — Programa de Liderança (SFL
+                  Brasil)</strong
+                ><br />
+                <span class="muted">Setembro 2025 – Atual</span><br />
+                Desenvolvimento de projetos e eventos voltados à
+                <strong>educação, inovação e liberdade individual</strong>, com
+                ênfase em <strong>networking, liderança jovem</strong> e
+                comunicação estratégica.
+              </div>
+            </div>
           </div>
 
           <!-- Experiências -->
@@ -295,8 +305,8 @@
         </div>
 
         <!-- Skills -->
-        <aside class="curriculo-right" data-aos="fade-up">
-          <div class="card" data-aos="fade-up">
+        <aside class="curriculo-right">
+          <div class="card">
             <h4><i class="fa-solid fa-bullseye"></i> Objetivo Profissional</h4>
             <p>
               Atuar como <strong>Desenvolvedor Full Stack</strong>, aplicando
@@ -309,7 +319,7 @@
             </p>
           </div>
 
-          <div class="card" data-aos="fade-up">
+          <div class="card">
             <h4><i class="fa-solid fa-gears"></i> Skills — Técnicas</h4>
 
             <div class="skill-category">
@@ -479,7 +489,7 @@
             </div>
           </div>
 
-          <div class="card" data-aos="fade-up">
+          <div class="card">
             <h4><i class="fa-solid fa-language"></i> Idiomas</h4>
             <div class="languages">
               <div class="language-item">
@@ -506,7 +516,7 @@
             </div>
           </div>
 
-          <div class="card" data-aos="fade-up">
+          <div class="card">
             <h4><i class="fa-solid fa-user-group"></i> Soft Skills</h4>
             <ul class="list softskills">
               <li>Comunicação clara, empática e assertiva</li>
@@ -517,7 +527,7 @@
             </ul>
           </div>
 
-          <div class="card" data-aos="fade-up">
+          <div class="card">
             <h4><i class="fa-solid fa-star"></i> Curiosidades e Metas</h4>
             <ul class="list curiosidades">
               <li>
@@ -671,7 +681,7 @@
           </div>
         </div>
 
-        <div id="swotChartContainer" data-aos="fade-up">
+        <div id="swotChartContainer">
           <canvas id="swotChart"></canvas>
         </div>
       </section>
@@ -710,6 +720,35 @@
           document.documentElement.classList.remove("show-scrollbar");
         }, 800); // desaparece 0.8s após parar de rolar
       });
+
+      const toggle = document.getElementById("theme-toggle");
+
+      toggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+
+        const icon = toggle.querySelector("i");
+        if (document.documentElement.classList.contains("dark")) {
+          localStorage.setItem("theme", "dark");
+          icon.classList.remove("fa-moon");
+          icon.classList.add("fa-sun");
+        } else {
+          localStorage.setItem("theme", "light");
+          icon.classList.remove("fa-sun");
+          icon.classList.add("fa-moon");
+        }
+
+        // Salvar preferência
+        if (document.documentElement.classList.contains("dark")) {
+          localStorage.setItem("theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+      });
+
+      // Carregar tema salvo
+      if (localStorage.getItem("theme") === "dark") {
+        document.documentElement.classList.add("dark");
+      }
 
       // botão voltar ao topo
       const backToTop = document.querySelector(".back-to-top");

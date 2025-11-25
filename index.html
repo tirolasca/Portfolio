@@ -38,6 +38,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/ionicons@8.7.9/dist/css/ionicons.min.css"
+    />
   </head>
 
   <body>
@@ -65,13 +69,21 @@
             <li><a href="#contato" class="cta">Contato</a></li>
           </ul>
         </nav>
+
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          aria-label="Alternar tema"
+        >
+          <i class="fa-solid fa-moon" id="theme-icon"></i>
+        </button>
       </div>
     </header>
 
     <main>
       <!-- ===== HERO ===== -->
       <section class="hero" id="home">
-        <div class="container hero-inner" data-aos="fade-up">
+        <div class="container hero-inner">
           <!-- ==== Conteúdo principal ==== -->
           <div class="hero-content">
             <h2>👋 Olá, eu sou <span>Lucas Santos</span></h2>
@@ -116,6 +128,7 @@
               </a>
 
               <a
+                class="social-btn github"
                 href="https://github.com/tirolasca"
                 target="_blank"
                 rel="noopener"
@@ -160,13 +173,13 @@
       </section>
 
       <!-- ===== SKILLS ===== -->
-      <section class="skills" data-aos="fade-up">
+      <section class="skills">
         <div class="container">
           <h3 id="titulo">
             <i class="fa-solid fa-gears"></i> Habilidades rápidas
           </h3>
           <div class="skills-grid">
-            <div class="skill-card">
+            <div class="skill-card glow-card">
               <h4><i class="fa-brands fa-html5"></i> Frontend & UI</h4>
               <div class="skill-badges">
                 <img
@@ -188,7 +201,7 @@
               </div>
             </div>
 
-            <div class="skill-card">
+            <div class="skill-card glow-card">
               <h4><i class="fa-solid fa-code"></i> Backend & APIs</h4>
               <div class="skill-badges">
                 <img
@@ -210,7 +223,7 @@
               </div>
             </div>
 
-            <div class="skill-card">
+            <div class="skill-card glow-card">
               <h4>
                 <i class="fa-solid fa-database"></i> Bancos de Dados & Web3
               </h4>
@@ -230,7 +243,7 @@
               </div>
             </div>
 
-            <div class="skill-card">
+            <div class="skill-card glow-card">
               <h4><i class="fa-solid fa-cloud"></i> Cloud & DevOps</h4>
               <div class="skill-badges">
                 <img
@@ -248,7 +261,7 @@
               </div>
             </div>
 
-            <div class="skill-card">
+            <div class="skill-card glow-card">
               <h4>
                 <i class="fa-solid fa-network-wired"></i> Redes & Infraestrutura
               </h4>
@@ -268,7 +281,7 @@
               </div>
             </div>
 
-            <div class="skill-card">
+            <div class="skill-card glow-card">
               <h4>
                 <i class="fa-solid fa-tools"></i> Ferramentas & Versionamento
               </h4>
@@ -292,7 +305,7 @@
               </div>
             </div>
 
-            <div class="skill-card">
+            <div class="skill-card glow-card">
               <h4>
                 <i class="fa-solid fa-chart-line"></i> Data Science & Analytics
               </h4>
@@ -308,7 +321,7 @@
               </div>
             </div>
 
-            <div class="skill-card">
+            <div class="skill-card glow-card">
               <h4>
                 <i class="fa-solid fa-robot"></i> IA, Chatbots & Automação
               </h4>
@@ -337,11 +350,11 @@
 
       <!-- ===== PROJECTS ===== -->
       <section class="projects" id="projetos">
-        <div class="container" data-aos="fade-up">
+        <div class="container">
           <h3><i class="fa-solid fa-folder-open"></i> Projetos</h3>
           <div class="projects-grid">
             <!-- ===== PROJECT 1 ===== -->
-            <div class="project-card" data-aos="fade-up">
+            <div class="project-card glow-card" data-aos="fade-up">
               <img src="img/Planet.png" alt="Projeto NASA Planet Spotter" />
               <div class="project-info">
                 <h4><i class="fa-solid fa-satellite"></i> Planet Spotter</h4>
@@ -379,7 +392,7 @@
             </div>
 
             <!-- ===== PROJECT 2 ===== -->
-            <div class="project-card" data-aos="fade-up">
+            <div class="project-card glow-card" data-aos="fade-up">
               <img src="img/Janosys.png" alt="Janosys Project" />
               <div class="project-info">
                 <h4><i class="fa-solid fa-database"></i> Janosys API</h4>
@@ -430,7 +443,7 @@
 
           <div class="swot-wrapper">
             <div class="swot-track">
-              <div class="swot-card strengths">
+              <div class="swot-card strengths glow-card">
                 <h4><i class="fa-solid fa-dumbbell"></i> Forças</h4>
                 <ul>
                   <li>Domínio Full Stack</li>
@@ -439,7 +452,7 @@
                 </ul>
               </div>
 
-              <div class="swot-card weaknesses">
+              <div class="swot-card weaknesses glow-card">
                 <h4>
                   <i class="fa-solid fa-triangle-exclamation"></i> Fraquezas
                 </h4>
@@ -449,7 +462,7 @@
                 </ul>
               </div>
 
-              <div class="swot-card opportunities">
+              <div class="swot-card opportunities glow-card">
                 <h4><i class="fa-solid fa-rocket"></i> Oportunidades</h4>
                 <ul>
                   <li>Expansão em mobile e cloud</li>
@@ -457,7 +470,7 @@
                 </ul>
               </div>
 
-              <div class="swot-card threats">
+              <div class="swot-card threats glow-card">
                 <h4><i class="fa-solid fa-bolt"></i> Ameaças</h4>
                 <ul>
                   <li>Concorrência alta</li>
@@ -470,7 +483,7 @@
       </section>
 
       <!-- ===== CONTATO ===== -->
-      <section class="contact" id="contato" data-aos="fade-up">
+      <section class="contact" id="contato">
         <div class="container contact-inner">
           <h3><i class="fa-solid fa-comments"></i> Vamos conversar?</h3>
           <p>
@@ -562,6 +575,29 @@
           }, 800); // desaparece 0.8s após parar de rolar
         });
 
+        const toggle = document.getElementById("theme-toggle");
+        const icon = document.getElementById("theme-icon");
+
+        // Carregar preferência salva
+        if (localStorage.getItem("theme") === "dark") {
+          document.documentElement.classList.add("dark");
+          icon.classList.replace("fa-moon", "fa-sun");
+        }
+
+        toggle.addEventListener("click", () => {
+          const isDark = document.documentElement.classList.toggle("dark");
+
+          // Ícone com fade suave
+          icon.style.opacity = 0;
+          setTimeout(() => {
+            icon.classList.toggle("fa-moon");
+            icon.classList.toggle("fa-sun");
+            icon.style.opacity = 1;
+          }, 200);
+
+          // Salvar preferência
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
         // Back to top
         const backToTop = document.querySelector(".back-to-top");
         if (backToTop) {
