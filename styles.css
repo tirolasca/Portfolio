@@ -1847,7 +1847,7 @@ h4 {
 }
 
 .footer-logo {
-  width: 40px; /* ajuste conforme necessário */
+  width: 120px; /* ajuste conforme necessário */
   height: auto;
 }
 
@@ -2263,7 +2263,7 @@ h4 {
   }
 
   .footer-logo {
-    width: 50px;
+    width: 120px;
     margin-top: -30px;
   }
 
