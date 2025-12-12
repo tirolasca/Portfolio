@@ -42,6 +42,17 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/ionicons@8.7.9/dist/css/ionicons.min.css"
     />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
+    />
   </head>
 
   <body>
@@ -331,6 +342,10 @@
                   alt="ChatGPT"
                 />
                 <img
+                  src="https://img.shields.io/badge/Arduino-00878F.svg?style=for-the-badge&logo=Arduino&logoColor=white"
+                  alt="Arduino"
+                />
+                <img
                   src="https://img.shields.io/badge/Claude-D97757?style=for-the-badge&logo=claude&logoColor=white"
                   alt="Claude"
                 />
@@ -352,7 +367,7 @@
       <section class="projects" id="projetos">
         <div class="container">
           <h3><i class="fa-solid fa-folder-open"></i> Projetos</h3>
-          <div class="projects-grid">
+          <div class="projects-carousel">
             <!-- ===== PROJECT 1 ===== -->
             <div class="project-card glow-card" data-aos="fade-up">
               <img src="img/Planet.png" alt="Projeto NASA Planet Spotter" />
@@ -421,6 +436,84 @@
                   </a>
                   <a
                     href="https://github.com/janosystime/Janosys-Project.git"
+                    target="_blank"
+                    class="btn small outline"
+                  >
+                    <i class="fa-brands fa-github"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===== PROJECT 3 ===== -->
+            <div class="project-card glow-card" data-aos="fade-up">
+              <img src="img/Tempero da Casa.png" alt="Tempero da Casa" />
+              <div class="project-info">
+                <h4><i class="fa-solid fa-utensils"></i> Tempero da Casa</h4>
+                <p class="muted">
+                  <i class="fa-solid fa-clipboard-list"></i> Cardápio Digital
+                </p>
+                <p>
+                  <i class="fa-solid fa-bowl-food"></i>
+                  Aplicação Web de <strong>Cardápio Digital</strong> simples e
+                  responsiva, criada para facilitar a
+                  <strong
+                    >visualização de pratos e a navegação entre
+                    categorias</strong
+                  >. Atuei no desenvolvimento da interface utilizando
+                  <strong>HTML, CSS e JavaScript</strong>, garantindo uma
+                  experiência clara, rápida e intuitiva para o usuário.
+                </p>
+                <div class="project-links">
+                  <a
+                    href="https://temperodacasa.vercel.app"
+                    target="_blank"
+                    class="btn small primary"
+                  >
+                    <i class="fa-solid fa-up-right-from-square"></i> Ver Projeto
+                  </a>
+                  <a
+                    href="https://github.com/DeveloperCorsair/Cardapio"
+                    target="_blank"
+                    class="btn small outline"
+                  >
+                    <i class="fa-brands fa-github"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===== PROJECT 4 ===== -->
+            <div class="project-card glow-card" data-aos="fade-up">
+              <img src="img/CodeWave.png" alt="CodeWave" />
+              <div class="project-info">
+                <h4><i class="fa-solid fa-wave-square"></i> CodeWave</h4>
+
+                <p class="muted">
+                  <i class="fa-solid fa-building"></i> Empresa de Tecnologia
+                </p>
+
+                <p>
+                  <i class="fa-solid fa-code"></i>
+                  Desenvolvi a <strong>CodeWave</strong>, uma
+                  <strong
+                    >página institucional que comunica a missão e a visão
+                    inovadora da marca</strong
+                  >. Criei uma interface moderna e responsiva com
+                  <strong>HTML, CSS e JavaScript</strong>, destacando como a
+                  tecnologia conecta pessoas e simplifica processos.
+                </p>
+
+                <div class="project-links">
+                  <a
+                    href="https://codewavebr.vercel.app"
+                    target="_blank"
+                    class="btn small primary"
+                  >
+                    <i class="fa-solid fa-up-right-from-square"></i> Ver Projeto
+                  </a>
+                  <a
+                    href="https://github.com/tirolasca/CodeWave"
                     target="_blank"
                     class="btn small outline"
                   >
@@ -555,6 +648,13 @@
     <!-- ===== SCRIPTS ===== -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
+    <!-- Inclua o jQuery e o Slick JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
+    ></script>
+
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         // Inicializa AOS
@@ -598,6 +698,33 @@
           // Salvar preferência
           localStorage.setItem("theme", isDark ? "dark" : "light");
         });
+
+        $(document).ready(function () {
+          $(".projects-carousel").slick({
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            arrows: true, // Ativa as setas
+            infinite: true,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            speed: 600, // Scroll suave
+            cssEase: "ease-out", // Suavidade do movimento
+            pauseOnHover: true,
+            prevArrow:
+              '<button type="button" class="slick-prev" data-icon="←"></button>',
+            nextArrow:
+              '<button type="button" class="slick-next" data-icon="→"></button>',
+            responsive: [
+              {
+                breakpoint: 768,
+                settings: {
+                  slidesToShow: 1,
+                },
+              },
+            ],
+          });
+        });
+
         // Back to top
         const backToTop = document.querySelector(".back-to-top");
         if (backToTop) {
