@@ -903,7 +903,6 @@ button.slick-next:focus,
 button.slick-prev:active,
 button.slick-next:active {
   background: #001f26 !important;
- 
 }
 
 /* POSIÇÃO */
@@ -918,14 +917,14 @@ button.slick-next:active {
 .slick-prev::after,
 .slick-next::after {
   content: attr(data-icon);
-  font-size: 1.8rem;
-  font-weight: bold;
+  font-size: 2.5rem;
   background: linear-gradient(45deg, #00f0d1, #00ffd8, #00aaff, #00f0d1);
   background-size: 400% 400%;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradientFlow 3s ease infinite;
   transition: transform 0.3s ease;
+  margin-top: -3px;
 }
 
 /* NEGAR ÍCONE PADRÃO DO SLICK */
@@ -2253,7 +2252,7 @@ button.slick-next:active {
   }
 
   /* ==== PROJETOS ==== */
-   .projects {
+  .projects {
     padding: 3rem 0;
   }
 
@@ -2278,10 +2277,6 @@ button.slick-next:active {
     height: 180px;
     object-fit: cover;
     border-radius: 14px 14px 0 0;
-  }
-
-  .project-info {
-    padding: 1rem 1.2rem;
   }
 
   .project-info h4 {
@@ -2311,13 +2306,16 @@ button.slick-next:active {
   }
 
   /* Setas do Slick */
-  .slick-prev,
-  .slick-next {
-    width: 25px !important;
-    height: 25px !important;
-    top: auto;
-    bottom: -55px;
+  button.slick-prev,
+  button.slick-next {
+    width: 42px !important;
+    height: 42px !important;
     transform: none;
+  }
+
+  .slick-prev::after,
+  .slick-next::after {
+    margin-top: -4px;
   }
 
   .slick-prev {
