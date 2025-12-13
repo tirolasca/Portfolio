@@ -97,6 +97,8 @@
         >
           <i class="fa-solid fa-sun"></i>
         </button>
+
+        <div id="google_translate_element"></div>
       </div>
     </header>
 
@@ -563,7 +565,7 @@
       <section class="projects" id="projetos" data-aos="fade-up">
         <div class="container">
           <h3><i class="fa-solid fa-folder-open"></i> Projetos</h3>
-         <div class="projects-carousel">
+          <div class="projects-carousel">
             <!-- ===== PROJECT 1 ===== -->
             <div class="project-card" data-aos="fade-up">
               <img src="img/Planet.png" alt="Projeto NASA Planet Spotter" />
@@ -797,6 +799,27 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "pt",
+            includedLanguages: "en,pt",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false,
+          },
+          "google_translate_element"
+        );
+      }
+
+      // Carrega o Google Translate
+      const gtScript = document.createElement("script");
+      gtScript.src =
+        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      document.body.appendChild(gtScript);
+    </script>
+
     <script>
       AOS.init({ duration: 800, once: true });
 
@@ -840,31 +863,31 @@
         document.documentElement.classList.add("dark");
       }
 
-          $(document).ready(function () {
-          $(".projects-carousel").slick({
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            arrows: true, // Ativa as setas
-            infinite: true,
-            autoplay: true,
-            autoplaySpeed: 3000,
-            speed: 600, // Scroll suave
-            cssEase: "ease-out", // Suavidade do movimento
-            pauseOnHover: true,
-            prevArrow:
-              '<button type="button" class="slick-prev" data-icon="🠔"></button>',
-            nextArrow:
-              '<button type="button" class="slick-next" data-icon="🠖"></button>',
-            responsive: [
-              {
-                breakpoint: 768,
-                settings: {
-                  slidesToShow: 1,
-                },
+      $(document).ready(function () {
+        $(".projects-carousel").slick({
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          arrows: true, // Ativa as setas
+          infinite: true,
+          autoplay: true,
+          autoplaySpeed: 3000,
+          speed: 600, // Scroll suave
+          cssEase: "ease-out", // Suavidade do movimento
+          pauseOnHover: true,
+          prevArrow:
+            '<button type="button" class="slick-prev" data-icon="🠔"></button>',
+          nextArrow:
+            '<button type="button" class="slick-next" data-icon="🠖"></button>',
+          responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
               },
-            ],
-          });
+            },
+          ],
         });
+      });
 
       // botão voltar ao topo
       const backToTop = document.querySelector(".back-to-top");

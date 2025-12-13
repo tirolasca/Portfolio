@@ -84,6 +84,8 @@
         >
           <i class="fa-solid fa-moon" id="theme-icon"></i>
         </button>
+
+        <div id="google_translate_element"></div>
       </div>
     </header>
 
@@ -650,6 +652,26 @@
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
+
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "pt",
+            includedLanguages: "en,pt",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false,
+          },
+          "google_translate_element"
+        );
+      }
+
+      // Carrega o Google Translate
+      const gtScript = document.createElement("script");
+      gtScript.src =
+        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+      document.body.appendChild(gtScript);
+    </script>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
