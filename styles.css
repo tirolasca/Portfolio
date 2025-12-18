@@ -113,7 +113,10 @@
 .dark h3,
 .dark h4,
 .dark .card h4,
-.dark .skill-category h5 {
+.dark .skill-category h5, 
+.dark .list li::before,
+.dark .list li i,
+.dark .hero-text{
   color: var(--accent-1) !important;
 }
 
