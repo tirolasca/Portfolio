@@ -36,7 +36,7 @@
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"
+      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"
     />
 
     <link
@@ -570,6 +570,52 @@
                 </div>
               </div>
             </div>
+
+             <!-- ===== PROJECT 6 ===== -->
+            <div class="project-card glow-card" data-aos="fade-up">
+              <img src="img/PortfolioGamer.png" alt="Portfólio Gamer RPG" />
+
+              <div class="project-info">
+                <h4><i class="fa-solid fa-gamepad"></i> Portfólio Gamer</h4>
+
+                <p class="muted">
+                  <i class="fa-solid fa-trophy"></i> Experiência Interativa em
+                  RPG
+                </p>
+
+                <p>
+                  <i class="fa-solid fa-terminal"></i>
+                  Uma experiência gamificada que transforma um currículo
+                  tradicional em um <strong>verdadeiro jogo de RPG</strong>.
+                  Desenvolvido com
+                  <strong>HTML, CSS Avançado e Vanilla JavaScript</strong>.
+                  Conta com motor próprio de
+                  <strong
+                    >XP, Level Up, NPC interativo, inventário (Loot)</strong
+                  >
+                  e <strong>áudio 8-bits</strong> gerado por código, garantindo
+                  imersão total.
+                </p>
+
+                <div class="project-links">
+                  <a
+                    href="https://portfoliogamer.vercel.app"
+                    target="_blank"
+                    class="btn small primary"
+                  >
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Ver
+                    Projeto
+                  </a>
+                  <a
+                    href="https://github.com/tirolasca/PortfolioGamer"
+                    target="_blank"
+                    class="btn small outline"
+                  >
+                    <i class="fa-brands fa-github"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -712,7 +758,7 @@
             layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
             autoDisplay: false,
           },
-          "google_translate_element"
+          "google_translate_element",
         );
       }
 
@@ -804,7 +850,7 @@
             const offsetFromBottom = 20;
             const safeBottom = Math.max(
               offsetFromBottom,
-              documentHeight - (scrollY + windowHeight + 50)
+              documentHeight - (scrollY + windowHeight + 50),
             );
             backToTop.style.bottom = safeBottom + "px";
           };
@@ -820,7 +866,7 @@
 
         // Intersection Observer (fade)
         const fadeElements = document.querySelectorAll(
-          ".fade-up, .card, .skill-card, .project-card, .swot-card"
+          ".fade-up, .card, .skill-card, .project-card, .swot-card",
         );
         if (fadeElements.length) {
           const observer = new IntersectionObserver(
@@ -832,7 +878,7 @@
                 }
               });
             },
-            { threshold: 0.15 }
+            { threshold: 0.15 },
           );
           fadeElements.forEach((el) => observer.observe(el));
         }
