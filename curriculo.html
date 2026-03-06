@@ -7,16 +7,27 @@
       name="description"
       content="Currículo e portfólio de Lucas Santos, desenvolvedor de software. Experiência em front-end, back-end e integração HW/SW."
     />
-    <meta
-      name="keywords"
-      content="Lucas Santos, desenvolvedor, portfólio, currículo, front-end, back-end, FATEC, ETEC, SENAC, tecnologia, software"
-    />
+
     <meta name="author" content="Lucas Santos" />
     <meta property="og:title" content="Currículo — Lucas Santos" />
     <meta
       property="og:description"
       content="Confira o currículo, projetos e análise SWOT de Lucas Santos, desenvolvedor focado em Desenvolvimento de Sistemas."
     />
+
+    <meta
+      name="theme-color"
+      content="#004550"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#000000"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <meta name="view-transition" content="same-origin" />
+
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta
@@ -58,14 +69,12 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
-    />
   </head>
 
   <body>
+    <div id="reading-progress"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
     <!-- ===== HEADER ===== -->
     <header class="site-header">
       <div class="container header-inner">
@@ -891,208 +900,11 @@
 
     <a class="back-to-top" href="#top" aria-label="Voltar ao topo"></a>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script type="text/javascript">
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-          {
-            pageLanguage: "pt",
-            includedLanguages: "en,es,pt",
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false,
-          },
-          "google_translate_element",
-        );
-      }
-
-      // Carrega o Google Translate
-      const gtScript = document.createElement("script");
-      gtScript.src =
-        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-      document.body.appendChild(gtScript);
-    </script>
-
-    <script>
-      AOS.init({ duration: 800, once: true });
-
-      let scrollTimeout;
-
-      window.addEventListener("scroll", () => {
-        document.documentElement.classList.add("show-scrollbar");
-        clearTimeout(scrollTimeout);
-
-        scrollTimeout = setTimeout(() => {
-          document.documentElement.classList.remove("show-scrollbar");
-        }, 800); // desaparece 0.8s após parar de rolar
-      });
-
-      const toggle = document.getElementById("theme-toggle");
-
-      toggle.addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark");
-
-        const icon = toggle.querySelector("i");
-        if (document.documentElement.classList.contains("dark")) {
-          localStorage.setItem("theme", "dark");
-          icon.classList.remove("fa-moon");
-          icon.classList.add("fa-sun");
-        } else {
-          localStorage.setItem("theme", "light");
-          icon.classList.remove("fa-sun");
-          icon.classList.add("fa-moon");
-        }
-
-        // Salvar preferência
-        if (document.documentElement.classList.contains("dark")) {
-          localStorage.setItem("theme", "dark");
-        } else {
-          localStorage.setItem("theme", "light");
-        }
-      });
-
-      // Carregar tema salvo
-      if (localStorage.getItem("theme") === "dark") {
-        document.documentElement.classList.add("dark");
-      }
-
-      $(document).ready(function () {
-        $(".projects-carousel").slick({
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          arrows: true, // Ativa as setas
-          infinite: true,
-          autoplay: true,
-          autoplaySpeed: 3000,
-          speed: 600, // Scroll suave
-          cssEase: "ease-out", // Suavidade do movimento
-          pauseOnHover: true,
-          prevArrow:
-            '<button type="button" class="slick-prev" data-icon="🠔"></button>',
-          nextArrow:
-            '<button type="button" class="slick-next" data-icon="🠖"></button>',
-          responsive: [
-            {
-              breakpoint: 768,
-              settings: {
-                slidesToShow: 1,
-              },
-            },
-          ],
-        });
-      });
-
-      // botão voltar ao topo
-      const backToTop = document.querySelector(".back-to-top");
-
-      window.addEventListener("scroll", () => {
-        const scrollY = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.body.offsetHeight;
-
-        // mostra/esconde botão
-        backToTop.classList.toggle("visible", scrollY > 250);
-
-        // calcula distância do bottom para não sobrepor conteúdo final
-        const offsetFromBottom = 20; // distância mínima
-        const safeBottom = Math.max(
-          offsetFromBottom,
-          documentHeight - (scrollY + windowHeight + 50),
-        );
-        backToTop.style.bottom = safeBottom + "px";
-      });
-
-      backToTop.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-      // gráfico SWOT
-      const ctx = document.getElementById("swotChart").getContext("2d");
-      const swotChart = new Chart(ctx, {
-        type: "bar",
-        data: {
-          labels: ["Forças", "Fraquezas", "Oportunidades", "Ameaças"],
-          datasets: [
-            {
-              data: [8, 4, 7, 3],
-              backgroundColor: [
-                "rgba(0,191,174,0.7)", // turquesa
-                "rgba(255,99,132,0.7)", // vermelho suave
-                "rgba(255,206,86,0.7)", // amarelo
-                "rgba(108,117,125,0.7)", // cinza
-              ],
-              borderColor: ["#00bfae", "#ff6f91", "#ffd166", "#adb5bd"],
-              borderWidth: 1.6,
-              borderRadius: 6,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              bodyColor: "#fff",
-              titleColor: "#fff",
-              backgroundColor: "rgba(0,0,0,0.7)",
-            },
-          },
-          scales: {
-            y: {
-              beginAtZero: true,
-              ticks: { color: "#e4e4e4", font: { weight: "600" } },
-              grid: { color: "rgba(255,255,255,0.1)" },
-            },
-            x: {
-              ticks: { color: "#e4e4e4", font: { weight: "600" } },
-              grid: { color: "transparent" },
-            },
-          },
-        },
-      });
-
-      // fade do gráfico
-      window.addEventListener("load", () => {
-        document
-          .querySelector("#swotChartContainer canvas")
-          .classList.add("visible");
-      });
-
-      // Expandir e recolher detalhes — versão robusta e animada
-      document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll(".toggle-btn").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            // procura o .timeline-content mais próximo
-            const content = btn.closest(".timeline-content");
-            if (!content) return;
-
-            // dentro dele, pega a lista de detalhes
-            const details = content.querySelector(".details");
-            if (!details) return;
-
-            // toggle da classe e animação via max-height
-            const isOpen = details.classList.toggle("show");
-
-            if (isOpen) {
-              // expande: seta maxHeight para o scrollHeight (suave)
-              details.style.maxHeight = details.scrollHeight + "px";
-            } else {
-              // recolhe: remove maxHeight (vai animar para 0 se CSS estiver definido)
-              details.style.maxHeight = null;
-            }
-
-            // atualiza texto do botão
-            btn.textContent = isOpen ? "Ocultar detalhes" : "Ver mais detalhes";
-          });
-        });
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>

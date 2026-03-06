@@ -2,11 +2,24 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
       content="Portfólio de Lucas Santos, Desenvolvedor de Software especializado em Desenvolvimento de Sistemas. Projetos, habilidades e miniaturas com experiência prática."
     />
+    <meta
+      name="theme-color"
+      content="#004550"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#000000"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <meta name="view-transition" content="same-origin" />
+
     <meta property="og:title" content="Lucas Santos — Portfólio" />
     <meta
       property="og:description"
@@ -16,20 +29,21 @@
       property="og:image"
       content="https://lucastec.vercel.app/img/LogoNome.png"
     />
-
     <meta property="og:type" content="website" />
+
     <title>Lucas Santos — Portfólio</title>
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="img/Logo.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="img/Logo.png" />
     <link rel="apple-touch-icon" href="img/Logo.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="styles.css" />
     <link rel="preload" href="styles.css" as="style" />
 
@@ -38,20 +52,23 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"
     />
-
     <link
       rel="stylesheet"
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"
-    />
   </head>
 
-  <body>
+  <body class="booting">
+    <div id="cyber-preloader">
+      <div class="terminal-container">
+        <div id="terminal-output"></div>
+        <div class="cursor-blink"></div>
+      </div>
+    </div>
+    <div id="reading-progress"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
     <!-- ===== HEADER ===== -->
     <header class="site-header">
       <div class="container header-inner">
@@ -92,13 +109,19 @@
     <main>
       <!-- ===== HERO ===== -->
       <section class="hero" id="home">
+        <canvas id="networkCanvas"></canvas>
         <div class="container hero-inner">
           <!-- ==== Conteúdo principal ==== -->
           <div class="hero-content">
-            <h2>👋 Olá, eu sou <span>Lucas Santos</span></h2>
+            <h2>
+              👋 Olá, eu sou
+              <span class="scramble-text" data-value="Lucas Santos"
+                >Lucas Santos</span
+              >
+            </h2>
             <h3 class="hero-subtitle">
               <img src="img/Logo.png" alt="Logo" class="hero-logo" />
-              Desenvolvedor de Software
+              <span id="typewriter"></span>
             </h3>
 
             <p class="lead">
@@ -571,7 +594,7 @@
               </div>
             </div>
 
-             <!-- ===== PROJECT 6 ===== -->
+            <!-- ===== PROJECT 6 ===== -->
             <div class="project-card glow-card" data-aos="fade-up">
               <img src="img/PortfolioGamer.png" alt="Portfólio Gamer RPG" />
 
@@ -739,150 +762,11 @@
 
     <a class="back-to-top" href="#home" aria-label="Voltar ao topo"></a>
 
-    <!-- ===== SCRIPTS ===== -->
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-    <!-- Inclua o jQuery e o Slick JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script type="text/javascript">
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-          {
-            pageLanguage: "pt",
-            includedLanguages: "en,es,pt",
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false,
-          },
-          "google_translate_element",
-        );
-      }
-
-      // Carrega o Google Translate
-      const gtScript = document.createElement("script");
-      gtScript.src =
-        "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-      document.body.appendChild(gtScript);
-    </script>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Inicializa AOS
-        if (typeof AOS !== "undefined") {
-          AOS.init({ once: true, duration: 700 });
-        } else {
-          console.warn("AOS não carregado.");
-        }
-
-        let scrollTimeout;
-
-        window.addEventListener("scroll", () => {
-          document.documentElement.classList.add("show-scrollbar");
-          clearTimeout(scrollTimeout);
-
-          scrollTimeout = setTimeout(() => {
-            document.documentElement.classList.remove("show-scrollbar");
-          }, 800); // desaparece 0.8s após parar de rolar
-        });
-
-        const toggle = document.getElementById("theme-toggle");
-        const icon = document.getElementById("theme-icon");
-
-        // Carregar preferência salva
-        if (localStorage.getItem("theme") === "dark") {
-          document.documentElement.classList.add("dark");
-          icon.classList.replace("fa-moon", "fa-sun");
-        }
-
-        toggle.addEventListener("click", () => {
-          const isDark = document.documentElement.classList.toggle("dark");
-
-          // Ícone com fade suave
-          icon.style.opacity = 0;
-          setTimeout(() => {
-            icon.classList.toggle("fa-moon");
-            icon.classList.toggle("fa-sun");
-            icon.style.opacity = 1;
-          }, 200);
-
-          // Salvar preferência
-          localStorage.setItem("theme", isDark ? "dark" : "light");
-        });
-
-        $(document).ready(function () {
-          $(".projects-carousel").slick({
-            slidesToShow: 2,
-            slidesToScroll: 1,
-            arrows: true, // Ativa as setas
-            infinite: true,
-            autoplay: true,
-            autoplaySpeed: 3000,
-            speed: 600, // Scroll suave
-            cssEase: "ease-out", // Suavidade do movimento
-            pauseOnHover: true,
-            prevArrow:
-              '<button type="button" class="slick-prev" data-icon="🠔"></button>',
-            nextArrow:
-              '<button type="button" class="slick-next" data-icon="🠖"></button>',
-            responsive: [
-              {
-                breakpoint: 768,
-                settings: {
-                  slidesToShow: 1,
-                },
-              },
-            ],
-          });
-        });
-
-        // Back to top
-        const backToTop = document.querySelector(".back-to-top");
-        if (backToTop) {
-          const updateBackToTop = () => {
-            const scrollY = window.scrollY;
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.body.offsetHeight;
-            backToTop.classList.toggle("visible", scrollY > 150);
-            const offsetFromBottom = 20;
-            const safeBottom = Math.max(
-              offsetFromBottom,
-              documentHeight - (scrollY + windowHeight + 50),
-            );
-            backToTop.style.bottom = safeBottom + "px";
-          };
-          window.addEventListener("scroll", updateBackToTop);
-          // chamada inicial
-          updateBackToTop();
-
-          backToTop.addEventListener("click", (e) => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          });
-        }
-
-        // Intersection Observer (fade)
-        const fadeElements = document.querySelectorAll(
-          ".fade-up, .card, .skill-card, .project-card, .swot-card",
-        );
-        if (fadeElements.length) {
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  entry.target.classList.add("visible");
-                  observer.unobserve(entry.target);
-                }
-              });
-            },
-            { threshold: 0.15 },
-          );
-          fadeElements.forEach((el) => observer.observe(el));
-        }
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
