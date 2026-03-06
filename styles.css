@@ -758,7 +758,6 @@ h4 {
 
 #titulo {
  text-align: center;
-  margin-top: 0; /* Removemos a margem negativa que estava escondendo o título */
   margin-bottom: 30px;
 }
 
@@ -794,6 +793,7 @@ h4 {
   display: flex;
   align-items: center;
   overflow: hidden;
+  position: relative;
 }
 
 .hero-inner {
@@ -2377,10 +2377,24 @@ button.slick-next:active {
     margin-left: 10px;
   }
 
-  #titulo { 
-    margin-top: 0; /* Garante que no celular ele também não seja sugado para cima */
-    text-align: center; 
-    margin-bottom: 20px;
+  .cursor-dot, 
+  .cursor-outline {
+    display: none !important;
+  }
+
+  /* Trava o título no lugar correto com !important para anular as margens perdidas */
+  #titulo {
+    margin-top: 0 !important; 
+    margin-bottom: 25px !important;
+    text-align: center;
+  }
+
+  .hero {
+    padding: 10px 0;
+  }
+
+  .skills{
+    padding: 0px 0;
   }
 
   .hero-inner {
@@ -2480,9 +2494,6 @@ button.slick-next:active {
     padding-bottom: 0;
   }
 
-  #titulo {
-    margin-top: -8rem;
-  }
 
   .contact-btn {
     width: 100%;
