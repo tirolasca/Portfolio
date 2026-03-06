@@ -757,7 +757,9 @@ h4 {
 }
 
 #titulo {
-  margin-top: -80px;
+ text-align: center;
+  margin-top: 0; /* Removemos a margem negativa que estava escondendo o título */
+  margin-bottom: 30px;
 }
 
 /* ====== Buttons ====== */
@@ -791,7 +793,6 @@ h4 {
   background: linear-gradient(135deg, #f7fffd 0%, #e6fafa 100%);
   display: flex;
   align-items: center;
-  position: relative;
   overflow: hidden;
 }
 
@@ -2376,9 +2377,10 @@ button.slick-next:active {
     margin-left: 10px;
   }
 
-  #titulo {
-    margin-top: -250px;
-    text-align: center; /* centraliza no mobile */
+  #titulo { 
+    margin-top: 0; /* Garante que no celular ele também não seja sugado para cima */
+    text-align: center; 
+    margin-bottom: 20px;
   }
 
   .hero-inner {
