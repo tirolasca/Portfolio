@@ -57,11 +57,6 @@
       type="text/css"
       href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
     />
- <style>
-      @media (max-width: 768px) {
-     
-      }
-    </style>
   </head>
 
   <body class="booting">
@@ -213,7 +208,10 @@
       <section class="skills">
         <div class="container">
           <h3 id="titulo">
-            <i class="fa-solid fa-gears"></i> Habilidades Rápidas
+            <i class="fa-solid fa-gears"></i>
+            <span class="cyber-glitch" data-text="Habilidades Rápidas"
+              >Habilidades Rápidas</span
+            >
           </h3>
           <div class="skills-grid">
             <div class="skill-card glow-card">
@@ -284,6 +282,10 @@
                 <img
                   src="https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white"
                   alt="SQL Server"
+                />
+                <img
+                  src="https://img.shields.io/badge/Firebase-DD2C00.svg?style=for-the-badge&logo=Firebase&logoColor=white"
+                  alt="Firebase"
                 />
                 <img
                   src="https://img.shields.io/badge/Blockchain.com-121D33?style=for-the-badge&logo=blockchaindotcom"
@@ -402,7 +404,10 @@
       <!-- ===== PROJECTS ===== -->
       <section class="projects" id="projetos">
         <div class="container">
-          <h3><i class="fa-solid fa-folder-open"></i> Projetos</h3>
+          <h3>
+            <i class="fa-solid fa-folder-open"></i>
+            <span class="cyber-glitch" data-text="Projetos">Projetos</span>
+          </h3>
           <div class="projects-carousel">
             <!-- ===== PROJECT 1 ===== -->
             <div class="project-card glow-card" data-aos="fade-up">
@@ -652,8 +657,13 @@
       <section class="swot-section" data-aos="fade-up">
         <div class="container">
           <h3 class="titulo-swot">
-            <i class="fa-solid fa-magnifying-glass-chart"></i> Autoanálise
-            Profissional (SWOT)
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+            <span
+              class="cyber-glitch"
+              data-text="Autoanálise
+            Profissional (SWOT)"
+              >Autoanálise Profissional (SWOT)</span
+            >
           </h3>
 
           <div class="swot-wrapper">
@@ -700,7 +710,11 @@
       <!-- ===== CONTATO ===== -->
       <section class="contact" id="contato">
         <div class="container contact-inner">
-          <h3><i class="fa-solid fa-comments"></i> Vamos conversar?</h3>
+          <h3><i class="fa-solid fa-comments"></i> <span
+              class="cyber-glitch"
+              data-text="Vamos conversar?"
+              >Vamos conversar?</span
+            ></h3>
           <p>
             Entre em contato comigo através das redes abaixo ou envie uma
             mensagem diretamente!
@@ -748,6 +762,61 @@
         </div>
       </section>
     </main>
+
+    <div id="github-modal" class="modal-overlay">
+      <div class="modal-content glow-card">
+        <button class="close-modal" id="close-gh-modal" aria-label="Fechar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="gh-header">
+          <img
+            id="gh-avatar"
+            src="img/Logo.png"
+            alt="GitHub Avatar"
+            class="gh-avatar"
+          />
+          <div class="gh-info">
+            <h4><i class="fa-brands fa-github"></i> @tirolasca</h4>
+            <p class="muted" id="gh-bio">Conectando ao servidor...</p>
+
+            <div class="gh-extra-info">
+              <span id="gh-location-container" style="display: none">
+                <i class="fa-solid fa-location-dot"></i>
+                <span id="gh-location"></span>
+              </span>
+              <span id="gh-joined-container" style="display: none">
+                <i class="fa-solid fa-calendar-days"></i>
+                <span id="gh-joined"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="gh-stats">
+          <div class="gh-stat-box">
+            <span class="gh-stat-value" id="gh-repos">-</span>
+            <span class="gh-stat-label">Repos</span>
+          </div>
+          <div class="gh-stat-box">
+            <span class="gh-stat-value" id="gh-followers">-</span>
+            <span class="gh-stat-label">Seguidores</span>
+          </div>
+          <div class="gh-stat-box">
+            <span class="gh-stat-value" id="gh-following">-</span>
+            <span class="gh-stat-label">Seguindo</span>
+          </div>
+        </div>
+
+        <a
+          href="https://github.com/tirolasca"
+          target="_blank"
+          class="btn primary gh-btn"
+        >
+          Acessar Perfil Completo <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
 
     <!-- ===== FOOTER ===== -->
     <footer class="site-footer">

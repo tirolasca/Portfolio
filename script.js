@@ -609,6 +609,103 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+ const githubLinks = document.querySelectorAll('a[href="https://github.com/tirolasca"], a[href="https://github.com/tirolasca/"]');
+    const ghModal = document.getElementById('github-modal');
+    const closeGhModal = document.getElementById('close-gh-modal');
+    let dataFetched = false; // Impede requisições duplicadas
+
+    // Função de animação dos números
+    function animateValue(id, start, end, duration) {
+        const obj = document.getElementById(id);
+        if (!obj) return;
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            obj.innerHTML = Math.floor(progress * (end - start) + start);
+            if (progress < 1) window.requestAnimationFrame(step);
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    // Busca os dados reais na API
+ async function fetchGitHubStats() {
+        if (dataFetched) return; 
+        try {
+            const response = await fetch(`https://api.github.com/users/tirolasca`);
+            if (!response.ok) throw new Error('Erro na API');
+            
+            const data = await response.json();
+            
+            // 1. Atualiza Foto e Bio
+            document.getElementById('gh-avatar').src = data.avatar_url;
+            document.getElementById('gh-bio').innerText = data.bio || 'Desenvolvedor Full Stack & Redes';
+            
+            // 2. Atualiza Localização (se existir no perfil)
+            if (data.location) {
+                const locContainer = document.getElementById('gh-location-container');
+                document.getElementById('gh-location').innerText = data.location;
+                locContainer.style.display = 'flex'; // Exibe a tag
+            }
+            
+            // 3. Atualiza Data de Criação (Formata para o padrão BR)
+            if (data.created_at) {
+                const joinedContainer = document.getElementById('gh-joined-container');
+                const joinDate = new Date(data.created_at);
+                const year = joinDate.getFullYear();
+                document.getElementById('gh-joined').innerText = `Membro desde ${year}`;
+                joinedContainer.style.display = 'flex'; // Exibe a tag
+            }
+            
+            // 4. Inicia animação da trinca de números
+            animateValue('gh-repos', 0, data.public_repos, 1500);
+            animateValue('gh-followers', 0, data.followers, 1500);
+            animateValue('gh-following', 0, data.following, 1500); // O novo número!
+            
+            dataFetched = true;
+        } catch (error) {
+            console.error(error);
+            document.getElementById('gh-bio').innerText = 'Sistema offline. Dados em cache local.';
+            document.getElementById('gh-repos').innerText = '0';
+            document.getElementById('gh-followers').innerText = '0';
+            document.getElementById('gh-following').innerText = '0';
+        }
+    }
+
+    // Intercepta os cliques nos botões do Github (Hero e Contato)
+    githubLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Se for o botão DENTRO do modal, deixa ele funcionar normalmente
+            if (link.classList.contains('gh-btn')) return; 
+            
+            e.preventDefault(); // Trava a navegação normal
+            ghModal.classList.add('active'); // Mostra o modal
+            fetchGitHubStats(); // Puxa os dados
+        });
+    });
+
+    // Fechar pelo botão X
+    if (closeGhModal) {
+        closeGhModal.addEventListener('click', () => {
+            ghModal.classList.remove('active');
+        });
+    }
+
+    // Fechar clicando fora do card (no fundo escuro)
+    if (ghModal) {
+        ghModal.addEventListener('click', (e) => {
+            if (e.target === ghModal) {
+                ghModal.classList.remove('active');
+            }
+        });
+    }
+
+    // Fechar apertando a tecla ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && ghModal && ghModal.classList.contains('active')) {
+            ghModal.classList.remove('active');
+        }
+    });
   /* ==========================================================================
        SCRIPT DE BOOT CYBERPUNK
        ========================================================================== */

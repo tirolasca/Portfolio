@@ -966,6 +966,203 @@ h4 {
   }
 }
 
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px); /* Desfoca o portfólio no fundo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: var(--bg-card);
+  border: var(--card-border);
+  border-radius: 16px;
+  padding: 30px;
+  width: 90%;
+  max-width: 420px;
+  position: relative;
+  transform: translateY(30px) scale(0.95);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito elástico (Spring) */
+  box-shadow: 0 15px 35px rgba(0, 255, 224, 0.15);
+}
+
+.modal-overlay.active .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: var(--text-sub);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color var(--trans-fast), transform var(--trans-fast);
+}
+
+.close-modal:hover {
+  color: #ff6f91; /* Cor vermelha para dar feedback de fechar */
+  transform: scale(1.1);
+}
+
+/* Estilização interna do Modal (Mesma paleta do seu projeto) */
+.gh-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+.gh-avatar { width: 65px; height: 65px; border-radius: 50%; border: 2px solid var(--accent-1); object-fit: cover; box-shadow: 0 0 12px rgba(0, 255, 224, 0.3); }
+.gh-info h4 { margin: 0; color: var(--text-title); font-size: 1.3rem; }
+.gh-info p { margin: 0; font-size: 0.9rem; line-height: 1.3; }
+
+.gh-stats { display: flex; justify-content: space-around; background: rgba(0, 255, 224, 0.05); padding: 15px; border-radius: 12px; border: 1px solid rgba(0, 255, 224, 0.1); margin-bottom: 25px;}
+.gh-stat-box { display: flex; flex-direction: column; align-items: center; }
+.gh-stat-value { font-size: 1.8rem; font-weight: 700; color: var(--accent-1); text-shadow: 0 0 8px rgba(0, 255, 224, 0.4);}
+.gh-stat-label { font-size: 0.8rem; color: var(--text-sub); text-transform: uppercase; margin-top: 4px; font-weight: 600;}
+
+.gh-btn { width: 100%; justify-content: center; font-size: 1.05rem; padding: 12px; }
+
+.gh-extra-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
+
+.gh-extra-info span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.gh-extra-info i {
+  color: var(--accent-1); /* Ícones com a sua cor neon */
+  opacity: 0.8;
+}
+
+/* Ajuste no tamanho do Modal para caber os 3 itens bem espaçados */
+.modal-content {
+  max-width: 460px; 
+}
+
+/* Deixa o texto do label menor para caber "Seguidores" lado a lado */
+.gh-stat-label { 
+  font-size: 0.75rem; 
+  letter-spacing: 0.5px;
+}
+
+.cyber-glitch {
+  position: relative;
+  display: inline-block;
+  color: #00f0d1; /* Sua cor Teal base */
+  letter-spacing: 1.5px;
+  /* Brilho neon base */
+  text-shadow: 0 0 10px rgba(0, 240, 209, 0.7);
+  transition: text-shadow 0.2s ease;
+  z-index: 1;
+}
+
+/* Pseudo-elementos que criam as camadas RGB (Magenta e Azul) */
+.cyber-glitch::before,
+.cyber-glitch::after {
+  content: attr(data-text); /* Puxa o texto do HTML */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0; /* Escondidos por padrão */
+  transition: opacity 0.1s ease;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); /* Recorte inicial */
+}
+
+/* Camada 1: Magenta/Vermelho (Shift para a Esquerda) */
+.cyber-glitch::before {
+  color: #ff0055;
+  z-index: -1;
+  /* Blend mode ajuda a misturar as cores no fundo escuro */
+  mix-blend-mode: screen; 
+}
+
+/* Camada 2: Azul/Ciano (Shift para a Direita) */
+.cyber-glitch::after {
+  color: #00aaff;
+  z-index: -2;
+  mix-blend-mode: screen;
+}
+
+/* ==========================================================================
+   ATIVAÇÃO NO HOVER: Inicia as animações rápidas
+   ========================================================================== */
+.cyber-glitch:hover {
+  /* Brilho neon mais intenso no hover */
+  text-shadow: 0 0 15px rgba(0, 240, 209, 0.9), 0 0 30px rgba(0, 170, 255, 0.5);
+  color: rgba(0, 240, 209, 0.9);
+}
+
+.cyber-glitch:hover::before,
+.cyber-glitch:hover::after {
+  opacity: 1; /* Revela as camadas de cor */
+}
+
+/* Ativa animações separadas para ::before e ::after para caos visual */
+.cyber-glitch:hover::before {
+  animation: glitch-anim-1 0.35s infinite linear alternate-reverse;
+}
+
+.cyber-glitch:hover::after {
+  animation: glitch-anim-2 0.3s infinite linear alternate-reverse;
+}
+
+/* ==========================================================================
+   KEYFRAMES: A Magia da Distorção e RGB Split
+   ========================================================================== */
+
+/* Animação para a camada Magenta (Distorção horizontal e vertical rápido) */
+@keyframes glitch-anim-1 {
+  0%   { clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);     transform: translate(-2px, -1px); }
+  10%  { clip-path: polygon(0 15%, 100% 15%, 100% 15%, 0 15%); transform: translate(2px, 1px); }
+  20%  { clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%); transform: translate(-1px, 2px); }
+  30%  { clip-path: polygon(0 40%, 100% 40%, 100% 43%, 0 43%); transform: translate(1px, -1px); }
+  40%  { clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%); transform: translate(-2px, 1px); }
+  50%  { clip-path: polygon(0 80%, 100% 80%, 100% 82%, 0 82%); transform: translate(2px, -1px); }
+  60%  { clip-path: polygon(0 20%, 100% 20%, 100% 30%, 0 30%); transform: translate(-1px, 2px); }
+  70%  { clip-path: polygon(0 90%, 100% 90%, 100% 95%, 0 95%); transform: translate(1px, -2px); }
+  80%  { clip-path: polygon(0 12%, 100% 12%, 100% 15%, 0 15%); transform: translate(-2px, 1px); }
+  90%  { clip-path: polygon(0 50%, 100% 50%, 100% 55%, 0 55%); transform: translate(2px, -1px); }
+  100% { clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%); transform: translate(-1px, 1px); }
+}
+
+/* Animação para a camada Azul (Foco em distorção horizontal agressiva) */
+@keyframes glitch-anim-2 {
+  0%   { clip-path: polygon(0 5%, 100% 5%, 100% 10%, 0 10%);   transform: translate(2px, 1px); }
+  15%  { clip-path: polygon(0 30%, 100% 30%, 100% 32%, 0 32%); transform: translate(-2px, -1px); }
+  25%  { clip-path: polygon(0 12%, 100% 12%, 100% 18%, 0 18%); transform: translate(1px, 2px); }
+  35%  { clip-path: polygon(0 55%, 100% 55%, 100% 58%, 0 58%); transform: translate(-1px, -1px); }
+  45%  { clip-path: polygon(0 75%, 100% 75%, 100% 78%, 0 78%); transform: translate(2px, 1px); }
+  55%  { clip-path: polygon(0 22%, 100% 22%, 100% 28%, 0 28%); transform: translate(-2px, 2px); }
+  65%  { clip-path: polygon(0 65%, 100% 65%, 100% 70%, 0 70%); transform: translate(1px, -1px); }
+  75%  { clip-path: polygon(0 88%, 100% 88%, 100% 92%, 0 92%); transform: translate(-1px, 1px); }
+  85%  { clip-path: polygon(0 45%, 100% 45%, 100% 50%, 0 50%); transform: translate(2px, -1px); }
+  95%  { clip-path: polygon(0 15%, 100% 15%, 100% 20%, 0 20%); transform: translate(-1px, 2px); }
+  100% { clip-path: polygon(0 95%, 100% 95%, 100% 100%, 0 100%); transform: translate(1px, -1px); }
+}
+
 /* ====== Cards ====== */
 .card,
 .project-card,
