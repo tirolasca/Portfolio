@@ -34,24 +34,42 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // 2. Controle de Tema (Dark/Light)
-  const toggle = document.getElementById("theme-toggle");
+ const toggle = document.getElementById("theme-toggle");
   const icon =
     document.getElementById("theme-icon") ||
     (toggle ? toggle.querySelector("i") : null);
 
+  // 1. GARANTIA DE ANIMAÇÃO: Injeta a transição via JS para fluidez em qualquer página
+  if (icon) {
+    icon.style.transition = "transform 0.2s ease, opacity 0.2s ease";
+  }
+
   const applyTheme = (theme) => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
-      if (icon) icon.classList.replace("fa-moon", "fa-sun");
+      if (icon) {
+        // 2. MODO SEGURO: Em vez de replace, removemos e adicionamos. À prova de falhas.
+        icon.classList.remove("fa-moon");
+        icon.classList.add("fa-sun");
+      }
     } else {
       document.documentElement.classList.remove("dark");
-      if (icon) icon.classList.replace("fa-sun", "fa-moon");
+      if (icon) {
+        icon.classList.remove("fa-sun");
+        icon.classList.add("fa-moon");
+      }
     }
   };
 
   // Carregar preferência salva
   const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") applyTheme("dark");
+  
+  // 3. SINCRONIZAÇÃO INICIAL: Força o ícone correto na primeira carga da página
+  if (savedTheme === "dark") {
+    applyTheme("dark");
+  } else {
+    applyTheme("light");
+  }
 
   if (toggle) {
     toggle.addEventListener("click", () => {
@@ -61,11 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (icon) {
         // Animação suave no ícone
-        icon.style.opacity = 0;
+        icon.style.opacity = "0";
         icon.style.transform = "rotate(90deg)";
+        
         setTimeout(() => {
           applyTheme(newTheme);
-          icon.style.opacity = 1;
+          icon.style.opacity = "1";
           icon.style.transform = "rotate(0deg)";
         }, 200);
       }

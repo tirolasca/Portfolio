@@ -35,10 +35,15 @@
   --accent-2: #00bfae;
 }
 
-.dark .site-header,
+.dark .site-header {
+  background: rgba(10, 10, 10, 0.85); /* Fundo AMOLED translúcido */
+  border-bottom: 1px solid rgba(0, 255, 224, 0.1); /* Borda neon no modo escuro */
+  box-shadow: 0 4px 30px rgba(0, 255, 224, 0.05);
+}
+
 .dark .site-footer {
-  background: #000;
-  box-shadow: 0 0 0 transparent;
+  background: #020202; 
+  border-top: 1px solid rgba(0, 255, 224, 0.15);
 }
 
 /* fundo geral */
@@ -652,90 +657,173 @@ body.booting {
 
 /* ===== Header ===== */
 .site-header {
-  background: linear-gradient(90deg, #004550 0%, #007a83 100%);
-  color: #fff;
-  padding: 15px 0; /* substitui margin negativa */
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
   position: relative;
-  z-index: 10;
+  top: 0;
+  z-index: 1000; /* Garante que fique acima de tudo, incluindo o canvas */
+  /* Efeito Glassmorphism (Vidro Desfocado) */
+  background: rgba(0, 69, 80, 0.85); /* Sua cor original, mas translúcida */
+  backdrop-filter: blur(12px); /* O desfoque mágico do fundo */
+  -webkit-backdrop-filter: blur(12px); /* Suporte para navegadores Safari */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil de vidro */
+
+  color: #fff;
+  padding: 15px 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
+
+/* Integração com o Modo Escuro (Se você usar a classe .dark no HTML) */
+
 
 .header-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 12px;
+  gap: 15px; /* Leve aumento no respiro */
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 20px;
 }
 
+/* ==== BRANDING & LOGO ==== */
 .brand {
-  display: flex; /* Habilita Flexbox */
-  align-items: center; /* Alinha verticalmente */
-  justify-content: space-between; /* Distribui o espaço entre o texto e o botão */
-  width: 100%; /* Ocupa a largura total para justificar o conteúdo */
-  max-width: 320px; /* Limite a largura para não ficar muito espaçado em telas maiores de mobile */
-  text-align: left; /* Garante que o texto dentro de .brand-text se alinhe à esquerda */
-}
-
-.brand-text {
-  /* Onde estão h1 e .job */
-  flex-shrink: 1;
-  text-align: left; /* Garante que o texto fique à esquerda dentro do espaço dele */
-}
-
-/* ➡️ NOVO: Ajusta o margin do theme-toggle */
-.theme-toggle {
-  margin-left: 0; /* Remove a margin-left anterior */
-  flex-shrink: 0; /* Garante que o botão não diminua */
-  width: 40px;
-  height: 40px;
-  padding: 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 320px;
+  text-align: left;
+  gap: 15px; /* Espaçamento mais limpo entre logo e texto */
+  transition: transform 0.3s ease;
+}
+
+.brand:hover {
+  transform: translateY(-2px); /* Microinteração: levita ao passar o mouse */
 }
 
 .brand .logo-header {
-  width: 70px; /* ajuste conforme necessário */
+  width: 65px;
   height: auto;
+  filter: drop-shadow(0 0 8px rgba(0, 255, 224, 0.4)); /* Brilho neon na logo */
+  transition: transform 0.3s ease;
+}
+
+.brand:hover .logo-header {
+  transform: scale(1.05) rotate(-5deg); /* Charme na logo ao passar o mouse */
+}
+
+.brand-text {
+  flex-shrink: 1;
+  text-align: left;
 }
 
 .brand-text h1 {
   margin: 0;
   font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .brand-text .job {
   margin: 0;
   font-size: 1rem;
-  font-weight: 400;
-  color: #dff6f3;
+  font-weight: 700; /* Deixamos a fonte mais grossa para a luz "agarrar" melhor */
+  text-transform: uppercase;
+  
+  /* Cria a cor base com um gradiente metálico/neon */
+  background: linear-gradient(90deg, #00f0d1 0%, #00aaff 100%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* O brilho neon emitindo por trás da letra */
+  filter: drop-shadow(0 0 8px rgba(0, 240, 209, 0.8));
+  
+  /* Ativa a animação de pulsação da luz */
+  animation: neon-pulse-job 2.5s infinite alternate ease-in-out;
 }
 
-/* Menu de navegação */
+/* Os Keyframes da pulsação do Neon */
+@keyframes neon-pulse-job {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(0, 240, 209, 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 12px rgba(0, 240, 209, 0.9)) drop-shadow(0 0 25px rgba(0, 170, 255, 0.5));
+  }
+}
+
+/* ==== THEME TOGGLE (BOTÃO CLARO/ESCURO) ==== */
+.theme-toggle {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  color: #fff;
+}
+
+.theme-toggle:hover {
+  background: rgba(0, 255, 224, 0.1);
+  transform: rotate(15deg) scale(1.1); /* Gira e cresce sutilmente */
+  border-color: rgba(0, 255, 224, 0.5);
+  color: #00f0d1;
+}
+
+/* ==== MENU DE NAVEGAÇÃO ==== */
 .main-nav ul {
   display: flex;
   list-style: none;
-  gap: 16px;
+  gap: 24px; /* Mais respiro entre os links para não ficar embolado */
   margin: 0;
   padding: 0;
+  align-items: center;
 }
 
 .main-nav a {
   color: #dff6f3;
   text-decoration: none;
-  font-weight: 600;
-  padding: 6px 12px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 4px; /* Padding ajustado para a animação do traço */
+  position: relative; /* Necessário para ancorar a linha neon */
+  transition: color 0.3s ease;
 }
 
+/* Animação Cyberpunk no Hover (Traço Neon Expansivo) */
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%; /* Começa invisível (tamanho zero) */
+  height: 2px;
+  background: #00f0d1; /* Cor neon */
+  box-shadow: 0 0 8px rgba(0, 240, 209, 0.6);
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Curva elástica */
+  border-radius: 2px;
+}
+
+/* O que acontece ao passar o mouse ou estar na página ativa */
 .main-nav a:hover,
 .main-nav a.active {
-  background: rgba(255, 255, 255, 0.15);
+  color: #00f0d1; /* O texto ganha a cor neon */
+  background: transparent; /* Removemos o fundo em bloco antigo */
+}
+
+/* A linha neon cresce de 0 a 100% da largura da palavra */
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%; 
 }
 
 /* ====== TITULOS ====== */
@@ -788,7 +876,7 @@ h4 {
 
 /* ===== HERO ===== */
 .hero {
-  padding: 60px 0;
+  padding: 60px 0%;
   background: linear-gradient(135deg, #f7fffd 0%, #e6fafa 100%);
   display: flex;
   align-items: center;
@@ -2426,30 +2514,69 @@ button.slick-next:active {
   box-shadow: 0 6px 16px rgba(0, 128, 128, 0.35);
 }
 
-/* ===== Footer ===== */
+/* ==========================================================================
+   FOOTER PREMIUM & CYBERPUNK
+   ========================================================================== */
 .site-footer {
-  background: #004550;
-  color: #dff6f3;
-  padding: 10px 0;
-  margin-top: 20px;
+  position: relative;
+  /* Cria um gradiente de profundidade (fica escuro no final) */
+  background: linear-gradient(180deg, #002b33 0%, #001216 100%); 
+  color: #a8b2d1; /* Um tom de texto mais suave e tecnológico */
+  padding: 20px 0 25px; /* Muito mais espaço para respirar */
+  margin-top: 60px; /* Afasta o footer da última seção (contato/projetos) */
+  
+  /* Linha neon divisória no topo */
+  border-top: 1px solid rgba(0, 240, 209, 0.2); 
+  /* Brilho invertido (joga a luz para cima) */
+  box-shadow: 0 -10px 30px rgba(0, 240, 209, 0.05); 
+  z-index: 10;
 }
+
+/* Fundo absoluto no Modo Escuro (AMOLED) */
+
 
 .footer-inner {
   display: flex;
-  justify-content: center;
+  flex-direction: column; /* Empilha a logo e o texto */
+  align-items: center;
+  gap: 20px;
 }
 
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap; /* permite quebrar no mobile */
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
   text-align: center;
 }
 
 .footer-logo {
-  width: 120px; /* ajuste conforme necessário */
+  width: 130px; 
   height: auto;
+  /* Começa em escala de cinza e levemente apagada (estilo tech stealth) */
+  filter: grayscale(100%) opacity(0.6); 
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Microinteração: A logo acende com as cores originais e flutua ao passar o mouse */
+.footer-logo:hover {
+  filter: grayscale(0%) opacity(1) drop-shadow(0 0 12px rgba(0, 240, 209, 0.5));
+  transform: translateY(-5px) scale(1.05);
+}
+
+/* Estilização dos textos de direitos autorais (se você tiver) */
+.site-footer p {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+/* Destaque opcional para o seu nome no footer */
+.footer-highlight {
+  color: #00f0d1; /* Neon Teal */
+  font-weight: 600;
+  text-shadow: 0 0 5px rgba(0, 240, 209, 0.4);
 }
 
 /* ====== Back to Top ====== */
@@ -2584,10 +2711,6 @@ button.slick-next:active {
     margin-top: 0 !important; 
     margin-bottom: 25px !important;
     text-align: center;
-  }
-
-  .hero {
-    padding: 10px 0;
   }
 
   .skills{
