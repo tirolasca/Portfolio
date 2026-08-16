@@ -14,6 +14,16 @@
       property="og:description"
       content="Confira o currículo, projetos e análise SWOT de Lucas Santos, desenvolvedor focado em Desenvolvimento de Sistemas."
     />
+    <meta
+      property="og:image"
+      content="https://lucastec.vercel.app/img/Logo.png"
+    />
+    <meta
+      property="og:url"
+      content="https://lucastec.vercel.app/curriculo.html"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
 
     <meta
       name="theme-color"
@@ -25,38 +35,21 @@
       content="#000000"
       media="(prefers-color-scheme: dark)"
     />
-
     <meta name="view-transition" content="same-origin" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="pt_BR" />
-    <meta
-      property="og:image"
-      content="https://lucastec.vercel.app/img/Logo.png"
-    />
-
-    <meta property="og:type" content="website" />
     <title>Lucas Santos — Currículo</title>
 
-    <!-- Favicon padrão -->
-    <link rel="icon" href="img/Logo.png" type="image/png" />
-    <link rel="shortcut icon" href="img/Logo.png" type="image/png" />
-
-    <!-- Para compatibilidade extra -->
+    <link rel="icon" type="image/png" sizes="32x32" href="img/Logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="img/Logo.png" />
     <link rel="apple-touch-icon" href="img/Logo.png" />
-    <meta
-      property="og:url"
-      content="https://lucastec.vercel.app/curriculo.html"
-    />
-    <title>Currículo — Lucas Santos</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <link rel="preload" href="styles.css" as="style" />
 
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
@@ -65,14 +58,16 @@
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css"
     />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
   </head>
 
   <body>
     <div id="reading-progress"></div>
     <div class="cursor-dot"></div>
     <div class="cursor-outline"></div>
-    <!-- ===== HEADER ===== -->
     <header id="top" class="site-header">
       <div class="container header-inner">
         <div class="brand">
@@ -97,11 +92,28 @@
           </ul>
         </nav>
         <div class="header-actions">
-          <button id="achievements-toggle" class="achievements-btn" aria-label="Ver conquistas" title="Conquistas">
+          <button
+            id="achievements-toggle"
+            class="achievements-btn"
+            aria-label="Ver conquistas"
+            title="Conquistas"
+          >
             <i class="fa-solid fa-trophy"></i>
             <span class="achievements-badge" id="achievements-badge">0</span>
           </button>
-          <button id="theme-toggle" class="theme-toggle" aria-label="Alterar tema">
+          <button
+            id="terminal-btn"
+            class="achievements-btn terminal-trigger-btn"
+            aria-label="Abrir terminal"
+            title="Terminal"
+          >
+            <i class="fa-solid fa-terminal"></i>
+          </button>
+          <button
+            id="theme-toggle"
+            class="theme-toggle"
+            aria-label="Alterar tema"
+          >
             <i class="fa-solid fa-sun"></i>
           </button>
         </div>
@@ -111,7 +123,6 @@
     </header>
 
     <main class="curriculo-page">
-      <!-- Resumo -->
       <div class="container curriculo-top" data-aos="fade-up">
         <div class="curriculo-left">
           <div class="curriculo-section">
@@ -153,7 +164,6 @@
                 href="https://github.com/tirolasca"
                 target="_blank"
                 rel="noopener"
-                class="social-btn"
                 title="GitHub"
               >
                 <i class="fab fa-github fa-2x"></i>
@@ -168,7 +178,11 @@
               >
                 <i class="fab fa-linkedin fa-2x"></i>
               </a>
-              <a href="/cdn-cgi/l/email-protection#4d21382e2c3e232c3e2e2420282339227c7f79780d2a202c2421632e2220" class="social-btn email" title="E-mail">
+              <a
+                href="mailto:lucasnascimento1245@gmail.com"
+                class="social-btn email"
+                title="E-mail"
+              >
                 <i class="fa-solid fa-envelope fa-2x"></i>
               </a>
             </div>
@@ -201,7 +215,6 @@
             </ul>
           </div>
 
-          <!-- Programas Internacionais e Liderança -->
           <div class="curriculo-section">
             <h3>
               <i class="fa-solid fa-globe"></i
@@ -241,13 +254,11 @@
             </div>
           </div>
 
-          <!-- Experiências -->
           <div class="curriculo-section" id="experiencias">
             <h3 class="animated-title" data-aos="zoom-in">
               <i class="fa-solid fa-briefcase"></i> Experiências Profissionais
             </h3>
             <div class="timeline">
-              <!-- Consultor -->
               <div class="timeline-item" data-aos="fade-right">
                 <div class="timeline-icon">
                   <i class="fa-solid fa-user-tie"></i>
@@ -275,7 +286,6 @@
                 </div>
               </div>
 
-              <!-- Planilhas -->
               <div class="timeline-item" data-aos="fade-left">
                 <div class="timeline-icon">
                   <i class="fa-solid fa-table"></i>
@@ -299,7 +309,6 @@
                 </div>
               </div>
 
-              <!-- Estágio -->
               <div class="timeline-item" data-aos="fade-right">
                 <div class="timeline-icon">
                   <i class="fa-solid fa-helmet-safety"></i>
@@ -323,7 +332,7 @@
             <div class="download-cv">
               <a
                 href="Lucas Santos - Currículo.pdf"
-                download
+                download="Lucas Santos - Currículo.pdf"
                 class="btn download"
               >
                 <i class="fa-solid fa-download"></i> Baixar Currículo
@@ -332,7 +341,6 @@
           </div>
         </div>
 
-        <!-- Skills -->
         <aside class="curriculo-right">
           <div class="card">
             <h4>
@@ -365,29 +373,29 @@
               <div class="skill-badges">
                 <img
                   src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white"
-                  alt="HTML5 — linguagem de marcação"
+                  alt="HTML5"
                 />
                 <img
                   src="https://img.shields.io/badge/CSS-663399.svg?style=for-the-badge&logo=CSS&logoColor=white"
-                  alt="CSS3 — estilização web"
+                  alt="CSS3"
                 />
                 <img
                   src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"
-                  alt="JavaScript — lógica e interação"
+                  alt="JavaScript"
                 />
 
                 <img
                   src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"
-                  alt="React — framework frontend"
+                  alt="React"
                 />
                 <img
-                  src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E"
-                  alt="Vite — build tool moderno"
+                  src="https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white"
+                  alt="Vite"
                 />
 
                 <img
                   src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white"
-                  alt="TypeScript — superset de JavaScript"
+                  alt="TypeScript"
                 />
               </div>
             </div>
@@ -396,24 +404,36 @@
               <h5><i class="fa-solid fa-code"></i> Backend & APIs</h5>
               <div class="skill-badges">
                 <img
-                  src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"
+                  src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54"
                   alt="Python"
+                />
+                <img
+                  src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white"
+                  alt="C#"
+                />
+                <img
+                  src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white"
+                  alt="PHP"
                 />
                 <img
                   src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white"
                   alt="Flask"
                 />
                 <img
+                  src="https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white"
+                  alt="Express"
+                />
+                <img
                   src="https://img.shields.io/badge/Node.js-5FA04E.svg?style=for-the-badge&logo=nodedotjs&logoColor=white"
-                  alt="Node JS"
+                  alt="Node.js"
                 />
                 <img
-                  src="https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white"
-                  alt="PHP"
+                  src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"
+                  alt="Java"
                 />
                 <img
-                  src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white"
-                  alt="C#"
+                  src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white"
+                  alt="Spring Boot"
                 />
               </div>
             </div>
@@ -428,6 +448,10 @@
                   alt="MySQL"
                 />
                 <img
+                  src="https://img.shields.io/badge/Prisma-2D3748?style=for-the-badge&logo=prisma&logoColor=white"
+                  alt="Prisma"
+                />
+                <img
                   src="https://img.shields.io/badge/SQL%20Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white"
                   alt="SQL Server"
                 />
@@ -436,7 +460,7 @@
                   alt="Firebase"
                 />
                 <img
-                  src="https://img.shields.io/badge/Blockchain.com-121D33?logo=blockchaindotcom"
+                  src="https://img.shields.io/badge/Blockchain.com-121D33?style=for-the-badge&logo=blockchaindotcom"
                   alt="Blockchain"
                 />
               </div>
@@ -457,6 +481,14 @@
                   src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"
                   alt="Vercel"
                 />
+                <img
+                  src="https://img.shields.io/badge/Aiven-FF5A5F?style=for-the-badge&logo=aiven&logoColor=white"
+                  alt="Aiven"
+                />
+                <img
+                  src="https://img.shields.io/badge/Render-46E3B7?style=for-the-badge&logo=render&logoColor=000000"
+                  alt="Render"
+                />
               </div>
             </div>
 
@@ -474,7 +506,7 @@
                   alt="Linux"
                 />
                 <img
-                  src="https://img.shields.io/badge/Windows_Server-gray?logo=windows&logoColor=white"
+                  src="https://img.shields.io/badge/Windows_Server-gray?style=for-the-badge&logo=windows&logoColor=white"
                   alt="Windows Server"
                 />
               </div>
@@ -482,7 +514,7 @@
 
             <div class="skill-category">
               <h5>
-                <i class="fa-solid fa-tools"></i> Ferramentas & Versionamento
+                <i class="fa-solid fa-tools"></i> Ferramentas & Desenvolvimento
               </h5>
               <div class="skill-badges">
                 <img
@@ -622,7 +654,6 @@
         </aside>
       </div>
 
-      <!-- ===== PROJECTS ===== -->
       <section class="projects" id="projetos">
         <div class="container">
           <h3>
@@ -630,121 +661,497 @@
             <span class="cyber-glitch" data-text="Projetos">Projetos</span>
           </h3>
 
-          <!-- Swiper replaces jQuery + Slick carousel -->
           <div class="swiper projects-swiper">
             <div class="swiper-wrapper">
-
               <div class="swiper-slide">
-                <div class="project-card glow-card">
-                  <img src="img/Planet.png" alt="Projeto NASA Planet Spotter" />
+                <div
+                  class="project-card glow-card"
+                  data-tech="html5,css3,javascript"
+                >
+                  <img
+                    src="img/Planet.png"
+                    alt="Projeto NASA Planet Spotter"
+                    loading="lazy"
+                  />
+
                   <div class="project-info">
-                    <h4><i class="fa-solid fa-satellite"></i> Planet Spotter</h4>
-                    <p class="muted"><i class="fa-solid fa-user-astronaut"></i> NASA Space Apps Challenge</p>
-                    <p><i class="fa-solid fa-laptop-code"></i> Aplicação web desenvolvida durante o <strong>NASA Space Apps Challenge</strong> para <strong>exploração e visualização interativa de exoplanetas</strong>. Atuei como <strong>Frontend Developer</strong>, responsável pela interface responsiva e animações em <strong>HTML, CSS e JavaScript</strong>.</p>
+                    <h4>
+                      <i class="fa-solid fa-satellite"></i> Planet Spotter
+                    </h4>
+
+                    <p class="muted">
+                      <i class="fa-solid fa-user-astronaut"></i> NASA Space Apps
+                      Challenge
+                    </p>
+
+                    <p>
+                      <i class="fa-solid fa-laptop-code"></i> Aplicação web
+                      desenvolvida durante o
+                      <strong>NASA Space Apps Challenge</strong> para
+                      <strong
+                        >exploração e visualização interativa de
+                        exoplanetas</strong
+                      >. Atuei como <strong>Frontend Developer</strong>,
+                      responsável pela interface responsiva e animações em
+                      <strong>HTML, CSS e JavaScript</strong>.
+                    </p>
+
                     <div class="project-links">
-                      <a href="https://nasasjc.vercel.app" target="_blank" class="btn small primary"><i class="fa-solid fa-up-right-from-square"></i> Ver Projeto</a>
-                      <a href="https://github.com/tirolasca/NASA.git" target="_blank" class="btn small outline"><i class="fa-brands fa-github"></i> GitHub</a>
-                    
-            </div></div>
-           
-          </div>
+                      <a
+                        href="https://nasasjc.vercel.app"
+                        target="_blank"
+                        class="btn small primary"
+                      >
+                        <i class="fa-solid fa-up-right-from-square"></i> Ver
+                        Projeto
+                      </a>
+
+                      <a
+                        href="https://github.com/tirolasca/NASA.git"
+                        target="_blank"
+                        class="btn small outline"
+                      >
+                        <i class="fa-brands fa-github"></i> GitHub
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div class="swiper-slide">
-                <div class="project-card glow-card">
-                  <img src="img/Janosys.png" alt="Janosys Project" />
+                <div
+                  class="project-card glow-card"
+                  data-tech="python,flask,pandas,plotly,html5,css3,javascript"
+                >
+                  <img
+                    src="img/Janosys.png"
+                    alt="Janosys Project"
+                    loading="lazy"
+                  />
+
                   <div class="project-info">
                     <h4><i class="fa-solid fa-database"></i> Janosys API</h4>
-                    <p class="muted"><i class="fa-solid fa-building-columns"></i> Projeto Acadêmico — FATEC</p>
-                    <p><i class="fa-solid fa-code-branch"></i> Aplicação web para <strong>análise comparativa de dados do Censo 2010 e 2022</strong>, utilizando <strong>Python (Flask)</strong>, <strong>Pandas</strong> e <strong>Plotly</strong>. Atuei como <strong>Frontend Developer</strong>, responsável pela camada visual responsiva e integração dinâmica com <strong>HTML, CSS e JavaScript</strong>.</p>
+
+                    <p class="muted">
+                      <i class="fa-solid fa-building-columns"></i> Projeto
+                      Acadêmico — FATEC
+                    </p>
+
+                    <p>
+                      <i class="fa-solid fa-code-branch"></i> Aplicação web para
+                      <strong
+                        >análise comparativa de dados do Censo 2010 e
+                        2022</strong
+                      >, utilizando <strong>Python (Flask)</strong>,
+                      <strong>Pandas</strong> e <strong>Plotly</strong>. Atuei
+                      como <strong>Frontend Developer</strong>, responsável pela
+                      camada visual responsiva e integração dinâmica com
+                      <strong>HTML, CSS e JavaScript</strong>.
+                    </p>
+
                     <div class="project-links">
-                      <a href="http://janosysapi1.vercel.app" target="_blank" class="btn small primary"><i class="fa-solid fa-up-right-from-square"></i> Ver Projeto</a>
-                      <a href="https://github.com/janosystime/Janosys-Project.git" target="_blank" class="btn small outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                      <a
+                        href="http://janosysapi1.vercel.app"
+                        target="_blank"
+                        class="btn small primary"
+                      >
+                        <i class="fa-solid fa-up-right-from-square"></i> Ver
+                        Projeto
+                      </a>
+
+                      <a
+                        href="https://github.com/janosystime/Janosys-Project.git"
+                        target="_blank"
+                        class="btn small outline"
+                      >
+                        <i class="fa-brands fa-github"></i> GitHub
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="swiper-slide">
-                <div class="project-card glow-card">
-                  <img src="img/Tempero da Casa.png" alt="Tempero da Casa" />
+                <div
+                  class="project-card glow-card"
+                  data-tech="html5,css3,javascript"
+                >
+                  <img
+                    src="img/Tempero da Casa.png"
+                    alt="Tempero da Casa"
+                    loading="lazy"
+                  />
+
                   <div class="project-info">
-                    <h4><i class="fa-solid fa-utensils"></i> Tempero da Casa</h4>
-                    <p class="muted"><i class="fa-solid fa-clipboard-list"></i> Cardápio Digital</p>
-                    <p><i class="fa-solid fa-bowl-food"></i> Aplicação Web de <strong>Cardápio Digital</strong> simples e responsiva, criada para facilitar a <strong>visualização de pratos e a navegação entre categorias</strong>. Atuei no desenvolvimento da interface utilizando <strong>HTML, CSS e JavaScript</strong>, garantindo uma experiência clara, rápida e intuitiva para o usuário.</p>
+                    <h4>
+                      <i class="fa-solid fa-utensils"></i> Tempero da Casa
+                    </h4>
+
+                    <p class="muted">
+                      <i class="fa-solid fa-clipboard-list"></i> Cardápio
+                      Digital
+                    </p>
+
+                    <p>
+                      <i class="fa-solid fa-bowl-food"></i> Aplicação Web de
+                      <strong>Cardápio Digital</strong> simples e responsiva,
+                      criada para facilitar a
+                      <strong
+                        >visualização de pratos e a navegação entre
+                        categorias</strong
+                      >. Atuei no desenvolvimento da interface utilizando
+                      <strong>HTML, CSS e JavaScript</strong>, garantindo uma
+                      experiência clara, rápida e intuitiva para o usuário.
+                    </p>
+
                     <div class="project-links">
-                      <a href="https://temperodacasa.vercel.app" target="_blank" class="btn small primary"><i class="fa-solid fa-up-right-from-square"></i> Ver Projeto</a>
-                      <a href="https://github.com/DeveloperCorsair/Cardapio" target="_blank" class="btn small outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                      <a
+                        href="https://temperodacasa.vercel.app"
+                        target="_blank"
+                        class="btn small primary"
+                      >
+                        <i class="fa-solid fa-up-right-from-square"></i> Ver
+                        Projeto
+                      </a>
+
+                      <a
+                        href="https://github.com/DeveloperCorsair/Cardapio"
+                        target="_blank"
+                        class="btn small outline"
+                      >
+                        <i class="fa-brands fa-github"></i> GitHub
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="swiper-slide">
-                <div class="project-card glow-card">
-                  <img src="img/CodeWave.png" alt="CodeWave" />
+                <div
+                  class="project-card glow-card"
+                  data-tech="html5,css3,javascript"
+                >
+                  <img src="img/CodeWave.png" alt="CodeWave" loading="lazy" />
+
                   <div class="project-info">
                     <h4><i class="fa-solid fa-wave-square"></i> CodeWave</h4>
-                    <p class="muted"><i class="fa-solid fa-building"></i> Empresa de Tecnologia</p>
-                    <p><i class="fa-solid fa-code"></i> Desenvolvi a <strong>CodeWave</strong>, uma <strong>página institucional que comunica a missão e a visão inovadora da marca</strong>. Criei uma interface moderna e responsiva com <strong>HTML, CSS e JavaScript</strong>, destacando como a tecnologia conecta pessoas e simplifica processos.</p>
+
+                    <p class="muted">
+                      <i class="fa-solid fa-building"></i> Empresa de Tecnologia
+                    </p>
+
+                    <p>
+                      <i class="fa-solid fa-code"></i> Desenvolvi a
+                      <strong>CodeWave</strong>, uma
+                      <strong
+                        >página institucional que comunica a missão e a visão
+                        inovadora da marca</strong
+                      >. Criei uma interface moderna e responsiva com
+                      <strong>HTML, CSS e JavaScript</strong>, destacando como a
+                      tecnologia conecta pessoas e simplifica processos.
+                    </p>
+
                     <div class="project-links">
-                      <a href="https://codewavebr.vercel.app" target="_blank" class="btn small primary"><i class="fa-solid fa-up-right-from-square"></i> Ver Projeto</a>
-                      <a href="https://github.com/tirolasca/CodeWave" target="_blank" class="btn small outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                      <a
+                        href="https://codewavebr.vercel.app"
+                        target="_blank"
+                        class="btn small primary"
+                      >
+                        <i class="fa-solid fa-up-right-from-square"></i> Ver
+                        Projeto
+                      </a>
+
+                      <a
+                        href="https://github.com/tirolasca/CodeWave"
+                        target="_blank"
+                        class="btn small outline"
+                      >
+                        <i class="fa-brands fa-github"></i> GitHub
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="swiper-slide">
-                <div class="project-card glow-card">
-                  <img src="img/TaskMaster.png" alt="TaskMaster" />
+                <div
+                  class="project-card glow-card"
+                  data-tech="react,typescript,vite,javascript,html5,css3"
+                >
+                  <img
+                    src="img/TaskMaster.png"
+                    alt="TaskMaster"
+                    loading="lazy"
+                  />
+
                   <div class="project-info">
                     <h4><i class="fa-solid fa-list-check"></i> TaskMaster</h4>
-                    <p class="muted"><i class="fa-solid fa-list-ul"></i> Gerenciador de Tarefas</p>
-                    <p><i class="fa-solid fa-terminal"></i> Aplicativo Web de <strong>gerenciamento de tarefas</strong>, moderno e responsivo, desenvolvido com <strong>React, TypeScript e Vite</strong>. Inclui <strong>drag & drop, temas claro e escuro AMOLED</strong> e animações sutis, garantindo uma experiência visual elegante e intuitiva para o usuário.</p>
+
+                    <p class="muted">
+                      <i class="fa-solid fa-list-ul"></i> Gerenciador de Tarefas
+                    </p>
+
+                    <p>
+                      <i class="fa-solid fa-terminal"></i> Aplicativo Web de
+                      <strong>gerenciamento de tarefas</strong>, moderno e
+                      responsivo, desenvolvido com
+                      <strong>React, TypeScript e Vite</strong>. Inclui
+                      <strong>drag & drop, temas claro e escuro AMOLED</strong>
+                      e animações sutis, garantindo uma experiência visual
+                      elegante e intuitiva para o usuário.
+                    </p>
+
                     <div class="project-links">
-                      <a href="https://taskmasterbr.vercel.app" target="_blank" class="btn small primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Projeto</a>
-                      <a href="https://github.com/tirolasca/TaskMaster" target="_blank" class="btn small outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                      <a
+                        href="https://taskmasterbr.vercel.app"
+                        target="_blank"
+                        class="btn small primary"
+                      >
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        Ver Projeto
+                      </a>
+
+                      <a
+                        href="https://github.com/tirolasca/TaskMaster"
+                        target="_blank"
+                        class="btn small outline"
+                      >
+                        <i class="fa-brands fa-github"></i> GitHub
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
 
               <div class="swiper-slide">
-                <div class="project-card glow-card">
-                  <img src="img/PortfolioGamer.png" alt="Portfólio Gamer RPG" />
+                <div
+                  class="project-card glow-card"
+                  data-tech="html5,css3,javascript,firebase"
+                >
+                  <img
+                    src="img/PortfolioGamer.png"
+                    alt="Portfólio Gamer RPG"
+                    loading="lazy"
+                  />
+
                   <div class="project-info">
                     <h4><i class="fa-solid fa-gamepad"></i> Portfólio Gamer</h4>
-                    <p class="muted"><i class="fa-solid fa-trophy"></i> Experiência Interativa em RPG</p>
-                    <p><i class="fa-solid fa-terminal"></i> Uma experiência gamificada que transforma um currículo tradicional em um <strong>verdadeiro jogo de RPG</strong>. Desenvolvido com <strong>HTML, CSS Avançado e Vanilla JavaScript</strong>. Conta com motor próprio de <strong>XP, Level Up, NPC interativo, inventário (Loot)</strong> e <strong>áudio 8-bits</strong> gerado por código, garantindo imersão total.</p>
+
+                    <p class="muted">
+                      <i class="fa-solid fa-trophy"></i> Experiência Interativa
+                      em RPG
+                    </p>
+
+                    <p>
+                      <i class="fa-solid fa-terminal"></i> Uma experiência
+                      gamificada que transforma um currículo tradicional em um
+                      <strong>verdadeiro jogo de RPG</strong>. Desenvolvido com
+                      <strong>HTML, CSS Avançado e JavaScript</strong>. Conta
+                      com motor próprio de
+                      <strong
+                        >XP, Level Up, NPC interativo, inventário (Loot)</strong
+                      >
+                      e <strong>áudio 8-bits</strong> gerado por código,
+                      garantindo imersão total.
+                    </p>
+
                     <div class="project-links">
-                      <a href="https://portfoliogamer.vercel.app" target="_blank" class="btn small primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver Projeto</a>
-                      <a href="https://github.com/tirolasca/PortfolioGamer" target="_blank" class="btn small outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                      <a
+                        href="https://portfoliogamer.vercel.app"
+                        target="_blank"
+                        class="btn small primary"
+                      >
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        Ver Projeto
+                      </a>
+
+                      <a
+                        href="https://github.com/tirolasca/PortfolioGamer"
+                        target="_blank"
+                        class="btn small outline"
+                      >
+                        <i class="fa-brands fa-github"></i> GitHub
+                      </a>
                     </div>
                   </div>
                 </div>
               </div>
 
-            </div><!-- /.swiper-wrapper -->
+              <div class="swiper-slide">
+                <div
+                  class="project-card glow-card"
+                  data-tech="react,typescript,prisma,mysql,express,render,aiven,javascript,html5,css3"
+                >
+                  <img src="img/Aerocode.png" alt="Aerocode" loading="lazy" />
 
-            <!-- Custom navigation buttons -->
+                  <div class="project-info">
+                    <h4><i class="fa-solid fa-plane"></i> Aerocode</h4>
+
+                    <p class="muted">
+                      <i class="fa-solid fa-industry"></i> Sistema de Gestão da
+                      Produção Aeronáutica
+                    </p>
+
+                    <p>
+                      <i class="fa-solid fa-code"></i> Aplicação web para
+                      <strong>gestão da produção aeronáutica</strong>,
+                      desenvolvida com
+                      <strong>React, TypeScript, Prisma e MySQL</strong>. Conta
+                      com
+                      <strong
+                        >autenticação, níveis de acesso, métricas de qualidade,
+                        filtros e histórico</strong
+                      >, além de aplicação e API hospedadas na
+                      <strong>Vercel, Render e Aiven</strong>.
+                    </p>
+
+                    <div class="project-links">
+                      <a
+                        href="https://aerocodespa.vercel.app"
+                        target="_blank"
+                        class="btn small primary"
+                      >
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        Ver Projeto
+                      </a>
+
+                      <a
+                        href="https://github.com/tirolasca/Aerocode-Fullstack"
+                        target="_blank"
+                        class="btn small outline"
+                      >
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div
+                  class="project-card glow-card"
+                  data-tech="html5,css3,javascript"
+                >
+                  <img
+                    src="img/Vinicola.png"
+                    alt="Vinícola Premium"
+                    loading="lazy"
+                  />
+
+                  <div class="project-info">
+                    <h4>
+                      <i class="fa-solid fa-wine-glass"></i> Vinícola Premium
+                    </h4>
+
+                    <p class="muted">
+                      <i class="fa-solid fa-crown"></i> Experiência Digital
+                      Sofisticada
+                    </p>
+
+                    <p>
+                      <i class="fa-solid fa-code"></i> Site desenvolvido para
+                      uma <strong>vinícola premium</strong>, com foco em
+                      <strong
+                        >elegância, identidade visual e experiência do
+                        usuário</strong
+                      >. Desenvolvido com
+                      <strong>HTML, CSS e JavaScript</strong>, apresenta uma
+                      interface moderna e responsiva para destacar os vinhos, a
+                      história e a identidade da marca.
+                    </p>
+
+                    <div class="project-links">
+                      <a
+                        href="https://vinicolapremium.vercel.app"
+                        target="_blank"
+                        class="btn small primary"
+                      >
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        Ver Projeto
+                      </a>
+
+                      <a
+                        href="https://github.com/tirolasca/Vinicola"
+                        target="_blank"
+                        class="btn small outline"
+                      >
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div
+                  class="project-card glow-card"
+                  data-tech="react,typescript,css3,javascript,html5,vite"
+                >
+                  <img src="img/Signa.png" alt="Signa" loading="lazy" />
+
+                  <div class="project-info">
+                    <h4><i class="fa-solid fa-file-shield"></i> Signa</h4>
+
+                    <p class="muted">
+                      <i class="fa-solid fa-plane"></i> Gestão de Requisitos
+                      Aeronáuticos
+                    </p>
+
+                    <p>
+                      <i class="fa-solid fa-code"></i> Plataforma web para
+                      <strong
+                        >centralização e gestão de requisitos normativos
+                        aeronáuticos</strong
+                      >, com diferentes níveis de permissão, busca, filtragem e
+                      <strong>controle de versões e alterações</strong>.
+                      Desenvolvido com <strong>React, TypeScript e CSS</strong>,
+                      o projeto é idealizado pela <strong>FATEC</strong> em
+                      parceria com a <strong>Akaer</strong>.
+                    </p>
+
+                    <div class="project-links">
+                      <a
+                        href="https://janosys-aeroespacial.vercel.app"
+                        target="_blank"
+                        class="btn small primary"
+                      >
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        Ver Projeto
+                      </a>
+
+                      <a
+                        href="https://github.com/janosystime/Janosys-Project-1-Akaer"
+                        target="_blank"
+                        class="btn small outline"
+                      >
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div class="swiper-button-prev projects-prev"></div>
             <div class="swiper-button-next projects-next"></div>
-          </div><!-- /.swiper -->
-        </div>
-      </section>  
+          </div>
 
-      <!-- Análise SWOT -->
+        </div>
+      </section>
+
       <section class="container swot-section" id="swot" data-aos="fade-up">
-         <h3 class="titulo-swot">
-            <i class="fa-solid fa-magnifying-glass-chart"></i>
-            <span
-              class="cyber-glitch"
-              data-text="Autoanálise
+        <h3 class="titulo-swot">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          <span
+            class="cyber-glitch"
+            data-text="Autoanálise
             Profissional (SWOT)"
-              >Autoanálise Profissional (SWOT)</span
-            >
-          </h3>
+            >Autoanálise Profissional (SWOT)</span
+          >
+        </h3>
         <div class="swot-wrapper">
           <div class="swot-track">
             <div class="swot-card strengths">
@@ -795,7 +1202,6 @@
         <button class="close-modal" id="close-gh-modal" aria-label="Fechar">
           <i class="fa-solid fa-xmark"></i>
         </button>
-
         <div class="gh-header">
           <img
             id="gh-avatar"
@@ -803,38 +1209,36 @@
             alt="GitHub Avatar"
             class="gh-avatar"
           />
+          <div class="gh-avatar-skeleton" aria-hidden="true"></div>
           <div class="gh-info">
             <h4><i class="fa-brands fa-github"></i> @tirolasca</h4>
             <p class="muted" id="gh-bio">Conectando ao servidor...</p>
-
             <div class="gh-extra-info">
-              <span id="gh-location-container" style="display: none">
-                <i class="fa-solid fa-location-dot"></i>
-                <span id="gh-location"></span>
-              </span>
-              <span id="gh-joined-container" style="display: none">
-                <i class="fa-solid fa-calendar-days"></i>
-                <span id="gh-joined"></span>
-              </span>
+              <span id="gh-location-container" style="display: none"
+                ><i class="fa-solid fa-location-dot"></i
+                ><span id="gh-location"></span
+              ></span>
+              <span id="gh-joined-container" style="display: none"
+                ><i class="fa-solid fa-calendar-days"></i
+                ><span id="gh-joined"></span
+              ></span>
             </div>
           </div>
         </div>
-
         <div class="gh-stats">
           <div class="gh-stat-box">
-            <span class="gh-stat-value" id="gh-repos">-</span>
-            <span class="gh-stat-label">Repos</span>
+            <span class="gh-stat-value" id="gh-repos">-</span
+            ><span class="gh-stat-label">Repos</span>
           </div>
           <div class="gh-stat-box">
-            <span class="gh-stat-value" id="gh-followers">-</span>
-            <span class="gh-stat-label">Seguidores</span>
+            <span class="gh-stat-value" id="gh-followers">-</span
+            ><span class="gh-stat-label">Seguidores</span>
           </div>
           <div class="gh-stat-box">
-            <span class="gh-stat-value" id="gh-following">-</span>
-            <span class="gh-stat-label">Seguindo</span>
+            <span class="gh-stat-value" id="gh-following">-</span
+            ><span class="gh-stat-label">Seguindo</span>
           </div>
         </div>
-
         <a
           href="https://github.com/tirolasca"
           target="_blank"
@@ -845,15 +1249,22 @@
       </div>
     </div>
 
-    <!-- ===== ACHIEVEMENTS DRAWER ===== -->
-    <div id="achievements-overlay" class="achievements-overlay" aria-hidden="true">
+    <div
+      id="achievements-overlay"
+      class="achievements-overlay"
+      aria-hidden="true"
+    >
       <div class="achievements-drawer" role="dialog" aria-label="Conquistas">
         <div class="achievements-drawer-header">
           <div class="achievements-drawer-title">
             <i class="fa-solid fa-trophy"></i>
             <span>Conquistas</span>
           </div>
-          <button class="achievements-close" id="achievements-close" aria-label="Fechar">
+          <button
+            class="achievements-close"
+            id="achievements-close"
+            aria-label="Fechar"
+          >
             <i class="fa-solid fa-xmark"></i>
           </button>
         </div>
@@ -868,14 +1279,13 @@
             <div class="achievements-xp-fill" id="xp-fill"></div>
           </div>
           <div class="achievements-xp-count">
-            <span id="xp-unlocked-count">0</span> / <span id="xp-total-count">8</span> desbloqueadas
+            <span id="xp-unlocked-count">0</span> /
+            <span id="xp-total-count">8</span> desbloqueadas
           </div>
         </div>
         <div class="achievements-grid" id="achievements-grid"></div>
-        
       </div>
     </div>
-    <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
       <div class="container footer-inner">
         <div class="footer-brand">
@@ -893,7 +1303,45 @@
 
     <a class="back-to-top" href="#top" aria-label="Voltar ao topo"></a>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <div id="terminal-overlay" class="terminal-overlay" aria-hidden="true">
+      <div
+        class="terminal-window"
+        role="dialog"
+        aria-label="Terminal interativo"
+      >
+        <div class="terminal-titlebar">
+          <div class="terminal-dots">
+            <span class="t-dot t-dot-red"></span>
+            <span class="t-dot t-dot-yellow"></span>
+            <span class="t-dot t-dot-green"></span>
+          </div>
+          <span class="terminal-titlebar-label">guest@lucas-portfolio: ~</span>
+          <button
+            class="terminal-close"
+            id="terminal-close"
+            aria-label="Fechar terminal"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-output" id="cli-output"></div>
+          <div class="terminal-input-line">
+            <span class="terminal-prompt">guest@portfolio:~$</span>
+            <input
+              type="text"
+              id="terminal-input"
+              class="terminal-input"
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Digite um comando"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
