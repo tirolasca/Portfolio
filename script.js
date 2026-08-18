@@ -1133,56 +1133,95 @@ function initSummaryMode() {
     if (overlay) overlay.classList.remove("active");
   }
 
-  function populate(overlay) {
-    const body = overlay.querySelector("#summary-modal-body");
-    const name =
-      document.querySelector(".brand-text h1")?.textContent?.trim() ||
-      "Lucas Santos";
-    const role =
-      document.querySelector(".brand-text .job")?.textContent?.trim() || "";
+function populate(overlay) {
+  const body = overlay.querySelector("#summary-modal-body");
 
-    const skillNames = Array.from(
-      new Set(
-        Array.from(document.querySelectorAll(".skills .skill-badges img")).map(
-          (img) => img.alt,
-        ),
-      ),
-    ).slice(0, 8);
+  const name =
+    document.querySelector(".brand-text h1")?.textContent?.trim() ||
+    "Lucas Santos";
 
-    const projects = Array.from(
-      document.querySelectorAll(".projects .project-card"),
-    )
-      .slice(0, 3)
-      .map((card) => ({
-        title: card.querySelector("h4")?.textContent?.trim() || "",
-        link: card.querySelector(".project-links a[href^='http']")?.href || "#",
-      }));
+  const role =
+    document.querySelector(".brand-text .job")?.textContent?.trim() || "";
 
-    body.innerHTML = `
-      <h3>${name}</h3>
-      <p class="summary-role">${role}</p>
-      <div class="summary-block">
-        <h6>Principais skills</h6>
-        <div class="summary-skills">${skillNames.map((s) => `<span>${s}</span>`).join("")}</div>
+  const skills = Array.from(
+    document.querySelectorAll(".skills .skill-badges img"),
+  )
+    .slice(0, 8)
+    .map((img) => ({
+      name: img.alt,
+      image: img.src,
+    }));
+
+  const projects = Array.from(
+    document.querySelectorAll(".projects .project-card"),
+  )
+    .slice(0, 3)
+    .map((card) => ({
+      title: card.querySelector("h4")?.textContent?.trim() || "",
+      link:
+        card.querySelector(".project-links a[href^='http']")?.href || "#",
+    }));
+
+  body.innerHTML = `
+    <h3>${name}</h3>
+    <p class="summary-role">${role}</p>
+
+    <div class="summary-block">
+      <h6>Principais skills</h6>
+
+      <div class="summary-skills">
+        ${skills
+          .map(
+            (skill) => `
+              <img
+                src="${skill.image}"
+                alt="${skill.name}"
+                title="${skill.name}"
+              >
+            `,
+          )
+          .join("")}
       </div>
-      <div class="summary-block">
-        <h6>Projetos em destaque</h6>
-        <ul class="summary-projects">
-          ${projects.map((p) => `<li><a href="${p.link}" target="_blank" rel="noopener">${p.title}</a></li>`).join("")}
-        </ul>
-      </div>
-      <div class="summary-actions">
-        <a href="Lucas Santos - Currículo.pdf" download="Lucas Santos - Currículo.pdf" class="btn primary">
-          <i class="fa-solid fa-download"></i> Currículo
-        </a>
-        <a href="#contato" class="btn outline" id="summary-contact-link">
-          <i class="fa-solid fa-paper-plane"></i> Contato
-        </a>
-      </div>
-    `;
-    const contactLink = body.querySelector("#summary-contact-link");
-    if (contactLink) contactLink.addEventListener("click", closeSummary);
+    </div>
+
+    <div class="summary-block">
+      <h6>Projetos em destaque</h6>
+
+      <ul class="summary-projects">
+        ${projects
+          .map(
+            (p) =>
+              `<li><a href="${p.link}" target="_blank" rel="noopener">${p.title}</a></li>`,
+          )
+          .join("")}
+      </ul>
+    </div>
+
+    <div class="summary-actions">
+      <a
+        href="Lucas Santos - Currículo.pdf"
+        download="Lucas Santos - Currículo.pdf"
+        class="btn primary"
+      >
+        <i class="fa-solid fa-download"></i> Currículo
+      </a>
+
+      <a
+        href="#contato"
+        class="btn outline"
+        id="summary-contact-link"
+      >
+        <i class="fa-solid fa-paper-plane"></i> Contato
+      </a>
+    </div>
+  `;
+
+  const contactLink = body.querySelector("#summary-contact-link");
+
+  if (contactLink) {
+    contactLink.addEventListener("click", closeSummary);
   }
+}
 
   trigger.addEventListener("click", () => {
     let overlay = document.getElementById("summary-modal-overlay");
