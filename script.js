@@ -266,7 +266,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initBackToTop();
   initTerminal();
   initSkillConstellation();
-  initScrollSpy();
   initTimelineProgress();
   initSkillProjectLink();
   initGithubActivity();
@@ -523,11 +522,11 @@ function initTerminal() {
       print(" ║     BEM-VINDO(A) AO CORE      ║", "info");
       print(" ╚══════════════════════════════╝", "info");
       print("Estatísticas não-oficiais deste portfólio:", "info");
-      print("  → xícaras de café consumidas: 8.742", "info");
+      print("  → commits feitos sem saber exatamente o que mudou: 47", "info");
       print('  → vezes que "funciona na minha máquina" foi dito: 312', "info");
       print("  → bugs que na verdade eram features: incontáveis", "info");
       print(
-        "  → linhas de CSS pra centralizar uma div: mais do que devia",
+        "  → pesquisas no Stack Overflow que salvaram o projeto: confidencial",
         "info",
       );
       if (!unlockedAchievements.has("a-neo")) {
@@ -743,37 +742,6 @@ function initSkillConstellation() {
   });
 }
 
-function initScrollSpy() {
-  const navLinks = Array.from(
-    document.querySelectorAll(".main-nav .nav-link[href^='#']"),
-  );
-  if (!navLinks.length) return;
-
-  const pairs = navLinks
-    .map((link) => ({
-      link,
-      section: document.querySelector(link.getAttribute("href")),
-    }))
-    .filter((p) => p.section);
-  if (!pairs.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        const pair = pairs.find((p) => p.section === entry.target);
-        if (!pair) return;
-        if (entry.isIntersecting) {
-          navLinks.forEach((l) => l.classList.remove("active"));
-          pair.link.classList.add("active");
-        }
-      });
-    },
-    { rootMargin: "-40% 0px -55% 0px", threshold: 0 },
-  );
-
-  pairs.forEach((p) => observer.observe(p.section));
-}
-
 function initTimelineProgress() {
   const timeline = document.querySelector(".timeline");
   if (!timeline) return;
@@ -876,33 +844,99 @@ async function initGithubActivity() {
   }
 }
 
-function initOnboardingTour() {
+const homeTourSteps = [
+  {
+    selector: "#home",
+    title: "Bem-vindo(a)! 👋",
+    text: "Esse é o início — aqui você me conhece rapidinho e já pode baixar meu currículo ou chamar no WhatsApp.",
+  },
+  {
+    selector: "#titulo",
+    title: "Habilidades",
+    text: "Aqui estão as tecnologias que uso no dia a dia. Você também pode interagir com as badges para descobrir os projetos relacionados.",
+  },
+  {
+    selector: "#projetos",
+    title: "Projetos",
+    text: "Aqui estão alguns dos projetos que já desenvolvi, com acesso ao código e às versões publicadas.",
+  },
+  {
+    selector: "#contato",
+    title: "Vamos conversar?",
+    text: "Nesta seção você encontra o formulário de contato e minhas principais formas de contato.",
+  },
+];
+
+const resumeTourSteps = [
+  {
+    selector: ".curriculo-top",
+    title: "Resumo profissional",
+    text: "Aqui você encontra uma visão geral do meu perfil profissional e das principais tecnologias que utilizo.",
+  },
+  {
+    selector: "#formacao",
+    title: "Formação",
+    text: "Nesta seção estão minha formação e os cursos que complementam minha preparação profissional.",
+  },
+  {
+    selector: ".timeline",
+    title: "Experiência",
+    text: "Aqui você pode conhecer minha trajetória e experiências ao longo da minha formação profissional.",
+  },
+  {
+    selector: "#projetos",
+    title: "Projetos",
+    text: "Aqui estão alguns dos projetos que desenvolvi e as tecnologias utilizadas em cada um.",
+  },
+  {
+    selector: ".swot-section",
+    title: "Diferenciais",
+    text: "Esta seção apresenta meus principais pontos fortes, oportunidades e aspectos do meu desenvolvimento profissional.",
+  },
+  {
+    selector: "#contato",
+    title: "Contato",
+    text: "No final da página estão minhas principais formas de contato.",
+  },
+];
+
+function initOnboardingTour(steps, storageKey = "tourSeen") {
   const TOUR_ALWAYS_SHOW = false;
 
-  if (!TOUR_ALWAYS_SHOW && localStorage.getItem("tourSeen")) return;
+  const prompt = document.getElementById("tour-prompt");
+  const card = document.getElementById("tour-card");
 
-  const steps = [
-    {
-      selector: "#home",
-      title: "Bem-vindo(a)! 👋",
-      text: "Esse é o início — aqui você me conhece rapidinho e já pode baixar meu currículo ou chamar no WhatsApp.",
-    },
-    {
-      selector: "#titulo",
-      title: "Habilidades",
-      text: "Aqui estão as tecnologias que uso no dia a dia. Você também pode interagir com as badges para descobrir os projetos relacionados.",
-    },
-    {
-      selector: "#projetos",
-      title: "Projetos",
-      text: "Aqui estão alguns dos projetos que já desenvolvi, com acesso ao código e às versões publicadas.",
-    },
-    {
-      selector: "#contato",
-      title: "Vamos conversar?",
-      text: "Nesta seção você encontra o formulário de contato e minhas principais formas de contato.",
-    },
-  ];
+  if (!prompt || !card || !steps?.length) return;
+
+  if (!TOUR_ALWAYS_SHOW && localStorage.getItem(storageKey)) {
+    prompt.remove();
+    card.remove();
+    return;
+  }
+
+  const startBtn = prompt.querySelector(".tour-start-btn");
+  const skipBtn = prompt.querySelector(".tour-skip-btn");
+
+  const stepCounter = document.getElementById("tour-step-counter");
+  const title = document.getElementById("tour-title");
+  const text = document.getElementById("tour-text");
+
+  const prevBtn = document.getElementById("tour-prev-btn");
+  const nextBtn = document.getElementById("tour-next-btn");
+  const endBtn = document.getElementById("tour-end-btn");
+
+  if (
+    !startBtn ||
+    !skipBtn ||
+    !stepCounter ||
+    !title ||
+    !text ||
+    !prevBtn ||
+    !nextBtn ||
+    !endBtn
+  ) {
+    return;
+  }
 
   const validSteps = steps.filter((step) =>
     document.querySelector(step.selector),
@@ -910,195 +944,148 @@ function initOnboardingTour() {
 
   if (!validSteps.length) return;
 
-  const prompt = document.createElement("div");
-  prompt.className = "tour-prompt";
+  let currentStep = 0;
 
-  prompt.innerHTML = `
-    <p>
-      👋 Primeira vez por aqui?
-      Posso te mostrar os destaques em uns 20 segundos.
-    </p>
-
-    <div class="tour-prompt-actions">
-      <button type="button" class="btn primary tour-start-btn">
-        Sim, mostra!
-      </button>
-
-      <button type="button" class="btn outline tour-skip-btn">
-        Não, obrigado
-      </button>
-    </div>
-  `;
-
-  document.body.appendChild(prompt);
-
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      prompt.classList.add("show");
-    }, 1200);
-  });
-
-  const startBtn = prompt.querySelector(".tour-start-btn");
-  const skipBtn = prompt.querySelector(".tour-skip-btn");
+  function clearHighlight() {
+    document.querySelectorAll(".tour-highlight").forEach((element) => {
+      element.classList.remove("tour-highlight");
+    });
+  }
 
   function removePrompt() {
     prompt.classList.remove("show");
 
     setTimeout(() => {
       if (prompt.isConnected) {
-        prompt.remove();
+        prompt.style.display = "none";
       }
     }, 400);
   }
 
-  function dismissPrompt() {
-    localStorage.setItem("tourSeen", "1");
-    removePrompt();
-  }
+  function finishTour() {
+    clearHighlight();
 
-  skipBtn.addEventListener("click", dismissPrompt);
+    card.classList.remove("show");
 
-  startBtn.addEventListener("click", () => {
-    removePrompt();
+    localStorage.setItem(storageKey, "1");
 
     setTimeout(() => {
-      startTour();
-    }, 250);
-  });
+      if (card.isConnected) {
+        card.style.display = "none";
+      }
+    }, 400);
+  }
+
+  function updateNextButton() {
+    nextBtn.classList.toggle(
+      "is-finish",
+      currentStep === validSteps.length - 1,
+    );
+  }
+
+  function renderStep() {
+    clearHighlight();
+
+    const step = validSteps[currentStep];
+
+    if (!step) {
+      finishTour();
+      return;
+    }
+
+    const target = document.querySelector(step.selector);
+
+    if (!target) {
+      finishTour();
+      return;
+    }
+
+    target.classList.add("tour-highlight");
+
+    target.scrollIntoView({
+      behavior:
+        prefersReducedMotion !== undefined && prefersReducedMotion
+          ? "auto"
+          : "smooth",
+      block: "center",
+    });
+
+    stepCounter.textContent = `${currentStep + 1} / ${validSteps.length}`;
+    title.textContent = step.title;
+    text.textContent = step.text;
+
+    prevBtn.style.display = currentStep > 0 ? "" : "none";
+
+    updateNextButton();
+
+    card.classList.remove("show");
+
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        card.classList.add("show");
+      }, 150);
+    });
+  }
 
   function startTour() {
-    let currentStep = 0;
+    currentStep = 0;
 
-    const card = document.createElement("div");
-    card.className = "tour-card";
+    card.style.display = "";
 
-    document.body.appendChild(card);
+    removePrompt();
 
-    function clearHighlight() {
-      document.querySelectorAll(".tour-highlight").forEach((element) => {
-        element.classList.remove("tour-highlight");
-      });
-    }
+    setTimeout(renderStep, 250);
+  }
 
-    function finishTour() {
-      clearHighlight();
+  function showPrompt() {
+    card.style.display = "none";
+    prompt.style.display = "";
 
-      card.classList.remove("show");
-
-      localStorage.setItem("tourSeen", "1");
-
+    requestAnimationFrame(() => {
       setTimeout(() => {
-        if (card.isConnected) {
-          card.remove();
-        }
-      }, 400);
-    }
+        prompt.classList.add("show");
+      }, 1200);
+    });
+  }
 
-    function renderStep() {
-      clearHighlight();
+  startBtn.addEventListener("click", startTour);
 
-      const step = validSteps[currentStep];
+  skipBtn.addEventListener("click", () => {
+    localStorage.setItem(storageKey, "1");
+    removePrompt();
+  });
 
-      if (!step) {
-        finishTour();
-        return;
-      }
+  nextBtn.addEventListener("click", () => {
+    currentStep++;
 
-      const target = document.querySelector(step.selector);
-
-      if (!target) {
-        finishTour();
-        return;
-      }
-
-      target.classList.add("tour-highlight");
-
-      target.scrollIntoView({
-        behavior: prefersReducedMotion ? "auto" : "smooth",
-        block: "center",
-      });
-
-      card.classList.remove("show");
-
-      card.innerHTML = `
-        <div class="tour-card-step">
-          ${currentStep + 1} / ${validSteps.length}
-        </div>
-
-        <h5>${step.title}</h5>
-
-        <p>${step.text}</p>
-
-        <div class="tour-card-actions">
-
-          ${
-            currentStep > 0
-              ? `
-                <button
-                  type="button"
-                  class="btn outline tour-prev-btn"
-                >
-                  Voltar
-                </button>
-              `
-              : ""
-          }
-
-          <button
-            type="button"
-            class="btn primary tour-next-btn"
-          >
-            ${currentStep === validSteps.length - 1 ? "Concluir" : "Próximo"}
-          </button>
-
-          <button
-            type="button"
-            class="tour-end-link"
-          >
-            Pular tour
-          </button>
-
-        </div>
-      `;
-
-      requestAnimationFrame(() => {
-        setTimeout(() => {
-          card.classList.add("show");
-        }, 150);
-      });
-
-      const nextBtn = card.querySelector(".tour-next-btn");
-
-      nextBtn.addEventListener("click", () => {
-        currentStep++;
-
-        if (currentStep >= validSteps.length) {
-          finishTour();
-          return;
-        }
-
-        renderStep();
-      });
-
-      const prevBtn = card.querySelector(".tour-prev-btn");
-
-      if (prevBtn) {
-        prevBtn.addEventListener("click", () => {
-          if (currentStep > 0) {
-            currentStep--;
-            renderStep();
-          }
-        });
-      }
-
-      const endBtn = card.querySelector(".tour-end-link");
-
-      endBtn.addEventListener("click", finishTour);
+    if (currentStep >= validSteps.length) {
+      finishTour();
+      return;
     }
 
     renderStep();
-  }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (currentStep > 0) {
+      currentStep--;
+      renderStep();
+    }
+  });
+
+  endBtn.addEventListener("click", finishTour);
+
+  card.style.display = "none";
+
+  showPrompt();
 }
+
+const isResumePage = document.querySelector(".curriculo-page");
+
+initOnboardingTour(
+  isResumePage ? resumeTourSteps : homeTourSteps,
+  isResumePage ? "resumeTourSeen" : "tourSeen",
+);
 
 function initSummaryMode() {
   const trigger = document.getElementById("summary-mode-btn");
@@ -1133,36 +1120,35 @@ function initSummaryMode() {
     if (overlay) overlay.classList.remove("active");
   }
 
-function populate(overlay) {
-  const body = overlay.querySelector("#summary-modal-body");
+  function populate(overlay) {
+    const body = overlay.querySelector("#summary-modal-body");
 
-  const name =
-    document.querySelector(".brand-text h1")?.textContent?.trim() ||
-    "Lucas Santos";
+    const name =
+      document.querySelector(".brand-text h1")?.textContent?.trim() ||
+      "Lucas Santos";
 
-  const role =
-    document.querySelector(".brand-text .job")?.textContent?.trim() || "";
+    const role =
+      document.querySelector(".brand-text .job")?.textContent?.trim() || "";
 
-  const skills = Array.from(
-    document.querySelectorAll(".skills .skill-badges img"),
-  )
-    .slice(0, 8)
-    .map((img) => ({
-      name: img.alt,
-      image: img.src,
-    }));
+    const skills = Array.from(
+      document.querySelectorAll(".skills .skill-badges img"),
+    )
+      .slice(0, 8)
+      .map((img) => ({
+        name: img.alt,
+        image: img.src,
+      }));
 
-  const projects = Array.from(
-    document.querySelectorAll(".projects .project-card"),
-  )
-    .slice(0, 3)
-    .map((card) => ({
-      title: card.querySelector("h4")?.textContent?.trim() || "",
-      link:
-        card.querySelector(".project-links a[href^='http']")?.href || "#",
-    }));
+    const projects = Array.from(
+      document.querySelectorAll(".projects .project-card"),
+    )
+      .slice(0, 3)
+      .map((card) => ({
+        title: card.querySelector("h4")?.textContent?.trim() || "",
+        link: card.querySelector(".project-links a[href^='http']")?.href || "#",
+      }));
 
-  body.innerHTML = `
+    body.innerHTML = `
     <h3>${name}</h3>
     <p class="summary-role">${role}</p>
 
@@ -1216,12 +1202,12 @@ function populate(overlay) {
     </div>
   `;
 
-  const contactLink = body.querySelector("#summary-contact-link");
+    const contactLink = body.querySelector("#summary-contact-link");
 
-  if (contactLink) {
-    contactLink.addEventListener("click", closeSummary);
+    if (contactLink) {
+      contactLink.addEventListener("click", closeSummary);
+    }
   }
-}
 
   trigger.addEventListener("click", () => {
     let overlay = document.getElementById("summary-modal-overlay");
@@ -1232,52 +1218,204 @@ function populate(overlay) {
 }
 
 function initSwotChart() {
-  const swotCanvas = document.getElementById("swotChart");
-  if (swotCanvas && typeof Chart !== "undefined") {
-    const ctx = swotCanvas.getContext("2d");
-    Chart.defaults.font.family = "'Inter', sans-serif";
-    Chart.defaults.color = "#a0aab2";
-    const swotChart = new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels: ["Forças", "Fraquezas", "Oportunidades", "Ameaças"],
-        datasets: [
-          {
-            data: [8, 4, 7, 3],
-            backgroundColor: [
-              "rgba(0,255,224,0.6)",
-              "rgba(255,111,145,0.6)",
-              "rgba(255,209,102,0.6)",
-              "rgba(159,181,255,0.6)",
-            ],
-            borderColor: ["#00ffe0", "#ff6f91", "#ffd166", "#9fb5ff"],
-            borderWidth: 2,
-            borderRadius: 8,
-            borderSkipped: false,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: "rgba(0,0,0,0.8)",
-            padding: 10,
-            displayColors: false,
-          },
-        },
-        scales: {
-          y: { beginAtZero: true, grid: { color: "rgba(255,255,255,0.05)" } },
-          x: { grid: { display: false } },
-        },
-        animation: { duration: 2000, easing: "easeOutQuart" },
-      },
-    });
-    swotCanvas.chart = swotChart;
-    setTimeout(() => swotCanvas.classList.add("visible"), 300);
+  const canvas = document.getElementById("swotChart");
+
+  if (!canvas || typeof Chart === "undefined") return;
+
+  if (canvas.chart) {
+    canvas.chart.destroy();
   }
+
+  const ctx = canvas.getContext("2d");
+  const isDarkTheme = document.body.classList.contains("dark");
+
+  const radarTextColor = isDarkTheme ? "#ffffff" : "#15b8c4";
+
+  const radarTickColor = isDarkTheme ? "#ffffff" : "#15b8c4"; 
+
+  const gridColor = isDarkTheme
+    ? "rgba(190, 220, 225, 0.13)"
+    : "rgba(0, 0, 0, 0.10)";
+
+  const angleColor = isDarkTheme
+    ? "rgba(190, 220, 225, 0.15)"
+    : "rgba(0, 0, 0, 0.10)";
+
+  const tooltipBackground = isDarkTheme
+    ? "rgba(5, 15, 20, 0.97)"
+    : "rgba(255, 255, 255, 0.97)";
+
+  const tooltipTitleColor = isDarkTheme ? "#ffffff" : "#1a202c";
+
+  const tooltipBodyColor = isDarkTheme ? "#d7e1e5" : "#4a5568";
+
+  const tooltipBorderColor = isDarkTheme
+    ? "rgba(0, 255, 224, 0.35)"
+    : "rgba(0, 191, 174, 0.25)";
+
+  const labels = [
+    "Frontend",
+    "Backend",
+    "APIs",
+    "Banco de Dados",
+    "Cloud",
+    "DevOps",
+    "Mobile",
+    "IA & Automação",
+  ];
+
+  const values = [8.5, 8, 8.5, 7.5, 5.5, 5, 6.5, 8];
+
+  const chart = new Chart(ctx, {
+    type: "radar",
+
+    data: {
+      labels,
+
+      datasets: [
+        {
+          label: "Perfil técnico",
+          data: values,
+
+          backgroundColor: isDarkTheme
+            ? "rgba(0, 255, 224, 0.10)"
+            : "rgba(0, 191, 174, 0.10)",
+
+          borderColor: isDarkTheme ? "#00ffe0" : "#00bfae",
+
+          borderWidth: 2,
+
+          pointBackgroundColor: isDarkTheme ? "#00ffe0" : "#00bfae",
+
+          pointBorderColor: isDarkTheme ? "#061116" : "#ffffff",
+
+          pointBorderWidth: 2,
+
+          pointRadius: 4,
+          pointHoverRadius: 7,
+
+          pointHoverBackgroundColor: isDarkTheme ? "#00ffe0" : "#00bfae",
+
+          pointHoverBorderColor: "#ffffff",
+
+          fill: true,
+        },
+      ],
+    },
+
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+
+      interaction: {
+        intersect: false,
+        mode: "nearest",
+      },
+
+      scales: {
+        r: {
+          min: 0,
+          max: 10,
+          beginAtZero: true,
+
+          ticks: {
+            stepSize: 2,
+            color: radarTickColor,
+            backdropColor: "transparent",
+
+            font: {
+              family: "'Inter', sans-serif",
+              size: 9,
+              weight: "500",
+            },
+          },
+
+          angleLines: {
+            color: angleColor,
+            lineWidth: 1,
+          },
+
+          grid: {
+            color: gridColor,
+            lineWidth: 1,
+          },
+
+          pointLabels: {
+            color: radarTextColor,
+
+            font: {
+              family: "'Inter', sans-serif",
+              size: 12,
+              weight: "700",
+            },
+
+            padding: 10,
+          },
+        },
+      },
+
+      plugins: {
+        legend: {
+          display: false,
+        },
+
+        tooltip: {
+          backgroundColor: tooltipBackground,
+
+          titleColor: tooltipTitleColor,
+
+          bodyColor: tooltipBodyColor,
+
+          borderColor: tooltipBorderColor,
+
+          borderWidth: 1,
+
+          padding: 11,
+
+          displayColors: false,
+
+          titleFont: {
+            family: "'Inter', sans-serif",
+            size: 13,
+            weight: "700",
+          },
+
+          bodyFont: {
+            family: "'Inter', sans-serif",
+            size: 12,
+            weight: "500",
+          },
+
+          callbacks: {
+            title: (context) => context[0].label,
+
+            label: (context) => `Nível: ${context.raw}/10`,
+          },
+        },
+      },
+
+      animation: {
+        duration: 1400,
+        easing: "easeOutQuart",
+      },
+
+      hover: {
+        animationDuration: 200,
+      },
+
+      elements: {
+        line: {
+          tension: 0.15,
+        },
+      },
+    },
+  });
+
+  canvas.chart = chart;
+
+  requestAnimationFrame(() => {
+    canvas.classList.add("visible");
+  });
 }
 
 function initTimelineToggle() {
@@ -1349,7 +1487,9 @@ function scramble(t) {
   t.interval = setInterval(() => {
     t.innerText = orig
       .split("")
-      .map((l, i) => (i < it ? orig[i] : letters[Math.floor(secureRandom() * letters.length)]))
+      .map((l, i) =>
+        i < it ? orig[i] : letters[Math.floor(secureRandom() * letters.length)],
+      )
       .join("");
     if (it >= orig.length) clearInterval(t.interval);
     it += 1 / 3;

@@ -58,10 +58,10 @@
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css"
     />
 
-   <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@14.1.0/swiper-bundle.min.css"
-/>  
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@14.1.0/swiper-bundle.min.css"
+    />
   </head>
 
   <body>
@@ -88,7 +88,7 @@
           <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="curriculo.html">Currículo</a></li>
-            <li><a href="#contato" class="cta">Contato</a></li>
+            <li><a href="#contato">Contato</a></li>
           </ul>
         </nav>
         <div class="header-actions">
@@ -121,6 +121,72 @@
         <div id="google_translate_element"></div>
       </div>
     </header>
+
+    <div
+      id="tour-prompt"
+      class="tour-prompt"
+      role="dialog"
+      aria-label="Tour do currículo"
+    >
+      <p>
+        <i class="fa-solid fa-compass"></i>
+        Quer conhecer meu currículo em poucos segundos?
+      </p>
+
+      <div class="tour-prompt-actions">
+        <button type="button" class="btn primary tour-start-btn">
+          <i class="fa-solid fa-route"></i>
+          <span>Começar tour</span>
+        </button>
+
+        <button type="button" class="btn outline tour-skip-btn">
+          <i class="fa-solid fa-xmark"></i>
+          <span>Agora não</span>
+        </button>
+      </div>
+    </div>
+
+    <div
+      id="tour-card"
+      class="tour-card"
+      role="dialog"
+      aria-label="Tour do currículo"
+      aria-live="polite"
+    >
+      <div class="tour-card-step">
+        <i class="fa-solid fa-route"></i>
+        <span id="tour-step-counter">1 / 6</span>
+      </div>
+
+      <h5 id="tour-title"></h5>
+
+      <p id="tour-text"></p>
+
+      <div class="tour-card-actions">
+        <button
+          type="button"
+          class="btn outline tour-prev-btn"
+          id="tour-prev-btn"
+        >
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Voltar</span>
+        </button>
+
+        <button
+          type="button"
+          class="btn primary tour-next-btn"
+          id="tour-next-btn"
+        >
+          <span>Próximo</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+
+        <button type="button" class="tour-end-link" id="tour-end-btn">
+          <i class="fa-solid fa-forward"></i>
+          <span>Pular tour</span>
+        </button>
+      </div>
+    </div>
 
     <main class="curriculo-page">
       <div class="container curriculo-top" data-aos="fade-up">
@@ -1138,7 +1204,6 @@
             <div class="swiper-button-prev projects-prev"></div>
             <div class="swiper-button-next projects-next"></div>
           </div>
-
         </div>
       </section>
 
@@ -1153,47 +1218,94 @@
           >
         </h3>
         <div class="swot-wrapper">
-          <div class="swot-track">
-            <div class="swot-card strengths">
-              <h4><i class="fa-solid fa-dumbbell"></i> Forças</h4>
-              <ul>
-                <li>Experiência em backend e frontend</li>
-                <li>Integração software & hardware (robótica)</li>
-                <li>Trabalho em equipe</li>
+            <div class="swot-track">
+              <div class="swot-card strengths glow-card">
+                <h4><i class="fa-solid fa-dumbbell"></i> Forças</h4>
+                <ul>
+                <li>Visão Full Stack, integrando frontend, backend e APIs</li>
+                <li>Experiência com integração entre software e hardware</li>
+                <li>
+                  Facilidade para aprender novas tecnologias e resolver
+                  problemas
+                </li>
+                <li>
+                  Capacidade de trabalhar em equipe e colaborar em projetos
+                </li>
               </ul>
-            </div>
-
-            <div class="swot-card weaknesses">
-              <h4>
-                <i class="fa-solid fa-triangle-exclamation"></i> Fraquezas
-              </h4>
-              <ul>
-                <li>Experiência limitada em estágios</li>
-                <li>Atualização constante em frameworks recentes</li>
+              </div>
+              <div class="swot-card weaknesses glow-card">
+                <h4>
+                  <i class="fa-solid fa-triangle-exclamation"></i> Fraquezas
+                </h4>
+                <ul>
+                <li>
+                  Experiência profissional formal ainda em desenvolvimento
+                </li>
+                <li>
+                  Necessidade de aprofundar conhecimentos em arquitetura e
+                  escalabilidade
+                </li>
+                <li>
+                  Busca por maior experiência prática em projetos de produção
+                </li>
               </ul>
-            </div>
-
-            <div class="swot-card opportunities">
-              <h4><i class="fa-solid fa-rocket"></i> Oportunidades</h4>
-              <ul>
-                <li>Expansão em mobile e cloud</li>
-                <li>Aprendizado de linguagens novas e emergentes</li>
+              </div>
+              <div class="swot-card opportunities glow-card">
+                <h4><i class="fa-solid fa-rocket"></i> Oportunidades</h4>
+               <ul>
+                <li>Aprofundamento em Cloud, DevOps e infraestrutura</li>
+                <li>
+                  Expansão para desenvolvimento mobile e aplicações
+                  multiplataforma
+                </li>
+                <li>
+                  Aplicação de IA e automação no desenvolvimento de software
+                </li>
+                <li>
+                  Construção de projetos reais para ampliar experiência
+                  profissional
+                </li>
               </ul>
-            </div>
-
-            <div class="swot-card threats">
-              <h4><i class="fa-solid fa-bolt"></i> Ameaças</h4>
-              <ul>
-                <li>Concorrência no mercado</li>
-                <li>Mudanças tecnológicas rápidas</li>
+              </div>
+              <div class="swot-card threats glow-card">
+                <h4><i class="fa-solid fa-bolt"></i> Ameaças</h4>
+                <ul>
+                <li>
+                  Evolução acelerada das tecnologias e ferramentas de
+                  desenvolvimento
+                </li>
+                <li>Mercado cada vez mais competitivo e exigente</li>
+                <li>
+                  Automação e IA aumentando a exigência por especialização
+                </li>
+                <li>Necessidade constante de atualização técnica</li>
               </ul>
+              </div>
             </div>
           </div>
-        </div>
+      <div class="swot-chart-container" id="swotChartContainer">
+  <div class="swot-chart-header">
+    <div>
+      <span class="swot-chart-label">PERFIL TÉCNICO</span>
+      <h4>Radar de Competências</h4>
+    </div>
 
-        <div id="swotChartContainer">
-          <canvas id="swotChart"></canvas>
-        </div>
+    <span class="swot-chart-scale">
+      <i class="fa-solid fa-chart-radar"></i>
+      Autoavaliação · 0–10
+    </span>
+  </div>
+
+  <div class="swot-radar-wrapper">
+    <canvas id="swotChart"></canvas>
+  </div>
+
+  <div class="swot-chart-footer">
+    <i class="fa-solid fa-circle-info"></i>
+    Avaliação pessoal baseada em experiência prática,
+    projetos desenvolvidos e conhecimentos atuais.
+  </div>
+</div>
       </section>
     </main>
 

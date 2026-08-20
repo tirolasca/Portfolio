@@ -89,7 +89,7 @@
           <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="curriculo.html">Currículo</a></li>
-            <li><a href="#contato" class="nav-link cta">Contato</a></li>
+            <li><a href="#contato">Contato</a></li>
           </ul>
         </nav>
 
@@ -203,6 +203,77 @@
         </div>
       </div>
     </div>
+
+    <div
+  id="tour-prompt"
+  class="tour-prompt"
+  role="dialog"
+  aria-label="Tour do portfólio"
+>
+  <p>
+    <i class="fa-solid fa-hand-sparkles"></i>
+    Primeira vez por aqui?
+    Posso te mostrar os destaques em uns 20 segundos.
+  </p>
+
+  <div class="tour-prompt-actions">
+    <button type="button" class="btn primary tour-start-btn">
+      <i class="fa-solid fa-hand-pointer"></i>
+      <span>Sim, mostra!</span>
+    </button>
+
+    <button type="button" class="btn outline tour-skip-btn">
+      <i class="fa-solid fa-xmark"></i>
+      <span>Não, obrigado</span>
+    </button>
+  </div>
+</div>
+
+<div
+  id="tour-card"
+  class="tour-card"
+  role="dialog"
+  aria-label="Tour do portfólio"
+  aria-live="polite"
+>
+  <div class="tour-card-step">
+    <i class="fa-solid fa-route"></i>
+    <span id="tour-step-counter">1 / 4</span>
+  </div>
+
+  <h5 id="tour-title"></h5>
+
+  <p id="tour-text"></p>
+
+  <div class="tour-card-actions">
+    <button
+      type="button"
+      class="btn outline tour-prev-btn"
+      id="tour-prev-btn"
+    >
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>Voltar</span>
+    </button>
+
+    <button
+      type="button"
+      class="btn primary tour-next-btn"
+      id="tour-next-btn"
+    >
+      <span>Próximo</span>
+      <i class="fa-solid fa-arrow-right"></i>
+    </button>
+
+    <button
+      type="button"
+      class="tour-end-link"
+      id="tour-end-btn"
+    >
+      <i class="fa-solid fa-forward"></i>
+      <span>Pular tour</span>
+    </button>
+  </div>
+</div>
 
     <main>
       <section class="hero" id="home">
@@ -1039,33 +1110,64 @@
               <div class="swot-card strengths glow-card">
                 <h4><i class="fa-solid fa-dumbbell"></i> Forças</h4>
                 <ul>
-                  <li>Domínio Full Stack</li>
-                  <li>Boa colaboração em equipe</li>
-                  <li>Integração Hardware/Software</li>
-                </ul>
+                <li>Visão Full Stack, integrando frontend, backend e APIs</li>
+                <li>Experiência com integração entre software e hardware</li>
+                <li>
+                  Facilidade para aprender novas tecnologias e resolver
+                  problemas
+                </li>
+                <li>
+                  Capacidade de trabalhar em equipe e colaborar em projetos
+                </li>
+              </ul>
               </div>
               <div class="swot-card weaknesses glow-card">
                 <h4>
                   <i class="fa-solid fa-triangle-exclamation"></i> Fraquezas
                 </h4>
                 <ul>
-                  <li>Experiência limitada em estágios</li>
-                  <li>Atualização constante em frameworks recentes</li>
-                </ul>
+                <li>
+                  Experiência profissional formal ainda em desenvolvimento
+                </li>
+                <li>
+                  Necessidade de aprofundar conhecimentos em arquitetura e
+                  escalabilidade
+                </li>
+                <li>
+                  Busca por maior experiência prática em projetos de produção
+                </li>
+              </ul>
               </div>
               <div class="swot-card opportunities glow-card">
                 <h4><i class="fa-solid fa-rocket"></i> Oportunidades</h4>
-                <ul>
-                  <li>Expansão em mobile e cloud</li>
-                  <li>Aprendizado de linguagens novas e emergentes</li>
-                </ul>
+               <ul>
+                <li>Aprofundamento em Cloud, DevOps e infraestrutura</li>
+                <li>
+                  Expansão para desenvolvimento mobile e aplicações
+                  multiplataforma
+                </li>
+                <li>
+                  Aplicação de IA e automação no desenvolvimento de software
+                </li>
+                <li>
+                  Construção de projetos reais para ampliar experiência
+                  profissional
+                </li>
+              </ul>
               </div>
               <div class="swot-card threats glow-card">
                 <h4><i class="fa-solid fa-bolt"></i> Ameaças</h4>
                 <ul>
-                  <li>Concorrência alta</li>
-                  <li>Rápida evolução tecnológica</li>
-                </ul>
+                <li>
+                  Evolução acelerada das tecnologias e ferramentas de
+                  desenvolvimento
+                </li>
+                <li>Mercado cada vez mais competitivo e exigente</li>
+                <li>
+                  Automação e IA aumentando a exigência por especialização
+                </li>
+                <li>Necessidade constante de atualização técnica</li>
+              </ul> 
               </div>
             </div>
           </div>
