@@ -1,0 +1,56 @@
+/* Toast de conquista */
+.achievement-toast {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 300px;
+  /* fora da tela até ".show" — transform não gera layout shift (CLS) */
+  transform: translateX(calc(100% + 40px));
+  background: var(--glass-bg);
+  border: 1px solid rgba(var(--accent-1-light-rgb), 0.35);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 99999;
+  box-shadow:
+    0 0 24px rgba(var(--shadow-teal-rgb), 0.14),
+    0 8px 30px rgba(0, 60, 60, 0.18);
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.achievement-toast.show {
+  transform: translateX(0);
+}
+.achievement-icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  color: var(--accent-1);
+  animation: achieveSpin 0.6s ease;
+}
+.achievement-body {
+  flex: 1;
+}
+.achievement-title {
+  font-weight: 700;
+  color: var(--accent-1-text);
+  font-size: 0.9rem;
+  margin-bottom: 3px;
+}
+.achievement-desc {
+  font-size: 0.78rem;
+  color: #4a6260;
+}
+.achievement-xp {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1a0c00;
+  background: rgba(var(--accent-gold-rgb), 0.95);
+  border: 1px solid rgba(var(--accent-gold-rgb), 0.4);
+  border-radius: 20px;
+  padding: 4px 10px;
+  white-space: nowrap;
+  text-shadow: 0 0 8px rgba(var(--accent-gold-rgb), 0.5);
+}

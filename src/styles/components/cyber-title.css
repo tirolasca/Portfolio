@@ -1,0 +1,45 @@
+/* Efeito glitch dos títulos */
+.cyber-glitch {
+  position: relative;
+  display: inline-block;
+  color: var(--glitch-color);
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px rgba(var(--accent-neon-rgb), 0.7);
+  transition: text-shadow 0.2s ease;
+  z-index: 1;
+}
+.cyber-glitch::before,
+.cyber-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.cyber-glitch::before {
+  color: #ff0055;
+  z-index: -1;
+  mix-blend-mode: screen;
+}
+.cyber-glitch::after {
+  color: var(--accent-blue);
+  z-index: -2;
+  mix-blend-mode: screen;
+}
+.cyber-glitch:hover {
+  text-shadow:
+    0 0 15px rgba(var(--accent-neon-rgb), 0.9),
+    0 0 30px rgba(var(--accent-blue-rgb), 0.5);
+  color: var(--glitch-color);
+}
+.cyber-glitch:hover::before,
+.cyber-glitch:hover::after {
+  opacity: 1;
+}
+.cyber-glitch:hover::before {
+  animation: glitch-anim-1 0.35s infinite linear alternate-reverse;
+}
+.cyber-glitch:hover::after {
+  animation: glitch-anim-2 0.3s infinite linear alternate-reverse;
+}

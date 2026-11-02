@@ -1,0 +1,47 @@
+/* Botões (.btn) */
+.btn {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--trans-fast);
+  color: var(--text-main);
+}
+.btn.primary {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  color: #eeeeee;
+  box-shadow: 0 4px 10px rgba(var(--shadow-teal-rgb), 0.25);
+}
+.btn.primary:hover {
+  background: linear-gradient(135deg, #00c8b4, #00958e);
+  box-shadow: 0 6px 16px rgba(var(--shadow-teal-rgb), 0.35);
+  transform: translateY(-2px);
+}
+.btn.outline:hover {
+  background: rgba(var(--shadow-teal-rgb), 0.05);
+  border-color: rgba(var(--shadow-teal-rgb), 0.25);
+  color: var(--accent-2);
+}
+.btn.download {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  color: #f8fbfc;
+  box-shadow: 0 4px 10px rgba(var(--shadow-teal-rgb), 0.25);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+}
+.btn.download:hover {
+  background: linear-gradient(135deg, #00c8b4, #00958e);
+  box-shadow: 0 6px 16px rgba(var(--shadow-teal-rgb), 0.35);
+  transform: translateY(-2px);
+}

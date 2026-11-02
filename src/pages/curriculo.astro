@@ -1,0 +1,483 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import AchievementsDrawer from "../components/AchievementsDrawer.astro";
+import TerminalOverlay from "../components/TerminalOverlay.astro";
+import Tour from "../components/Tour.astro";
+import Projects from "../components/Projects.astro";
+import SkillBadges from "../components/SkillBadges.astro";
+import { skillCategories } from "../data/skills";
+import GithubModal from "../components/GithubModal.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Base
+  title="Lucas Santos — Currículo"
+  description="Currículo e portfólio de Lucas Santos, desenvolvedor de software. Experiência em front-end, back-end e integração HW/SW."
+  ogTitle="Currículo — Lucas Santos"
+  ogDescription="Confira o currículo, projetos e análise SWOT de Lucas Santos, desenvolvedor focado em Desenvolvimento de Sistemas."
+>
+  <Header isResume />
+  <Tour variant="resume" />
+
+  <main id="conteudo" class="curriculo-page" tabindex="-1">
+    <div class="container curriculo-top" data-reveal="fade-up">
+      <div class="curriculo-left">
+        <div class="curriculo-section">
+          <h2>
+            <i class="fa-solid fa-user" aria-hidden="true"></i>
+            <span class="cyber-glitch" data-text="Resumo Profissional">
+              Resumo Profissional
+            </span>
+          </h2>
+          <p>
+            Sou <strong>Lucas Santos</strong>, desenvolvedor de software formado
+            em Desenvolvimento de Sistemas e Redes de Computadores e atualmente
+            cursando
+            <strong>Desenvolvimento de Software Multiplataforma</strong>. Tenho
+            experiência em front-end e back-end, além de projetos que integram
+            software e hardware (robótica e IoT).
+          </p>
+        </div>
+
+        <div class="curriculo-section" id="contato">
+          <h3>
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <span class="cyber-glitch" data-text="Contato">
+              Contato
+            </span>
+          </h3>
+
+          <div class="social-icons">
+            <a
+              href="https://wa.me/5512981718913"
+              target="_blank"
+              rel="noopener"
+              class="social-btn"
+              title="WhatsApp"
+            >
+              <i class="fab fa-whatsapp fa-2x" aria-hidden="true"></i>
+            </a>
+
+            <a
+              class="social-btn github"
+              href="https://github.com/tirolasca"
+              target="_blank"
+              rel="noopener"
+              title="GitHub"
+            >
+              <i class="fab fa-github fa-2x" aria-hidden="true"></i>
+            </a>
+
+            <a
+              href="https://linkedin.com/in/lucas-santostec/"
+              target="_blank"
+              rel="noopener"
+              class="social-btn"
+              title="LinkedIn"
+            >
+              <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
+            </a>
+            <a
+              href="mailto:lucasnascimento1245@gmail.com"
+              class="social-btn email"
+              title="E-mail"
+            >
+              <i class="fa-solid fa-envelope fa-2x" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="curriculo-section" id="formacao">
+          <h3>
+            <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+            <span class="cyber-glitch" data-text="Formação">
+              Formação
+            </span>
+          </h3>
+          <ul class="list">
+            <li>
+              <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
+              <strong>
+                Tecnólogo em Desenvolvimento de Software Multiplataforma
+              </strong>
+              — FATEC - 08/2025 - 07/2028 (Cursando)
+            </li>
+            <li>
+              <i class="fa-solid fa-graduation-cap" aria-hidden="true"></i>
+              <strong>Técnico em Desenvolvimento de Sistemas</strong> — ETEC -
+              03/2023 - 07/2024
+            </li>
+            <li>
+              <i class="fa-solid fa-network-wired" aria-hidden="true"></i>
+              <strong>Técnico em Redes de Computadores</strong> — SENAC -
+              02/2023 - 07/2024
+            </li>
+          </ul>
+        </div>
+
+        <div class="curriculo-section">
+          <h3>
+            <i class="fa-solid fa-globe" aria-hidden="true"></i>
+            <span class="cyber-glitch" data-text="Programas e Lideranças">
+              Programas e Lideranças
+            </span>
+          </h3>
+
+          <div class="programa-item aspire">
+            <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
+            <div class="programa-texto">
+              <strong>
+                Aspire Leaders Program — Aspire Institute (Harvard)
+              </strong>
+              <br />
+              <span class="muted">Setembro 2025 – Atual</span>
+              <br />
+              Participação em programa global de liderança, com foco em
+              <strong>autoconhecimento, impacto social</strong> e
+              desenvolvimento de
+              <strong>competências profissionais e colaborativas</strong>.
+              Conectado a uma rede internacional de líderes em ascensão.
+            </div>
+          </div>
+
+          <div class="programa-item sfl">
+            <i class="fa-solid fa-fire" aria-hidden="true"></i>
+            <div class="programa-texto">
+              <strong>
+                Students For Liberty — Programa de Liderança (SFL Brasil)
+              </strong>
+              <br />
+              <span class="muted">Setembro 2025 – Atual</span>
+              <br />
+              Desenvolvimento de projetos e eventos voltados à
+              <strong>educação, inovação e liberdade individual</strong>, com
+              ênfase em <strong>networking, liderança jovem</strong> e
+              comunicação estratégica.
+            </div>
+          </div>
+        </div>
+
+        <div class="curriculo-section" id="experiencias">
+          <h3 class="animated-title" data-reveal="zoom-in">
+            <i class="fa-solid fa-briefcase" aria-hidden="true"></i>{" "}
+            Experiências Profissionais
+          </h3>
+          <div class="timeline">
+            <div class="timeline-item" data-reveal="fade-right">
+              <div class="timeline-icon">
+                <i class="fa-solid fa-user-tie" aria-hidden="true"></i>
+              </div>
+              <div class="timeline-content">
+                <h4>Consultor de TI — Freelancer</h4>
+                <p class="muted">09/2025 – Atual</p>
+                <ul class="details">
+                  <li>Mapeamento de processos e automação operacional.</li>
+                  <li>
+                    Criação de sistemas e planilhas automatizadas para controle
+                    de vendas e contratos.
+                  </li>
+                  <li>
+                    Implantação de ferramentas digitais para gestão e
+                    comunicação.
+                  </li>
+                  <li>
+                    Desenvolvimento de rotinas automatizadas para relatórios e
+                    propostas.
+                  </li>
+                  <li>Treinamento e suporte técnico contínuo às equipes.</li>
+                </ul>
+                <button class="toggle-btn">Ver mais detalhes</button>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-reveal="fade-left">
+              <div class="timeline-icon">
+                <i class="fa-solid fa-table" aria-hidden="true"></i>
+              </div>
+              <div class="timeline-content">
+                <h4>Criação de Planilhas Automatizadas — Freelancer</h4>
+                <p class="muted">05/2025 – Temporário</p>
+                <ul class="details">
+                  <li>
+                    Dashboards e planilhas interativas com fórmulas avançadas.
+                  </li>
+                  <li>Integração de dados e automação de processos manuais.</li>
+                  <li>
+                    Suporte e treinamento para uso eficiente das ferramentas
+                    criadas.
+                  </li>
+                </ul>
+                <button class="toggle-btn">Ver mais detalhes</button>
+              </div>
+            </div>
+
+            <div class="timeline-item" data-reveal="fade-right">
+              <div class="timeline-icon">
+                <i class="fa-solid fa-helmet-safety" aria-hidden="true"></i>
+              </div>
+              <div class="timeline-content">
+                <h4>Estagiário Administrativo — Construtora Reflora</h4>
+                <p class="muted">07/2023 – 09/2023</p>
+                <ul class="details">
+                  <li>Suporte na coleta e análise de dados de projetos.</li>
+                  <li>
+                    Criação e atualização de relatórios e planilhas de
+                    desempenho.
+                  </li>
+                  <li>Gestão de dados e manutenção de sistemas internos.</li>
+                </ul>
+                <button class="toggle-btn">Ver mais detalhes</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="download-cv">
+            <a
+              href="/Lucas Santos - Currículo.pdf"
+              download="Lucas Santos - Currículo.pdf"
+              class="btn download"
+            >
+              <i class="fa-solid fa-download" aria-hidden="true"></i> Baixar
+              Currículo
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="curriculo-right">
+        <div class="card">
+          <h4>
+            <i class="fa-solid fa-bullseye" aria-hidden="true"></i>
+            <span class="cyber-glitch" data-text="Objetivo Profissional">
+              Objetivo Profissional
+            </span>
+          </h4>
+          <p>
+            Atuar como <strong>Desenvolvedor Full Stack</strong>, aplicando meus
+            conhecimentos em front-end e back-end para criar soluções
+            eficientes, seguras e de alto desempenho. Busco colaborar em
+            projetos que unam
+            <strong>tecnologia, inovação e impacto real</strong>, enquanto
+            evoluo continuamente e contribuo para o crescimento da equipe e da
+            empresa.
+          </p>
+        </div>
+
+        <div class="card">
+          <h4>
+            <i class="fa-solid fa-gears" aria-hidden="true"></i>
+            <span class="cyber-glitch" data-text="Skills — Técnicas">
+              Skills — Técnicas
+            </span>
+          </h4>
+
+          {skillCategories.map((cat) => (
+            <div class="skill-category">
+              <h5>
+                <i class={cat.icon} aria-hidden="true" /> {cat.title}
+              </h5>
+              <SkillBadges badges={cat.badges} />
+            </div>
+          ))}
+        </div>
+
+        <div class="card">
+          <h4>
+            <i class="fa-solid fa-language" aria-hidden="true"></i>
+            <span class="cyber-glitch" data-text="Idiomas">
+              Idiomas
+            </span>
+          </h4>
+          <div class="languages">
+            <div class="language-item">
+              <div class="lang-info">
+                <i class="fa-solid fa-flag-usa" aria-hidden="true"></i>
+                <span>
+                  <strong>Inglês</strong>
+                </span>
+              </div>
+              <div class="lang-progress">
+                <div class="progress-bar" style="--level: 90%"></div>
+              </div>
+              <p class="lang-level">Avançado</p>
+            </div>
+
+            <div class="language-item">
+              <div class="lang-info">
+                <i class="fa-solid fa-flag" aria-hidden="true"></i>
+                <span>
+                  <strong>Espanhol</strong>
+                </span>
+              </div>
+              <div class="lang-progress">
+                <div class="progress-bar" style="--level: 60%"></div>
+              </div>
+              <p class="lang-level">Intermediário</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4>
+            <i class="fa-solid fa-user-group" aria-hidden="true"></i>
+            <span class="cyber-glitch" data-text="Soft Skills">
+              Soft Skills
+            </span>
+          </h4>
+          <ul class="list softskills">
+            <li>Comunicação clara, empática e assertiva</li>
+            <li>Colaboração efetiva em equipe multidisciplinar</li>
+            <li>Capacidade analítica e resolução proativa de problemas</li>
+            <li>Aprendizado contínuo e adaptação a novas tecnologias</li>
+            <li>Organização, foco em resultados e responsabilidade</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h4>
+            <i class="fa-solid fa-star" aria-hidden="true"></i>
+            <span class="cyber-glitch" data-text="Curiosidades e Metas">
+              Curiosidades e Metas
+            </span>
+          </h4>
+          <ul class="list curiosidades">
+            <li>
+              <i
+                class="fa-solid fa-magnifying-glass-chart"
+                aria-hidden="true"
+              ></i>{" "}
+              Sempre explorando novas tecnologias e aprimorando minhas
+              habilidades em
+              <strong>redes e desenvolvimento</strong>.
+            </li>
+            <li>
+              <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>{" "}
+              Atualmente me aprofundando em
+              <strong>Desenvolvimento Multiplataforma</strong> e
+              <strong>Cloud Computing</strong>.
+            </li>
+            <li>
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Fato curioso:
+              tenho fascínio em entender <strong>como tudo se conecta</strong> —
+              do back-end ao roteador.
+            </li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <Projects />
+
+    <section class="container swot-section" id="swot" data-reveal="fade-up">
+      <h3 class="titulo-swot">
+        <i class="fa-solid fa-magnifying-glass-chart" aria-hidden="true"></i>
+        <span
+          class="cyber-glitch"
+          data-text="Autoanálise
+            Profissional (SWOT)"
+        >
+          Autoanálise Profissional (SWOT)
+        </span>
+      </h3>
+      <div class="swot-wrapper">
+        <div class="swot-track">
+          <div class="swot-card strengths glow-card">
+            <h4>
+              <i class="fa-solid fa-dumbbell" aria-hidden="true"></i> Forças
+            </h4>
+            <ul>
+              <li>Visão Full Stack, integrando frontend, backend e APIs</li>
+              <li>Experiência com integração entre software e hardware</li>
+              <li>
+                Facilidade para aprender novas tecnologias e resolver problemas
+              </li>
+              <li>Capacidade de trabalhar em equipe e colaborar em projetos</li>
+            </ul>
+          </div>
+          <div class="swot-card weaknesses glow-card">
+            <h4>
+              <i
+                class="fa-solid fa-triangle-exclamation"
+                aria-hidden="true"
+              ></i>{" "}
+              Fraquezas
+            </h4>
+            <ul>
+              <li>Experiência profissional formal ainda em desenvolvimento</li>
+              <li>
+                Necessidade de aprofundar conhecimentos em arquitetura e
+                escalabilidade
+              </li>
+              <li>
+                Busca por maior experiência prática em projetos de produção
+              </li>
+            </ul>
+          </div>
+          <div class="swot-card opportunities glow-card">
+            <h4>
+              <i class="fa-solid fa-rocket" aria-hidden="true"></i>{" "}
+              Oportunidades
+            </h4>
+            <ul>
+              <li>Aprofundamento em Cloud, DevOps e infraestrutura</li>
+              <li>
+                Expansão para desenvolvimento mobile e aplicações
+                multiplataforma
+              </li>
+              <li>
+                Aplicação de IA e automação no desenvolvimento de software
+              </li>
+              <li>
+                Construção de projetos reais para ampliar experiência
+                profissional
+              </li>
+            </ul>
+          </div>
+          <div class="swot-card threats glow-card">
+            <h4>
+              <i class="fa-solid fa-bolt" aria-hidden="true"></i> Ameaças
+            </h4>
+            <ul>
+              <li>
+                Evolução acelerada das tecnologias e ferramentas de
+                desenvolvimento
+              </li>
+              <li>Mercado cada vez mais competitivo e exigente</li>
+              <li>Automação e IA aumentando a exigência por especialização</li>
+              <li>Necessidade constante de atualização técnica</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="swot-chart-container" id="swotChartContainer">
+        <div class="swot-chart-header">
+          <div>
+            <span class="swot-chart-label">PERFIL TÉCNICO</span>
+            <h4>Radar de Competências</h4>
+          </div>
+
+          <span class="swot-chart-scale">
+            <i class="fa-solid fa-chart-pie" aria-hidden="true"></i>
+            Autoavaliação · 0–10
+          </span>
+        </div>
+
+        <div class="swot-radar-wrapper">
+          <canvas id="swotChart"></canvas>
+        </div>
+
+        <div class="swot-chart-footer">
+          <i class="fa-solid fa-circle-info" aria-hidden="true"></i>
+          Avaliação pessoal baseada em experiência prática, projetos
+          desenvolvidos e conhecimentos atuais.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <GithubModal />
+  <AchievementsDrawer />
+  <TerminalOverlay />
+  <Footer topHref="#top" />
+</Base>

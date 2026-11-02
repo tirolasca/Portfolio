@@ -1,0 +1,38 @@
+/* Toast de saudação */
+.greeting-toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translateX(-50%) translateY(-20px);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 50, 60, 0.95),
+    rgba(0, 30, 40, 0.95)
+  );
+  border: 1px solid rgba(var(--accent-1-dark-rgb), 0.3);
+  border-radius: 30px;
+  padding: 10px 24px;
+  color: var(--accent-1);
+  font-size: 0.95rem;
+  font-weight: 600;
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(var(--accent-1-dark-rgb), 0.15);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+.greeting-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+.greeting-toast i {
+  color: var(--accent-1);
+}

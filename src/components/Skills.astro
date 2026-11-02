@@ -1,0 +1,25 @@
+---
+import { skillCategories } from "../data/skills";
+import SkillBadges from "./SkillBadges.astro";
+---
+
+<section class="skills" id="titulo">
+  <div class="container">
+    <h3>
+      <i class="fa-solid fa-gears" aria-hidden="true"></i>
+      <span class="cyber-glitch" data-text="Habilidades Rápidas">
+        Habilidades Rápidas
+      </span>
+    </h3>
+    <div class="skills-grid">
+      {skillCategories.map((cat) => (
+        <div class="skill-card glow-card">
+          <h4>
+            <i class={cat.icon} aria-hidden="true" /> {cat.title}
+          </h4>
+          <SkillBadges badges={cat.badges} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

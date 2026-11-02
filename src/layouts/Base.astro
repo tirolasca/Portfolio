@@ -1,0 +1,173 @@
+---
+import "../styles/index.css";
+import "../styles/vendor/inter.css";
+import "../styles/vendor/fontawesome-subset.css";
+import interFont from "../assets/fonts/inter-latin-wght-normal.woff2?url";
+import solidFont from "../assets/fonts/fa-solid-subset.woff2?url";
+import "swiper/css";
+import "swiper/css/navigation";
+import { SITE } from "../data/site";
+
+interface Props {
+  title: string;
+  description: string;
+  /** padrão: title / description */
+  ogTitle?: string;
+  ogDescription?: string;
+  /** caminho absoluto no site (padrão: /og-image.jpg, 1200×630) */
+  ogImage?: string;
+  ogImageAlt?: string;
+  bodyClass?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  ogTitle = title,
+  ogDescription = description,
+  ogImage = "/og-image.jpg",
+  ogImageAlt = `${SITE.name} — ${SITE.role}`,
+  bodyClass,
+  noindex = false,
+} = Astro.props;
+
+// URL canônica: sempre absoluta; "/index.html" vira "/"
+const path = Astro.url.pathname.replace(/index\.html$/, "");
+const canonical = new URL(path, SITE.url).href;
+const image = new URL(ogImage, SITE.url).href;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE.url}/#website`,
+      url: `${SITE.url}/`,
+      name: `${SITE.name} — Portfólio`,
+      inLanguage: "pt-BR",
+      publisher: { "@id": `${SITE.url}/#person` },
+    },
+    {
+      "@type": "Person",
+      "@id": `${SITE.url}/#person`,
+      name: SITE.name,
+      jobTitle: SITE.role,
+      url: `${SITE.url}/`,
+      image,
+      sameAs: [SITE.github, SITE.linkedin],
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description,
+      inLanguage: "pt-BR",
+      isPartOf: { "@id": `${SITE.url}/#website` },
+      about: { "@id": `${SITE.url}/#person` },
+      primaryImageOfPage: { "@type": "ImageObject", url: image },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={SITE.name} />
+    <meta
+      name="robots"
+      content={
+        noindex ? "noindex,nofollow" : "index,follow,max-image-preview:large"
+      }
+    />
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={`${SITE.name} — Portfólio`} />
+    <meta property="og:locale" content={SITE.locale} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+    <meta
+      name="theme-color"
+      content="#004550"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#000000"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta name="view-transition" content="same-origin" />
+
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <link
+      rel="preload"
+      href={solidFont}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={interFont}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Aplica o tema salvo antes da pintura (evita flash do tema claro) -->
+    <script is:inline define:vars={{ boot: bodyClass === "booting" }}>
+      try {
+        let dark = localStorage.getItem("theme") === "dark";
+        // a abertura (preloader) sempre começa no tema escuro
+        if (boot && !sessionStorage.getItem("hasBooted")) dark = true;
+        if (dark) document.documentElement.classList.add("dark");
+      } catch {
+        /* localStorage bloqueado: segue com o tema padrão */
+      }
+    </script>
+  </head>
+
+  <body class={bodyClass}>
+    <a class="skip-link" href="#conteudo">
+      Pular para o conteúdo
+    </a>
+    <slot name="preloader" />
+
+    <div id="reading-progress"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <slot />
+
+    <script>
+      import "../scripts/main";
+    </script>
+  </body>
+</html>

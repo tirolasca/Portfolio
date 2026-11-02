@@ -1,0 +1,211 @@
+/* Seção Skills (inclui regras de card compartilhadas) */
+.skills h3,
+.projects h3,
+.contact h3 {
+  position: relative;
+}
+.skills h3::after,
+.projects h3::after,
+.contact h3::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent-neon), var(--accent-blue));
+  box-shadow:
+    0 0 10px rgba(var(--accent-neon-rgb), 0.6),
+    0 0 20px rgba(var(--accent-blue-rgb), 0.4);
+  transition: width 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.skills h3.section-title-visible::after,
+.projects h3.section-title-visible::after,
+.contact h3.section-title-visible::after {
+  width: 140px;
+}
+
+.card,
+.skill-card,
+.project-card,
+.swot-card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--trans-slow),
+    transform var(--trans-slow),
+    box-shadow 0.3s ease;
+}
+.card.visible,
+.skill-card.visible,
+.project-card.visible,
+.swot-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.skills {
+  padding: 40px 0;
+}
+
+.skills h3 {
+  text-align: center;
+  font-size: 1.6rem;
+  color: var(--text-title);
+  margin-bottom: 20px;
+}
+
+.skills .skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.skill-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-radius: var(--radius-md);
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--glass-shadow);
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    border 0.25s ease,
+    background 0.25s ease;
+}
+.skills .skill-card {
+  height: 100%;
+  padding: 18px 16px;
+  justify-content: center;
+}
+.skill-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(var(--shadow-teal-rgb), 0.12);
+  border-color: var(--accent-1);
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  padding: 1.5px;
+  background: linear-gradient(135deg, #00bfae, #00ffd5, #00bfae);
+  background-size: 300% 300%;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderFlow 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 1;
+}
+.skill-card:hover::before {
+  opacity: 1;
+}
+
+.skill-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #004b45;
+  margin-bottom: 12px;
+  z-index: 2;
+}
+
+.skill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  z-index: 2;
+}
+.skill-badges img {
+  height: 28px;
+  border-radius: var(--radius-sm);
+  transition:
+    transform 0.25s ease,
+    filter 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.skill-badges img:hover {
+  transform: translateY(-4px) scale(1.08) rotate(-2deg);
+  filter: brightness(1.2)
+    drop-shadow(0 4px 8px rgba(var(--accent-1-light-rgb), 0.5));
+  box-shadow: 0 6px 16px rgba(var(--shadow-teal-rgb), 0.3);
+}
+
+.skill-category {
+  margin-bottom: 16px;
+}
+.skill-category h5 {
+  font-size: 0.95rem;
+  color: #004b45;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.curriculo-right .skill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.curriculo-right .skill-badges img {
+  height: 28px;
+  border-radius: var(--radius-sm);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.curriculo-right .skill-badges img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 6px rgba(0, 191, 255, 0.4);
+}
+
+.skill-card,
+.skill-category {
+  position: relative;
+}
+.skills-constellation {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.card,
+.project-card,
+.swot-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  transition:
+    transform var(--trans-normal),
+    box-shadow var(--trans-normal),
+    background var(--trans-fast);
+}
+
+.card:hover,
+.project-card:hover,
+.swot-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-md);
+}

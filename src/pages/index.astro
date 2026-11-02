@@ -1,0 +1,40 @@
+---
+import Base from "../layouts/Base.astro";
+import Preloader from "../components/Preloader.astro";
+import Header from "../components/Header.astro";
+import AchievementsDrawer from "../components/AchievementsDrawer.astro";
+import TerminalOverlay from "../components/TerminalOverlay.astro";
+import Tour from "../components/Tour.astro";
+import Hero from "../components/Hero.astro";
+import Skills from "../components/Skills.astro";
+import Projects from "../components/Projects.astro";
+import Swot from "../components/Swot.astro";
+import Contact from "../components/Contact.astro";
+import GithubModal from "../components/GithubModal.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Base
+  title="Lucas Santos — Portfólio"
+  description="Portfólio de Lucas Santos, Desenvolvedor de Software especializado em Desenvolvimento de Sistemas. Projetos, habilidades e experiência prática."
+  ogTitle="Lucas Santos — Portfólio"
+  ogDescription="Conheça o portfólio de Lucas Santos: projetos, habilidades e experiência em Desenvolvimento de Sistemas."
+  bodyClass="booting"
+>
+  <Preloader slot="preloader" />
+  <Header />
+  <AchievementsDrawer />
+  <TerminalOverlay />
+  <Tour variant="home" />
+
+  <main id="conteudo" tabindex="-1">
+    <Hero />
+    <Skills />
+    <Projects />
+    <Swot />
+    <Contact />
+  </main>
+
+  <GithubModal />
+  <Footer topHref="#home" />
+</Base>

@@ -1,0 +1,69 @@
+<div id="github-modal" class="modal-overlay">
+  <div
+    class="modal-content glow-card"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Atividade no GitHub"
+  >
+    <button class="close-modal" id="close-gh-modal" aria-label="Fechar">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+    <div class="gh-header">
+      <img
+        id="gh-avatar"
+        src="/img/Logo.png"
+        alt="GitHub Avatar"
+        class="gh-avatar"
+        width="65"
+        height="65"
+      />
+      <div class="gh-avatar-skeleton" aria-hidden="true"></div>
+      <div class="gh-info">
+        <h4>
+          <i class="fa-brands fa-github" aria-hidden="true"></i> @tirolasca
+        </h4>
+        <p class="muted" id="gh-bio">
+          Conectando ao servidor...
+        </p>
+        <div class="gh-extra-info">
+          <span id="gh-location-container" style="display: none">
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span id="gh-location"></span>
+          </span>
+          <span id="gh-joined-container" style="display: none">
+            <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+            <span id="gh-joined"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="gh-stats">
+      <div class="gh-stat-box">
+        <span class="gh-stat-value" id="gh-repos">
+          -
+        </span>
+        <span class="gh-stat-label">Repos</span>
+      </div>
+      <div class="gh-stat-box">
+        <span class="gh-stat-value" id="gh-followers">
+          -
+        </span>
+        <span class="gh-stat-label">Seguidores</span>
+      </div>
+      <div class="gh-stat-box">
+        <span class="gh-stat-value" id="gh-following">
+          -
+        </span>
+        <span class="gh-stat-label">Seguindo</span>
+      </div>
+    </div>
+    <a
+      href="https://github.com/tirolasca"
+      target="_blank"
+      class="btn primary gh-btn"
+    >
+      Acessar Perfil Completo{" "}
+      <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>

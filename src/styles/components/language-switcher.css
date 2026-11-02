@@ -1,0 +1,525 @@
+/* Seletor de idioma (GTranslate, visual "Dropdown")
+   O widget injeta  <div class="gtranslate_wrapper"><select class="gt_selector notranslate">…</select></div>.
+   O <select> é estilizado NO LUGAR (não troque por outra lib de dropdown: quebra a tradução).
+   O cabeçalho é azul-petróleo escuro nos dois temas, então o controle segue o botão de tema:
+   fundo neon translúcido, borda neon e brilho no hover. */
+
+/* ---------- contêiner (reserva espaço e mostra um esqueleto enquanto carrega) ---------- */
+.header-actions .gtranslate_wrapper {
+  --lang-h: 42px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-width: 156px;
+  height: var(--lang-h);
+  border-radius: 999px;
+  isolation: isolate;
+}
+.header-actions .gtranslate_wrapper.gtranslate-failed {
+  display: none;
+}
+
+/* esqueleto: só enquanto o wrapper está vazio (o widget ainda não carregou) */
+.header-actions .gtranslate_wrapper:empty {
+  border: 1px solid rgba(var(--accent-neon-rgb), 0.18);
+  background: linear-gradient(
+      100deg,
+      rgba(var(--accent-neon-rgb), 0.05) 30%,
+      rgba(var(--accent-neon-rgb), 0.2) 50%,
+      rgba(var(--accent-neon-rgb), 0.05) 70%
+    )
+    0 0 / 220% 100%;
+  animation: langSkeleton 1.4s linear infinite;
+}
+
+/* ---------- ícones (globo à esquerda, seta à direita) ---------- */
+.header-actions .gtranslate_wrapper::before,
+.header-actions .gtranslate_wrapper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  pointer-events: none;
+  z-index: 1;
+  color: var(--accent-neon);
+  transition:
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    color 0.3s ease,
+    opacity 0.3s ease;
+}
+.header-actions .gtranslate_wrapper::before {
+  left: 15px;
+  width: 17px;
+  height: 17px;
+  margin-top: -8.5px;
+  background: currentColor;
+  -webkit-mask: var(--lang-globe) center / contain no-repeat;
+  mask: var(--lang-globe) center / contain no-repeat;
+  --lang-globe: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'/%3E%3C/svg%3E");
+}
+.header-actions .gtranslate_wrapper::after {
+  right: 17px;
+  width: 7px;
+  height: 7px;
+  margin-top: -5px;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+.header-actions .gtranslate_wrapper:has(.gt_selector)::after {
+  opacity: 1;
+}
+
+/* Ícones só nos estados conhecidos (vazio/carregando e <select> do GTranslate): se o widget
+   passar a renderizar outra marcação, nada é sobreposto a ela. */
+.header-actions .gtranslate_wrapper::before,
+.header-actions .gtranslate_wrapper::after {
+  display: none;
+}
+.header-actions .gtranslate_wrapper:empty::before,
+.header-actions .gtranslate_wrapper:has(.gt_selector)::before,
+.header-actions .gtranslate_wrapper:has(.gt_selector)::after {
+  display: block;
+}
+
+/* ---------- o <select> ---------- */
+.header-actions .gtranslate_wrapper select.gt_selector {
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  width: 100%;
+  height: var(--lang-h);
+  margin: 0;
+  padding: 0 0.1px 0 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--accent-neon-rgb), 0.4);
+  background-color: rgba(var(--accent-neon-rgb), 0.14);
+  color: var(--accent-neon);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+  color-scheme: dark; /* lista nativa de opções escura (o cabeçalho é escuro nos 2 temas) */
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  animation: langIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+/* hover: sobe, acende e o globo gira (mesma linguagem do botão de tema) */
+.header-actions .gtranslate_wrapper:hover select.gt_selector {
+  transform: translateY(-2px);
+  background-color: rgba(var(--accent-neon-rgb), 0.26);
+  border-color: rgba(var(--accent-neon-rgb), 0.7);
+  box-shadow: 0 0 16px rgba(var(--accent-neon-rgb), 0.4);
+}
+.header-actions .gtranslate_wrapper:hover::before {
+  transform: rotate(25deg) scale(1.12);
+}
+.header-actions .gtranslate_wrapper:active select.gt_selector {
+  transform: translateY(0) scale(0.97);
+}
+
+/* foco (teclado) e lista aberta: seta vira para cima */
+.header-actions .gtranslate_wrapper select.gt_selector:focus-visible {
+  outline: 2px solid var(--accent-neon);
+  outline-offset: 3px;
+}
+.header-actions .gtranslate_wrapper:focus-within::after {
+  transform: translateY(4px) rotate(225deg);
+}
+.header-actions .gtranslate_wrapper:focus-within select.gt_selector {
+  border-color: rgba(var(--accent-neon-rgb), 0.8);
+  box-shadow: 0 0 0 3px rgba(var(--accent-neon-rgb), 0.18);
+}
+
+/* lista de opções (nativa; o navegador só deixa mudar cores) */
+.header-actions .gtranslate_wrapper select.gt_selector option {
+  background: #04262b;
+  color: #e8ffff;
+  font-size: 1rem;
+}
+.header-actions .gtranslate_wrapper select.gt_selector option:checked {
+  background: #006b60;
+  color: #fff;
+}
+
+/* ---------- tema claro: um pouco mais de corpo sobre o vidro petróleo ---------- */
+.header-actions .gtranslate_wrapper select.gt_selector {
+  background-color: rgba(var(--accent-neon-rgb), 0.16);
+  border-color: rgba(var(--accent-neon-rgb), 0.45);
+}
+
+/* ---------- tema escuro: mais discreto em repouso, brilho maior no hover ---------- */
+.dark .header-actions .gtranslate_wrapper select.gt_selector {
+  background-color: rgba(var(--accent-neon-rgb), 0.08);
+  border-color: rgba(var(--accent-neon-rgb), 0.35);
+}
+.dark .header-actions .gtranslate_wrapper:hover select.gt_selector {
+  background-color: rgba(var(--accent-neon-rgb), 0.18);
+  border-color: rgba(var(--accent-neon-rgb), 0.75);
+  box-shadow:
+    0 0 20px rgba(var(--accent-neon-rgb), 0.45),
+    0 0 44px rgba(var(--accent-neon-rgb), 0.18);
+}
+.dark .header-actions .gtranslate_wrapper select.gt_selector option {
+  background: #001c20;
+}
+
+/* ---------- responsivo ---------- */
+@media (max-width: 768px) {
+  .header-actions .gtranslate_wrapper {
+    min-width: 148px;
+  }
+  /* 16px evita o zoom automático do iOS ao focar o select */
+  .header-actions .gtranslate_wrapper select.gt_selector {
+    font-size: 1rem;
+  }
+}
+/* celulares estreitos: só o globo, redondo como os outros botões do cabeçalho */
+@media (max-width: 480px) {
+  .header-actions .gtranslate_wrapper {
+    min-width: var(--lang-h);
+    width: var(--lang-h);
+  }
+  .header-actions .gtranslate_wrapper select.gt_selector {
+    padding: 0;
+    color: transparent;
+    text-shadow: none;
+  }
+  .header-actions .gtranslate_wrapper::before {
+    left: 50%;
+    margin-left: -8.5px;
+  }
+  .header-actions .gtranslate_wrapper::after {
+    display: none;
+  }
+}
+
+/* ---------- animações ---------- */
+@keyframes langIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.92);
+  }
+}
+@keyframes langSkeleton {
+  to {
+    background-position: -220% 0;
+  }
+}
+
+/* ---------- resíduos do motor de tradução (Google) usado pelo GTranslate ---------- */
+iframe.skiptranslate,
+.goog-te-banner-frame,
+#goog-gt-tt,
+.goog-te-balloon-frame,
+.goog-tooltip {
+  display: none !important;
+}
+body {
+  top: 0 !important; /* o motor empurra o body 40px para abrir a barra dele */
+}
+.goog-text-highlight {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* =====================================================================================
+   Dropdown PERSONALIZADO (.lang-switcher) — montado por features/language-switcher.ts
+   O <select> do GTranslate fica só como motor (invisível). Tudo acima vale como fallback.
+   ===================================================================================== */
+.header-actions .gtranslate_wrapper:has(.lang-switcher) select.gt_selector {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+}
+.header-actions .gtranslate_wrapper:has(.lang-switcher)::before,
+.header-actions .gtranslate_wrapper:has(.lang-switcher)::after {
+  display: none;
+}
+
+.lang-switcher {
+  position: relative;
+  width: 100%;
+  height: var(--lang-h, 42px);
+}
+
+/* ---------- botão ---------- */
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--accent-neon-rgb), 0.45);
+  /* tema claro: base petróleo escura por baixo do neon → texto com contraste AA */
+  background: rgba(0, 48, 54, 0.55);
+  color: var(--accent-neon);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  animation: langIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+.lang-btn-globe {
+  display: inline-flex;
+  width: 17px;
+  height: 17px;
+  flex: none;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.lang-btn svg,
+.lang-check svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.lang-btn-label {
+  flex: 1;
+  text-align: left;
+  white-space: nowrap;
+  /* tema claro: texto quase branco (o neon sobre o vidro petróleo claro dá só ~3,7:1) */
+  color: #e8fffc;
+}
+.dark .lang-btn-label {
+  color: var(--accent-neon);
+}
+.lang-btn-chevron {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  margin-right: 3px;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.lang-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 62, 68, 0.72);
+  border-color: rgba(var(--accent-neon-rgb), 0.7);
+  box-shadow: 0 0 16px rgba(var(--accent-neon-rgb), 0.4);
+}
+.lang-btn:hover .lang-btn-globe {
+  transform: rotate(25deg) scale(1.12);
+}
+.lang-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+.lang-btn:focus-visible {
+  outline: 2px solid var(--accent-neon);
+  outline-offset: 3px;
+}
+.lang-switcher.is-open .lang-btn {
+  border-color: rgba(var(--accent-neon-rgb), 0.85);
+  box-shadow: 0 0 0 3px rgba(var(--accent-neon-rgb), 0.18);
+}
+.lang-switcher.is-open .lang-btn-chevron {
+  transform: translateY(2px) rotate(225deg);
+}
+
+/* ---------- menu ---------- */
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  z-index: 60;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border-radius: 18px;
+  border: 1px solid rgba(0, 117, 106, 0.22);
+  background: rgba(255, 255, 255, 0.95);
+  color: #073b3a;
+  box-shadow:
+    0 18px 44px rgba(0, 40, 45, 0.28),
+    0 2px 6px rgba(0, 40, 45, 0.12);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  user-select: none;
+  outline: none;
+  transform-origin: top right;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.94);
+  transition:
+    opacity 0.22s ease,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    visibility 0s linear 0.3s;
+}
+.lang-switcher.is-open .lang-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+.lang-menu:focus-visible {
+  box-shadow:
+    0 18px 44px rgba(0, 40, 45, 0.28),
+    0 0 0 2px rgba(0, 117, 106, 0.55);
+}
+
+.lang-option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 46px;
+  padding: 0 12px;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateX(10px);
+  transition:
+    background-color 0.2s ease,
+    opacity 0.25s ease,
+    transform 0.3s ease;
+}
+/* entrada escalonada dos itens ao abrir */
+.lang-switcher.is-open .lang-option {
+  opacity: 1;
+  transform: none;
+  transition-delay:
+    0s, calc(var(--i, 0) * 45ms + 70ms), calc(var(--i, 0) * 45ms + 70ms);
+}
+.lang-option.is-active {
+  background: rgba(0, 150, 136, 0.12);
+}
+.lang-code {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 26px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 117, 106, 0.28);
+  background: rgba(0, 117, 106, 0.1);
+  color: #00756a;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+.lang-name {
+  flex: 1;
+}
+.lang-check {
+  width: 18px;
+  height: 18px;
+  color: #00756a;
+}
+.lang-check path {
+  stroke-width: 2.6;
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  transition: stroke-dashoffset 0.35s ease 0.1s;
+}
+.lang-option[aria-selected="true"] .lang-check path {
+  stroke-dashoffset: 0;
+}
+.lang-option[aria-selected="true"] .lang-code {
+  background: #00756a;
+  border-color: #00756a;
+  color: #fff;
+}
+
+/* ---------- tema escuro ---------- */
+.dark .lang-btn {
+  background: rgba(var(--accent-neon-rgb), 0.08);
+  border-color: rgba(var(--accent-neon-rgb), 0.35);
+}
+.dark .lang-btn:hover {
+  background: rgba(var(--accent-neon-rgb), 0.18);
+  border-color: rgba(var(--accent-neon-rgb), 0.75);
+  box-shadow:
+    0 0 20px rgba(var(--accent-neon-rgb), 0.45),
+    0 0 44px rgba(var(--accent-neon-rgb), 0.18);
+}
+.dark .lang-menu {
+  background: rgba(2, 22, 26, 0.94);
+  border-color: rgba(var(--accent-neon-rgb), 0.3);
+  color: #e8ffff;
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.6),
+    0 0 32px rgba(var(--accent-neon-rgb), 0.12);
+}
+.dark .lang-menu:focus-visible {
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.6),
+    0 0 0 2px rgba(var(--accent-neon-rgb), 0.6);
+}
+.dark .lang-option.is-active {
+  background: rgba(var(--accent-neon-rgb), 0.1);
+}
+.dark .lang-code {
+  background: rgba(var(--accent-neon-rgb), 0.08);
+  border-color: rgba(var(--accent-neon-rgb), 0.3);
+  color: var(--accent-neon);
+}
+.dark .lang-check {
+  color: var(--accent-neon);
+}
+.dark .lang-option[aria-selected="true"] .lang-code {
+  background: var(--accent-neon);
+  border-color: var(--accent-neon);
+  color: #00201c;
+}
+
+/* ---------- responsivo ---------- */
+@media (max-width: 768px) {
+  /* o menu abre centralizado sob o botão (a linha de botões é centralizada) */
+  .lang-menu {
+    right: auto;
+    left: 50%;
+    translate: -50% 0;
+    transform-origin: top center;
+  }
+}
+@media (max-width: 480px) {
+  .lang-btn {
+    justify-content: center;
+    padding: 0;
+  }
+  .lang-btn-label,
+  .lang-btn-chevron {
+    display: none;
+  }
+  .lang-menu {
+    min-width: 200px;
+  }
+}

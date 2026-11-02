@@ -1,0 +1,65 @@
+---
+import { Picture } from "astro:assets";
+import { projects } from "../data/projects";
+---
+
+<section class="projects" id="projetos">
+  <div class="container">
+    <h3>
+      <i class="fa-solid fa-folder-open" aria-hidden="true"></i>
+      <span class="cyber-glitch" data-text="Projetos">
+        Projetos
+      </span>
+    </h3>
+
+    <div class="swiper projects-swiper">
+      <div class="swiper-wrapper">
+        {projects.map((p) => (
+          <div class="swiper-slide">
+            <div class="project-card glow-card" data-tech={p.tech.join(",")}>
+              <Picture
+                src={p.image}
+                alt={p.imageAlt}
+                widths={[400, 800]}
+                sizes="(max-width: 768px) 92vw, 540px"
+                formats={["avif"]}
+                fallbackFormat="webp"
+                quality={72}
+                loading="lazy"
+                decoding="async"
+              />
+
+              <div class="project-info">
+                <h4>
+                  <i class={p.icon} aria-hidden="true" /> {p.title}
+                </h4>
+
+                <p class="muted">
+                  <i class={p.subtitleIcon} aria-hidden="true" /> {p.subtitle}
+                </p>
+
+                <p>
+                  <i class={p.descriptionIcon} aria-hidden="true" />
+                  <Fragment set:html={" " + p.description} />
+                </p>
+
+                <div class="project-links">
+                  <a href={p.demo} target="_blank" class="btn small primary">
+                    <i class={p.demoIcon} aria-hidden="true" /> Ver Projeto
+                  </a>
+
+                  <a href={p.repo} target="_blank" class="btn small outline">
+                    <i class={p.repoIcon} aria-hidden="true" /> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="swiper-button-prev projects-prev"></div>
+      <div class="swiper-button-next projects-next"></div>
+    </div>
+  </div>
+</section>

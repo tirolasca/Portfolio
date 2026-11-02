@@ -1,0 +1,22 @@
+/* Container e títulos */
+.container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+h2,
+h3,
+h4 {
+  color: var(--text-title);
+  margin-bottom: 12px;
+}
+h2 {
+  font-size: 1.8rem;
+}
+h3 {
+  font-size: 1.8rem;
+  margin: 22px;
+}
+h4 {
+  font-size: 1.1rem;
+}

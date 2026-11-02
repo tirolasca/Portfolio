@@ -1,0 +1,112 @@
+/* Cabeçalho, marca e navegação */
+.site-header {
+  position: relative;
+  top: 0;
+  z-index: 1000;
+  background: rgba(0, 69, 80, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f8fafc;
+  padding: 15px 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  max-width: 1200px;
+}
+.main-nav {
+  margin-left: 28px;
+}
+.header-actions .theme-toggle {
+  margin-left: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 290px;
+  gap: 15px;
+  transition: transform 0.3s ease;
+}
+.brand:hover {
+  transform: translateY(-2px);
+}
+
+.brand .logo-header {
+  width: 65px;
+  height: auto;
+  filter: drop-shadow(0 0 8px rgba(var(--accent-1-dark-rgb), 0.4));
+  transition: transform 0.3s ease;
+}
+.brand:hover .logo-header {
+  transform: scale(1.05) rotate(-5deg);
+}
+
+.brand-text {
+  flex-shrink: 1;
+}
+.brand-text h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.brand-text .job {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: linear-gradient(
+    90deg,
+    var(--accent-neon) 0%,
+    var(--accent-blue) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: neon-pulse-job 2.5s infinite alternate ease-in-out;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  align-items: center;
+}
+.main-nav a {
+  color: #dff6f3;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 8px 4px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-neon);
+  box-shadow: 0 0 8px rgba(var(--accent-neon-rgb), 0.6);
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 2px;
+}
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--accent-neon);
+  background: transparent;
+}
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+}

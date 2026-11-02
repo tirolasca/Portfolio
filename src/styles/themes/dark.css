@@ -1,0 +1,715 @@
+/* Overrides do tema escuro */
+.dark .toggle-btn {
+  background: transparent;
+  color: var(--accent-1);
+  border: 1px solid var(--accent-1);
+}
+.dark .toggle-btn:hover {
+  background: rgba(var(--accent-1-dark-rgb), 0.08);
+  box-shadow: 0 0 15px rgba(var(--accent-1-dark-rgb), 0.35);
+}
+
+.dark .glow-card {
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(var(--accent-1-dark-rgb), 0.15) 0%,
+    transparent 80%
+  );
+  overflow: hidden;
+  border: 1px solid rgba(var(--accent-1-dark-rgb), 0.4);
+  box-shadow: 0 0 18px rgba(var(--accent-1-dark-rgb), 0.25);
+}
+.dark .glow-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 22px rgba(var(--accent-1-dark-rgb), 0.15);
+  opacity: 0.65;
+  pointer-events: none;
+  transition: var(--trans-fast);
+}
+.dark .glow-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow:
+    0 0 30px rgba(var(--accent-1-dark-rgb), 0.6),
+    0 0 60px rgba(var(--accent-1-dark-rgb), 0.35);
+}
+.dark .glow-card:hover::before {
+  filter: blur(18px);
+  opacity: 0.9;
+}
+
+.dark body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(var(--accent-1-dark-rgb), 0.012) 2px,
+    rgba(var(--accent-1-dark-rgb), 0.012) 4px
+  );
+  pointer-events: none;
+  z-index: 9990;
+  animation: scanMove 8s linear infinite;
+}
+
+html.dark.show-scrollbar::-webkit-scrollbar-track {
+  background: #000;
+}
+html.dark.show-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  box-shadow: 0 0 10px rgba(var(--accent-1-dark-rgb), 0.45);
+}
+html.dark.show-scrollbar {
+  scrollbar-color: var(--accent-1) #000;
+}
+.dark .side-nav-mobile-bar {
+  background: var(--glass-dark-bg);
+  border-color: rgba(var(--accent-1-dark-rgb), 0.2);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    0 0 14px rgba(var(--accent-1-dark-rgb), 0.08);
+}
+.dark .email-form input,
+.dark .email-form textarea {
+  background: rgba(var(--accent-1-dark-rgb), 0.06);
+  border-color: rgba(var(--accent-1-dark-rgb), 0.2);
+  color: var(--text-main);
+}
+.dark .email-form input:focus,
+.dark .email-form textarea:focus {
+  box-shadow: 0 0 0 3px rgba(var(--accent-1-dark-rgb), 0.12);
+}
+.dark .email-btn-cancel {
+  border-color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.5);
+}
+.dark a:focus-visible,
+.dark button:focus-visible,
+.dark input:focus-visible,
+.dark textarea:focus-visible,
+.dark [tabindex]:focus-visible {
+  outline-color: var(--accent-neon);
+}
+
+.dark .site-header {
+  background: rgba(0, 28, 32, 0.82);
+  border-bottom: 1px solid rgba(var(--accent-1-dark-rgb), 0.13);
+  box-shadow: 0 4px 24px rgba(var(--accent-1-dark-rgb), 0.05);
+}
+
+.dark .social-btn,
+.dark .btn {
+  background: rgba(var(--accent-1-dark-rgb), 0.06);
+  border: 1.5px solid var(--accent-1);
+  color: #e8ffff;
+}
+.dark .social-btn {
+  box-shadow:
+    0 0 14px rgba(var(--accent-1-dark-rgb), 0.45),
+    0 0 28px rgba(var(--accent-1-dark-rgb), 0.25);
+  transition: var(--trans-fast);
+}
+.dark .social-btn:hover,
+.dark .btn:hover,
+.dark .theme-toggle:hover {
+  box-shadow:
+    0 0 35px var(--accent-1),
+    0 0 70px rgba(var(--accent-1-dark-rgb), 0.5);
+}
+
+.dark h2,
+.dark h3,
+.dark h4,
+.dark .card h4,
+.dark .skill-category h5,
+.dark .list li i,
+.dark .hero-text {
+  color: var(--accent-1);
+}
+
+.dark .hero-image {
+  box-shadow: 0 0 30px var(--accent-1);
+  animation: neonPulse 2.4s infinite ease-in-out;
+}
+.dark #networkCanvas {
+  opacity: 1;
+}
+
+.dark .floating-tag {
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+.dark .floating-tag:nth-child(3n) {
+  color: rgba(210, 120, 255, 0.68);
+}
+.dark .floating-tag:nth-child(3n + 1) {
+  color: rgba(255, 190, 80, 0.72);
+}
+.dark .floating-tag:nth-child(3n + 2) {
+  color: rgba(100, 180, 255, 0.65);
+}
+
+.dark .hero-content h2 {
+  color: var(--text-title);
+}
+.dark .hero-subtitle {
+  color: var(--text-sub);
+}
+
+.dark .skill-card {
+  background: var(--glass-dark-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-dark-border);
+  box-shadow: var(--glass-dark-shadow);
+}
+
+.dark .skill-card h4 {
+  color: var(--accent-1);
+}
+
+.dark .card,
+.dark .project-card,
+.dark .swot-card {
+  background: var(--glass-dark-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-dark-border);
+  box-shadow: var(--glass-dark-shadow);
+}
+
+.dark .project-card.tech-highlighted {
+  animation-name: techGlowPulseDark;
+}
+@keyframes techGlowPulseDark {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 3px var(--accent-1),
+      0 0 28px rgba(var(--accent-1-dark-rgb), 0.55),
+      0 12px 28px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 0 3px var(--accent-1),
+      0 0 46px rgba(var(--accent-1-dark-rgb), 0.85),
+      0 12px 28px rgba(0, 0, 0, 0.4);
+  }
+}
+.dark .projects-swiper .swiper-button-prev,
+.dark .projects-swiper .swiper-button-next {
+  background: var(--glass-dark-bg);
+  box-shadow:
+    0 0 12px var(--accent-neon),
+    0 0 24px #00ffd8,
+    0 0 36px var(--accent-blue);
+  animation: sidePulse 2.2s ease-in-out infinite;
+}
+
+.dark .projects-swiper .swiper-button-prev::after,
+.dark .projects-swiper .swiper-button-next::after {
+  background: linear-gradient(90deg, var(--grad-neon-alt-stops));
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradientFlow 3s ease infinite;
+}
+
+.dark .projects-swiper .swiper-button-prev:hover,
+.dark .projects-swiper .swiper-button-next:hover {
+  transform: scale(1.08);
+  box-shadow:
+    0 0 18px var(--accent-neon),
+    0 0 36px #00ffd8,
+    0 0 54px var(--accent-blue);
+}
+
+.dark .projects-swiper .swiper-button-prev:focus,
+.dark .projects-swiper .swiper-button-next:focus,
+.dark .projects-swiper .swiper-button-prev:active,
+.dark .projects-swiper .swiper-button-next:active {
+  background: #001f26;
+}
+
+.dark .project-info h4 {
+  color: var(--accent-1);
+}
+
+.dark .swot-card ul,
+.dark .swot-card li,
+.dark .swot-card p,
+.dark .contact p,
+.dark .list li,
+.dark .details li,
+.dark .curiosidades li,
+.dark .softskills li,
+.dark .timeline-item .muted,
+.dark .curriculo-left p,
+.dark .curriculo-section p,
+.dark .list li strong,
+.dark .curriculo-section .list li,
+.dark .list i,
+.dark .language-item strong,
+.dark .language-item i,
+.dark .lang-level,
+.dark .programa-texto,
+.dark .programa-texto .muted {
+  color: var(--text-main);
+}
+
+.dark .swot-card {
+  border: 1px solid rgba(var(--accent-1-dark-rgb), 0.12);
+  box-shadow: 0 0 16px rgba(var(--accent-1-dark-rgb), 0.05);
+}
+.dark .swot-card:hover {
+  box-shadow: 0 0 20px rgba(var(--accent-1-dark-rgb), 0.18);
+}
+
+.dark .swot-card.strengths {
+  background: linear-gradient(145deg, #002b27, #003d36, #00423b);
+  border-left: 4px solid #00ffe0;
+}
+.dark .swot-card.strengths h4,
+.dark .swot-card.strengths i {
+  color: #00ffe0;
+}
+
+.dark .swot-card.weaknesses {
+  background: linear-gradient(145deg, #320000, #420a0a, #4d0000);
+  border-left: 4px solid #ff9f9f;
+}
+.dark .swot-card.weaknesses h4,
+.dark .swot-card.weaknesses i {
+  color: #ff9f9f;
+}
+
+.dark .swot-card.opportunities {
+  background: linear-gradient(145deg, #2e2500, #3d3000, #4d3e00);
+  border-left: 4px solid #ffe9a8;
+}
+.dark .swot-card.opportunities h4,
+.dark .swot-card.opportunities i {
+  color: #ffe9a8;
+}
+
+.dark .swot-card.threats {
+  background: linear-gradient(145deg, #0c1226, #111830, #151d33);
+  border-left: 4px solid #9fb5ff;
+}
+.dark .swot-card.threats h4,
+.dark .swot-card.threats i {
+  color: #9fb5ff;
+}
+
+.dark .social-btn:hover {
+  transform: scale(1.06);
+  box-shadow:
+    0 0 22px rgba(var(--accent-1-dark-rgb), 0.75),
+    0 0 48px rgba(var(--accent-1-dark-rgb), 0.35);
+}
+.dark .social-btn.github i {
+  color: #ffffff;
+}
+.dark .contact h3 {
+  color: var(--accent-1);
+}
+.dark .contact p {
+  color: var(--text-sub);
+}
+
+.dark .contact {
+  border: none;
+}
+
+.dark .social-icons .social-btn {
+  color: var(--text-main);
+}
+.dark .close-modal:hover {
+  color: #ff6f91;
+}
+
+.dark .site-footer {
+  background: rgba(0, 12, 14, 0.82);
+  border-top-color: rgba(var(--accent-1-dark-rgb), 0.12);
+  box-shadow: 0 -4px 24px rgba(var(--accent-1-dark-rgb), 0.04);
+}
+
+.dark .programa-texto strong {
+  color: var(--text-main);
+  font-weight: 800;
+}
+
+.dark .curriculo-section {
+  color: var(--text-main);
+  background: var(--glass-dark-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-dark-border);
+  box-shadow: var(--glass-dark-shadow);
+}
+.dark .curriculo-section::before {
+  background: linear-gradient(180deg, var(--accent-1), var(--accent-2));
+}
+
+.dark .curriculo-right .card {
+  color: var(--text-main);
+  background: var(--glass-dark-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-dark-border);
+  box-shadow: var(--glass-dark-shadow);
+}
+.dark .curriculo-right h4 {
+  color: var(--accent-1);
+}
+
+.dark .timeline-content {
+  color: var(--text-main);
+  background: var(--glass-dark-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-dark-border);
+  border-left: 4px solid var(--accent-1);
+  box-shadow: var(--glass-dark-shadow);
+}
+.dark .timeline-icon {
+  background: var(--glass-dark-bg);
+  border-color: var(--accent-neon);
+}
+.dark .programa-item:hover {
+  box-shadow: 0 4px 20px rgba(var(--accent-1-dark-rgb), 0.15);
+  border-color: rgba(var(--accent-1-dark-rgb), 0.3);
+}
+.dark .progress-bar {
+  background: linear-gradient(90deg, var(--grad-neon-alt-stops));
+  background-size: 300% 100%;
+  box-shadow: 0 0 6px rgba(var(--accent-1-dark-rgb), 0.3);
+}
+
+.dark .list {
+  background: var(--glass-dark-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-dark-border);
+  box-shadow: var(--glass-dark-shadow);
+}
+.dark .curriculo-section .list li {
+  background: rgba(var(--accent-1-dark-rgb), 0.05);
+}
+.dark .curriculo-section .list li:hover {
+  background: rgba(var(--accent-1-dark-rgb), 0.12);
+}
+.dark .programa-item {
+  background: var(--glass-dark-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-dark-border);
+  box-shadow: var(--glass-dark-shadow);
+}
+.dark .language-item {
+  background: var(--glass-dark-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-dark-border);
+}
+.dark .language-item:hover {
+  background: rgba(var(--accent-1-dark-rgb), 0.08);
+}
+
+.dark .curriculo-section h2,
+.dark .curriculo-section h3,
+.dark .curriculo-left h2,
+.dark .curriculo-left h3,
+.dark .curriculo-right .card h4,
+.dark .timeline-content h4 {
+  color: var(--accent-1);
+}
+.dark .programa-item.aspire i {
+  color: #ff8a80;
+}
+
+.dark .achievement-toast {
+  background: var(--glass-dark-bg);
+  border-color: rgba(var(--accent-1-dark-rgb), 0.4);
+  box-shadow:
+    0 0 24px rgba(var(--accent-1-dark-rgb), 0.25),
+    0 8px 30px rgba(0, 0, 0, 0.5);
+}
+.dark .achievement-desc {
+  color: #aaa;
+}
+.dark .side-dot {
+  border-color: rgba(var(--accent-1-dark-rgb), 0.4);
+}
+.dark .side-dot::after {
+  background: var(--glass-dark-bg);
+  color: var(--accent-1);
+  border-color: rgba(var(--accent-1-dark-rgb), 0.2);
+}
+.dark .nav-mobile-btn {
+  color: rgba(var(--accent-1-dark-rgb), 0.45);
+}
+.dark .nav-mobile-btn.active {
+  background: rgba(0, 92, 84, 0.92);
+  color: #fff;
+}
+.dark .nav-mobile-btn:hover {
+  background: rgba(var(--accent-1-dark-rgb), 0.06);
+}
+.dark .achievements-grid {
+  scrollbar-color: rgba(var(--accent-1-dark-rgb), 0.28) transparent;
+}
+.dark .achievements-grid::-webkit-scrollbar-thumb {
+  background: rgba(var(--accent-1-dark-rgb), 0.28);
+}
+.dark .achievements-grid::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--accent-1-dark-rgb), 0.58);
+}
+.dark .achievement-card[data-tooltip]::before {
+  background: rgba(0, 14, 18, 0.85);
+  color: #00ffe0;
+  border-color: rgba(var(--accent-1-dark-rgb), 0.22);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+}
+.dark .achievement-card[data-tooltip]::after {
+  border-top-color: rgba(0, 14, 18, 0.85);
+}
+.dark .achievement-card.locked[data-tooltip]::before {
+  background: rgba(18, 18, 22, 0.85);
+  color: rgba(255, 255, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.09);
+}
+.dark .achievement-card.locked[data-tooltip]::after {
+  border-top-color: rgba(18, 18, 22, 0.85);
+}
+.dark
+  .achievements-grid
+  .achievement-card:nth-child(-n + 2)[data-tooltip]::after {
+  border-bottom-color: rgba(0, 14, 18, 0.97);
+}
+
+.dark .achievements-drawer {
+  background: rgba(0, 14, 16, 0.78);
+  border-left: 1px solid rgba(var(--accent-1-dark-rgb), 0.14);
+  box-shadow: -12px 0 48px rgba(0, 0, 0, 0.55);
+}
+.dark .achievements-drawer-header {
+  border-bottom-color: rgba(var(--accent-1-dark-rgb), 0.11);
+  background: rgba(var(--accent-1-dark-rgb), 0.05);
+}
+.dark .achievements-drawer-title {
+  color: #00ffe0;
+}
+.dark .achievements-drawer-title i {
+  color: var(--accent-gold);
+}
+.dark .achievements-close {
+  background: rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.78);
+  color: #ffffff;
+}
+.dark .achievements-close:hover {
+  color: #ff6f91;
+  border-color: #ff6f91;
+}
+.dark .achievements-xp-section {
+  border-bottom-color: rgba(var(--accent-1-dark-rgb), 0.08);
+}
+.dark .achievements-xp-current {
+  color: var(--accent-gold);
+  text-shadow: 0 0 12px rgba(var(--accent-gold-rgb), 0.45);
+}
+.dark .achievements-xp-sep,
+.dark .achievements-xp-max,
+.dark .achievements-xp-unit {
+  color: rgba(255, 255, 255, 0.35);
+}
+.dark .achievements-xp-bar {
+  background: rgba(255, 255, 255, 0.09);
+}
+.dark .achievements-xp-fill {
+  background: linear-gradient(
+    90deg,
+    var(--accent-gold),
+    #ffaa00,
+    var(--accent-gold)
+  );
+  background-size: 200% 100%;
+  box-shadow: 0 0 8px rgba(var(--accent-gold-rgb), 0.5);
+}
+.dark .achievements-xp-count {
+  color: rgba(255, 255, 255, 0.35);
+}
+.dark .achievement-card {
+  background: rgba(0, 18, 20, 0.6);
+  border-color: rgba(255, 255, 255, 0.07);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.32);
+}
+.dark .achievement-card.unlocked {
+  background: rgba(var(--accent-1-dark-rgb), 0.08);
+  border-color: rgba(var(--accent-1-dark-rgb), 0.22);
+}
+.dark .achievement-card.unlocked:hover {
+  border-color: rgba(var(--accent-1-dark-rgb), 0.45);
+  box-shadow: 0 6px 20px rgba(var(--accent-1-dark-rgb), 0.16);
+}
+.dark .achievement-card.unlocked.secret {
+  background: rgba(var(--accent-gold-rgb), 0.09);
+  border-color: rgba(var(--accent-gold-rgb), 0.3);
+}
+
+.dark .achievement-card.locked {
+  background: rgba(0, 5, 10, 0.45);
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+.dark .achievement-card[data-id="a-konami"].unlocked {
+  background: rgba(160, 80, 255, 0.1);
+  border-color: rgba(160, 80, 255, 0.3);
+}
+.dark .achievement-card[data-id="a-logo"].unlocked {
+  background: rgba(var(--accent-gold-rgb), 0.1);
+  border-color: rgba(var(--accent-gold-rgb), 0.3);
+}
+.dark .achievement-card-icon {
+  color: #00ffe0;
+}
+.dark .achievement-card.locked .achievement-card-icon {
+  color: rgba(255, 255, 255, 0.18);
+}
+.dark .achievement-card[data-id="a-terminal"].unlocked {
+  background: rgba(var(--terminal-green-rgb), 0.1);
+  border-color: rgba(var(--terminal-green-rgb), 0.3);
+}
+.dark .achievement-card[data-id="a-neo"].unlocked {
+  background: rgba(255, 90, 190, 0.1);
+  border-color: rgba(255, 90, 190, 0.3);
+}
+.dark .achievement-card.unlocked.secret .achievement-card-icon {
+  color: var(--accent-gold);
+}
+.dark .achievement-card-title {
+  color: rgba(255, 255, 255, 0.88);
+}
+.dark .achievement-card.locked .achievement-card-title {
+  color: rgba(255, 255, 255, 0.22);
+}
+.dark .achievement-card-desc {
+  color: rgba(255, 255, 255, 0.64);
+}
+.dark .achievement-card.locked .achievement-card-desc {
+  color: rgba(255, 255, 255, 0.28);
+}
+.dark .achievement-card-xp {
+  color: #ffffff;
+  background: rgba(84, 62, 0, 0.62);
+  border-color: rgba(var(--accent-gold-rgb), 0.78);
+}
+.dark .achievement-card.locked .achievement-card-xp {
+  color: var(--accent-gold);
+  background: rgba(0, 0, 0, 0.38);
+  border-color: rgba(var(--accent-gold-rgb), 0.5);
+}
+.dark .achievement-card-secret {
+  color: rgba(255, 255, 255, 0.52);
+}
+.dark .achievement-card.unlocked.secret .achievement-card-secret {
+  color: var(--accent-gold);
+}
+
+.dark .email-modal {
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(var(--accent-1-dark-rgb), 0.15) 0%,
+    transparent 80%
+  );
+  border-color: rgba(var(--accent-1-dark-rgb), 0.2);
+}
+.dark .gh-activity-pill {
+  background: var(--glass-dark-bg);
+  border-color: var(--glass-dark-border);
+  color: var(--text-main);
+}
+.dark .gh-activity-pill:hover {
+  box-shadow: 0 6px 18px rgba(var(--accent-1-dark-rgb), 0.3);
+}
+
+.dark .gh-avatar-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--accent-1-dark-rgb), 0.1) 25%,
+    rgba(var(--accent-1-dark-rgb), 0.28) 37%,
+    rgba(var(--accent-1-dark-rgb), 0.1) 63%
+  );
+  background-size: 400% 100%;
+}
+.dark .gh-loading .gh-stat-value {
+  background: linear-gradient(
+    90deg,
+    rgba(var(--accent-1-dark-rgb), 0.1) 25%,
+    rgba(var(--accent-1-dark-rgb), 0.28) 37%,
+    rgba(var(--accent-1-dark-rgb), 0.1) 63%
+  );
+  background-size: 400% 100%;
+}
+
+.dark .back-to-top {
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(var(--accent-1-dark-rgb), 0.15) 0%,
+    transparent 80%
+  );
+}
+.dark .back-to-top::after {
+  background-size: 400% 400%;
+  animation:
+    gradientFlow 3s ease infinite,
+    floatRotate 3s ease-in-out infinite;
+}
+.dark .back-to-top:hover {
+  background: #001f26;
+  box-shadow:
+    0 0 18px var(--accent-neon),
+    0 0 36px #00ffd8,
+    0 0 54px var(--accent-blue);
+}
+.dark .back-to-top.visible {
+  animation: neonPulseUltra 1.5s infinite alternate;
+}
+
+.dark .tour-prompt,
+.dark .tour-card {
+  background: var(--glass-dark-bg);
+  border-color: var(--glass-dark-border);
+  box-shadow: var(--glass-dark-shadow);
+}
+.dark .tour-card-step {
+  color: var(--accent-neon);
+}
+.dark .tour-highlight {
+  outline-color: var(--accent-neon);
+}
+
+.dark .summary-modal {
+  background: radial-gradient(
+    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(var(--accent-1-dark-rgb), 0.15) 0%,
+    transparent 80%
+  );
+  border-color: var(--glass-dark-border);
+  box-shadow: var(--glass-dark-shadow);
+}
+.dark .summary-role {
+  color: var(--accent-neon);
+}
+.dark .summary-skills span {
+  background: rgba(var(--accent-1-dark-rgb), 0.1);
+  border-color: rgba(var(--accent-1-dark-rgb), 0.25);
+}
+.dark .summary-projects a {
+  background: rgba(var(--accent-1-dark-rgb), 0.05);
+}

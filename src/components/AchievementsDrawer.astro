@@ -1,0 +1,52 @@
+---
+import { ALL_ACHIEVEMENTS, MAX_XP } from "../scripts/data/achievements";
+---
+
+<div id="achievements-overlay" class="achievements-overlay" aria-hidden="true">
+  <div class="achievements-drawer" role="dialog" aria-label="Conquistas">
+    <div class="achievements-drawer-header">
+      <div class="achievements-drawer-title">
+        <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+        <span>Conquistas</span>
+      </div>
+      <button
+        class="achievements-close"
+        id="achievements-close"
+        aria-label="Fechar"
+      >
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="achievements-xp-section">
+      <div class="achievements-xp-label">
+        <span class="achievements-xp-current" id="xp-current">
+          0
+        </span>
+        <span class="achievements-xp-sep">/</span>
+        <span class="achievements-xp-max" id="xp-max">
+          {MAX_XP}
+        </span>
+        <span class="achievements-xp-unit">XP</span>
+      </div>
+      <div class="achievements-xp-bar">
+        <div class="achievements-xp-fill" id="xp-fill"></div>
+      </div>
+      <div class="achievements-xp-count">
+        <span id="xp-unlocked-count">0</span> /
+        <span id="xp-total-count">{ALL_ACHIEVEMENTS.length}</span> desbloqueadas
+      </div>
+    </div>
+
+    <!-- Região rolável: precisa ser focável para quem usa só o teclado -->
+    {/* eslint-disable astro/jsx-a11y/no-noninteractive-tabindex */}
+    <div
+      class="achievements-grid"
+      id="achievements-grid"
+      role="region"
+      aria-label="Lista de conquistas"
+      tabindex="0"
+    ></div>
+    {/* eslint-enable astro/jsx-a11y/no-noninteractive-tabindex */}
+  </div>
+</div>

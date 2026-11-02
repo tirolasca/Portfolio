@@ -1,0 +1,229 @@
+/* Tour guiado */
+.tour-prompt,
+.tour-card {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: min(320px, calc(100vw - 40px));
+  padding: 16px 18px;
+  z-index: 999990;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-shadow);
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.tour-prompt.show,
+.tour-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tour-prompt p,
+.tour-card p {
+  margin: 0;
+  color: var(--text-main);
+  line-height: 1.45;
+}
+
+.tour-prompt p {
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.tour-card p {
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+}
+
+.tour-prompt p > i {
+  margin-right: 6px;
+  color: var(--accent-1);
+}
+
+.tour-card-step {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 6px;
+  color: var(--accent-1);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.tour-card-step i {
+  font-size: 0.75rem;
+}
+
+.tour-card h5 {
+  margin: 0 0 7px;
+  color: var(--text-main);
+  font-size: 1.02rem;
+  line-height: 1.3;
+}
+
+.tour-prompt-actions,
+.tour-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.tour-card-actions {
+  flex-wrap: wrap;
+}
+
+.tour-prompt-actions .btn,
+.tour-card-actions .btn,
+.tour-end-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tour-prompt-actions .btn,
+.tour-card-actions .btn {
+  min-height: 40px;
+  padding: 9px 15px;
+  border-radius: 9px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.1px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.tour-prompt-actions i,
+.tour-card-actions i,
+.tour-end-link i {
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.tour-prompt-actions .btn i,
+.tour-card-actions .btn i {
+  font-size: 0.85em;
+}
+
+.tour-start-btn,
+.tour-next-btn {
+  border: 1px solid var(--accent-1);
+  background: var(--accent-1);
+  color: #071817;
+  box-shadow:
+    0 4px 12px rgba(var(--shadow-teal-rgb), 0.18),
+    0 0 10px rgba(var(--accent-1-light-rgb), 0.12);
+}
+
+.tour-start-btn:hover,
+.tour-next-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-1-light);
+  background: var(--accent-1-light);
+  box-shadow:
+    0 6px 18px rgba(var(--shadow-teal-rgb), 0.25),
+    0 0 16px rgba(var(--accent-1-light-rgb), 0.2);
+}
+
+.tour-start-btn:hover i {
+  transform: scale(1.08);
+}
+
+.tour-next-btn:hover i {
+  transform: translateX(3px);
+}
+
+.tour-start-btn:active,
+.tour-next-btn:active {
+  transform: scale(0.97);
+}
+
+.tour-prev-btn,
+.tour-skip-btn {
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  color: var(--text-main);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.tour-prev-btn:hover,
+.tour-skip-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-1);
+  background: rgba(var(--accent-1-light-rgb), 0.1);
+  color: var(--accent-1);
+  box-shadow: 0 4px 14px rgba(var(--shadow-teal-rgb), 0.12);
+}
+
+.tour-prev-btn:hover i {
+  transform: translateX(-3px);
+}
+
+.tour-prev-btn:active,
+.tour-skip-btn:active {
+  transform: scale(0.97);
+}
+
+.tour-end-link {
+  margin-left: auto;
+  padding: 6px 4px;
+  border: 0;
+  background: transparent;
+  color: var(--text-sub);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.tour-end-link:hover {
+  color: var(--accent-1);
+}
+
+.tour-end-link:hover i {
+  transform: translateX(2px);
+}
+
+.tour-highlight {
+  outline: 3px solid var(--accent-1);
+  outline-offset: 6px;
+  border-radius: var(--radius-md);
+  animation: tourPulse 1.6s ease-in-out infinite;
+}
+
+@keyframes tourPulse {
+  0%,
+  100% {
+    outline-offset: 6px;
+  }
+
+  50% {
+    outline-offset: 10px;
+  }
+}
+
+.tour-prompt-actions .btn:focus-visible,
+.tour-card-actions .btn:focus-visible,
+.tour-end-link:focus-visible {
+  outline: 2px solid var(--accent-1);
+  outline-offset: 3px;
+}

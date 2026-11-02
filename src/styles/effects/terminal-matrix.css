@@ -1,0 +1,28 @@
+/* Cursor piscante, canvas matrix e ripple */
+.cursor-blink {
+  display: inline-block;
+  width: 10px;
+  height: 1.1rem;
+  background-color: var(--accent-1);
+  animation: terminalBlink 1s step-end infinite;
+  margin-top: 4px;
+  box-shadow: 0 0 8px var(--accent-1);
+}
+
+#matrix-canvas {
+  image-rendering: pixelated;
+}
+
+@keyframes rippleRing {
+  0% {
+    transform: scale(0);
+    opacity: 0.8;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
