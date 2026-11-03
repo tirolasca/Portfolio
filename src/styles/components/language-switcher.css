@@ -370,6 +370,7 @@ body {
   user-select: none;
   outline: none;
   transform-origin: top right;
+  translate: var(--lang-shift, 0px) 0; /* ajuste feito em JS para não passar da tela */
   opacity: 0;
   visibility: hidden;
   transform: translateY(-8px) scale(0.94);
@@ -506,7 +507,7 @@ body {
   .lang-menu {
     right: auto;
     left: 50%;
-    translate: -50% 0;
+    translate: calc(-50% + var(--lang-shift, 0px)) 0;
     transform-origin: top center;
   }
 }

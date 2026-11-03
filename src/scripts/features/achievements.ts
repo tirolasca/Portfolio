@@ -1,3 +1,4 @@
+import { session } from "../core/storage";
 import { closeDialog, openDialog } from "../core/dialog";
 import {
   ALL_ACHIEVEMENTS,
@@ -18,7 +19,7 @@ export function initAchievements() {
         entries.forEach((entry) => {
           if (entry.isIntersecting && !unlockedAchievements.has(ach.id)) {
             unlockedAchievements.add(ach.id);
-            sessionStorage.setItem(
+            session.set(
               "achievements",
               JSON.stringify([...unlockedAchievements]),
             );

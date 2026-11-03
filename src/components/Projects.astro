@@ -44,11 +44,21 @@ import { projects } from "../data/projects";
                 </p>
 
                 <div class="project-links">
-                  <a href={p.demo} target="_blank" class="btn small primary">
+                  <a
+                    href={p.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn small primary"
+                  >
                     <i class={p.demoIcon} aria-hidden="true" /> Ver Projeto
                   </a>
 
-                  <a href={p.repo} target="_blank" class="btn small outline">
+                  <a
+                    href={p.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn small outline"
+                  >
                     <i class={p.repoIcon} aria-hidden="true" /> GitHub
                   </a>
                 </div>

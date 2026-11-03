@@ -1,3 +1,4 @@
+import { session } from "../core/storage";
 import { toggleMatrixMode } from "../effects/matrix";
 import { showAchievement } from "./achievements";
 import { state, unlockedAchievements } from "../state";
@@ -97,7 +98,7 @@ export function initLogoSecret() {
         state.logoClickCount = 0;
         if (!unlockedAchievements.has("a-logo")) {
           unlockedAchievements.add("a-logo");
-          sessionStorage.setItem(
+          session.set(
             "achievements",
             JSON.stringify([...unlockedAchievements]),
           );

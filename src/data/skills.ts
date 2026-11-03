@@ -200,6 +200,12 @@ export const skillCategories: SkillCategory[] = [
       },
       { alt: "XAMPP", color: "FB7A24", logo: "xampp", logoColor: "white" },
       { alt: "Postman", color: "FF6C37", logo: "postman", logoColor: "white" },
+      {
+        alt: "Formspree",
+        color: "E5122E",
+        logo: "formspree",
+        logoColor: "white",
+      },
     ],
   },
   {

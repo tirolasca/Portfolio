@@ -13,6 +13,16 @@ html {
   overflow-x: hidden;
 }
 
+/* `clip` corta o excesso sem criar uma área rolável: com `hidden` em html e body, o body vira
+   um container de rolagem e o navegador o desliza de lado (foco, menus), deixando o cabeçalho
+   "para trás". `hidden` fica só como alternativa para navegadores sem `clip`. */
+@supports (overflow-x: clip) {
+  html,
+  body {
+    overflow-x: clip;
+  }
+}
+
 body {
   max-width: 100%;
   overflow-x: hidden;

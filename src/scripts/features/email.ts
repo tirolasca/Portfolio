@@ -1,3 +1,4 @@
+import { session } from "../core/storage";
 import { SITE } from "../../data/site";
 import { closeDialog, openDialog } from "../core/dialog";
 
@@ -9,6 +10,8 @@ import { closeDialog, openDialog } from "../core/dialog";
 const ENDPOINT = import.meta.env.PUBLIC_CONTACT_ENDPOINT as string | undefined;
 const DRAFT_KEY = "contactDraft";
 const MAX_MESSAGE = 2000;
+const REQUEST_TIMEOUT_MS = 10_000;
+let sending = false;
 
 type FieldName = "name" | "email" | "message";
 interface Els {
@@ -145,7 +148,7 @@ function validateField(f: FieldName) {
 // ---------- rascunho (sessionStorage) ----------
 function saveDraft() {
   try {
-    sessionStorage.setItem(
+    session.set(
       DRAFT_KEY,
       JSON.stringify({
         n: els.name.value,
@@ -160,7 +163,7 @@ function saveDraft() {
 }
 function restoreDraft() {
   try {
-    const d = JSON.parse(sessionStorage.getItem(DRAFT_KEY) || "null");
+    const d = JSON.parse(session.get(DRAFT_KEY) || "null");
     if (!d) return;
     els.name.value ||= d.n ?? "";
     els.email.value ||= d.e ?? "";
@@ -223,8 +226,19 @@ function setBusy(busy: boolean) {
     : SEND_LABEL;
 }
 
+/** Mensagem de erro adequada à causa da falha no envio. */
+function failureMessage(err: unknown): string {
+  const fallback = `escreva para ${SITE.email}.`;
+  if (err instanceof DOMException && err.name === "TimeoutError")
+    return `O servidor demorou para responder. Tente de novo ou ${fallback}`;
+  if (err instanceof TypeError)
+    return `Sem conexão com o servidor. Verifique sua internet ou ${fallback}`;
+  return `Não consegui enviar agora. Tente de novo ou ${fallback}`;
+}
+
 async function onSubmit(e: Event) {
   e.preventDefault();
+  if (sending) return; // evita envios duplicados (duplo clique / Ctrl+Enter)
   const fields = (["name", "email", "message"] as const).filter(
     (f) => !validateField(f),
   );
@@ -242,6 +256,7 @@ async function onSubmit(e: Event) {
     subject: els.subject.value.trim() || "Mensagem do Portfólio",
     message: els.message.value.trim(),
   };
+  sending = true;
   setBusy(true);
   try {
     if (ENDPOINT) {
@@ -252,6 +267,7 @@ async function onSubmit(e: Event) {
           Accept: "application/json",
         },
         body: JSON.stringify(data),
+        signal: AbortSignal.timeout(REQUEST_TIMEOUT_MS),
       });
       if (!res.ok) throw new Error(String(res.status));
       showSuccess("sent");
@@ -261,13 +277,14 @@ async function onSubmit(e: Event) {
       showSuccess("mailto", `${data.subject}\n\n${body}`);
     }
     try {
-      sessionStorage.removeItem(DRAFT_KEY);
+      session.remove(DRAFT_KEY);
     } catch {
       /* ignora */
     }
-  } catch {
-    els.status.textContent = `Não consegui enviar agora. Tente de novo ou escreva para ${SITE.email}.`;
+  } catch (err) {
+    els.status.textContent = failureMessage(err);
   } finally {
+    sending = false;
     setBusy(false);
   }
 }

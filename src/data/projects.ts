@@ -1,13 +1,13 @@
 import type { ImageMetadata } from "astro";
-import planet from "../assets/img/planet.png";
-import janosys from "../assets/img/janosys.png";
-import temperoDaCasa from "../assets/img/tempero-da-casa.png";
-import codewave from "../assets/img/codewave.png";
-import taskmaster from "../assets/img/taskmaster.png";
-import portfolioGamer from "../assets/img/portfolio-gamer.png";
-import aerocode from "../assets/img/aerocode.png";
-import vinicola from "../assets/img/vinicola.png";
-import signa from "../assets/img/signa.png";
+import planet from "../assets/img/planet.webp";
+import janosys from "../assets/img/janosys.webp";
+import temperoDaCasa from "../assets/img/tempero-da-casa.webp";
+import codewave from "../assets/img/codewave.webp";
+import taskmaster from "../assets/img/taskmaster.webp";
+import portfolioGamer from "../assets/img/portfolio-gamer.webp";
+import aerocode from "../assets/img/aerocode.webp";
+import vinicola from "../assets/img/vinicola.webp";
+import signa from "../assets/img/signa.webp";
 
 export type TechId =
   | "aiven"
@@ -82,7 +82,7 @@ export const projects: Project[] = [
       "css3",
       "javascript",
     ],
-    demo: "http://janosysapi1.vercel.app",
+    demo: "https://janosysapi1.vercel.app",
     demoIcon: "fa-solid fa-up-right-from-square",
     repo: "https://github.com/janosystime/Janosys-Project.git",
     repoIcon: "fa-brands fa-github",

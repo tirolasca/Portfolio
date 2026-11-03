@@ -1,3 +1,4 @@
+import { session } from "./core/storage";
 /** Estado compartilhado entre os módulos (valores mutáveis ficam num objeto). */
 export const state: {
   mouseX: number;
@@ -14,9 +15,17 @@ export const state: {
 };
 
 /** Ids das conquistas já desbloqueadas nesta sessão. */
-export const unlockedAchievements = new Set<string>(
-  JSON.parse(sessionStorage.getItem("achievements") || "[]"),
-);
+function readUnlocked(): string[] {
+  try {
+    const parsed: unknown = JSON.parse(session.get("achievements") || "[]");
+    return Array.isArray(parsed)
+      ? parsed.filter((id): id is string => typeof id === "string")
+      : [];
+  } catch {
+    return [];
+  }
+}
+export const unlockedAchievements = new Set<string>(readUnlocked());
 
 export const prefersReducedMotion = window.matchMedia(
   "(prefers-reduced-motion: reduce)",

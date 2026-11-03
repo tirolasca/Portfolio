@@ -1,3 +1,4 @@
+import { local } from "./storage";
 export function initTheme() {
   const toggle = document.getElementById("theme-toggle");
   const icon =
@@ -23,7 +24,7 @@ export function initTheme() {
 
   // o <head> já aplicou "dark" (tema salvo ou 1ª visita com abertura): respeita
   const startDark =
-    localStorage.getItem("theme") === "dark" ||
+    local.get("theme") === "dark" ||
     document.documentElement.classList.contains("dark");
   applyTheme(startDark ? "dark" : "light");
 
@@ -31,7 +32,7 @@ export function initTheme() {
     toggle.addEventListener("click", () => {
       const isDark = document.documentElement.classList.toggle("dark");
       const t = isDark ? "dark" : "light";
-      localStorage.setItem("theme", t);
+      local.set("theme", t);
       if (icon) {
         icon.style.opacity = "0";
         icon.style.transform = "rotate(90deg)";

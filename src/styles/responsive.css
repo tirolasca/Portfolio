@@ -254,6 +254,7 @@
   }
   nav.main-nav {
     width: 100%;
+    margin-left: 0; /* o recuo de 28px do desktop empurrava o menu para fora da tela */
   }
   nav.main-nav ul {
     display: flex;

@@ -1,3 +1,4 @@
+import { local } from "../core/storage";
 import {
   homeTourSteps,
   resumeTourSteps,
@@ -28,7 +29,7 @@ export function initOnboardingTour(steps: TourStep[], storageKey = "tourSeen") {
 
   if (!prompt || !card || !steps?.length) return;
 
-  if (!TOUR_ALWAYS_SHOW && localStorage.getItem(storageKey)) {
+  if (!TOUR_ALWAYS_SHOW && local.get(storageKey)) {
     prompt.remove();
     card.remove();
     return;
@@ -119,7 +120,7 @@ function runTour({
 
     card.classList.remove("show");
 
-    localStorage.setItem(storageKey, "1");
+    local.set(storageKey, "1");
 
     setTimeout(() => {
       if (card.isConnected) {
@@ -203,7 +204,7 @@ function runTour({
   startBtn.addEventListener("click", startTour);
 
   skipBtn.addEventListener("click", () => {
-    localStorage.setItem(storageKey, "1");
+    local.set(storageKey, "1");
     removePrompt();
   });
 

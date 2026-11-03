@@ -11,10 +11,10 @@ export default defineConfig({
   integrations: [
     sitemap({
       // com build.format "file" as páginas são servidas como /curriculo.html
+      // (sem `lastmod`: só informamos datas que correspondam a mudanças reais)
       serialize(item) {
         if (!item.url.endsWith("/") && !item.url.endsWith(".html"))
           item.url += ".html";
-        item.lastmod = new Date().toISOString();
         return item;
       },
     }),

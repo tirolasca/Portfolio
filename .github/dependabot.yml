@@ -1,0 +1,42 @@
+version: 2
+
+updates:
+  # Dependências npm: semanal, com atualizações menores agrupadas num único PR.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+      timezone: America/Sao_Paulo
+    open-pull-requests-limit: 5
+    labels: [dependencies]
+    commit-message:
+      prefix: "chore(deps)"
+    groups:
+      astro:
+        patterns: ["astro", "@astrojs/*"]
+      lint-and-format:
+        patterns:
+          - "eslint*"
+          - "@eslint/*"
+          - "typescript-eslint"
+          - "prettier*"
+          - "globals"
+      testing:
+        patterns: ["@playwright/*", "@axe-core/*"]
+      minor-and-patch:
+        update-types: ["minor", "patch"]
+
+  # GitHub Actions: as versões ficam fixadas por SHA; o Dependabot atualiza o SHA e o comentário.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 3
+    labels: [dependencies, github-actions]
+    commit-message:
+      prefix: "chore(ci)"
+    groups:
+      actions:
+        patterns: ["*"]

@@ -99,9 +99,28 @@ export function enhanceLanguageSwitcher(
 
   const isOpen = () => sw.classList.contains("is-open");
 
+  /**
+   * Mantém o menu inteiro dentro da tela (margem de 8px). Em celulares estreitos o menu,
+   * centralizado sob o botão, passaria da borda e faria a página inteira deslizar de lado.
+   * Mede por offsets (ignora a animação de escala) e guarda o ajuste em `--lang-shift`.
+   */
+  function fitMenu() {
+    const MARGIN = 8;
+    menu.style.setProperty("--lang-shift", "0px");
+    const translateX = parseFloat(getComputedStyle(menu).translate) || 0;
+    const left = sw.getBoundingClientRect().left + menu.offsetLeft + translateX;
+    const right = left + menu.offsetWidth;
+    const viewport = document.documentElement.clientWidth;
+    let shift = 0;
+    if (left < MARGIN) shift = MARGIN - left;
+    else if (right > viewport - MARGIN) shift = viewport - MARGIN - right;
+    menu.style.setProperty("--lang-shift", `${Math.round(shift)}px`);
+  }
+
   function open() {
     render();
     sw.classList.add("is-open");
+    fitMenu();
     btn.setAttribute("aria-expanded", "true");
     setActive(options.findIndex((o) => o.dataset.lang === current()));
     menu.focus({ preventScroll: true });
@@ -122,6 +141,9 @@ export function enhanceLanguageSwitcher(
     engine.dispatchEvent(new Event("change", { bubbles: true })); // aciona a tradução do GTranslate
   }
 
+  window.addEventListener("resize", () => isOpen() && fitMenu(), {
+    passive: true,
+  });
   btn.addEventListener("click", () => (isOpen() ? close(false) : open()));
   btn.addEventListener("keydown", (e) => {
     if (["ArrowDown", "ArrowUp"].includes(e.key)) {

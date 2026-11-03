@@ -7,6 +7,7 @@ import solidFont from "../assets/fonts/fa-solid-subset.woff2?url";
 import "swiper/css";
 import "swiper/css/navigation";
 import { SITE } from "../data/site";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
@@ -73,7 +74,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-boot={bodyClass === "booting" ? "" : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -141,12 +142,19 @@ const jsonLd = {
       crossorigin
     />
 
-    <!-- Aplica o tema salvo antes da pintura (evita flash do tema claro) -->
-    <script is:inline define:vars={{ boot: bodyClass === "booting" }}>
+    <!-- Aplica o tema salvo antes da pintura (evita flash do tema claro).
+         O script é idêntico em todas as páginas: o hash dele está na CSP (vercel.json). -->
+    <script is:inline>
       try {
         let dark = localStorage.getItem("theme") === "dark";
+
         // a abertura (preloader) sempre começa no tema escuro
-        if (boot && !sessionStorage.getItem("hasBooted")) dark = true;
+        if (
+          document.documentElement.hasAttribute("data-boot") &&
+          !sessionStorage.getItem("hasBooted")
+        )
+          dark = true;
+
         if (dark) document.documentElement.classList.add("dark");
       } catch {
         /* localStorage bloqueado: segue com o tema padrão */
@@ -169,5 +177,6 @@ const jsonLd = {
     <script>
       import "../scripts/main";
     </script>
+    <SpeedInsights />
   </body>
 </html>

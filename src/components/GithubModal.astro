@@ -1,3 +1,7 @@
+---
+import logo from "../assets/img/logo.webp";
+---
+
 <div id="github-modal" class="modal-overlay">
   <div
     class="modal-content glow-card"
@@ -11,7 +15,7 @@
     <div class="gh-header">
       <img
         id="gh-avatar"
-        src="/img/Logo.png"
+        src={logo.src}
         alt="GitHub Avatar"
         class="gh-avatar"
         width="65"
@@ -60,6 +64,7 @@
     <a
       href="https://github.com/tirolasca"
       target="_blank"
+      rel="noopener noreferrer"
       class="btn primary gh-btn"
     >
       Acessar Perfil Completo{" "}

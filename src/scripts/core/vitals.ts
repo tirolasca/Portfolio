@@ -27,7 +27,11 @@ export async function initVitals() {
         id: m.id,
         path: location.pathname,
       });
-      navigator.sendBeacon?.(endpoint, body);
+      try {
+        navigator.sendBeacon?.(endpoint, body);
+      } catch {
+        /* a coleta de métricas nunca pode afetar a experiência */
+      }
     }
   };
   [onCLS, onFCP, onINP, onLCP, onTTFB].forEach((fn) => fn(report));

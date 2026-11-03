@@ -102,7 +102,27 @@ npx lighthouse http://localhost:4321 --view            # mobile
   formulário (validação, foco, rascunho), diálogos, SEO e **axe** nas duas páginas e temas.
   Sem navegadores do Playwright: `CHROME_PATH=/caminho/do/chrome npm run test:e2e`.
 - GitHub Actions (`.github/workflows/ci.yml`): lint, formatação, tipos+build, E2E e
-  Lighthouse CI (`lighthouserc.json`: acessibilidade/SEO ≥ 0,95 e CLS ≤ 0,1 reprovam o build).
+  Lighthouse CI (`lighthouserc.json`).
+
+### Critérios do Lighthouse CI
+
+Home e currículo, 3 execuções cada, avaliando a **mediana** (uma rodada ruim isolada não reprova).
+
+| Item                | Limite    | Efeito  | Por quê                                                                             |
+| ------------------- | --------- | ------- | ----------------------------------------------------------------------------------- |
+| Acessibilidade, SEO | ≥ 0,95    | reprova | Resultados estáveis em 1,00; qualquer queda é regressão real.                       |
+| Boas práticas       | ≥ 0,90    | reprova | Estável em 0,96.                                                                    |
+| Performance         | ≥ 0,80    | reprova | Folga sobre ~0,96–1,00 medidos, para absorver a variação entre runners do GitHub.   |
+| CLS                 | ≤ 0,1     | reprova | Limite "bom" do Core Web Vitals.                                                    |
+| LCP                 | ≤ 4000 ms | reprova | Folga sobre ~2,4 s; o limite "bom" é 2,5 s e fica como meta, não como trava.        |
+| TBT                 | ≤ 300 ms  | avisa   | Métrica de laboratório sensível ao runner.                                          |
+| Speed Index         | ≤ 4300 ms | avisa   | Oscila bastante; o limite "bom" para mobile é 3,4 s. Veja o ponto de atenção acima. |
+
+Medição desta revisão (Lighthouse CI 0.15.1, mobile simulado, sem internet — o GTranslate e a API do
+GitHub não carregam), mediana de 3 execuções: **home** performance 0,97 · acessibilidade 1,00 · boas
+práticas 0,96 · SEO 1,00 · FCP 0,98 s · LCP 2,4 s · CLS 0,009 · TBT 29 ms · **Speed Index 3,5 s**;
+**currículo** performance 1,00 · LCP 1,9 s · CLS 0,001 · Speed Index 1,7 s. São dados de laboratório,
+não de usuários reais.
 
 ## Ideias que ficaram de fora
 

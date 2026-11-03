@@ -99,7 +99,7 @@ export function initSummaryMode() {
         ${projects
           .map(
             (p) =>
-              `<li><a href="${p.link}" target="_blank" rel="noopener">${p.title}</a></li>`,
+              `<li><a href="${p.link}" target="_blank" rel="noopener noreferrer">${p.title}</a></li>`,
           )
           .join("")}
       </ul>

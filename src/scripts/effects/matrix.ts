@@ -1,3 +1,4 @@
+import { session } from "../core/storage";
 import { showAchievement } from "../features/achievements";
 import { state, unlockedAchievements } from "../state";
 import { secureRandom } from "../utils";
@@ -8,10 +9,7 @@ export function toggleMatrixMode() {
     startMatrix();
     if (!unlockedAchievements.has("a-konami")) {
       unlockedAchievements.add("a-konami");
-      sessionStorage.setItem(
-        "achievements",
-        JSON.stringify([...unlockedAchievements]),
-      );
+      session.set("achievements", JSON.stringify([...unlockedAchievements]));
       showAchievement(
         "fa-dragon",
         "Modo Matrix Ativado!",

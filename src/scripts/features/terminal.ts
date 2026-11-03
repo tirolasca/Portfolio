@@ -1,3 +1,4 @@
+import { session } from "../core/storage";
 import { closeDialog, openDialog } from "../core/dialog";
 import { toggleMatrixMode } from "../effects/matrix";
 import { showAchievement } from "./achievements";
@@ -198,10 +199,7 @@ function setupTerminal({
       );
       if (!unlockedAchievements.has("a-neo")) {
         unlockedAchievements.add("a-neo");
-        sessionStorage.setItem(
-          "achievements",
-          JSON.stringify([...unlockedAchievements]),
-        );
+        session.set("achievements", JSON.stringify([...unlockedAchievements]));
         setTimeout(
           () =>
             showAchievement(
@@ -243,10 +241,7 @@ function setupTerminal({
 
     if (!unlockedAchievements.has("a-terminal")) {
       unlockedAchievements.add("a-terminal");
-      sessionStorage.setItem(
-        "achievements",
-        JSON.stringify([...unlockedAchievements]),
-      );
+      session.set("achievements", JSON.stringify([...unlockedAchievements]));
       showAchievement(
         "fa-terminal",
         "Acesso Concedido!",

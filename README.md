@@ -12,7 +12,7 @@ Rápido, acessível e com alguns segredos escondidos.
 ![Lighthouse](https://img.shields.io/badge/Lighthouse-95%2B_desktop-0CCE6B?style=flat&logo=lighthouse&logoColor=white)
 ![Vercel](https://img.shields.io/badge/deploy-Vercel-000?style=flat&logo=vercel&logoColor=white)
 
-<img src="docs/preview.png" alt="Prévia da página inicial do portfólio" width="760" />
+<img src="docs/preview.webp" alt="Prévia da página inicial do portfólio" width="760" />
 
 </div>
 
@@ -97,6 +97,9 @@ npm run dev        # http://localhost:4321
 | `PUBLIC_CONTACT_ENDPOINT` | URL que recebe o formulário via `POST` JSON (Formspree, Web3Forms…). Sem ela, o formulário abre o app de e-mail (`mailto:`). |
 | `PUBLIC_VITALS_URL`       | Endpoint que recebe Core Web Vitals reais via `sendBeacon`.                                                                  |
 
+Contrato dos endpoints e o que configurar no servidor: [`docs/configuration.md`](docs/configuration.md).
+Cabeçalhos HTTP, CSP e passos no GitHub: [`docs/security.md`](docs/security.md).
+
 ## Estrutura
 
 ```
@@ -113,9 +116,10 @@ src/
   scripts/
     main.ts             entrada: decide O QUE carrega e QUANDO
     deferred.ts         tudo que não é crítico (carregado em ociosidade)
-    core/ features/ effects/ data/
+    core/ features/ effects/ data/   (core/storage.ts: acesso seguro a localStorage/sessionStorage)
 tests/                  E2E (Playwright), acessibilidade (axe) e SEO
-docs/                   preview e relatório de desempenho
+docs/                   preview, desempenho, segurança (CSP, GitHub) e configuração (endpoints)
+.github/                workflows de CI e CodeQL, Dependabot
 ```
 
 ### Estratégia de carregamento

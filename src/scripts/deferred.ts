@@ -63,7 +63,11 @@ const tasks = [
   initTranslate,
 ];
 
+let started = false;
+
 export function initDeferred() {
+  if (started) return; // evita inicializar listeners duas vezes
+  started = true;
   // Cada init é isolado: uma falha não derruba os demais.
   for (const task of tasks) {
     try {

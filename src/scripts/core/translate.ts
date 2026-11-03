@@ -42,13 +42,21 @@ export function initTranslate() {
     if (enhance()) observer.disconnect();
   });
   observer.observe(wrapper, { childList: true, subtree: true });
-  setTimeout(() => observer.disconnect(), 15_000);
+  // serviço lento ou fora do ar: libera o observer e esconde o espaço reservado
+  setTimeout(() => {
+    observer.disconnect();
+    if (!wrapper.querySelector(".lang-switcher"))
+      wrapper.classList.add("gtranslate-failed");
+  }, 15_000);
 
   const script = document.createElement("script");
   script.src = WIDGET_SRC;
   script.async = true;
   // bloqueado (adblock/offline): some com o espaço reservado em vez de deixar um vazio
-  script.onerror = () => wrapper.classList.add("gtranslate-failed");
+  script.onerror = () => {
+    observer.disconnect();
+    wrapper.classList.add("gtranslate-failed");
+  };
   script.onload = () => void enhance();
   document.body.appendChild(script);
 }

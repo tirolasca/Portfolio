@@ -1,3 +1,4 @@
+import { local, session } from "../core/storage";
 import { prefersReducedMotion } from "../state";
 import { secureRandom } from "../utils";
 
@@ -5,14 +6,14 @@ export function initBootSequence() {
   const preloader = document.getElementById("cyber-preloader");
   const terminal = document.getElementById("terminal-output");
   if (preloader && terminal) {
-    if (sessionStorage.getItem("hasBooted")) {
+    if (session.get("hasBooted")) {
       preloader.style.display = "none";
       document.body.classList.remove("booting");
       setTimeout(() => showDynamicGreeting(), 500);
     } else {
       // a abertura sempre começa no tema escuro (a classe já veio do <head>)
       document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+      local.set("theme", "dark");
       const ic =
         document.getElementById("theme-icon") ||
         document.querySelector<HTMLElement>("#theme-toggle i");
@@ -61,7 +62,7 @@ export function initBootSequence() {
         removeEventListener("keydown", finish);
         preloader.classList.add("hidden");
         document.body.classList.remove("booting");
-        sessionStorage.setItem("hasBooted", "true");
+        session.set("hasBooted", "true");
         setTimeout(() => preloader.remove(), 800);
         setTimeout(() => showDynamicGreeting(), 1200);
       };
@@ -77,7 +78,7 @@ export function initBootSequence() {
 }
 
 function showDynamicGreeting() {
-  if (sessionStorage.getItem("greeted")) return;
+  if (session.get("greeted")) return;
   const hour = new Date().getHours();
   let icon: string;
   let msg: string;
@@ -107,5 +108,5 @@ function showDynamicGreeting() {
     toast.classList.remove("show");
     setTimeout(() => toast.remove(), 500);
   }, 3000);
-  sessionStorage.setItem("greeted", "true");
+  session.set("greeted", "true");
 }

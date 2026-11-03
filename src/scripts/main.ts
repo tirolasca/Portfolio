@@ -8,6 +8,7 @@
 import { initCursor } from "./core/cursor";
 import {
   lazyFeature,
+  memoizeLoader,
   onIdle,
   prefetchOnIntent,
   whenNear,
@@ -34,8 +35,16 @@ function init() {
   initBootSequence();
 
   // 2. ocioso
-  onIdle(() => import("./deferred").then((m) => m.initDeferred()));
-  onIdle(() => import("./core/vitals").then((m) => m.initVitals()), 5000);
+  onIdle(
+    () => import("./deferred").then((m) => m.initDeferred()),
+    2500,
+    "deferred",
+  );
+  onIdle(
+    () => import("./core/vitals").then((m) => m.initVitals()),
+    5000,
+    "vitals",
+  );
 
   // 3. quando chegam perto da tela
   whenNear(".projects-swiper", () =>
@@ -58,12 +67,18 @@ function init() {
     import("./features/summary-mode").then((m) => m.initSummaryMode()),
   );
 
-  const loadEmail = () => import("./features/email");
+  const loadEmail = memoizeLoader(() => import("./features/email"));
   prefetchOnIntent(EMAIL_TRIGGERS, loadEmail);
   document.querySelectorAll<HTMLElement>(EMAIL_TRIGGERS).forEach((el) => {
     el.addEventListener("click", async (e) => {
       e.preventDefault(); // sem JS, o link mailto: continua funcionando
-      (await loadEmail()).openEmailModal(el);
+      try {
+        (await loadEmail()).openEmailModal(el);
+      } catch (err) {
+        console.warn("[loader] formulário de contato não carregou", err);
+        const href = el.getAttribute("href");
+        if (href?.startsWith("mailto:")) window.location.href = href;
+      }
     });
   });
 }
