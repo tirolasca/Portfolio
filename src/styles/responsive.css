@@ -445,12 +445,23 @@
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+    animation-duration: 0.01ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
   }
   body::before {
-    animation: none !important;
+    animation: none;
+  }
+  .social-btn,
+  .btn,
+  .social-icons .social-btn,
+  .contact-btn {
+    transition: none;
+  }
+
+  .social-icons .social-btn:hover {
+    animation: none;
+    transform: none;
   }
 }

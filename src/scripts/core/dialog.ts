@@ -1,44 +1,96 @@
 /**
- * Acessibilidade de diálogos: ao abrir, o resto da página fica `inert`
- * (foco e leitores de tela ficam presos no diálogo); ao fechar, tudo volta e
- * o foco retorna a quem abriu.
+ * Acessibilidade de diálogos.
+ *
+ * Ao abrir:
+ * - O restante da página fica inert.
+ * - O foco é direcionado ao elemento inicial.
+ * - O elemento que abriu o diálogo é armazenado.
+ *
+ * Ao fechar:
+ * - O inert é removido dos elementos afetados.
+ * - O foco retorna ao elemento que abriu o diálogo.
  */
-const opened = new WeakMap<
-  HTMLElement,
-  { opener: HTMLElement | null; inert: Element[] }
->();
 
-/** O overlay pode estar com visibility:hidden durante a transição; tenta de novo. */
-export function focusWhenVisible(target: HTMLElement, attempt = 0) {
-  target.focus();
-  if (document.activeElement !== target && attempt < 8)
-    setTimeout(() => focusWhenVisible(target, attempt + 1), 40);
+interface DialogState {
+  opener: HTMLElement | null;
+  inert: HTMLElement[];
 }
 
+const opened = new WeakMap<HTMLElement, DialogState>();
+
+/**
+ * Tenta direcionar o foco ao elemento.
+ * Repete a tentativa enquanto o elemento não estiver visível.
+ */
+export function focusWhenVisible(target: HTMLElement, attempt = 0): void {
+  if (!target.isConnected) return;
+
+  target.focus({ preventScroll: true });
+
+  if (document.activeElement !== target && attempt < 8) {
+    window.setTimeout(() => {
+      focusWhenVisible(target, attempt + 1);
+    }, 40);
+  }
+}
+
+/**
+ * Abre um diálogo e torna o restante da página inerte.
+ */
 export function openDialog(
   overlay: HTMLElement,
   focusTarget?: HTMLElement | null,
   opener?: HTMLElement | null,
-) {
+): void {
+  // Evita registrar o mesmo diálogo mais de uma vez.
   if (opened.has(overlay)) return;
-  const inert = [...document.body.children].filter(
-    (c) =>
-      c !== overlay &&
-      !(c instanceof HTMLScriptElement) &&
-      !c.hasAttribute("inert"),
+
+  const inert = Array.from(document.body.children).filter(
+    (element): element is HTMLElement =>
+      element instanceof HTMLElement &&
+      element !== overlay &&
+      !element.hasAttribute("inert"),
   );
-  inert.forEach((c) => c.setAttribute("inert", ""));
+
+  // Impede interação com o conteúdo externo.
+  inert.forEach((element) => {
+    element.setAttribute("inert", "");
+  });
+
+  const activeElement =
+    document.activeElement instanceof HTMLElement
+      ? document.activeElement
+      : null;
+
   opened.set(overlay, {
-    opener: opener ?? (document.activeElement as HTMLElement | null),
+    opener: opener ?? activeElement,
     inert,
   });
-  if (focusTarget) focusWhenVisible(focusTarget);
+
+  // Direciona o foco ao conteúdo do diálogo.
+  if (focusTarget) {
+    focusWhenVisible(focusTarget);
+  }
 }
 
-export function closeDialog(overlay: HTMLElement) {
+/**
+ * Fecha um diálogo, restaura o conteúdo e devolve o foco.
+ */
+export function closeDialog(overlay: HTMLElement): void {
   const state = opened.get(overlay);
+
   if (!state) return;
-  state.inert.forEach((c) => c.removeAttribute("inert"));
+
+  // Libera somente os elementos que este diálogo tornou inertes.
+  state.inert.forEach((element) => {
+    element.removeAttribute("inert");
+  });
+
+  // Remove o registro antes de restaurar o foco.
   opened.delete(overlay);
-  state.opener?.focus?.();
+
+  // Restaura o foco ao elemento que abriu o diálogo.
+  if (state.opener?.isConnected && !state.opener.hasAttribute("disabled")) {
+    state.opener.focus({ preventScroll: true });
+  }
 }

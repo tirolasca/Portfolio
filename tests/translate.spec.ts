@@ -49,9 +49,9 @@ test("GTranslate: configura o widget e carrega uma única vez", async ({
     "no",
   );
   // o Google Website Translator (descontinuado) não é mais carregado
-  expect(
-    await page.locator('script[src*="translate.google.com"]').count(),
-  ).toBe(0);
+  await expect(page.locator('script[src*="translate.google.com"]')).toHaveCount(
+    0,
+  );
 });
 
 test("GTranslate bloqueado: o espaço reservado some em vez de ficar vazio", async ({

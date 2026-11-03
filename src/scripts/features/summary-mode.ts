@@ -1,37 +1,73 @@
 import { closeDialog, openDialog } from "../core/dialog";
+
 export function initSummaryMode() {
   const trigger = document.getElementById("summary-mode-btn");
   if (!trigger) return;
 
-  function buildModal() {
+  function buildModal(): HTMLElement {
     const overlay = document.createElement("div");
     overlay.id = "summary-modal-overlay";
     overlay.className = "summary-modal-overlay";
-    overlay.innerHTML = `
-      <div class="summary-modal" role="dialog" aria-modal="true" aria-label="Resumo rápido">
-        <button class="summary-modal-close" aria-label="Fechar"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
-        <div class="summary-modal-body" id="summary-modal-body"></div>
-      </div>
-    `;
-    overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) closeSummary();
+
+    const modal = document.createElement("div");
+    modal.className = "summary-modal";
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("aria-label", "Resumo rápido");
+
+    const closeButton = document.createElement("button");
+    closeButton.className = "summary-modal-close";
+    closeButton.setAttribute("aria-label", "Fechar");
+
+    const closeIcon = document.createElement("i");
+    closeIcon.className = "fa-solid fa-xmark";
+    closeIcon.setAttribute("aria-hidden", "true");
+    closeButton.appendChild(closeIcon);
+
+    const body = document.createElement("div");
+    body.className = "summary-modal-body";
+    body.id = "summary-modal-body";
+
+    modal.append(closeButton, body);
+    overlay.appendChild(modal);
+
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) closeSummary();
     });
-    overlay
-      .querySelector<HTMLElement>(".summary-modal-close")
-      ?.addEventListener("click", closeSummary);
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && overlay.classList.contains("active"))
+
+    closeButton.addEventListener("click", closeSummary);
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && overlay.classList.contains("active")) {
         closeSummary();
+      }
     });
+
     document.body.appendChild(overlay);
+
     return overlay;
   }
 
   function closeSummary() {
     const overlay = document.getElementById("summary-modal-overlay");
+
     if (overlay) {
       overlay.classList.remove("active");
       closeDialog(overlay);
+    }
+  }
+
+  function safeUrl(value: string): string | null {
+    try {
+      const url = new URL(value, document.baseURI);
+
+      if (url.protocol !== "http:" && url.protocol !== "https:") {
+        return null;
+      }
+
+      return url.href;
+    } catch {
+      return null;
     }
   }
 
@@ -70,75 +106,112 @@ export function initSummaryMode() {
           )?.href || "#",
       }));
 
-    body.innerHTML = `
-    <h3>${name}</h3>
-    <p class="summary-role">${role}</p>
+    // Limpa o conteúdo anterior sem interpretar dados como HTML.
+    body.replaceChildren();
 
-    <div class="summary-block">
-      <h3>Principais skills</h3>
+    // Nome e cargo.
+    const heading = document.createElement("h3");
+    heading.textContent = name;
 
-      <div class="summary-skills">
-        ${skills
-          .map(
-            (skill) => `
-              <img
-                src="${skill.image}"
-                alt="${skill.name}"
-                title="${skill.name}"
-              >
-            `,
-          )
-          .join("")}
-      </div>
-    </div>
+    const roleElement = document.createElement("p");
+    roleElement.className = "summary-role";
+    roleElement.textContent = role;
 
-    <div class="summary-block">
-      <h3>Projetos em destaque</h3>
+    body.append(heading, roleElement);
 
-      <ul class="summary-projects">
-        ${projects
-          .map(
-            (p) =>
-              `<li><a href="${p.link}" target="_blank" rel="noopener noreferrer">${p.title}</a></li>`,
-          )
-          .join("")}
-      </ul>
-    </div>
+    // Habilidades.
+    const skillsBlock = document.createElement("div");
+    skillsBlock.className = "summary-block";
 
-    <div class="summary-actions">
-      <a
-        href="/Lucas Santos - Currículo.pdf"
-        download="Lucas Santos - Currículo.pdf"
-        class="btn primary"
-      >
-        <i class="fa-solid fa-download" aria-hidden="true"></i> Currículo
-      </a>
+    const skillsHeading = document.createElement("h3");
+    skillsHeading.textContent = "Principais skills";
 
-      <a
-        href="#contato"
-        class="btn outline"
-        id="summary-contact-link"
-      >
-        <i class="fa-solid fa-paper-plane" aria-hidden="true"></i> Contato
-      </a>
-    </div>
-  `;
+    const skillsContainer = document.createElement("div");
+    skillsContainer.className = "summary-skills";
 
-    const contactLink = body.querySelector<HTMLElement>(
-      "#summary-contact-link",
-    );
+    for (const skill of skills) {
+      const imageUrl = safeUrl(skill.image);
+      if (!imageUrl) continue;
 
-    if (contactLink) {
-      contactLink.addEventListener("click", closeSummary);
+      const img = document.createElement("img");
+      img.src = imageUrl;
+      img.alt = skill.name;
+      img.title = skill.name;
+
+      skillsContainer.appendChild(img);
     }
+
+    skillsBlock.append(skillsHeading, skillsContainer);
+    body.appendChild(skillsBlock);
+
+    // Projetos.
+    const projectsBlock = document.createElement("div");
+    projectsBlock.className = "summary-block";
+
+    const projectsHeading = document.createElement("h3");
+    projectsHeading.textContent = "Projetos em destaque";
+
+    const projectsList = document.createElement("ul");
+    projectsList.className = "summary-projects";
+
+    for (const project of projects) {
+      const li = document.createElement("li");
+      const link = document.createElement("a");
+
+      link.textContent = project.title;
+      link.href = safeUrl(project.link) || "#";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+
+      li.appendChild(link);
+      projectsList.appendChild(li);
+    }
+
+    projectsBlock.append(projectsHeading, projectsList);
+    body.appendChild(projectsBlock);
+
+    // Ações.
+    const actions = document.createElement("div");
+    actions.className = "summary-actions";
+
+    const resumeLink = document.createElement("a");
+    resumeLink.href = "/Lucas Santos - Currículo.pdf";
+    resumeLink.download = "Lucas Santos - Currículo.pdf";
+    resumeLink.className = "btn primary";
+
+    const downloadIcon = document.createElement("i");
+    downloadIcon.className = "fa-solid fa-download";
+    downloadIcon.setAttribute("aria-hidden", "true");
+
+    resumeLink.append(downloadIcon, document.createTextNode(" Currículo"));
+
+    const contactLink = document.createElement("a");
+    contactLink.href = "#contato";
+    contactLink.className = "btn outline";
+    contactLink.id = "summary-contact-link";
+
+    const contactIcon = document.createElement("i");
+    contactIcon.className = "fa-solid fa-paper-plane";
+    contactIcon.setAttribute("aria-hidden", "true");
+
+    contactLink.append(contactIcon, document.createTextNode(" Contato"));
+
+    contactLink.addEventListener("click", closeSummary);
+
+    actions.append(resumeLink, contactLink);
+    body.appendChild(actions);
   }
 
   trigger.addEventListener("click", () => {
     let overlay = document.getElementById("summary-modal-overlay");
-    if (!overlay) overlay = buildModal();
+
+    overlay ??= buildModal();
+
     populate(overlay);
+
     requestAnimationFrame(() => {
       overlay.classList.add("active");
+
       openDialog(
         overlay,
         overlay.querySelector<HTMLElement>(".summary-modal-close"),

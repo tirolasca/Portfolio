@@ -416,6 +416,15 @@ body {
   transition-delay:
     0s, calc(var(--i, 0) * 45ms + 70ms), calc(var(--i, 0) * 45ms + 70ms);
 }
+/* movimento reduzido: sem entrada escalonada (a duração já é ~0, mas o delay
+   mantinha os itens semitransparentes por até ~160 ms) */
+@media (prefers-reduced-motion: reduce) {
+  .lang-option,
+  .lang-switcher.is-open .lang-option {
+    transform: none;
+    transition-delay: 0s;
+  }
+}
 .lang-option.is-active {
   background: rgba(0, 150, 136, 0.12);
 }

@@ -308,12 +308,12 @@
   --fa: "\f200";
 }
 
-.fa-chart-line {
-  --fa: "\f201";
-}
-
 .fa-user-secret {
   --fa: "\f21b";
+}
+
+.fa-server {
+  --fa: "\f233";
 }
 
 .fa-hand-pointer {
@@ -322,6 +322,10 @@
 
 .fa-industry {
   --fa: "\f275";
+}
+
+.fa-microchip {
+  --fa: "\f2db";
 }
 
 .fa-utensils {
@@ -372,10 +376,6 @@
   --fa: "\f521";
 }
 
-.fa-robot {
-  --fa: "\f544";
-}
-
 .fa-file-arrow-down {
   --fa: "\f56d";
 }
@@ -408,7 +408,7 @@
   --fa: "\f7bf";
 }
 
-.fa-tools {
+.fa-screwdriver-wrench {
   --fa: "\f7d9";
 }
 
