@@ -32,7 +32,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'sha256-utMFeCIEUlxatMsCM9WtuYL/Z6cnBGvkTscnbjQMQoE=' https://cdn.gtranslate.net https://*.gtranslate.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://avatars.githubusercontent.com; font-src 'self' data:; connect-src 'self' https://api.github.com https://translate.googleapis.com https://*.gtranslate.net https://formspree.io; manifest-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'sha256-J8oFiuOgp1+1Eu8x2cjq6CDHtTsnDVoxsrsZkbUWU+s=' 'sha256-4TJLJaobuqtQZyogjOxRpI8rv8Y/F5hFpBuqog8Bl84=' https://cdn.gtranslate.net https://*.gtranslate.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://avatars.githubusercontent.com; font-src 'self' data:; connect-src 'self' https://api.github.com https://translate.googleapis.com https://*.gtranslate.net https://formspree.io; manifest-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests"
         },
         {
           "key": "Permissions-Policy",
