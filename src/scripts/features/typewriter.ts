@@ -1,3 +1,5 @@
+import { prefersReducedMotion } from "../state";
+
 export function initTypewriter() {
   const textEl = document.getElementById("typewriter");
   if (textEl) {
@@ -7,6 +9,11 @@ export function initTypewriter() {
       "Explorador de Novas Tecnologias",
       "Estudante de DSM",
     ];
+    // movimento reduzido: mostra a primeira frase parada, sem digitar/apagar em ciclo
+    if (prefersReducedMotion) {
+      textEl.textContent = phrases[0];
+      return;
+    }
     let i = 0,
       j = 0,
       isDeleting = false;

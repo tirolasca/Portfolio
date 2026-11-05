@@ -3,7 +3,7 @@ import { closeDialog, openDialog } from "../core/dialog";
 import { toggleMatrixMode } from "../effects/matrix";
 import { showAchievement } from "./achievements";
 import { openEmailModal } from "./email";
-import { prefersReducedMotion, unlockedAchievements } from "../state";
+import { scrollBehavior, unlockedAchievements } from "../state";
 
 export function initTerminal() {
   const btn = document.getElementById("terminal-btn");
@@ -62,7 +62,7 @@ function setupTerminal({
     setTimeout(
       () =>
         el.scrollIntoView({
-          behavior: prefersReducedMotion ? "auto" : "smooth",
+          behavior: scrollBehavior(),
           block: "start",
         }),
       250,

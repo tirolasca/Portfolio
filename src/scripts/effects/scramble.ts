@@ -1,3 +1,4 @@
+import { prefersReducedMotion } from "../state";
 import { secureRandom } from "../utils";
 
 type ScrambleTarget = HTMLElement & {
@@ -9,6 +10,8 @@ function scramble(t: ScrambleTarget) {
   let it = 0;
   const orig = t.dataset.value;
   if (!orig) return;
+  // movimento reduzido: o texto fica como está, sem embaralhar letras
+  if (prefersReducedMotion) return;
   clearInterval(t.interval);
   t.interval = setInterval(() => {
     t.innerText = orig

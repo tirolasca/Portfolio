@@ -1,3 +1,5 @@
+import { scrollBehavior } from "../state";
+
 const NAV_SECTIONS_INDEX = [
   { id: "home", label: "Início", icon: "fa-house" },
   { id: "titulo", label: "Skills", icon: "fa-bolt" },
@@ -31,7 +33,9 @@ export function initSideNavDots() {
     dot.setAttribute("aria-label", label);
     dot.addEventListener("click", (e) => {
       e.preventDefault();
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById(id)
+        ?.scrollIntoView({ behavior: scrollBehavior() });
     });
     nav.appendChild(dot);
   });
@@ -50,7 +54,9 @@ export function initSideNavDots() {
     btn.setAttribute("aria-label", label);
     btn.innerHTML = `<i class="fa-solid ${icon}" aria-hidden="true"></i><span>${label}</span>`;
     btn.addEventListener("click", () => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById(id)
+        ?.scrollIntoView({ behavior: scrollBehavior() });
     });
     bar.appendChild(btn);
   });

@@ -4,7 +4,7 @@ import {
   resumeTourSteps,
   type TourStep,
 } from "../data/tour-steps";
-import { isResumePage, prefersReducedMotion } from "../state";
+import { isResumePage, scrollBehavior } from "../state";
 
 interface TourElements {
   prompt: HTMLElement;
@@ -156,10 +156,7 @@ function runTour({
     target.classList.add("tour-highlight");
 
     target.scrollIntoView({
-      behavior:
-        prefersReducedMotion !== undefined && prefersReducedMotion
-          ? "auto"
-          : "smooth",
+      behavior: scrollBehavior(),
       block: "center",
     });
 

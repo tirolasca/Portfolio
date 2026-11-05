@@ -8,9 +8,16 @@
 }
 
 html {
-  scroll-behavior: smooth;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+/* rolagem suave só para quem não pediu "menos movimento" (WCAG 2.3.3).
+   Condicionar aqui (e não desfazer depois) evita depender de especificidade/!important. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* `clip` corta o excesso sem criar uma área rolável: com `hidden` em html e body, o body vira

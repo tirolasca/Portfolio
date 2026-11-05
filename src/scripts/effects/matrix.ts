@@ -1,12 +1,13 @@
 import { session } from "../core/storage";
 import { showAchievement } from "../features/achievements";
-import { state, unlockedAchievements } from "../state";
+import { prefersReducedMotion, state, unlockedAchievements } from "../state";
 import { secureRandom } from "../utils";
 
 export function toggleMatrixMode() {
   state.matrixMode = !state.matrixMode;
   if (state.matrixMode) {
-    startMatrix();
+    // movimento reduzido: a chuva de caracteres (tela cheia, contínua) não roda
+    if (!prefersReducedMotion) startMatrix();
     if (!unlockedAchievements.has("a-konami")) {
       unlockedAchievements.add("a-konami");
       session.set("achievements", JSON.stringify([...unlockedAchievements]));

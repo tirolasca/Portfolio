@@ -1,3 +1,5 @@
+import { scrollBehavior } from "../state";
+
 export function initBackToTop() {
   const backToTop = document.querySelector<HTMLElement>(".back-to-top");
   if (backToTop) {
@@ -11,7 +13,7 @@ export function initBackToTop() {
     });
     backToTop.addEventListener("click", (e) => {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: scrollBehavior() });
     });
   }
 }

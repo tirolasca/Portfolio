@@ -1,5 +1,5 @@
 import { showHintToast } from "./achievements";
-import { prefersReducedMotion } from "../state";
+import { scrollBehavior } from "../state";
 import { normalize } from "../utils";
 
 export function initSkillProjectLink() {
@@ -38,7 +38,7 @@ export function initSkillProjectLink() {
       const projectsSection = document.getElementById("projetos");
       if (projectsSection) {
         projectsSection.scrollIntoView({
-          behavior: prefersReducedMotion ? "auto" : "smooth",
+          behavior: scrollBehavior(),
           block: "start",
         });
       }

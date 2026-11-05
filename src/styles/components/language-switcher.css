@@ -416,15 +416,6 @@ body {
   transition-delay:
     0s, calc(var(--i, 0) * 45ms + 70ms), calc(var(--i, 0) * 45ms + 70ms);
 }
-/* movimento reduzido: sem entrada escalonada (a duração já é ~0, mas o delay
-   mantinha os itens semitransparentes por até ~160 ms) */
-@media (prefers-reduced-motion: reduce) {
-  .lang-option,
-  .lang-switcher.is-open .lang-option {
-    transform: none;
-    transition-delay: 0s;
-  }
-}
 .lang-option.is-active {
   background: rgba(0, 150, 136, 0.12);
 }
@@ -531,5 +522,24 @@ body {
   }
   .lang-menu {
     min-width: 200px;
+  }
+}
+
+/* ---------- movimento reduzido ----------
+   O menu abre e fecha SEM transição: o estado final vale no mesmo recálculo de estilo.
+   Encurtar a duração (a regra global usa 0.01ms) não basta: o menu já fica visível, mas a
+   opacidade ainda está no valor inicial até o primeiro frame. Nessa janela o texto escuro é
+   composto com opacidade parcial sobre o cabeçalho escuro e o contraste cai abaixo de 4,5:1
+   (axe: color-contrast em .lang-code/.lang-name no tema claro, de forma intermitente). */
+@media (prefers-reduced-motion: reduce) {
+  .lang-menu,
+  .lang-option,
+  .lang-switcher.is-open .lang-option,
+  .lang-code {
+    transition: none;
+  }
+  .lang-option,
+  .lang-switcher.is-open .lang-option {
+    transform: none;
   }
 }

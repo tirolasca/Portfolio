@@ -1,3 +1,5 @@
+import { prefersReducedMotion } from "../state";
+
 export function initIntersectionObserver() {
   const fadeEls = document.querySelectorAll<HTMLElement>(
     ".fade-up,.card,.skill-card,.project-card,.swot-card",
@@ -51,6 +53,12 @@ export function initStatsCounters() {
         if (entry.isIntersecting) {
           const el = entry.target as HTMLElement;
           const end = Number.parseInt(el.dataset.count ?? "", 10);
+          // movimento reduzido: mostra o valor final, sem contagem
+          if (prefersReducedMotion) {
+            el.textContent = String(end);
+            obs.unobserve(el);
+            return;
+          }
           const dur = 1500;
           let start: number | null = null;
           function step(ts: number) {

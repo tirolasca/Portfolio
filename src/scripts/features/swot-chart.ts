@@ -1,4 +1,5 @@
 import Chart from "chart.js/auto";
+import { prefersReducedMotion } from "../state";
 
 /** `canvas.chart` expõe a instância (usado pelos testes E2E). */
 type SwotCanvas = HTMLCanvasElement & { chart?: Chart };
@@ -136,7 +137,10 @@ export function initSwotChart() {
           },
         },
       },
-      animation: { duration: 1400, easing: "easeOutQuart" },
+      // movimento reduzido: o gráfico já nasce desenhado, sem animação de entrada
+      animation: prefersReducedMotion
+        ? false
+        : { duration: 1400, easing: "easeOutQuart" },
       elements: { line: { tension: 0.15 } },
     },
   });

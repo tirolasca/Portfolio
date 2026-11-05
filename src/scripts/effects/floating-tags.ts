@@ -1,8 +1,11 @@
+import { prefersReducedMotion } from "../state";
 import { secureRandom } from "../utils";
 
 export function initFloatingTags() {
   const hero = document.querySelector<HTMLElement>(".hero");
   if (!hero) return;
+  // decorativo e só faz sentido em movimento: parado, ficaria sobre o texto do hero
+  if (prefersReducedMotion) return;
   const random = (max = 1) => secureRandom() * max;
   const tags = [
     "JSON",

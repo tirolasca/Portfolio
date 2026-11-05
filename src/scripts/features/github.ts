@@ -1,4 +1,5 @@
 import { closeDialog, openDialog } from "../core/dialog";
+import { prefersReducedMotion } from "../state";
 import { must } from "../utils";
 
 export async function initGithubActivity() {
@@ -41,6 +42,11 @@ export function initGithubModal() {
   function animateVal(id: string, end: number, dur = 1500) {
     const el = document.getElementById(id);
     if (!el) return;
+    // movimento reduzido: valor final direto, sem contagem
+    if (prefersReducedMotion) {
+      el.textContent = String(end);
+      return;
+    }
     let start: number | null = null;
     const step = (ts: number): void => {
       if (!start) start = ts;

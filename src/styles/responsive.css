@@ -441,14 +441,24 @@
   }
 }
 
+/* ---------- movimento reduzido (prefers-reduced-motion) ----------
+   Camada global: encurta TODA animação/transição para ~0 e roda animações uma única vez.
+   `!important` é intencional e restrito a duração/atraso/iterações: as regras do projeto usam
+   o shorthand `animation:`/`transition:` com seletores de classe (especificidade maior que `*`),
+   então sem ele esta camada simplesmente não se aplicava. Mantemos 0.01ms (e não 0) para
+   `transitionend`/`animationend` continuarem disparando. Quem precisa de ZERO transição
+   (ex.: menu que muda `visibility`) usa `transition: none` no próprio componente, que
+   zera `transition-property` e não conflita com esta camada.
+   A rolagem suave é tratada em base/reset.css; JS em state.ts (`scrollBehavior()`). */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms;
-    animation-iteration-count: 1;
-    transition-duration: 0.01ms;
-    scroll-behavior: auto;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
   body::before {
     animation: none;
@@ -463,5 +473,18 @@
   .social-icons .social-btn:hover {
     animation: none;
     transform: none;
+  }
+
+  /* tags flutuantes do hero são puramente decorativas: paradas, ficariam sobre o texto.
+     (o JS já nem as cria sob movimento reduzido; isto cobre a preferência mudar com a página aberta) */
+  .floating-tags-container {
+    display: none;
+  }
+
+  /* efeito "glitch" do título só existe em movimento: sem ele, as camadas duplicadas
+     ficariam paradas sobre o texto */
+  .cyber-glitch:hover::before,
+  .cyber-glitch:hover::after {
+    opacity: 0;
   }
 }

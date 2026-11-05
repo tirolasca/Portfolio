@@ -27,9 +27,32 @@ function readUnlocked(): string[] {
 }
 export const unlockedAchievements = new Set<string>(readUnlocked());
 
-export const prefersReducedMotion = window.matchMedia(
+const reducedMotionQuery = window.matchMedia(
   "(prefers-reduced-motion: reduce)",
-).matches;
+);
+
+/**
+ * `true` quando o sistema pede "menos movimento". É uma binding ao vivo (`export let`):
+ * quem importa enxerga a mudança se a pessoa alterar a preferência com a página aberta.
+ * Para reagir à mudança (ligar/desligar algo), use `onMotionPreferenceChange`.
+ */
+export let prefersReducedMotion = reducedMotionQuery.matches;
+
+const motionListeners = new Set<(reduce: boolean) => void>();
+reducedMotionQuery.addEventListener("change", (e) => {
+  prefersReducedMotion = e.matches;
+  motionListeners.forEach((fn) => fn(e.matches));
+});
+
+/** Registra um callback chamado quando a preferência de movimento muda. */
+export function onMotionPreferenceChange(fn: (reduce: boolean) => void) {
+  motionListeners.add(fn);
+}
+
+/** Comportamento de rolagem programática (`scrollTo`/`scrollIntoView`) que respeita a preferência. */
+export function scrollBehavior(): ScrollBehavior {
+  return prefersReducedMotion ? "auto" : "smooth";
+}
 
 /** true na página do currículo */
 export const isResumePage = Boolean(document.querySelector(".curriculo-page"));
