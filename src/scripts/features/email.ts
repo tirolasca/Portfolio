@@ -319,18 +319,20 @@ export function openEmailModal(from?: HTMLElement): void {
 
   restoreDraft();
 
-  // Registra o diálogo e o elemento que abriu o modal.
-  openDialog(
-    overlay,
-    els.success.classList.contains("show") ? els.success : els.name,
-    from,
-  );
-
+  // Primeiro torna o diálogo visível e acessível; só então pede o foco.
+  // (Elemento em `visibility: hidden` não aceita foco.)
   overlay.classList.add("active");
   overlay.setAttribute("aria-hidden", "false");
 
   document.body.style.overflow = "hidden";
   document.addEventListener("keydown", onKeydown);
+
+  // Registra o diálogo, o elemento que abriu o modal e move o foco.
+  openDialog(
+    overlay,
+    els.success.classList.contains("show") ? els.success : els.name,
+    from,
+  );
 }
 
 export function closeEmailModal(): void {

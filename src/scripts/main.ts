@@ -45,6 +45,11 @@ function init() {
     5000,
     "vitals",
   );
+  onIdle(
+    () => import("./core/speed-insights").then((m) => m.initSpeedInsights()),
+    2500,
+    "speed-insights",
+  );
 
   // 3. quando chegam perto da tela
   whenNear(".projects-swiper", () =>

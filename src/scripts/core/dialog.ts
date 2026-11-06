@@ -18,19 +18,34 @@ interface DialogState {
 
 const opened = new WeakMap<HTMLElement, DialogState>();
 
+const FOCUS_RETRY_MS = 40;
+const FOCUS_MAX_ATTEMPTS = 40; // ~1,6 s no total
+
 /**
  * Tenta direcionar o foco ao elemento.
- * Repete a tentativa enquanto o elemento não estiver visível.
+ * Repete a tentativa enquanto o elemento não estiver visível (a transição do overlay pode
+ * demorar em máquinas lentas). Para assim que:
+ *  - o diálogo for fechado, ou
+ *  - o foco já estiver dentro do diálogo (por exemplo, a pessoa já clicou em outro campo):
+ *    insistir aí roubaria o foco no meio da digitação.
  */
-export function focusWhenVisible(target: HTMLElement, attempt = 0): void {
-  if (!target.isConnected) return;
+export function focusWhenVisible(
+  target: HTMLElement,
+  dialog: HTMLElement,
+  attempt = 0,
+  isOpen: () => boolean = () => true,
+): void {
+  if (!target.isConnected || !isOpen()) return;
+
+  const active = document.activeElement;
+  if (active && active !== dialog && dialog.contains(active)) return;
 
   target.focus({ preventScroll: true });
 
-  if (document.activeElement !== target && attempt < 8) {
+  if (document.activeElement !== target && attempt < FOCUS_MAX_ATTEMPTS) {
     window.setTimeout(() => {
-      focusWhenVisible(target, attempt + 1);
-    }, 40);
+      focusWhenVisible(target, dialog, attempt + 1, isOpen);
+    }, FOCUS_RETRY_MS);
   }
 }
 
@@ -69,7 +84,7 @@ export function openDialog(
 
   // Direciona o foco ao conteúdo do diálogo.
   if (focusTarget) {
-    focusWhenVisible(focusTarget);
+    focusWhenVisible(focusTarget, overlay, 0, () => opened.has(overlay));
   }
 }
 

@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "overrides": {
-    "minimatch": "^11.0.4"
+    "minimatch": "^11.0.5"
   },
   "engines": {
     "node": ">=26.13.0"
@@ -25,8 +25,8 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",
-    "@vercel/speed-insights": "^2.0.0",
-    "astro": "^7.4.5",
+    "@vercel/speed-insights": "^2.1.0",
+    "astro": "^7.4.7",
     "chart.js": "^4.6.1",
     "swiper": "^14.4.0",
     "web-vitals": "^6.2.3"
@@ -36,7 +36,7 @@
     "@axe-core/playwright": "^4.14.0",
     "@eslint/js": "^10.0.1",
     "@fortawesome/fontawesome-free": "^7.3.1",
-    "@playwright/test": "^1.64.1",
+    "@playwright/test": "^1.65.0",
     "badge-maker": "^6.0.0",
     "eslint": "^10.14.0",
     "eslint-plugin-astro": "^3.2.1",
