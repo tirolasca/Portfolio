@@ -1,4 +1,3 @@
-
 import { session } from "../core/storage";
 import { closeDialog, openDialog } from "../core/dialog";
 import {
@@ -71,9 +70,7 @@ function renderAchievementsGrid() {
         const ach = ALL_ACHIEVEMENTS.find((a) => a.id === id);
         if (!ach) return;
         const hint = LOCKED_HINTS[id] || "Continue explorando!";
-        showHintToast(
-          ach.secret ? `🔮 Segredo: ${hint}` : `💡 Dica: ${hint}`,
-        );
+        showHintToast(ach.secret ? `🔮 Segredo: ${hint}` : `💡 Dica: ${hint}`);
       });
     });
 }

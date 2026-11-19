@@ -197,10 +197,6 @@
     left: 36.4%;
   }
 
-  .skill-card {
-    padding: 12px;
-  }
-
   .swot-track {
     grid-template-columns: 1fr;
     gap: 8px;
@@ -480,16 +476,44 @@
     height: 330px;
   }
 
-  .skill-card {
-    padding: 14px 12px;
-  }
-
   .project-card img {
     height: 150px;
   }
 
   .summary-modal {
     padding: 22px 18px;
+  }
+}
+
+/* Ajustes específicos para tablets e celulares */
+@media (max-width: 899px) {
+  .skills .skill-card {
+    min-height: 180px;
+    padding: 16px 14px;
+  }
+
+  .skills .skill-badges {
+    gap: 7px;
+  }
+}
+
+@media (max-width: 599px) {
+  .skills .skill-card {
+    min-height: 0;
+    padding: 16px 14px;
+  }
+
+  .skill-card-head {
+    min-height: 42px;
+    gap: 9px;
+  }
+
+  .skills .skill-badges {
+    gap: 8px;
+  }
+
+  .skill-badges img {
+    height: 27px;
   }
 }
 

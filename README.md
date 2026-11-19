@@ -149,7 +149,7 @@ npm run dev        # http://localhost:4321
 | `npm run knip`                                  | Código, exports e dependências não usados                            |
 | `npm run test` · `test:watch` · `test:coverage` | Vitest (unitários, DOM e integridade dos dados)                      |
 | `npm run test:e2e`                              | Testes E2E, de acessibilidade (axe), SEO e segurança (Playwright)    |
-| `npm run test:report` · `test:report:all`       | Gera relatório Markdown da suíte Vitest em `reports/`               |
+| `npm run test:report` · `test:report:all`       | Gera relatório Markdown da suíte Vitest em `reports/`                |
 | `npm run size`                                  | Orçamento de tamanho do build, em gzip (size-limit)                  |
 | `npm run check:links`                           | Links internos e âncoras do `dist/` (Linkinator)                     |
 | `npm run check:links:live`                      | Links do site publicado, inclusive externos (Linkinator)             |

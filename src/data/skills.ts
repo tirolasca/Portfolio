@@ -42,6 +42,7 @@ export const skillCategories: SkillCategory[] = [
         logoColor: "white",
       },
       { alt: "Swiper", color: "6332F6", logo: "swiper", logoColor: "white" },
+      { alt: "Tkinter", color: "3776AB", logo: "python", logoColor: "white" },
       {
         alt: "Font Awesome",
         color: "538DD7",
@@ -113,6 +114,7 @@ export const skillCategories: SkillCategory[] = [
         alt: "Microsserviços",
         color: "326CE5",
         logo: "kubernetes",
+        logoColor: "white",
       },
       {
         alt: "JWT",
@@ -141,6 +143,7 @@ export const skillCategories: SkillCategory[] = [
     icon: "fa-solid fa-database",
     badges: [
       { alt: "MySQL", color: "005C84", logo: "mysql", logoColor: "white" },
+      { alt: "TiDB", color: "E54B4B", logo: "tidb", logoColor: "white" },
       {
         alt: "PostgreSQL",
         color: "4169E1",
@@ -148,12 +151,7 @@ export const skillCategories: SkillCategory[] = [
         logoColor: "white",
       },
       { alt: "MongoDB", color: "47A248", logo: "mongodb", logoColor: "white" },
-      {
-        alt: "Neo4j",
-        color: "4581C3",
-        logo: "neo4j",
-        logoColor: "white",
-      },
+      { alt: "Neo4j", color: "4581C3", logo: "neo4j", logoColor: "white" },
       {
         alt: "Apache Cassandra",
         label: "Cassandra",
@@ -186,6 +184,13 @@ export const skillCategories: SkillCategory[] = [
       { alt: "Vercel", color: "000000", logo: "vercel", logoColor: "white" },
       { alt: "Render", color: "46E3B7", logo: "render", logoColor: "000000" },
       { alt: "Aiven", color: "FF5A5F", logo: "aiven", logoColor: "white" },
+      { alt: "TiDB Cloud", color: "E54B4B", logo: "tidb", logoColor: "white" },
+      {
+        alt: "Streamlit",
+        color: "FF4B4B",
+        logo: "streamlit",
+        logoColor: "white",
+      },
       {
         alt: "GitHub Actions",
         color: "2088FF",
@@ -214,12 +219,7 @@ export const skillCategories: SkillCategory[] = [
         logoColor: "white",
       },
       { alt: "Grafana", color: "F46800", logo: "grafana", logoColor: "white" },
-      {
-        alt: "Loki",
-        color: "F46800",
-        logo: "grafana",
-        logoColor: "white",
-      },
+      { alt: "Loki", color: "F46800", logo: "grafana", logoColor: "white" },
       { alt: "Jaeger", color: "60D0E4", logo: "jaeger", logoColor: "white" },
       {
         alt: "Vercel Speed Insights",
@@ -243,6 +243,9 @@ export const skillCategories: SkillCategory[] = [
     icon: "fa-solid fa-vial-circle-check",
     badges: [
       { alt: "Jest", color: "C21325", logo: "jest", logoColor: "white" },
+      { alt: "pytest", color: "0A9EDC", logo: "pytest", logoColor: "white" },
+      { alt: "Ruff", color: "D7FF64", logo: "ruff", logoColor: "black" },
+      { alt: "mypy", color: "2A6DB2", logo: "python", logoColor: "white" },
       {
         alt: "Playwright",
         color: "2EAD33",
@@ -262,6 +265,13 @@ export const skillCategories: SkillCategory[] = [
         logo: "lighthouse",
         logoColor: "white",
       },
+      {
+        alt: "Mongomock",
+        color: "47A248",
+        logo: "mongodb",
+        logoColor: "white",
+      },
+      { alt: "Fakeredis", color: "DC382D", logo: "redis", logoColor: "white" },
     ],
   },
 
@@ -319,6 +329,14 @@ export const skillCategories: SkillCategory[] = [
     badges: [
       { alt: "Pandas", color: "150458", logo: "pandas", logoColor: "white" },
       { alt: "Plotly", color: "3F4F75", logo: "plotly", logoColor: "white" },
+      { alt: "SymPy", color: "3B5526", logo: "python", logoColor: "white" },
+      {
+        alt: "Matplotlib",
+        color: "11557C",
+        logo: "python",
+        logoColor: "white",
+      },
+      { alt: "PyVis", color: "2D6A4F", logo: "python", logoColor: "white" },
     ],
   },
 

@@ -308,6 +308,10 @@
   --fa: "\f1d8";
 }
 
+.fa-calculator {
+  --fa: "\f1ec";
+}
+
 .fa-chart-pie {
   --fa: "\f200";
 }
@@ -384,6 +388,10 @@
   --fa: "\f521";
 }
 
+.fa-store {
+  --fa: "\f54e";
+}
+
 .fa-file-arrow-down {
   --fa: "\f56d";
 }
@@ -394,6 +402,10 @@
 
 .fa-laptop-code {
   --fa: "\f5fc";
+}
+
+.fa-square-root-variable {
+  --fa: "\f698";
 }
 
 .fa-cloud-sun {

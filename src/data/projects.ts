@@ -8,22 +8,31 @@ import portfolioGamer from "../assets/img/portfolio-gamer.webp";
 import aerocode from "../assets/img/aerocode.webp";
 import vinicola from "../assets/img/vinicola.webp";
 import signa from "../assets/img/signa.webp";
+import mercadolivre from "../assets/img/mercadolivre.webp";
+import calculadoraMatrizes from "../assets/img/calculadora-matrizes.webp";
 
 export type TechId =
   | "aiven"
+  | "cassandra"
   | "css3"
   | "express"
   | "firebase"
   | "flask"
   | "html5"
   | "javascript"
+  | "mongodb"
   | "mysql"
+  | "neo4j"
   | "pandas"
   | "plotly"
   | "prisma"
   | "python"
   | "react"
+  | "redis"
   | "render"
+  | "streamlit"
+  | "sympy"
+  | "tidb"
   | "typescript"
   | "vite";
 
@@ -158,7 +167,7 @@ export const projects: Project[] = [
     subtitleIcon: "fa-solid fa-industry",
     descriptionIcon: "fa-solid fa-code",
     description:
-      "Aplicação web para <strong>gestão da produção aeronáutica</strong>, desenvolvida com <strong>React, TypeScript, Prisma e MySQL</strong>. Conta com <strong>autenticação, níveis de acesso, métricas de qualidade, filtros e histórico</strong>, além de aplicação e API hospedadas na <strong>Vercel, Render e Aiven</strong>.",
+      "Aplicação web para <strong>gestão da produção aeronáutica</strong>, desenvolvida com <strong>React, TypeScript, Prisma e MySQL</strong>. Conta com <strong>autenticação, níveis de acesso, métricas de qualidade, filtros e histórico</strong>, além da aplicação hospedada na <strong>Vercel</strong>, API no <strong>Render</strong> e banco de dados no <strong>TiDB Cloud</strong>.",
     image: aerocode,
     imageAlt: "Aerocode",
     tech: [
@@ -208,6 +217,40 @@ export const projects: Project[] = [
     demo: "https://janosys-aeroespacial.vercel.app",
     demoIcon: "fa-solid fa-arrow-up-right-from-square",
     repo: "https://github.com/janosystime/Janosys-Project-1-Akaer",
+    repoIcon: "fa-brands fa-github",
+  },
+
+  {
+    title: "Mercado Livre",
+    icon: "fa-solid fa-store",
+    subtitle: "Plataforma de E-commerce & Bancos Poliglotas",
+    subtitleIcon: "fa-solid fa-database",
+    descriptionIcon: "fa-solid fa-code",
+    description:
+      "Projeto de estudo de uma plataforma de e-commerce desenvolvida em <strong>Python</strong>, explorando diferentes modelos de persistência e arquitetura de dados. Integra <strong>MongoDB, Redis, Apache Cassandra e Neo4j</strong>, trabalhando com bancos documentais, cache, colunas e grafos. Possui interface web com <strong>Streamlit</strong>, visualizações e recursos de diagnóstico.",
+    image: mercadolivre,
+    imageAlt: "Plataforma Mercado Livre desenvolvida em Python",
+    tech: ["python", "streamlit", "mongodb", "redis", "cassandra", "neo4j"],
+    demo: "https://mercadolivrebr.streamlit.app",
+    demoIcon: "fa-solid fa-up-right-from-square",
+    repo: "https://github.com/tirolasca/MercadoLivre",
+    repoIcon: "fa-brands fa-github",
+  },
+
+  {
+    title: "Calculadora de Matrizes",
+    icon: "fa-solid fa-calculator",
+    subtitle: "Álgebra Linear & Computação Científica",
+    subtitleIcon: "fa-solid fa-square-root-variable",
+    descriptionIcon: "fa-solid fa-code",
+    description:
+      "Aplicação educacional para operações e cálculos de <strong>álgebra linear</strong>, desenvolvida em <strong>Python</strong>. Utiliza <strong>SymPy</strong> para operações simbólicas e oferece interfaces com <strong>Streamlit e Tkinter</strong>, além de recursos de visualização matemática. Projeto estruturado com testes automatizados e ferramentas de qualidade de código.",
+    image: calculadoraMatrizes,
+    imageAlt: "Calculadora de Matrizes e operações de álgebra linear",
+    tech: ["python", "streamlit", "sympy"],
+    demo: "https://calculadora-matrizes.streamlit.app",
+    demoIcon: "fa-solid fa-up-right-from-square",
+    repo: "https://github.com/tirolasca/Calculadora-Matrizes",
     repoIcon: "fa-brands fa-github",
   },
 ];
