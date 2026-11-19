@@ -1,0 +1,83 @@
+---
+interface Props {
+  variant: "home" | "resume";
+}
+const { variant } = Astro.props;
+
+const copy = {
+  home: {
+    aria: "Tour do portfólio",
+    promptIcon: "fa-hand-sparkles",
+    promptText:
+      "Primeira vez por aqui? Posso te mostrar os destaques em uns 20 segundos.",
+    startIcon: "fa-hand-pointer",
+    startLabel: "Sim, mostra!",
+    skipLabel: "Não, obrigado",
+    steps: 4,
+  },
+  resume: {
+    aria: "Tour do currículo",
+    promptIcon: "fa-compass",
+    promptText: "Quer conhecer meu currículo em poucos segundos?",
+    startIcon: "fa-route",
+    startLabel: "Começar tour",
+    skipLabel: "Agora não",
+    steps: 6,
+  },
+}[variant];
+---
+
+<div id="tour-prompt" class="tour-prompt" role="dialog" aria-label={copy.aria}>
+  <p>
+    <i class={`fa-solid ${copy.promptIcon}`} aria-hidden="true"></i>
+    {copy.promptText}
+  </p>
+
+  <div class="tour-prompt-actions">
+    <button type="button" class="btn primary tour-start-btn">
+      <i class={`fa-solid ${copy.startIcon}`} aria-hidden="true"></i>
+      <span>{copy.startLabel}</span>
+    </button>
+
+    <button type="button" class="btn outline tour-skip-btn">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      <span>{copy.skipLabel}</span>
+    </button>
+  </div>
+</div>
+
+<div
+  id="tour-card"
+  class="tour-card"
+  role="dialog"
+  aria-label={copy.aria}
+  aria-live="polite"
+>
+  <div class="tour-card-step">
+    <i class="fa-solid fa-route" aria-hidden="true"></i>
+    <span id="tour-step-counter">1 / {copy.steps}</span>
+  </div>
+
+  <!-- o título é preenchido pelo JS a cada passo do tour -->
+  {/* eslint-disable-next-line astro/jsx-a11y/heading-has-content */}
+  <h5 id="tour-title"></h5>
+
+  <p id="tour-text"></p>
+
+  <div class="tour-card-actions">
+    <button type="button" class="btn outline tour-prev-btn" id="tour-prev-btn">
+      <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+      <span>Voltar</span>
+    </button>
+
+    <button type="button" class="btn primary tour-next-btn" id="tour-next-btn">
+      <span>Próximo</span>
+      <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+    </button>
+
+    <button type="button" class="tour-end-link" id="tour-end-btn">
+      <i class="fa-solid fa-forward" aria-hidden="true"></i>
+      <span>Pular tour</span>
+    </button>
+  </div>
+</div>

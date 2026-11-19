@@ -1,0 +1,38 @@
+<div
+  id="terminal-overlay"
+  class="terminal-overlay"
+  aria-hidden="true"
+  translate="no"
+>
+  <div class="terminal-window" role="dialog" aria-label="Terminal interativo">
+    <div class="terminal-titlebar">
+      <div class="terminal-dots">
+        <span class="t-dot t-dot-red"></span>
+        <span class="t-dot t-dot-yellow"></span>
+        <span class="t-dot t-dot-green"></span>
+      </div>
+      <span class="terminal-titlebar-label">guest@lucas-portfolio: ~</span>
+      <button
+        class="terminal-close"
+        id="terminal-close"
+        aria-label="Fechar terminal"
+      >
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="terminal-body">
+      <div class="terminal-output" id="cli-output"></div>
+      <div class="terminal-input-line">
+        <span class="terminal-prompt">guest@portfolio:~$</span>
+        <input
+          type="text"
+          id="terminal-input"
+          class="terminal-input"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Digite um comando"
+        />
+      </div>
+    </div>
+  </div>
+</div>

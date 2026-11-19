@@ -1,0 +1,32 @@
+---
+/**
+ * Lista de badges de tecnologias. Fonte única dos dados: src/data/skills.ts
+ * (usada na home e no currículo). Cada badge vira um SVG gerado no build.
+ */
+import type { SkillBadge } from "../data/skills";
+import { badgeSlug, renderBadge } from "../lib/badges";
+
+interface Props {
+  badges: SkillBadge[];
+}
+
+const { badges } = Astro.props;
+const items = badges.map((b) => ({
+  alt: b.alt,
+  src: `/badges/${badgeSlug(b.alt)}.svg`,
+  width: renderBadge(b).width,
+}));
+---
+
+<div class="skill-badges">
+  {items.map((b) => (
+    <img
+      src={b.src}
+      alt={b.alt}
+      width={b.width}
+      height="28"
+      loading="lazy"
+      decoding="async"
+    />
+  ))}
+</div>

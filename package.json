@@ -1,0 +1,101 @@
+{
+  "name": "portfolio",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "overrides": {
+    "minimatch": "^11.0.9",
+    "linkinator": {
+      "glob": "^14.0.6"
+    }
+  },
+  "engines": {
+    "node": ">=26.13.0"
+  },
+  "scripts": {
+    "icons": "node scripts/fa-subset.mjs",
+    "predev": "npm run icons",
+    "dev": "astro dev",
+    "prebuild": "npm run icons",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test:e2e": "playwright test",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:report": "node scripts/test-report.mjs",
+    "test:report:all": "node scripts/test-report.mjs --all",
+    "knip": "knip",
+    "spell": "cspell --no-progress \"src/**/*.{ts,astro,css,md}\" \"tests/**/*.ts\" \"scripts/**/*.mjs\" \"docs/**/*.md\" \"README.md\" \".github/**/*.{yml,yaml}\" \"*.{json,mjs,ts,js}\"",
+    "analyze": "npm run icons && astro build --analyze",
+    "check:links": "linkinator dist --config linkinator.config.json",
+    "check:links:live": "linkinator https://lucastec.vercel.app --config linkinator.external.json",
+    "quality": "npm run lint && npm run lint:css && npm run format:check && npm run check && npm run test && npm run knip && npm run spell",
+    "lint:css": "stylelint \"src/**/*.css\" --max-warnings 50",
+    "lint:css:fix": "stylelint \"src/**/*.css\" --fix",
+    "size": "size-limit",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.5",
+    "@vercel/speed-insights": "^2.1.0",
+    "astro": "^7.4.12",
+    "chart.js": "^4.6.1",
+    "swiper": "^14.4.0",
+    "web-vitals": "^6.2.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@axe-core/playwright": "^4.14.0",
+    "@cspell/dict-pt-br": "^2.4.4",
+    "@eslint/js": "^10.0.1",
+    "@fortawesome/fontawesome-free": "^7.3.1",
+    "@playwright/test": "^1.65.1",
+    "@size-limit/file": "^14.3.0",
+    "@vitest/coverage-v8": "^5.1.1",
+    "badge-maker": "^6.0.0",
+    "cspell": "^10.5.2",
+    "eslint": "^10.15.0",
+    "eslint-plugin-astro": "^3.2.1",
+    "eslint-plugin-jsx-a11y-x": "^0.2.0",
+    "globals": "^17.14.0",
+    "happy-dom": "^21.0.4",
+    "husky": "^9.1.7",
+    "knip": "^6.45.1",
+    "linkinator": "^8.1.0",
+    "lint-staged": "^17.6.1",
+    "prettier": "^3.10.1",
+    "prettier-plugin-astro": "^1.1.2",
+    "simple-icons": "^16.38.0",
+    "size-limit": "^14.3.0",
+    "sonda": "^0.14.0",
+    "stylelint": "^18.0.0",
+    "stylelint-config-standard": "^41.0.0",
+    "subset-font": "^2.9.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.73.0",
+    "vitest": "^5.1.1"
+  },
+  "description": "Portfólio de Lucas Santos — Astro + TypeScript",
+  "lint-staged": {
+    "*.{ts,astro,js,mjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.css": [
+      "stylelint --max-warnings 50",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml}": [
+      "prettier --write"
+    ],
+    "*": [
+      "cspell --no-progress --no-must-find-files"
+    ]
+  }
+}

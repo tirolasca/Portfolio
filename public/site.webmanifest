@@ -1,0 +1,17 @@
+{
+  "name": "Lucas Santos — Portfólio",
+  "short_name": "Lucas Santos",
+  "description": "Portfólio e currículo de Lucas Santos, desenvolvedor de software.",
+  "lang": "pt-BR",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#004550",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "recurse": true,
+  "verbosity": "error",
+  "retry": true,
+  "timeout": 20000,
+  "skip": [
+    "^https?://(www\\.)?linkedin\\.com",
+    "^https://wa\\.me",
+    "^https://schema\\.org"
+  ]
+}

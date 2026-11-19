@@ -1,0 +1,30 @@
+[
+  {
+    "name": "CSS (total)",
+    "path": "dist/_astro/*.css",
+    "limit": "30 kB",
+    "gzip": true
+  },
+  {
+    "name": "JS de entrada (Base)",
+    "path": "dist/_astro/Base.astro_*.js",
+    "limit": "7 kB",
+    "gzip": true
+  },
+  {
+    "name": "JS carregado sob demanda (sem Chart.js)",
+    "path": [
+      "dist/_astro/*.js",
+      "!dist/_astro/swot-chart.*.js",
+      "!dist/_astro/Base.astro_*.js"
+    ],
+    "limit": "56 kB",
+    "gzip": true
+  },
+  {
+    "name": "Chart.js (swot-chart, lazy)",
+    "path": "dist/_astro/swot-chart.*.js",
+    "limit": "62 kB",
+    "gzip": true
+  }
+]

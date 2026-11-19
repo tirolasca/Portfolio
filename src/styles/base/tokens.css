@@ -1,0 +1,124 @@
+/* Variáveis (cores, tema claro/escuro) e fundo animado */
+:root {
+  /* cor dos títulos .cyber-glitch: contraste AA no fundo claro (o neon fica no tema escuro) */
+  --glitch-color: #00756a;
+  /* teal para TEXTO sobre fundo claro (o --accent-1 original dá 2.3:1 no branco) */
+  --accent-1-text: #007a6e;
+  --bg-main: #f6fbfc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --text-main: #0b2233;
+  --text-title: #003f3a;
+  --text-sub: #184249;
+  --accent-1: #00bfae;
+  --accent-2: #007f7a;
+  --accent-neon: #00f0d1;
+  --accent-blue: #00aaff;
+  --accent-1-light-rgb: 0, 191, 174;
+  --accent-1-dark-rgb: 0, 255, 224;
+  --accent-neon-rgb: 0, 240, 209;
+  --accent-blue-rgb: 0, 170, 255;
+  --accent-gold: #ffd166;
+  --accent-gold-rgb: 255, 209, 102;
+  --terminal-green: #00ff80;
+  --terminal-green-rgb: 0, 255, 128;
+
+  --color-whatsapp: #25d366;
+  --color-github: #181717;
+  --color-linkedin: #0a66c2;
+  --color-email: #ea4335;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 18px;
+
+  --trans-fast: 0.2s ease;
+  --trans-normal: 0.35s ease;
+  --trans-slow: 0.6s ease;
+
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 30px rgba(var(--shadow-teal-rgb), 0.15);
+  --shadow-card: 0 6px 22px rgba(3, 18, 20, 0.06);
+  --shadow-teal-rgb: 0, 128, 128;
+  --neon-glow: 0 0 18px var(--accent-1);
+
+  --grad-neon-stops: #00f0d1, #00ffd8, #00aaff, #00f0d1;
+  --grad-neon-alt-stops: #00ffe0, #00bfae, #00aaff, #00ffe0;
+
+  --glass-bg: rgba(255, 255, 255, 0.42);
+  --glass-border: rgba(var(--accent-1-light-rgb), 0.22);
+  --glass-shadow:
+    0 8px 32px rgba(0, 80, 80, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.65);
+  --glass-blur: blur(20px) saturate(1.8);
+
+  --glass-dark-bg: rgba(0, 18, 20, 0.58);
+  --glass-dark-border: rgba(var(--accent-1-dark-rgb), 0.13);
+  --glass-dark-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.42),
+    inset 0 1px 0 rgba(var(--accent-1-dark-rgb), 0.06);
+}
+
+.dark {
+  --glitch-color: var(--accent-neon);
+  --accent-1-text: var(--accent-1);
+  --bg-main: #000000;
+  --bg-secondary: #0a0a0a;
+  --bg-card: #0d0d0d;
+  --text-main: #e4e4e4;
+  --text-title: #ffffff;
+  --text-sub: #c8c8c8;
+  --accent-1: #00ffe0;
+  --accent-2: #00bfae;
+}
+
+/* Cor de base real: o degradê animado é um pseudo-elemento (invisível p/ ferramentas de
+   contraste e p/ modo de alto contraste) */
+html {
+  background-color: var(--bg-main);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: linear-gradient(
+    -45deg,
+    #d6f5f0,
+    #bce6eb,
+    #98dce6,
+    #e6fafa,
+    #a8e6cf
+  );
+  background-size: 400% 400%;
+  animation: bgAnimation 18s ease infinite;
+  will-change: background-position;
+  transition: background 0.8s ease;
+}
+
+@keyframes bgAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+html.dark body::before {
+  background: linear-gradient(
+    -45deg,
+    #021210,
+    #002b2e,
+    #004f52,
+    #00162b,
+    #00385c
+  );
+}

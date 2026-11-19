@@ -1,0 +1,12 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "scripts/*.mjs",
+    "src/scripts/main.ts",
+    "tests/**/*.spec.ts",
+    "src/**/*.test.ts"
+  ],
+  "project": ["src/**/*.{ts,astro}", "scripts/**/*.mjs", "tests/**/*.ts"],
+  "ignoreExportsUsedInFile": true,
+  "ignoreDependencies": ["@fortawesome/fontawesome-free"]
+}

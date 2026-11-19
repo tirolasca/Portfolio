@@ -1,0 +1,10 @@
+# Quebras de linha LF em todos os arquivos de texto.
+# O hash (sha256) do script inline do tema, na CSP do vercel.json, depende do texto exato de
+# src/layouts/Base.astro: com CRLF (core.autocrlf no Windows) o hash mudaria e a CSP bloquearia o script.
+* text=auto eol=lf
+*.pdf binary
+*.png binary
+*.jpg binary
+*.webp binary
+*.woff2 binary
+*.ico binary
