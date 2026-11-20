@@ -93,4 +93,4 @@ jobs:
         with:
           name: dist
           path: dist
-      - run: npx --yes @lhci/cli@0.15.1 autorun
+      - run: npx --yes @lhci/cli@0.16.1 autorun

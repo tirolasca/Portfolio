@@ -45,17 +45,19 @@ Sou formado em **Desenvolvimento de Sistemas e Redes de Computadores** e curso *
 
 ## 🔎 Projetos em destaque
 
-| Projeto              | O que é                                   |
-| -------------------- | ----------------------------------------- |
-| **Planet Spotter**   | NASA Space Apps Challenge                 |
-| **Janosys API**      | Projeto acadêmico, FATEC                  |
-| **Tempero da Casa**  | Cardápio digital                          |
-| **CodeWave**         | Site de empresa de tecnologia             |
-| **TaskMaster**       | Gerenciador de tarefas                    |
-| **Portfólio Gamer**  | Experiência interativa em RPG             |
-| **Aerocode**         | Sistema de gestão da produção aeronáutica |
-| **Vinícola Premium** | Experiência digital sofisticada           |
-| **Signa**            | Gestão de requisitos aeronáuticos         |
+| Projeto                     | O que é                                   |
+| --------------------------- | ----------------------------------------- |
+| **Planet Spotter**          | NASA Space Apps Challenge                 |
+| **Janosys API**             | Projeto acadêmico, FATEC                  |
+| **Tempero da Casa**         | Cardápio digital                          |
+| **CodeWave**                | Site de empresa de tecnologia             |
+| **TaskMaster**              | Gerenciador de tarefas                    |
+| **Portfólio Gamer**         | Experiência interativa em RPG             |
+| **Aerocode**                | Sistema de gestão da produção aeronáutica |
+| **Vinícola Premium**        | Experiência digital sofisticada           |
+| **Signa**                   | Gestão de requisitos aeronáuticos         |
+| **Mercado Livre**           | E-commerce com bancos poliglotas          |
+| **Calculadora de Matrizes** | Álgebra linear e computação científica    |
 
 <img src="https://raw.githubusercontent.com/tirolasca/tirolasca/main/assets/divider.svg" alt="" width="100%">
 
@@ -80,14 +82,14 @@ Clique em uma categoria para expandir.
 <details>
 <summary><b>🧪 Testes & Qualidade</b></summary>
 
-![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white) ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white) ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black) ![Lighthouse CI](https://img.shields.io/badge/Lighthouse%20CI-F44B21?style=for-the-badge&logo=lighthouse&logoColor=white) ![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white) ![Stylelint](https://img.shields.io/badge/Stylelint-263238?style=for-the-badge&logo=stylelint&logoColor=white) ![Knip](https://img.shields.io/badge/Knip-F56E0F?style=for-the-badge&logo=scissors&logoColor=white) ![CSpell](https://img.shields.io/badge/CSpell-1A8CFF?style=for-the-badge&logo=spellcheck&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white) ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white) ![Prettier](https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=black) ![Lighthouse CI](https://img.shields.io/badge/Lighthouse%20CI-F44B21?style=for-the-badge&logo=lighthouse&logoColor=white) ![Vitest](https://img.shields.io/badge/Vitest-6E9F18?style=for-the-badge&logo=vitest&logoColor=white) ![Stylelint](https://img.shields.io/badge/Stylelint-263238?style=for-the-badge&logo=stylelint&logoColor=white) ![Knip](https://img.shields.io/badge/Knip-F56E0F?style=for-the-badge&logo=scissors&logoColor=white) ![CSpell](https://img.shields.io/badge/CSpell-1A8CFF?style=for-the-badge&logo=spellcheck&logoColor=white) ![axe-core](https://img.shields.io/badge/axe--core-6A1B9A?style=for-the-badge&logoColor=white) ![size-limit](https://img.shields.io/badge/size--limit-2B3137?style=for-the-badge&logoColor=white) ![Linkinator](https://img.shields.io/badge/Linkinator-0E7490?style=for-the-badge&logoColor=white)
 
 </details>
 
 <details>
 <summary><b>☁️ Deploy, CI & Segurança</b></summary>
 
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white) ![CodeQL](https://img.shields.io/badge/CodeQL-181717?style=for-the-badge&logo=github&logoColor=white) ![Dependabot](https://img.shields.io/badge/Dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white) ![zizmor](https://img.shields.io/badge/zizmor-181717?style=for-the-badge&logo=github&logoColor=white) ![OSV-Scanner](https://img.shields.io/badge/OSV--Scanner-4285F4?style=for-the-badge&logo=google&logoColor=white) ![Gitleaks](https://img.shields.io/badge/Gitleaks-181717?style=for-the-badge&logo=git&logoColor=white) ![OpenSSF Scorecard](https://img.shields.io/badge/OpenSSF%20Scorecard-1F6FEB?style=for-the-badge&logo=openssf&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05033?style=for-the-badge&logo=git&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white) ![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white) ![CodeQL](https://img.shields.io/badge/CodeQL-181717?style=for-the-badge&logo=github&logoColor=white) ![Dependabot](https://img.shields.io/badge/Dependabot-025E8C?style=for-the-badge&logo=dependabot&logoColor=white) ![zizmor](https://img.shields.io/badge/zizmor-181717?style=for-the-badge&logo=github&logoColor=white) ![OSV-Scanner](https://img.shields.io/badge/OSV--Scanner-4285F4?style=for-the-badge&logo=google&logoColor=white) ![Gitleaks](https://img.shields.io/badge/Gitleaks-181717?style=for-the-badge&logo=git&logoColor=white) ![OpenSSF Scorecard](https://img.shields.io/badge/OpenSSF%20Scorecard-1F6FEB?style=for-the-badge&logo=openssf&logoColor=white) ![Git](https://img.shields.io/badge/Git-F05033?style=for-the-badge&logo=git&logoColor=white) ![Husky](https://img.shields.io/badge/Husky-3C3C3C?style=for-the-badge&logoColor=white) ![lint-staged](https://img.shields.io/badge/lint--staged-2F855A?style=for-the-badge&logoColor=white)
 
 </details>
 
@@ -96,18 +98,18 @@ Clique em uma categoria para expandir.
 
 <br>
 
-| Camada             | Tecnologias                                                                                                                                                                                |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Framework**      | [Astro 7](https://astro.build) (site estático) · `build.format: "file"` mantém `/curriculo.html`                                                                                           |
-| **Linguagem**      | TypeScript 6 (`strict`) · Node.js ≥ 26.13                                                                                                                                                  |
-| **UI**             | CSS modular (36 módulos) · Swiper 14 (só Navigation/Autoplay) · Chart.js 4.6 (só o radar) · Font Awesome 7 (subconjunto gerado) · badges gerados no build (`badge-maker` + `simple-icons`) |
-| **Imagens**        | `astro:assets` (AVIF/WebP responsivos)                                                                                                                                                     |
-| **Formulário**     | [Formspree](https://formspree.io) via `PUBLIC_CONTACT_ENDPOINT` (sem a variável, abre o app de e-mail)                                                                                     |
-| **Qualidade**      | ESLint 10 + `typescript-eslint` + `eslint-plugin-astro` + `jsx-a11y` (a11y) · Prettier 3.10 · Stylelint 18 · CSpell 10 (PT-BR + EN) · Knip 6 · `astro check`                               |
-| **Testes**         | Vitest 5 + happy-dom (unitários e integridade dos dados) · Playwright 1.65 + axe (E2E e acessibilidade) · Lighthouse CI · Linkinator (links) · size-limit (orçamento de tamanho)           |
-| **CI / Segurança** | GitHub Actions (actions fixadas por SHA) · CodeQL · zizmor · OSV-Scanner · Gitleaks · OpenSSF Scorecard · Dependabot · Husky + lint-staged (hook de commit)                                |
-| **SEO / Métricas** | `@astrojs/sitemap` · canonical, Open Graph, Twitter Cards, JSON-LD · `web-vitals` 6 · Vercel Speed Insights                                                                                |
-| **Deploy**         | [Vercel](https://vercel.com)                                                                                                                                                               |
+| Camada             | Tecnologias                                                                                                                                                                                           |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Framework**      | [Astro 7](https://astro.build) (site estático) · `build.format: "file"` mantém `/curriculo.html`                                                                                                      |
+| **Linguagem**      | TypeScript 6 (`strict`) · Node.js ≥ 26.13                                                                                                                                                             |
+| **UI**             | CSS modular (36 módulos) · Swiper 14 (só Navigation/Autoplay) · Chart.js 4.6 (só o radar) · Font Awesome 7 (subconjunto gerado) · badges gerados no build (`badge-maker` + `simple-icons`)            |
+| **Imagens**        | `astro:assets` (AVIF/WebP responsivos)                                                                                                                                                                |
+| **Formulário**     | [Formspree](https://formspree.io) via `PUBLIC_CONTACT_ENDPOINT` (sem a variável, abre o app de e-mail)                                                                                                |
+| **Qualidade**      | ESLint 10 + `typescript-eslint` + `eslint-plugin-astro` + `jsx-a11y` (a11y) · Prettier 3.10 · Stylelint 18 · CSpell 10 (PT-BR + EN) · Knip 6 · `astro check`                                          |
+| **Testes**         | Vitest 5 + happy-dom (unitários e integridade dos dados) · Playwright 1.65 + axe (E2E e acessibilidade) · Lighthouse CI 0.16 (Lighthouse 13) · Linkinator (links) · size-limit (orçamento de tamanho) |
+| **CI / Segurança** | GitHub Actions (actions fixadas por SHA) · CodeQL · zizmor · OSV-Scanner · Gitleaks · OpenSSF Scorecard · Dependabot · Husky + lint-staged (hook de commit)                                           |
+| **SEO / Métricas** | `@astrojs/sitemap` · canonical, Open Graph, Twitter Cards, JSON-LD · `web-vitals` 6 · Vercel Speed Insights                                                                                           |
+| **Deploy**         | [Vercel](https://vercel.com)                                                                                                                                                                          |
 
 </details>
 
@@ -250,7 +252,7 @@ docs/                   preview, desempenho, segurança (CSP, GitHub) e configur
 - **Seletor de idioma personalizado**: o widget "Dropdown" do GTranslate gera um `<select class="gt_selector">`, que fica na página só como **motor** (invisível). A interface é um dropdown próprio (`features/language-switcher.ts` + `styles/components/language-switcher.css`) com só **PT / EN / ES** e navegação por teclado (padrão WAI-ARIA de listbox). Ao escolher, o código atribui o valor no `<select>` e dispara `change`, o que aciona a tradução. Para mudar os idiomas, edite `LANGS` no `.ts` e `languages` em `core/translate.ts`.
 - **`compressHTML: false`**: a compressão padrão do Astro remove espaços entre tags inline e cola ícones ao texto.
 - **CSS cortado em sequência, sem reordenar**: preserva a cascata do CSS original.
-- **Font Awesome em subconjunto**: 87 ícones custam ~10 KB; SVGs inline custariam ~38 KB (medição em [`docs/performance.md`](docs/performance.md)).
+- **Font Awesome em subconjunto**: 90 ícones custam ~11 KB; SVGs inline custariam ~38 KB (medição com 85 ícones em [`docs/performance.md`](docs/performance.md)).
 - **Chart.js só com o radar**: `chart.js/auto` registra todos os tipos de gráfico; o site registra apenas radar, escala radial, ponto, linha, _filler_ e tooltip (~21 % menor em gzip). Um teste unitário monta o gráfico e falha se faltar algum registro.
 - **Sonda pelo plugin do Vite**: o `sonda/astro` não dispara no Astro 7 (o hook de build só roda com `target: "server"`), então o relatório usa `sonda/vite`, ligado só com `npm run analyze`.
 - **Stylelint com teto de avisos**: o CSS legado tem avisos que não valem uma reescrita; `lint:css --max-warnings` impede que entrem novos e o teto só desce.

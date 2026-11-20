@@ -95,6 +95,7 @@
     "novalidate",
     "nums",
     "openai",
+    "openssf",
     "ossf",
     "pageerror",
     "plotly",
@@ -132,6 +133,9 @@
     "xampp",
     "xmark",
     "zizmor",
-    "zizmorcore"
+    "zizmorcore",
+    "webp",
+    "lighthouseci",
+    "opsz"
   ]
 }

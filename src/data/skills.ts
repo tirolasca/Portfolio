@@ -192,6 +192,12 @@ export const skillCategories: SkillCategory[] = [
         logoColor: "white",
       },
       {
+        alt: "Gitleaks",
+        color: "181717",
+        logo: "gitleaks",
+        logoColor: "white",
+      },
+      {
         alt: "GitHub Actions",
         color: "2088FF",
         logo: "githubactions",
@@ -204,6 +210,20 @@ export const skillCategories: SkillCategory[] = [
         logoColor: "white",
       },
       { alt: "CodeQL", color: "181717", logo: "codeql", logoColor: "white" },
+      { alt: "zizmor", color: "181717", logo: "zizmor", logoColor: "white" },
+      {
+        alt: "OSV-Scanner",
+        color: "4285F4",
+        logo: "osv-scanner",
+        logoColor: "white",
+      },
+
+      {
+        alt: "OpenSSF Scorecard",
+        color: "1F6FEB",
+        logo: "openssf",
+        logoColor: "white",
+      },
     ],
   },
 
@@ -234,6 +254,7 @@ export const skillCategories: SkillCategory[] = [
         logo: "lighthouse",
         logoColor: "white",
       },
+      { alt: "Sonda", color: "7C3AED", logo: "sonda", logoColor: "white" },
     ],
   },
 
@@ -272,6 +293,33 @@ export const skillCategories: SkillCategory[] = [
         logoColor: "white",
       },
       { alt: "Fakeredis", color: "DC382D", logo: "redis", logoColor: "white" },
+      { alt: "Vitest", color: "6E9F18", logo: "vitest", logoColor: "white" },
+      {
+        alt: "Stylelint",
+        color: "263238",
+        logo: "stylelint",
+        logoColor: "white",
+      },
+      { alt: "Knip", color: "F56E0F", logo: "knip", logoColor: "white" },
+      { alt: "CSpell", color: "1A8CFF", logo: "cspell", logoColor: "white" },
+      {
+        alt: "axe-core",
+        color: "6A1B9A",
+        logo: "axe-core",
+        logoColor: "white",
+      },
+      {
+        alt: "size-limit",
+        color: "2B3137",
+        logo: "size-limit",
+        logoColor: "white",
+      },
+      {
+        alt: "Linkinator",
+        color: "0E7490",
+        logo: "linkinator",
+        logoColor: "white",
+      },
     ],
   },
 
@@ -317,6 +365,13 @@ export const skillCategories: SkillCategory[] = [
         alt: "GTranslate",
         color: "4285F4",
         logo: "googletranslate",
+        logoColor: "white",
+      },
+      { alt: "Husky", color: "3C3C3C", logo: "husky", logoColor: "white" },
+      {
+        alt: "lint-staged",
+        color: "2F855A",
+        logo: "lint-staged",
         logoColor: "white",
       },
     ],

@@ -34,7 +34,7 @@ Acessibilidade 96 → **100** · Boas práticas 96 · SEO **100**. JS/CSS/fontes
 | **Imagens**                    | `astro:assets`: AVIF + WebP responsivos com `srcset`. `planet.png` 2,9 MB → ~9–35 KB. QR Code do hero 132 KB → ~40 KB.                                                                                                                                |
 | **AOS → IntersectionObserver** | O site usava 4 efeitos (`fade-up/left/right`, `zoom-in`). Substituído por ~60 linhas (`core/reveal.ts`) + 30 de CSS, sem a dependência `aos` (JS + CSS). Só anima o que está abaixo da 1ª tela (não atrasa o LCP).                                    |
 | **CSS**                        | 45 → 22 KB gz: sem CSS do AOS/Swiper-bundle/Font Awesome inteiro, 13 regras mortas removidas. Swiper só com os módulos usados (Navigation, Autoplay).                                                                                                 |
-| **Ícones**                     | Font Awesome **subconjunto gerado** (`npm run icons`, automático no `dev`/`build`): 87 ícones, fontes 230 → ~10 KB, CSS ~100 → 5,8 KB.                                                                                                                |
+| **Ícones**                     | Font Awesome **subconjunto gerado** (`npm run icons`, automático no `dev`/`build`): 90 ícones, fontes 230 → ~11 KB, CSS ~100 → 5,9 KB.                                                                                                                |
 | **Layout shift**               | O toast de conquista animava `right` (gerava CLS 0,135); agora `transform`. Imagens com `width/height`; carrossel com layout equivalente antes de o Swiper carregar.                                                                                  |
 | **Contraste / tema**           | Tema escuro aplicado no `<head>` (antes havia um flash claro → escuro na 1ª visita). Cores de texto do tema claro com contraste AA. `html` com `background-color` real.                                                                               |
 | **Cache/headers**              | `vercel.json`: assets com hash `immutable`, cabeçalhos de segurança básicos.                                                                                                                                                                          |
@@ -58,7 +58,7 @@ Medido em laboratório (currículo, mobile simulado, ambiente de 1 núcleo, exec
 
 <br>
 
-Medido com 85 ícones (hoje são 87): SVGs inline somariam **~38 KB gz** (uma ocorrência de cada) contra **~10,7 KB** do subconjunto de fonte (fonte + CSS, em gzip). **Não compensa** migrar tudo. A migração gradual faz sentido só para poucos ícones críticos acima da dobra (se um dia o `font-display: block` incomodar). O gerador de subconjunto cobre o dia a dia: é só escrever a classe (`fa-solid fa-rocket`) no código.
+Medido com 85 ícones (hoje são 90): SVGs inline somariam **~38 KB gz** (uma ocorrência de cada) contra **~10,7 KB** do subconjunto de fonte (fonte + CSS, em gzip). **Não compensa** migrar tudo. A migração gradual faz sentido só para poucos ícones críticos acima da dobra (se um dia o `font-display: block` incomodar). O gerador de subconjunto cobre o dia a dia: é só escrever a classe (`fa-solid fa-rocket`) no código.
 
 </details>
 

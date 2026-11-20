@@ -73,6 +73,9 @@ Todos os workflows usam permissões mínimas (`contents: read`, ampliadas só no
 | `dependabot.yml`  | npm (semanal, agrupado) e GitHub Actions (mensal, agrupado), com **espera de 7 dias** após o lançamento de cada versão (`cooldown`).                                |
 
 > [!NOTE]
+> O Lighthouse CI roda por `npx @lhci/cli@<versão>` com a versão fixada no `ci.yml`. O Dependabot não enxerga esse número, então ele precisa ser atualizado à mão (a versão 0.16 traz o Lighthouse 13, o mesmo usado nas medições de [`performance.md`](performance.md)).
+
+> [!NOTE]
 > A varredura completa do OSV-Scanner usa `fail-on-vuln: false`: uma vulnerabilidade em dependência transitiva sem correção disponível não deixa o `main` vermelho. Quem barra é o scan de PR.
 
 <img src="https://raw.githubusercontent.com/tirolasca/tirolasca/main/assets/divider.svg" alt="" width="100%">

@@ -21,6 +21,17 @@ const FA_FALLBACK: Record<string, string> = {
   openai: "brands/openai",
   playwright: "solid/masks-theater",
   codeql: "solid/shield-halved",
+  cspell: "solid/spell-check",
+  "axe-core": "solid/universal-access",
+  "size-limit": "solid/weight-scale",
+  linkinator: "solid/link",
+  sonda: "solid/magnifying-glass-chart",
+  zizmor: "solid/magnifying-glass",
+  "osv-scanner": "solid/bug",
+  gitleaks: "solid/key",
+  openssf: "solid/award",
+  husky: "solid/dog",
+  "lint-staged": "solid/list-check",
 };
 
 const bySlug = new Map<string, string>();
