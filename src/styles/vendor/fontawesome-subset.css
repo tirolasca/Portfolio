@@ -156,6 +156,10 @@
   --fa: "\f058";
 }
 
+.fa-circle-question {
+  --fa: "\f059";
+}
+
 .fa-circle-info {
   --fa: "\f05a";
 }
@@ -218,6 +222,10 @@
 
 .fa-cloud {
   --fa: "\f0c2";
+}
+
+.fa-copy {
+  --fa: "\f0c5";
 }
 
 .fa-list-ul {
@@ -362,6 +370,10 @@
 
 .fa-clipboard-list {
   --fa: "\f46d";
+}
+
+.fa-truck-fast {
+  --fa: "\f48b";
 }
 
 .fa-route {
