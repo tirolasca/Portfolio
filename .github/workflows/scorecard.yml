@@ -1,0 +1,36 @@
+name: OpenSSF Scorecard
+
+# Nota pública de boas práticas de segurança do repositório (badge no README).
+# Só funciona em repositório público.
+on:
+  branch_protection_rule:
+  schedule:
+    - cron: "29 5 * * 2" # terças, 05:29 UTC
+  push:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  analysis:
+    name: Scorecard
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      actions: read
+      security-events: write # enviar o SARIF ao Code scanning
+      id-token: write # publicar o resultado no OpenSSF (necessário para o badge)
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ossf/scorecard-action@23f22cd43608bae7a1f1fa2603d7314dee9538a5 # v2.6.0
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          publish_results: true
+      - uses: github/codeql-action/upload-sarif@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4.39.4
+        with:
+          sarif_file: results.sarif
+          category: scorecard

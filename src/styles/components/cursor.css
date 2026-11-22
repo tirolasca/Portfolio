@@ -1,0 +1,40 @@
+/* Cursor personalizado */
+.cursor-dot,
+.cursor-outline {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  /* acima de qualquer overlay/modal do site (maior z-index usado: 9999999) */
+  z-index: 2147483647;
+  transition:
+    transform 0.1s ease-out,
+    background-color 0.3s ease;
+}
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent-1);
+}
+.cursor-outline {
+  width: 30px;
+  height: 30px;
+  border: 2px solid var(--accent-1);
+}
+.cursor-active .cursor-outline {
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: rgba(var(--accent-1-dark-rgb), 0.1);
+}
+
+/* Esconde o cursor do sistema onde o cursor personalizado aparece
+   (mouse real e tela > 768px; em toque/mobile nada muda). */
+@media (hover: hover) and (pointer: fine) and (min-width: 769px) {
+  html,
+  html *,
+  html *::before,
+  html *::after {
+    cursor: none !important;
+  }
+}

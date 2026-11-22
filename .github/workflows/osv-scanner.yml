@@ -1,0 +1,38 @@
+name: OSV-Scanner
+
+# Vulnerabilidades conhecidas nas dependências (package-lock.json), via banco OSV.
+# - PR: falha só se o PR introduzir vulnerabilidade nova.
+# - Agendado/main: varredura completa e envio ao Code scanning.
+on:
+  pull_request:
+    branches: [main]
+  merge_group:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "41 5 * * 1" # segundas, 05:41 UTC
+
+permissions: {}
+
+jobs:
+  scan-pr:
+    name: Vulnerabilidades novas no PR
+    if: github.event_name == 'pull_request' || github.event_name == 'merge_group'
+    permissions:
+      contents: read
+      actions: read
+      security-events: write
+    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable-pr.yml@32d3cd482bdadfb38b186c0ad1b031902d55d932 # v2.7.1
+
+  scan-full:
+    name: Varredura completa
+    if: github.event_name == 'push' || github.event_name == 'schedule'
+    permissions:
+      contents: read
+      actions: read
+      security-events: write
+    uses: google/osv-scanner-action/.github/workflows/osv-scanner-reusable.yml@32d3cd482bdadfb38b186c0ad1b031902d55d932 # v2.7.1
+    with:
+      # só reporta no Security > Code scanning; quem barra é o scan de PR
+      # (vulnerabilidade transitiva sem correção não deve deixar o main vermelho)
+      fail-on-vuln: false

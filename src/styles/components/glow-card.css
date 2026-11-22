@@ -1,0 +1,14 @@
+/* Cards com brilho que segue o mouse */
+.glow-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  will-change: transform;
+  transition:
+    box-shadow var(--trans-normal),
+    background var(--trans-normal),
+    transform 0.15s ease-out;
+}
+.glow-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 18px var(--accent-1);
+}

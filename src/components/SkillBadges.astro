@@ -1,0 +1,34 @@
+---
+/**
+ * Lista de badges de tecnologias.
+ * Fonte única dos dados: src/data/skills.ts
+ */
+import type { SkillBadge } from "../data/skills";
+import { badgeSlug, renderBadge } from "../lib/badges";
+
+interface Props {
+  badges: SkillBadge[];
+}
+
+const { badges } = Astro.props;
+
+const items = badges.map((badge) => ({
+  alt: badge.alt,
+  src: `/badges/${badgeSlug(badge.alt)}.svg`,
+  width: renderBadge(badge).width,
+}));
+---
+
+<div class="skill-badges">
+  {items.map((badge) => (
+    <img
+      src={badge.src}
+      alt={badge.alt}
+      title={badge.alt}
+      width={badge.width}
+      height="28"
+      loading="lazy"
+      decoding="async"
+    />
+  ))}
+</div>

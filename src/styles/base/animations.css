@@ -1,0 +1,356 @@
+/* Keyframes compartilhados */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade-out {
+  to {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(-15px) scale(0.98);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translateY(15px) scale(0.98);
+  }
+}
+@keyframes scanMove {
+  from {
+    background-position-y: 0;
+  }
+  to {
+    background-position-y: 100px;
+  }
+}
+@keyframes printLine {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes terminalBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes achieveSpin {
+  0% {
+    transform: scale(0) rotate(-180deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+@keyframes rippleAnim {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes particleBurst {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty)))
+      scale(0);
+    opacity: 0;
+  }
+}
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 10px rgba(var(--accent-1-light-rgb), 0.4),
+      0 6px 18px rgba(var(--shadow-teal-rgb), 0.2);
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(var(--accent-1-light-rgb), 0.7),
+      0 6px 22px rgba(var(--shadow-teal-rgb), 0.25);
+  }
+}
+@keyframes neonPulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 12px rgba(var(--accent-neon-rgb), 0.6),
+      0 0 20px rgba(var(--accent-blue-rgb), 0.3);
+    filter: drop-shadow(0 0 6px var(--accent-1));
+  }
+  50% {
+    box-shadow:
+      0 0 20px rgba(var(--accent-neon-rgb), 0.8),
+      0 0 30px rgba(var(--accent-blue-rgb), 0.5);
+    filter: drop-shadow(0 0 18px var(--accent-1)) brightness(1.15);
+  }
+}
+@keyframes neonPulseUltra {
+  0%,
+  100% {
+    box-shadow:
+      0 0 12px var(--accent-neon),
+      0 0 24px #00ffd8,
+      0 0 36px var(--accent-blue);
+  }
+  50% {
+    box-shadow:
+      0 0 18px var(--accent-neon),
+      0 0 36px #00ffd8,
+      0 0 54px var(--accent-blue);
+  }
+}
+@keyframes neonTitlePulse {
+  0%,
+  100% {
+    background-position: 0% 50%;
+    text-shadow:
+      0 0 10px rgba(var(--accent-neon-rgb), 0.4),
+      0 0 20px rgba(var(--accent-blue-rgb), 0.3);
+  }
+  50% {
+    background-position: 100% 50%;
+    text-shadow:
+      0 0 20px rgba(var(--accent-neon-rgb), 0.8),
+      0 0 35px rgba(var(--accent-blue-rgb), 0.6);
+  }
+}
+@keyframes neon-pulse-job {
+  0% {
+    filter: drop-shadow(0 0 5px rgba(var(--accent-neon-rgb), 0.4));
+  }
+  100% {
+    filter: drop-shadow(0 0 12px rgba(var(--accent-neon-rgb), 0.9))
+      drop-shadow(0 0 25px rgba(var(--accent-blue-rgb), 0.5));
+  }
+}
+@keyframes neonBorderFlow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 8px var(--accent-1),
+      inset 0 0 12px rgba(var(--accent-1-dark-rgb), 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 28px var(--accent-1),
+      inset 0 0 25px rgba(var(--accent-1-dark-rgb), 0.45);
+  }
+}
+@keyframes borderFlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes borderGlow {
+  from {
+    box-shadow:
+      0 0 8px rgba(0, 255, 213, 0.15),
+      0 0 16px rgba(var(--accent-1-light-rgb), 0.2);
+  }
+  to {
+    box-shadow:
+      0 0 20px rgba(0, 255, 213, 0.35),
+      0 0 40px rgba(var(--accent-1-light-rgb), 0.35);
+  }
+}
+@keyframes gradientFlow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+@keyframes floatRotate {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  25% {
+    transform: translateY(-4px) rotate(-6deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(6deg);
+  }
+}
+@keyframes floatTag {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  25% {
+    transform: translateY(-12px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-14px) rotate(2deg);
+  }
+}
+@keyframes pulseText {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(4px) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) translateY(2px) scale(1.1);
+    opacity: 0.9;
+  }
+}
+@keyframes iconGlow {
+  from {
+    box-shadow: 0 0 6px rgba(var(--accent-neon-rgb), 0.4);
+  }
+  to {
+    box-shadow:
+      0 0 20px rgba(var(--accent-neon-rgb), 0.9),
+      0 0 40px rgba(var(--accent-blue-rgb), 0.5);
+  }
+}
+@keyframes logoSpin {
+  0% {
+    transform: scale(1) rotate(0);
+    filter: hue-rotate(0deg) drop-shadow(0 0 8px #00ffe0);
+  }
+  50% {
+    transform: scale(1.3) rotate(180deg);
+    filter: hue-rotate(180deg) drop-shadow(0 0 20px #ff6f91);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    filter: hue-rotate(360deg) drop-shadow(0 0 8px #00ffe0);
+  }
+}
+@keyframes sidePulse {
+  0%,
+  100% {
+    transform: translateY(-50%) translateX(0);
+  }
+  25% {
+    transform: translateY(-50%) translateX(-3px);
+  }
+  75% {
+    transform: translateY(-50%) translateX(3px);
+  }
+}
+@keyframes sidePulseLight {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+@keyframes glitch-anim-1 {
+  0% {
+    clip-path: polygon(0 2%, 100% 2%, 100% 5%, 0 5%);
+    transform: translate(-2px, -1px);
+  }
+  20% {
+    clip-path: polygon(0 10%, 100% 10%, 100% 20%, 0 20%);
+    transform: translate(-1px, 2px);
+  }
+  40% {
+    clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%);
+    transform: translate(-2px, 1px);
+  }
+  60% {
+    clip-path: polygon(0 20%, 100% 20%, 100% 30%, 0 30%);
+    transform: translate(-1px, 2px);
+  }
+  80% {
+    clip-path: polygon(0 12%, 100% 12%, 100% 15%, 0 15%);
+    transform: translate(-2px, 1px);
+  }
+  100% {
+    clip-path: polygon(0 70%, 100% 70%, 100% 80%, 0 80%);
+    transform: translate(-1px, 1px);
+  }
+}
+@keyframes glitch-anim-2 {
+  0% {
+    clip-path: polygon(0 5%, 100% 5%, 100% 10%, 0 10%);
+    transform: translate(2px, 1px);
+  }
+  25% {
+    clip-path: polygon(0 12%, 100% 12%, 100% 18%, 0 18%);
+    transform: translate(1px, 2px);
+  }
+  50% {
+    clip-path: polygon(0 75%, 100% 75%, 100% 78%, 0 78%);
+    transform: translate(2px, 1px);
+  }
+  75% {
+    clip-path: polygon(0 88%, 100% 88%, 100% 92%, 0 92%);
+    transform: translate(-1px, 1px);
+  }
+  100% {
+    clip-path: polygon(0 95%, 100% 95%, 100% 100%, 0 100%);
+    transform: translate(1px, -1px);
+  }
+}
+
+@keyframes barShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@keyframes neonUnderline {
+  from {
+    width: 0;
+  }
+  to {
+    width: 140px;
+  }
+}
+@keyframes goldenGlow {
+  from {
+    filter: drop-shadow(0 0 4px rgba(var(--accent-gold-rgb), 0.45));
+  }
+  to {
+    filter: drop-shadow(0 0 10px rgba(var(--accent-gold-rgb), 0.9));
+  }
+}
+
+/* Pausa animações infinitas fora da tela (veja scripts/core/animation-guard.ts) */
+[data-offscreen],
+[data-offscreen]::before,
+[data-offscreen]::after {
+  animation-play-state: paused;
+}

@@ -1,0 +1,48 @@
+---
+import { skillCategories } from "../data/skills";
+import SkillBadges from "./SkillBadges.astro";
+
+const total = skillCategories.reduce((sum, c) => sum + c.badges.length, 0);
+---
+
+<section class="skills" id="titulo">
+  <div class="container">
+    <h3>
+      <i class="fa-solid fa-gears" aria-hidden="true"></i>
+      <span class="cyber-glitch" data-text="Habilidades Rápidas">
+        Habilidades Rápidas
+      </span>
+    </h3>
+
+    <p class="skills-lead">
+      {total} tecnologias em {skillCategories.length} áreas.
+      <span>Clique em uma tecnologia para ver os projetos que a usam.</span>
+    </p>
+
+    <div class="skills-grid">
+      {skillCategories.map((cat) => (
+        <article class="skill-card glow-card">
+          <h4 class="skill-card-head">
+            <span class="skill-card-icon" aria-hidden="true">
+              <i class={cat.icon}></i>
+            </span>
+
+            <span class="skill-card-title">{cat.title}</span>
+
+            <span
+              class="skill-card-count"
+              title={`${cat.badges.length} tecnologias`}
+              aria-hidden="true"
+            >
+              {cat.badges.length}
+            </span>
+          </h4>
+
+          <div class="skill-card-content">
+            <SkillBadges badges={cat.badges} />
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

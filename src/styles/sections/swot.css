@@ -1,0 +1,507 @@
+/* =========================================================
+   SEÇÃO SWOT
+   ========================================================= */
+
+/* Título */
+.titulo-swot {
+  position: relative;
+  display: table;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.titulo-swot::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--accent-neon), var(--accent-blue));
+  box-shadow: 0 0 10px rgba(var(--accent-neon-rgb), 0.6);
+  transform: translateX(-50%);
+  transition: width 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.titulo-swot.section-title-visible::after {
+  width: min(140px, 55%);
+}
+
+/* =========================================================
+   GRID SWOT
+   ========================================================= */
+
+.swot-wrapper {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+
+.swot-track {
+  display: grid;
+  width: 100%;
+  min-width: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(10px, 1.5vw, 16px);
+  margin-top: 20px;
+  padding: 4px;
+}
+
+/* =========================================================
+   CARDS SWOT
+   ========================================================= */
+
+.swot-card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  overflow: hidden;
+
+  padding: clamp(14px, 1.5vw, 20px);
+
+  border: 1px solid var(--glass-border);
+  border-left-width: 4px;
+  border-radius: var(--radius-lg);
+
+  box-shadow: 0 4px 10px rgba(var(--shadow-teal-rgb), 0.08);
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  transition:
+    transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+/* Efeito de brilho */
+.swot-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.26) 50%,
+    transparent 70%
+  );
+
+  background-size: 220% 100%;
+  background-position: -100% 0;
+
+  pointer-events: none;
+  transition: background-position 0.55s ease;
+}
+
+.swot-card:hover::after {
+  background-position: 200% 0;
+}
+
+.swot-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+/* =========================================================
+   CORES DOS QUADRANTES
+   ========================================================= */
+
+/* Forças */
+.swot-card.strengths {
+  background: linear-gradient(
+    145deg,
+    rgba(var(--accent-1-light-rgb), 0.12),
+    rgba(var(--accent-1-light-rgb), 0.05),
+    #e6fef9
+  );
+  border-left-color: rgba(var(--accent-1-light-rgb), 0.7);
+}
+
+/* Fraquezas */
+.swot-card.weaknesses {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 80, 80, 0.14),
+    rgba(255, 80, 80, 0.05),
+    #fff0f0
+  );
+  border-left-color: rgba(255, 80, 80, 0.65);
+}
+
+/* Oportunidades */
+.swot-card.opportunities {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 200, 50, 0.14),
+    rgba(255, 200, 50, 0.05),
+    #fffcee
+  );
+  border-left-color: rgba(255, 185, 0, 0.65);
+}
+
+/* Ameaças */
+.swot-card.threats {
+  background: linear-gradient(
+    145deg,
+    rgba(100, 130, 255, 0.12),
+    rgba(100, 130, 255, 0.05),
+    #eef0ff
+  );
+  border-left-color: rgba(100, 130, 255, 0.65);
+}
+
+/* =========================================================
+   TÍTULOS E ÍCONES DOS QUADRANTES
+   ========================================================= */
+
+.swot-card h4 {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+  margin: 0 0 10px;
+
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+.swot-card.strengths h4 {
+  color: #00695f;
+}
+
+.swot-card.weaknesses h4 {
+  color: #cc2c2c;
+}
+
+.swot-card.opportunities h4 {
+  color: #9a6500;
+}
+
+.swot-card.threats h4 {
+  color: #3a4bcc;
+}
+
+.swot-card.strengths i {
+  color: #00bfae;
+}
+
+.swot-card.weaknesses i {
+  color: #e53e3e;
+}
+
+.swot-card.opportunities i {
+  color: #e08a00;
+}
+
+.swot-card.threats i {
+  color: #5c6bdd;
+}
+
+/* =========================================================
+   LISTAS DOS QUADRANTES
+   ========================================================= */
+
+.swot-card ul {
+  position: relative;
+  z-index: 2;
+
+  min-width: 0;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.swot-card li {
+  margin-bottom: 7px;
+  font-size: clamp(0.8rem, 0.95vw, 0.88rem);
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.swot-card li:last-child {
+  margin-bottom: 0;
+}
+
+/* =========================================================
+   GRÁFICO SWOT
+   ========================================================= */
+
+.swot-chart-container {
+  width: min(100%, 820px);
+  min-width: 0;
+  margin: clamp(24px, 4vw, 36px) auto 0;
+  padding: clamp(14px, 2.5vw, 24px);
+
+  border: 1px solid rgba(var(--accent-neon-rgb), 0.18);
+  border-radius: var(--radius-lg);
+
+  background: rgba(var(--accent-1-light-rgb), 0.035);
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.08),
+    0 0 25px rgba(var(--accent-neon-rgb), 0.035);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Cabeçalho do gráfico */
+.swot-chart-header {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.swot-chart-label {
+  display: block;
+  margin-bottom: 3px;
+
+  color: var(--glitch-color);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.swot-chart-header h4 {
+  margin: 0;
+  color: var(--text-title);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+/* Escala */
+.swot-chart-scale {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+
+  color: var(--text-sub);
+  font-size: 0.72rem;
+}
+
+.swot-chart-scale i {
+  color: var(--accent-neon);
+}
+
+/* Área do radar */
+.swot-radar-wrapper {
+  position: relative;
+  width: 100%;
+  height: clamp(240px, 40vw, 390px);
+  min-width: 0;
+  margin: 0 auto;
+}
+
+.swot-radar-wrapper canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Rodapé */
+.swot-chart-footer {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-top: 12px;
+
+  border-top: 1px solid rgba(var(--accent-neon-rgb), 0.08);
+
+  color: var(--text-sub);
+  font-size: 0.72rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.swot-chart-footer i {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent-neon);
+}
+
+/* =========================================================
+   ANIMAÇÃO ESCALONADA DOS CARDS
+   ========================================================= */
+
+.swot-track .swot-card:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.swot-track .swot-card:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.swot-track .swot-card:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.swot-track .swot-card:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+/* Notebooks e telas intermediárias */
+@media (max-width: 1100px) {
+  .swot-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .swot-card {
+    padding: 18px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .swot-track {
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .swot-card {
+    padding: 15px;
+  }
+
+  .swot-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .swot-chart-container {
+    margin-top: 24px;
+  }
+
+  .swot-radar-wrapper {
+    height: 320px;
+  }
+}
+
+/* Celulares */
+@media (max-width: 599px) {
+  .swot-track {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 2px;
+  }
+
+  .swot-card {
+    padding: 16px;
+  }
+
+  .swot-card h4 {
+    font-size: 1rem;
+  }
+
+  .swot-card li {
+    font-size: 0.86rem;
+  }
+
+  .swot-chart-container {
+    padding: 14px;
+    border-radius: var(--radius-md);
+  }
+
+  .swot-chart-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .swot-chart-scale {
+    font-size: 0.68rem;
+  }
+
+  .swot-radar-wrapper {
+    height: 280px;
+  }
+
+  .swot-chart-footer {
+    font-size: 0.68rem;
+  }
+}
+
+/* Celulares estreitos */
+@media (max-width: 380px) {
+  .swot-card {
+    padding: 13px;
+  }
+
+  .swot-track {
+    gap: 10px;
+  }
+
+  .swot-card h4 {
+    font-size: 0.94rem;
+  }
+
+  .swot-card li {
+    font-size: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .swot-chart-container {
+    padding: 11px;
+  }
+
+  .swot-radar-wrapper {
+    height: 240px;
+  }
+
+  .swot-chart-label {
+    font-size: 0.62rem;
+  }
+}
+
+/* Monitores ultrawide */
+@media (min-width: 1600px) {
+  .swot-track {
+    gap: 20px;
+  }
+
+  .swot-card {
+    padding: 22px;
+  }
+
+  .swot-chart-container {
+    max-width: 900px;
+  }
+}
+
+/* =========================================================
+   ACESSIBILIDADE
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .titulo-swot::after,
+  .swot-card,
+  .swot-card::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .swot-card:hover {
+    transform: none;
+  }
+}

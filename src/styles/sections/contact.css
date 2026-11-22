@@ -1,0 +1,152 @@
+/* Contato e redes sociais */
+.social-btn,
+.btn {
+  will-change: transform;
+  transition:
+    box-shadow var(--trans-normal),
+    background var(--trans-normal),
+    transform 0.15s ease-out;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+}
+.list li {
+  padding: 6px 0 6px 4px;
+  position: relative;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.list li::before {
+  position: absolute;
+  left: -15px;
+  color: var(--accent-1);
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 16px;
+}
+.social-icons .social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-1);
+  box-shadow: 0 4px 14px rgba(var(--shadow-teal-rgb), 0.1);
+  text-decoration: none;
+  color: #0f172a;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+.social-icons .social-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  filter: brightness(1.1);
+  box-shadow:
+    0 0 15px rgba(var(--accent-1-light-rgb), 0.7),
+    0 6px 22px rgba(var(--shadow-teal-rgb), 0.25);
+  animation: glowPulse 1.5s infinite;
+}
+
+.social-btn[title="WhatsApp"] i {
+  color: var(--color-whatsapp);
+}
+.social-btn[title="GitHub"] i {
+  color: var(--color-github);
+}
+.social-btn[title="LinkedIn"] i {
+  color: var(--color-linkedin);
+}
+.social-btn[title="E-mail"] i {
+  color: var(--color-email);
+}
+
+.social-icons .social-btn[title="WhatsApp"]:hover {
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.55);
+  border-color: #25d366;
+}
+.social-icons .social-btn[title="GitHub"]:hover {
+  box-shadow: 0 0 20px rgba(130, 130, 130, 0.45);
+  border-color: #888;
+}
+.social-icons .social-btn[title="LinkedIn"]:hover {
+  box-shadow: 0 0 20px rgba(10, 102, 194, 0.55);
+  border-color: #0a66c2;
+}
+.social-icons .social-btn[title="E-mail"]:hover {
+  box-shadow: 0 0 20px rgba(234, 67, 53, 0.55);
+  border-color: #ea4335;
+}
+
+.contact {
+  background: transparent;
+  padding: 60px;
+  text-align: center;
+  transition: background 0.35s ease;
+}
+
+.contact h3 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  color: #004550;
+  margin-top: -25px;
+}
+.contact p {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.contact-btn {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-align: center;
+}
+.contact-btn i {
+  margin-right: 6px;
+}
+.contact-btn.whatsapp {
+  background: #0f7d42; /* verde do WhatsApp escurecido: texto branco com contraste AA */
+}
+.contact-btn.github {
+  background: var(--color-github);
+}
+.contact-btn.linkedin {
+  background: #0077b5;
+}
+.contact-btn.email {
+  background: #d33f3f;
+}
+.contact-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(var(--shadow-teal-rgb), 0.35);
+}

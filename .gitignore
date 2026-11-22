@@ -1,0 +1,36 @@
+# dependências e saídas de build
+node_modules/
+dist/
+.astro/
+.vercel/
+.vscode/
+
+# variáveis de ambiente (mantenha apenas o .env.example versionado)
+.env
+.env.*
+!.env.example
+
+# testes e relatórios
+test-results/
+playwright-report/
+blob-report/
+.lighthouseci/
+lhci_reports/
+coverage/
+*.lighthouse.json
+reports/relatorio-testes.md
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# sistema operacional e editores
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+
+# relatório do Sonda (npm run analyze)
+.sonda/
