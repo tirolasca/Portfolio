@@ -96,7 +96,7 @@ export const projects: Project[] = [
     subtitleIcon: "fa-solid fa-building-columns",
     descriptionIcon: "fa-solid fa-code-branch",
     description:
-      "Plataforma web do <strong>1º semestre de DSM (FATEC SJC)</strong> para <strong>visualizar e interpretar dados do Censo de São José dos Campos</strong> em gráficos, apoiando o planejamento urbano e a tomada de decisão de gestores públicos e moradores. Painéis com <strong>filtros por região e faixa etária</strong> e indicadores de população idosa, infantil e de crescimento populacional, com <strong>Python (Flask), Pandas e Plotly</strong> e API em <strong>Docker</strong>. Atuei como <strong>Frontend Developer</strong>, responsável pela camada visual responsiva e integração dinâmica com <strong>HTML, CSS e JavaScript</strong>.",
+      "Plataforma web para <strong>análise dos dados do Censo de SJC</strong>, com dashboards interativos, <strong>filtros regionais e etários</strong> e indicadores populacionais. Desenvolvida com <strong>Flask, Pandas, Plotly e Docker</strong>. Atuei como <strong>Frontend Dev</strong>, desenvolvendo a <strong>interface responsiva</strong> com <strong>HTML, CSS e JS</strong>.",
     image: janosys,
     imageAlt: "Janosys Project",
     tech: [
@@ -235,7 +235,7 @@ export const projects: Project[] = [
     subtitleIcon: "fa-solid fa-plane",
     descriptionIcon: "fa-solid fa-code",
     description:
-      "Plataforma web do <strong>2º semestre de DSM (FATEC SJC)</strong> para <strong>centralizar e correlacionar requisitos normativos aeronáuticos</strong>, desenvolvida com a <strong>Akaer</strong> como cliente. Reúne <strong>busca e filtros</strong> por órgão, código, categoria e palavra-chave, catálogo de peças vinculadas às normas, <strong>solicitação e aprovação de novas normas</strong> e histórico de alterações, com <strong>três perfis de acesso</strong> (Administrador, Checker e Usuário). Front-end em <strong>React, TypeScript e Vite</strong>.",
+      "Plataforma web desenvolvida no <strong>2º semestre de DSM (FATEC SJC)</strong>, em parceria com a <strong>Akaer</strong>, para <strong>gestão e correlação de normas aeronáuticas</strong>. Possui busca, filtros, catálogo de peças, aprovação de normas e histórico de alterações, com <strong>três níveis de acesso</strong>.",
     image: signa,
     imageAlt: "Signa",
     tech: ["react", "typescript", "css3", "javascript", "html5", "vite"],
@@ -257,7 +257,7 @@ export const projects: Project[] = [
     subtitleIcon: "fa-solid fa-database",
     descriptionIcon: "fa-solid fa-code",
     description:
-      "Projeto de estudo de uma plataforma de e-commerce desenvolvida em <strong>Python</strong>, explorando diferentes modelos de persistência e arquitetura de dados. Integra <strong>MongoDB, Redis, Apache Cassandra e Neo4j</strong>, trabalhando com bancos documentais, cache, colunas e grafos. Possui interface web com <strong>Streamlit</strong>, visualizações e recursos de diagnóstico.",
+      "Projeto de e-commerce desenvolvido em <strong>Python</strong>, explorando bancos de dados <strong>MongoDB, Redis, Cassandra e Neo4j</strong>. Possui interface em <strong>Streamlit</strong>, visualizações de dados e recursos de diagnóstico, aplicando diferentes modelos de persistência.",
     image: mercadolivre,
     imageAlt: "Plataforma Mercado Livre desenvolvida em Python",
     tech: ["python", "streamlit", "mongodb", "redis", "cassandra", "neo4j"],
@@ -274,7 +274,7 @@ export const projects: Project[] = [
     subtitleIcon: "fa-solid fa-chart-line",
     descriptionIcon: "fa-solid fa-code",
     description:
-      "Sistema de <strong>gestão de frota e operação logística</strong> desenvolvido no Projeto Integrador da <strong>FATEC</strong> para a <strong>NEWE Logística Integrada</strong>. Arquitetura de <strong>microsserviços</strong> com front-end em <strong>React, TypeScript e Vite</strong> e serviços em <strong>Java e Spring Boot</strong> com <strong>PostgreSQL</strong> e autenticação <strong>JWT</strong>. Inclui painel financeiro com indicadores do período, motoristas, ranking e importação de manifestos em CSV.",
+      "Sistema de <strong>gestão e operação logística</strong>, desenvolvido no Projeto Integrador da <strong>FATEC</strong> para a <strong>NEWE</strong>. Utiliza arquitetura de <strong>microsserviços</strong> com <strong>React, TypeScript, Java, Spring Boot e PostgreSQL</strong>. Inclui painel financeiro, motoristas, ranking e importação de manifestos CSV.",
     image: newelog,
     imageAlt: "Painel financeiro do NEWELOG, sistema de gestão de frota",
     tech: [
@@ -308,7 +308,7 @@ export const projects: Project[] = [
     subtitleIcon: "fa-solid fa-square-root-variable",
     descriptionIcon: "fa-solid fa-code",
     description:
-      "Aplicação educacional para operações e cálculos de <strong>álgebra linear</strong>, desenvolvida em <strong>Python</strong>. Utiliza <strong>SymPy</strong> para operações simbólicas e oferece interfaces com <strong>Streamlit e Tkinter</strong>, além de recursos de visualização matemática. Projeto estruturado com testes automatizados e ferramentas de qualidade de código.",
+      "Aplicação educacional de <strong>álgebra linear</strong> desenvolvida em <strong>Python</strong>, com operações simbólicas via <strong>SymPy</strong>, interfaces em <strong>Streamlit e Tkinter</strong> e visualizações matemáticas. Possui <strong>testes automatizados</strong> e ferramentas de qualidade de código.",
     image: calculadoraMatrizes,
     imageAlt: "Calculadora de Matrizes e operações de álgebra linear",
     tech: ["python", "streamlit", "sympy"],
