@@ -3,32 +3,23 @@ export default {
   extends: ["stylelint-config-standard"],
   // CSS gerado (subconjunto do Font Awesome) e fontes não entram
   ignoreFiles: ["src/styles/vendor/**", "dist/**", ".astro/**", "coverage/**"],
-  // Adoção gradual: tudo que sobrou vira AVISO. O `lint:css` usa um teto
-  // (--max-warnings) que só pode diminuir: nenhum problema novo entra, e os
-  // atuais você resolve aos poucos (e baixa o teto no package.json).
-  defaultSeverity: "warning",
+  // Tolerância zero: qualquer aviso reprova (sem teto de --max-warnings).
+  defaultSeverity: "error",
   rules: {
-    // Regras só de ESTILO desligadas: o Prettier já cuida da formatação e as
-    // demais exigiriam reescrever ~1.700 linhas sem mudar nada no resultado.
-    // Dá pra ligar uma por vez e rodar `stylelint --fix` quando quiser.
-    "rule-empty-line-before": null,
-    "at-rule-empty-line-before": null,
-    "comment-empty-line-before": null,
-    "custom-property-empty-line-before": null,
-    "declaration-empty-line-before": null,
-    "color-function-notation": null,
-    "color-function-alias-notation": null,
-    "alpha-value-notation": null,
-    "color-hex-length": null,
-    "import-notation": null,
-    "media-feature-range-notation": null,
-    "value-keyword-case": null,
-    "selector-class-pattern": null,
-    "selector-id-pattern": null,
-    "keyframes-name-pattern": null,
+    // Classes, ids e keyframes em kebab-case. Única exceção: as duas classes que o
+    // widget GTranslate (terceiros) gera em snake_case e que o CSS precisa alcançar.
+    "selector-class-pattern": [
+      "^(?:[a-z][a-z0-9]*(?:-[a-z0-9]+)*|gtranslate_wrapper|gt_selector)$",
+      {
+        message: (name) =>
+          `Expected class selector ".${name}" to be kebab-case`,
+      },
+    ],
     // prefixos como -webkit-backdrop-filter são intencionais (Safari)
     "property-no-vendor-prefix": null,
     // Sinal real: foi esse tipo de conflito de cascata que deu problema antes.
+    // Regra de ouro: seletores de menor especificidade vêm ANTES dos de maior
+    // (base → estados → tema escuro quando a especificidade já é maior).
     "no-descending-specificity": true,
   },
 };

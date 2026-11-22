@@ -3,18 +3,22 @@
   display: flex;
   gap: 7px;
 }
+
 .t-dot {
   width: 11px;
   height: 11px;
   border-radius: 50%;
   display: block;
 }
+
 .t-dot-red {
   background: #ff5f57;
 }
+
 .t-dot-yellow {
   background: #febc2e;
 }
+
 .t-dot-green {
   background: #28c840;
 }
@@ -32,23 +36,29 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+
 .terminal-line.cmd::before {
   content: "guest@portfolio:~$ ";
   color: var(--terminal-green);
 }
+
 .terminal-line.cmd {
-  color: #ffffff;
+  color: #fff;
 }
+
 .terminal-line.err {
   color: #ff6f6f;
 }
+
 .terminal-line.info {
   color: #7dffb3;
 }
+
 .terminal-line.accent {
   color: var(--accent-gold);
   font-weight: 700;
 }
+
 .terminal-prompt {
   color: var(--terminal-green);
   font-size: 0.85rem;
@@ -71,6 +81,7 @@
     opacity 0.6s ease-out,
     transform 0.6s cubic-bezier(0.8, 0, 0.2, 1);
 }
+
 #cyber-preloader.hidden {
   opacity: 0;
   transform: scale(1.05);
@@ -81,20 +92,22 @@
   max-width: 100%;
   font-size: 0.95rem;
   line-height: 1.5;
-  text-shadow: 0 0 6px rgba(var(--accent-1-dark-rgb), 0.5);
+  text-shadow: 0 0 6px rgb(var(--accent-1-dark-rgb), 0.5);
 }
 
 .log-line {
   margin: 2px 0;
   opacity: 0;
-  animation: printLine 0.05s forwards;
+  animation: print-line 0.05s forwards;
   overflow-wrap: break-word;
 }
+
 .log-success {
   color: #00ff41;
-  text-shadow: 0 0 6px rgba(0, 255, 65, 0.5);
+  text-shadow: 0 0 6px rgb(0 255 65 / 50%);
 }
+
 .log-warning {
   color: #ffe600;
-  text-shadow: 0 0 6px rgba(255, 230, 0, 0.5);
+  text-shadow: 0 0 6px rgb(255 230 0 / 50%);
 }

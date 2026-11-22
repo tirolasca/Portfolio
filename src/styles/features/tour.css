@@ -8,31 +8,24 @@
   inset: auto auto max(20px, env(safe-area-inset-bottom))
     max(20px, env(safe-area-inset-left));
   z-index: 999990;
-
   display: flex;
   flex-direction: column;
-
   width: min(340px, calc(100vw - 40px));
   max-width: calc(100vw - 40px);
   max-height: min(520px, calc(100dvh - 40px));
-
   padding: 16px 18px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
   scrollbar-color: var(--glass-border) transparent;
-
   border: 1px solid var(--glass-border);
   border-radius: var(--radius-md);
   background: var(--glass-bg);
   box-shadow: var(--glass-shadow);
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transform: translateY(20px);
-
   transition:
     opacity 0.3s ease,
     transform 0.3s ease,
@@ -43,11 +36,15 @@
 .tour-card.show {
   -webkit-backdrop-filter: var(--glass-blur);
   backdrop-filter: var(--glass-blur);
-
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
   transform: translateY(0);
+}
+
+/* Só o convite pulsa: ele existe para chamar atenção na primeira visita */
+.tour-prompt.show {
+  animation: neon-border-flow 3s ease-in-out infinite;
 }
 
 /* =========================================
@@ -72,29 +69,22 @@
   font-size: 0.875rem;
 }
 
-.tour-prompt p > i {
-  margin-right: 6px;
-  color: var(--accent-1);
+.tour-card-step i {
+  flex-shrink: 0;
+  font-size: 0.75rem;
 }
 
 .tour-card-step {
   display: flex;
   align-items: center;
   gap: 7px;
-
   margin-bottom: 8px;
-
   color: var(--accent-1);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   line-height: 1.3;
   text-transform: uppercase;
-}
-
-.tour-card-step i {
-  flex-shrink: 0;
-  font-size: 0.75rem;
 }
 
 .tour-card h5 {
@@ -125,7 +115,6 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-
   font-family: inherit;
   text-decoration: none;
 }
@@ -135,16 +124,12 @@
   min-height: 42px;
   max-width: 100%;
   padding: 9px 15px;
-
   border-radius: 9px;
-
   font-size: 0.86rem;
   font-weight: 700;
   letter-spacing: 0.1px;
   line-height: 1.3;
-
   cursor: pointer;
-
   transition:
     transform 0.2s ease,
     background 0.2s ease,
@@ -161,6 +146,11 @@
   transition: transform 0.2s ease;
 }
 
+.tour-prompt p > i {
+  margin-right: 6px;
+  color: var(--accent-1);
+}
+
 .tour-prompt-actions .btn i,
 .tour-card-actions .btn i {
   font-size: 0.85em;
@@ -173,10 +163,9 @@
   border: 1px solid var(--accent-1);
   background: var(--accent-1);
   color: #071817;
-
   box-shadow:
-    0 4px 12px rgba(var(--shadow-teal-rgb), 0.18),
-    0 0 10px rgba(var(--accent-1-light-rgb), 0.12);
+    0 4px 12px rgb(var(--shadow-teal-rgb), 0.18),
+    0 0 10px rgb(var(--accent-1-light-rgb), 0.12);
 }
 
 .tour-start-btn:hover,
@@ -184,10 +173,9 @@
   transform: translateY(-2px);
   border-color: var(--accent-1-light);
   background: var(--accent-1-light);
-
   box-shadow:
-    0 6px 18px rgba(var(--shadow-teal-rgb), 0.25),
-    0 0 16px rgba(var(--accent-1-light-rgb), 0.2);
+    0 6px 18px rgb(var(--shadow-teal-rgb), 0.25),
+    0 0 16px rgb(var(--accent-1-light-rgb), 0.2);
 }
 
 .tour-start-btn:hover i {
@@ -210,7 +198,6 @@
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
   color: var(--text-main);
-
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
@@ -219,10 +206,9 @@
 .tour-skip-btn:hover {
   transform: translateY(-2px);
   border-color: var(--accent-1);
-  background: rgba(var(--accent-1-light-rgb), 0.1);
+  background: rgb(var(--accent-1-light-rgb), 0.1);
   color: var(--accent-1);
-
-  box-shadow: 0 4px 14px rgba(var(--shadow-teal-rgb), 0.12);
+  box-shadow: 0 4px 14px rgb(var(--shadow-teal-rgb), 0.12);
 }
 
 .tour-prev-btn:hover i {
@@ -239,17 +225,13 @@
 .tour-end-link {
   margin-left: auto;
   padding: 8px 4px;
-
   border: 0;
   background: transparent;
   color: var(--text-sub);
-
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.3;
-
   cursor: pointer;
-
   transition:
     color 0.2s ease,
     opacity 0.2s ease;
@@ -270,15 +252,13 @@
 .tour-highlight {
   position: relative;
   z-index: 1;
-
   outline: 3px solid var(--accent-1);
   outline-offset: 6px;
   border-radius: var(--radius-md);
-
-  animation: tourPulse 1.6s ease-in-out infinite;
+  animation: tour-pulse 1.6s ease-in-out infinite;
 }
 
-@keyframes tourPulse {
+@keyframes tour-pulse {
   0%,
   100% {
     outline-offset: 6px;
@@ -311,7 +291,7 @@
    TABLETS
    ========================================= */
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .tour-prompt,
   .tour-card {
     width: min(340px, calc(100vw - 32px));
@@ -325,16 +305,14 @@
    CELULARES
    ========================================= */
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .tour-prompt,
   .tour-card {
     left: max(12px, env(safe-area-inset-left));
     bottom: max(12px, env(safe-area-inset-bottom));
-
     width: calc(100vw - 24px);
     max-width: 420px;
     max-height: calc(100dvh - 24px);
-
     margin-inline: auto;
     padding: 15px;
   }
@@ -368,15 +346,13 @@
    CELULARES PEQUENOS
    ========================================= */
 
-@media (max-width: 380px) {
+@media (width <= 380px) {
   .tour-prompt,
   .tour-card {
     left: max(10px, env(safe-area-inset-left));
     bottom: max(10px, env(safe-area-inset-bottom));
-
     width: calc(100vw - 20px);
     max-width: none;
-
     padding: 13px;
   }
 
@@ -402,7 +378,7 @@
    TELAS COM POUCA ALTURA
    ========================================= */
 
-@media (max-height: 500px) {
+@media (height <= 500px) {
   .tour-prompt,
   .tour-card {
     max-height: calc(100dvh - 20px);

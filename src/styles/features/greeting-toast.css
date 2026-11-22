@@ -7,12 +7,8 @@
   align-items: center;
   gap: 8px;
   transform: translateX(-50%) translateY(-20px);
-  background: linear-gradient(
-    135deg,
-    rgba(0, 50, 60, 0.95),
-    rgba(0, 30, 40, 0.95)
-  );
-  border: 1px solid rgba(var(--accent-1-dark-rgb), 0.3);
+  background: linear-gradient(135deg, rgb(0 50 60 / 95%), rgb(0 30 40 / 95%));
+  border: 1px solid rgb(var(--accent-1-dark-rgb), 0.3);
   border-radius: 30px;
   padding: 10px 24px;
   color: var(--accent-1);
@@ -22,7 +18,7 @@
   opacity: 0;
   pointer-events: none;
   white-space: nowrap;
-  box-shadow: 0 4px 20px rgba(var(--accent-1-dark-rgb), 0.15);
+  box-shadow: 0 4px 20px rgb(var(--accent-1-dark-rgb), 0.15);
   transition:
     opacity 0.4s ease,
     transform 0.4s ease;

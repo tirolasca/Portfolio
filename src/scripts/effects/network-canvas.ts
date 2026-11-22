@@ -21,7 +21,7 @@ interface Particle {
 
 export function initNetworkCanvas() {
   const canvas = document.getElementById(
-    "networkCanvas",
+    "network-canvas",
   ) as HTMLCanvasElement | null;
   const ctx = canvas?.getContext("2d");
   if (!canvas || !ctx) return;

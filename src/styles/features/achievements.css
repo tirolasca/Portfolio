@@ -12,10 +12,9 @@
   align-content: start;
   gap: 12px;
   padding: 16px 24px;
-  overflow-x: hidden;
-  overflow-y: auto;
+  overflow: hidden auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(var(--accent-1-light-rgb), 0.35) transparent;
+  scrollbar-color: rgb(var(--accent-1-light-rgb), 0.35) transparent;
 }
 
 .achievements-grid::-webkit-scrollbar {
@@ -27,12 +26,12 @@
 }
 
 .achievements-grid::-webkit-scrollbar-thumb {
-  background: rgba(var(--accent-1-light-rgb), 0.35);
+  background: rgb(var(--accent-1-light-rgb), 0.35);
   border-radius: 4px;
 }
 
 .achievements-grid::-webkit-scrollbar-thumb:hover {
-  background: rgba(var(--accent-1-light-rgb), 0.65);
+  background: rgb(var(--accent-1-light-rgb), 0.65);
 }
 
 /* ---------- Cards ---------- */
@@ -45,10 +44,10 @@
   gap: 7px;
   padding: 14px 12px;
   overflow: visible;
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  border: 1px solid rgb(255 255 255 / 72%);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.6);
-  box-shadow: 0 2px 12px rgba(0, 80, 80, 0.08);
+  background: rgb(255 255 255 / 60%);
+  box-shadow: 0 2px 12px rgb(0 80 80 / 8%);
   text-align: center;
   cursor: pointer;
   transition:
@@ -58,30 +57,35 @@
     transform 0.25s ease;
 }
 
+.achievement-card:hover,
+.achievement-card:focus-visible {
+  z-index: 100;
+}
+
 .achievements-overlay.open .achievement-card {
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
 }
 
 .achievement-card.unlocked {
-  background: rgba(var(--accent-1-light-rgb), 0.12);
-  border-color: rgba(var(--accent-1-light-rgb), 0.32);
+  background: rgb(var(--accent-1-light-rgb), 0.12);
+  border-color: rgb(var(--accent-1-light-rgb), 0.32);
 }
 
 .achievement-card.unlocked:hover {
   transform: translateY(-4px);
-  border-color: rgba(var(--accent-1-light-rgb), 0.55);
-  box-shadow: 0 6px 20px rgba(var(--accent-1-light-rgb), 0.2);
+  border-color: rgb(var(--accent-1-light-rgb), 0.55);
+  box-shadow: 0 6px 20px rgb(var(--accent-1-light-rgb), 0.2);
 }
 
 .achievement-card.unlocked.secret {
-  background: rgba(192, 128, 0, 0.11);
-  border-color: rgba(192, 128, 0, 0.38);
+  background: rgb(192 128 0 / 11%);
+  border-color: rgb(192 128 0 / 38%);
 }
 
 .achievement-card.locked {
-  background: rgba(235, 240, 245, 0.45);
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
+  background: rgb(235 240 245 / 45%);
+  box-shadow: inset 0 0 20px rgb(0 0 0 / 5%);
 }
 
 /* ---------- Tooltip ---------- */
@@ -91,44 +95,31 @@
   overflow: visible;
 }
 
-.achievement-card:hover,
-.achievement-card:focus-visible {
-  z-index: 100;
-}
-
 .achievement-card[data-tooltip]::before {
   content: attr(data-tooltip);
   position: absolute;
   left: 50%;
   bottom: calc(100% + 12px);
   z-index: 9999999;
-
   width: max-content;
   max-width: min(215px, calc(100vw - 32px));
   height: auto;
   padding: 9px 14px;
-
-  border: 1px solid rgba(var(--shadow-teal-rgb), 0.22);
+  border: 1px solid rgb(var(--shadow-teal-rgb), 0.22);
   border-radius: 10px;
-
-  background: rgba(255, 255, 255, 0.85);
+  background: rgb(255 255 255 / 85%);
   color: #004b45;
-
-  box-shadow: 0 6px 24px rgba(0, 80, 80, 0.18);
-
+  box-shadow: 0 6px 24px rgb(0 80 80 / 18%);
   font-size: 0.73rem;
   font-weight: 500;
   line-height: 1.5;
   text-align: center;
   white-space: normal;
   overflow-wrap: anywhere;
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-
   transform: translate(-50%, 6px);
-
   transition:
     opacity 0.22s ease,
     transform 0.22s ease,
@@ -141,19 +132,14 @@
   left: 50%;
   bottom: calc(100% + 5px);
   z-index: 9999999;
-
   width: 0;
   height: 0;
-
   border: 7px solid transparent;
-  border-top-color: rgba(255, 255, 255, 0.97);
-
+  border-top-color: rgb(255 255 255 / 97%);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-
   transform: translate(-50%, 6px);
-
   transition:
     opacity 0.22s ease,
     transform 0.22s ease,
@@ -177,46 +163,42 @@
 /* ---------- Tooltip de cards bloqueados ---------- */
 
 .achievement-card.locked[data-tooltip]::before {
-  background: rgba(235, 238, 240, 0.85);
+  background: rgb(235 238 240 / 85%);
   color: #445;
-  border-color: rgba(100, 100, 120, 0.18);
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  border-color: rgb(100 100 120 / 18%);
+  box-shadow: 0 4px 18px rgb(0 0 0 / 12%);
 }
 
 .achievement-card.locked[data-tooltip]::after {
-  border-top-color: rgba(235, 238, 240, 0.85);
+  border-top-color: rgb(235 238 240 / 85%);
 }
 
 /* ---------- Tooltip de conquistas secretas ---------- */
 
 .achievement-card.secret.locked[data-tooltip]::before {
-  background: rgba(28, 12, 48, 0.85);
+  background: rgb(28 12 48 / 85%);
   color: #c090ff;
-  border-color: rgba(160, 80, 255, 0.4);
+  border-color: rgb(160 80 255 / 40%);
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.6),
-    0 0 14px rgba(140, 60, 255, 0.25);
+    0 6px 24px rgb(0 0 0 / 60%),
+    0 0 14px rgb(140 60 255 / 25%);
 }
 
 .achievement-card.secret.locked[data-tooltip]::after {
-  border-top-color: rgba(28, 12, 48, 0.85);
+  border-top-color: rgb(28 12 48 / 85%);
 }
 
 .achievement-card.secret.unlocked[data-tooltip]::before {
-  background: linear-gradient(
-    135deg,
-    rgba(35, 24, 0, 0.85),
-    rgba(58, 40, 0, 0.85)
-  );
+  background: linear-gradient(135deg, rgb(35 24 0 / 85%), rgb(58 40 0 / 85%));
   color: #ffe08a;
-  border-color: rgba(255, 200, 80, 0.45);
+  border-color: rgb(255 200 80 / 45%);
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.55),
-    0 0 18px rgba(255, 185, 0, 0.25);
+    0 6px 24px rgb(0 0 0 / 55%),
+    0 0 18px rgb(255 185 0 / 25%);
 }
 
 .achievement-card.secret.unlocked[data-tooltip]::after {
-  border-top-color: rgba(35, 24, 0, 0.85);
+  border-top-color: rgb(35 24 0 / 85%);
 }
 
 /* ---------- Tooltips da primeira linha ---------- */
@@ -231,24 +213,23 @@
   top: calc(100% + 4px);
   bottom: auto;
   transform: translate(-50%, -6px);
-
   border-top-color: transparent;
-  border-bottom-color: rgba(255, 255, 255, 0.97);
+  border-bottom-color: rgb(255 255 255 / 97%);
 }
 
 .achievements-grid
   .achievement-card.locked:nth-child(-n + 2)[data-tooltip]::after {
-  border-bottom-color: rgba(235, 238, 240, 0.97);
+  border-bottom-color: rgb(235 238 240 / 97%);
 }
 
 .achievements-grid
   .achievement-card.secret.locked:nth-child(-n + 2)[data-tooltip]::after {
-  border-bottom-color: rgba(28, 12, 48, 0.97);
+  border-bottom-color: rgb(28 12 48 / 97%);
 }
 
 .achievements-grid
   .achievement-card.secret.unlocked:nth-child(-n + 2)[data-tooltip]::after {
-  border-bottom-color: rgba(35, 24, 0, 0.97);
+  border-bottom-color: rgb(35 24 0 / 97%);
 }
 
 .achievements-grid
@@ -270,45 +251,32 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
-
   width: 42px;
   height: 42px;
-
-  border: 1px solid rgba(var(--accent-gold-rgb), 0.4);
+  border: 1px solid rgb(var(--accent-gold-rgb), 0.4);
   border-radius: 50%;
-
-  background: rgba(var(--accent-gold-rgb), 0.16);
+  background: rgb(var(--accent-gold-rgb), 0.16);
   color: var(--accent-gold);
-
   font-size: 1.1rem;
   cursor: pointer;
-
   overflow: visible;
   clip-path: none;
-
   transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .achievements-btn:hover {
-  background: rgba(var(--accent-gold-rgb), 0.32);
-  border-color: rgba(var(--accent-gold-rgb), 0.75);
+  background: rgb(var(--accent-gold-rgb), 0.32);
+  border-color: rgb(var(--accent-gold-rgb), 0.75);
   color: #fff3d6;
-
   transform: rotate(-12deg) scale(1.12);
-
   box-shadow:
-    0 0 18px rgba(var(--accent-gold-rgb), 0.55),
-    0 0 36px rgba(var(--accent-gold-rgb), 0.22);
+    0 0 18px rgb(var(--accent-gold-rgb), 0.55),
+    0 0 36px rgb(var(--accent-gold-rgb), 0.22);
+  animation: golden-glow 0.9s ease-in-out infinite alternate;
 }
 
 .achievements-btn:active {
   transform: scale(0.92);
-}
-
-.achievements-btn:focus-visible,
-.achievements-close:focus-visible {
-  outline: 2px solid var(--accent-gold);
-  outline-offset: 4px;
 }
 
 /* ---------- Badge ---------- */
@@ -318,36 +286,28 @@
   top: -8px;
   right: -8px;
   z-index: 10;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   min-width: 20px;
   height: 20px;
   padding: 0 5px;
-
-  border: 2px solid rgba(0, 50, 60, 0.55);
+  border: 2px solid rgb(0 50 60 / 55%);
   border-radius: 10px;
-
   background: linear-gradient(135deg, var(--accent-gold), #f4a500);
   color: #1a0c00;
-
   font-size: 0.62rem;
   font-weight: 900;
   letter-spacing: 0.02em;
-
   pointer-events: none;
-
   box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.35),
-    0 0 6px rgba(var(--accent-gold-rgb), 0.5);
-
+    0 2px 8px rgb(0 0 0 / 35%),
+    0 0 6px rgb(var(--accent-gold-rgb), 0.5);
   transition: transform 0.2s ease;
 }
 
 .achievements-badge.pop {
-  animation: badgePop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.4);
+  animation: badge-pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.4);
 }
 
 /* ---------- Overlay ---------- */
@@ -356,12 +316,9 @@
   position: fixed;
   inset: 0;
   z-index: 99990;
-
-  background: rgba(0, 0, 0, 0.48);
-
+  background: rgb(0 0 0 / 48%);
   opacity: 0;
   visibility: hidden;
-
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease;
@@ -370,7 +327,6 @@
 .achievements-overlay.open {
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-
   opacity: 1;
   visibility: visible;
 }
@@ -382,31 +338,22 @@
   top: 0;
   right: 0;
   z-index: 99991;
-
   display: flex;
   flex-direction: column;
-
   width: min(420px, 100vw);
   height: 100vh;
   height: 100dvh;
-
   overflow: visible;
-
-  border-left: 1px solid rgba(var(--accent-1-light-rgb), 0.22);
-
-  background: rgba(238, 255, 252, 0.78);
-
-  box-shadow: -12px 0 48px rgba(0, 80, 80, 0.18);
-
+  border-left: 1px solid rgb(var(--accent-1-light-rgb), 0.22);
+  background: rgb(238 255 252 / 78%);
+  box-shadow: -12px 0 48px rgb(0 80 80 / 18%);
   transform: translateX(100%);
-
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .achievements-overlay.open .achievements-drawer {
   -webkit-backdrop-filter: blur(28px) saturate(1.8);
   backdrop-filter: blur(28px) saturate(1.8);
-
   transform: translateX(0);
 }
 
@@ -417,21 +364,16 @@
   flex-shrink: 0;
   align-items: center;
   justify-content: space-between;
-
   padding: 20px 24px;
-
-  border-bottom: 1px solid rgba(var(--accent-1-light-rgb), 0.18);
-
-  background: rgba(var(--accent-1-light-rgb), 0.08);
+  border-bottom: 1px solid rgb(var(--accent-1-light-rgb), 0.18);
+  background: rgb(var(--accent-1-light-rgb), 0.08);
 }
 
 .achievements-drawer-title {
   display: flex;
   align-items: center;
   gap: 10px;
-
   color: #004b45;
-
   font-size: 1.15rem;
   font-weight: 700;
 }
@@ -447,20 +389,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 32px;
   height: 32px;
-
-  border: 1px solid rgba(0, 0, 0, 0.68);
+  border: 1px solid rgb(0 0 0 / 68%);
   border-radius: 50%;
-
-  background: rgba(0, 0, 0, 0.62);
+  background: rgb(0 0 0 / 62%);
   color: #fff;
-
   font-size: 1rem;
   cursor: pointer;
-
   transition: all 0.2s ease;
+}
+
+.achievements-btn:focus-visible,
+.achievements-close:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 4px;
 }
 
 .achievements-close:hover {
@@ -474,8 +417,7 @@
 .achievements-xp-section {
   flex-shrink: 0;
   padding: 18px 24px;
-
-  border-bottom: 1px solid rgba(var(--accent-1-light-rgb), 0.12);
+  border-bottom: 1px solid rgb(var(--accent-1-light-rgb), 0.12);
 }
 
 .achievements-xp-label {
@@ -493,17 +435,17 @@
 }
 
 .achievements-xp-sep {
-  color: rgba(0, 0, 0, 0.3);
+  color: rgb(0 0 0 / 30%);
   font-size: 1.2rem;
 }
 
 .achievements-xp-max {
-  color: rgba(0, 0, 0, 0.35);
+  color: rgb(0 0 0 / 35%);
   font-size: 1rem;
 }
 
 .achievements-xp-unit {
-  color: rgba(0, 0, 0, 0.38);
+  color: rgb(0 0 0 / 38%);
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 1px;
@@ -516,30 +458,23 @@
   width: 100%;
   height: 8px;
   margin-bottom: 8px;
-
   overflow: hidden;
-
   border-radius: 4px;
-
-  background: rgba(0, 0, 0, 0.08);
+  background: rgb(0 0 0 / 8%);
 }
 
 .achievements-xp-fill {
   width: 0%;
   height: 100%;
-
   border-radius: 4px;
-
   background: linear-gradient(90deg, #a07000, var(--accent-gold), #a07000);
   background-size: 200% 100%;
-
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-
-  animation: barShimmer 2.8s linear infinite;
+  animation: bar-shimmer 2.8s linear infinite;
 }
 
 .achievements-xp-count {
-  color: rgba(0, 0, 0, 0.65);
+  color: rgb(0 0 0 / 65%);
   font-size: 0.78rem;
   text-align: right;
 }
@@ -549,17 +484,14 @@
 .achievement-card-icon {
   position: relative;
   z-index: 1;
-
   color: #00bfae;
-
   font-size: 1.55rem;
   line-height: 1;
-
   transition: transform 0.3s ease;
 }
 
 .achievement-card.locked .achievement-card-icon {
-  color: rgba(0, 0, 0, 0.22);
+  color: rgb(0 0 0 / 22%);
 }
 
 .achievement-card.unlocked.secret .achievement-card-icon {
@@ -575,16 +507,14 @@
 .achievement-card-title {
   position: relative;
   z-index: 1;
-
   color: #003f3a;
-
   font-size: 0.77rem;
   font-weight: 700;
   line-height: 1.2;
 }
 
 .achievement-card.locked .achievement-card-title {
-  color: rgba(0, 0, 0, 0.26);
+  color: rgb(0 0 0 / 26%);
 }
 
 /* ---------- Descrição ---------- */
@@ -592,15 +522,13 @@
 .achievement-card-desc {
   position: relative;
   z-index: 1;
-
-  color: rgba(0, 0, 0, 0.62);
-
+  color: rgb(0 0 0 / 62%);
   font-size: 0.67rem;
   line-height: 1.3;
 }
 
 .achievement-card.locked .achievement-card-desc {
-  color: rgba(0, 0, 0, 0.32);
+  color: rgb(0 0 0 / 32%);
 }
 
 /* ---------- XP do card ---------- */
@@ -608,23 +536,19 @@
 .achievement-card-xp {
   position: relative;
   z-index: 1;
-
   padding: 2px 8px;
-
-  border: 1px solid rgba(120, 84, 0, 0.95);
+  border: 1px solid rgb(120 84 0 / 95%);
   border-radius: 10px;
-
-  background: rgba(255, 208, 96, 0.9);
+  background: rgb(255 208 96 / 90%);
   color: #1a1200;
-
   font-size: 0.67rem;
   font-weight: 700;
 }
 
 .achievement-card.locked .achievement-card-xp {
-  background: rgba(255, 255, 255, 0.85);
-  color: rgba(0, 0, 0, 0.98);
-  border-color: rgba(0, 0, 0, 0.42);
+  background: rgb(255 255 255 / 85%);
+  color: rgb(0 0 0 / 98%);
+  border-color: rgb(0 0 0 / 42%);
 }
 
 /* ---------- Indicador secreto ---------- */
@@ -632,9 +556,7 @@
 .achievement-card-secret {
   position: relative;
   z-index: 1;
-
-  color: rgba(0, 0, 0, 0.48);
-
+  color: rgb(0 0 0 / 48%);
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -650,110 +572,106 @@
 /* Konami */
 
 .achievement-card[data-id="a-konami"].unlocked {
-  background: rgba(140, 60, 255, 0.1);
-  border-color: rgba(140, 60, 255, 0.4);
+  background: rgb(140 60 255 / 10%);
+  border-color: rgb(140 60 255 / 40%);
 }
 
 .achievement-card[data-id="a-konami"].locked[data-tooltip]::before {
-  background: rgba(10, 5, 20, 0.85);
+  background: rgb(10 5 20 / 85%);
   color: #bfa1ff;
-  border-color: rgba(160, 80, 255, 0.15);
+  border-color: rgb(160 80 255 / 15%);
   box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.7),
-    0 0 10px rgba(160, 80, 255, 0.1);
+    0 4px 16px rgb(0 0 0 / 70%),
+    0 0 10px rgb(160 80 255 / 10%);
 }
 
 .achievement-card[data-id="a-konami"].unlocked[data-tooltip]::before {
-  background: rgba(28, 12, 48, 0.85);
+  background: rgb(28 12 48 / 85%);
   color: #d9b3ff;
-  border-color: rgba(160, 80, 255, 0.4);
+  border-color: rgb(160 80 255 / 40%);
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.5),
-    0 0 14px rgba(140, 60, 255, 0.25);
+    0 6px 24px rgb(0 0 0 / 50%),
+    0 0 14px rgb(140 60 255 / 25%);
 }
 
 /* Logo */
 
 .achievement-card[data-id="a-logo"].unlocked {
-  background: rgba(255, 185, 0, 0.1);
-  border-color: rgba(255, 185, 0, 0.4);
+  background: rgb(255 185 0 / 10%);
+  border-color: rgb(255 185 0 / 40%);
 }
 
 .achievement-card[data-id="a-logo"].locked[data-tooltip]::before {
-  background: rgba(15, 10, 0, 0.85);
+  background: rgb(15 10 0 / 85%);
   color: #ffe5a8;
-  border-color: rgba(255, 200, 80, 0.15);
+  border-color: rgb(255 200 80 / 15%);
   box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.7),
-    0 0 12px rgba(255, 185, 0, 0.1);
+    0 4px 16px rgb(0 0 0 / 70%),
+    0 0 12px rgb(255 185 0 / 10%);
 }
 
 .achievement-card[data-id="a-logo"].unlocked[data-tooltip]::before {
-  background: linear-gradient(
-    135deg,
-    rgba(35, 24, 0, 0.85),
-    rgba(58, 40, 0, 0.85)
-  );
+  background: linear-gradient(135deg, rgb(35 24 0 / 85%), rgb(58 40 0 / 85%));
   color: #ffe08a;
-  border-color: rgba(255, 200, 80, 0.45);
+  border-color: rgb(255 200 80 / 45%);
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.45),
-    0 0 18px rgba(255, 185, 0, 0.25);
+    0 6px 24px rgb(0 0 0 / 45%),
+    0 0 18px rgb(255 185 0 / 25%);
 }
 
 /* Terminal */
 
 .achievement-card[data-id="a-terminal"].unlocked {
-  background: rgba(0, 230, 118, 0.1);
-  border-color: rgba(0, 230, 118, 0.4);
+  background: rgb(0 230 118 / 10%);
+  border-color: rgb(0 230 118 / 40%);
 }
 
 .achievement-card[data-id="a-terminal"].locked[data-tooltip]::before {
-  background: rgba(3, 15, 8, 0.85);
+  background: rgb(3 15 8 / 85%);
   color: #9dffcf;
-  border-color: rgba(var(--terminal-green-rgb), 0.15);
+  border-color: rgb(var(--terminal-green-rgb), 0.15);
   box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.7),
-    0 0 10px rgba(0, 230, 118, 0.1);
+    0 4px 16px rgb(0 0 0 / 70%),
+    0 0 10px rgb(0 230 118 / 10%);
 }
 
 .achievement-card[data-id="a-terminal"].unlocked[data-tooltip]::before {
-  background: rgba(6, 28, 16, 0.85);
+  background: rgb(6 28 16 / 85%);
   color: #b8ffdf;
-  border-color: rgba(var(--terminal-green-rgb), 0.4);
+  border-color: rgb(var(--terminal-green-rgb), 0.4);
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.5),
-    0 0 14px rgba(0, 230, 118, 0.25);
+    0 6px 24px rgb(0 0 0 / 50%),
+    0 0 14px rgb(0 230 118 / 25%);
 }
 
 /* Neo */
 
 .achievement-card[data-id="a-neo"].unlocked {
-  background: rgba(255, 40, 170, 0.1);
-  border-color: rgba(255, 40, 170, 0.4);
+  background: rgb(255 40 170 / 10%);
+  border-color: rgb(255 40 170 / 40%);
 }
 
 .achievement-card[data-id="a-neo"].locked[data-tooltip]::before {
-  background: rgba(20, 3, 14, 0.85);
+  background: rgb(20 3 14 / 85%);
   color: #ffb3e0;
-  border-color: rgba(255, 90, 190, 0.15);
+  border-color: rgb(255 90 190 / 15%);
   box-shadow:
-    0 4px 16px rgba(0, 0, 0, 0.7),
-    0 0 10px rgba(255, 40, 170, 0.1);
+    0 4px 16px rgb(0 0 0 / 70%),
+    0 0 10px rgb(255 40 170 / 10%);
 }
 
 .achievement-card[data-id="a-neo"].unlocked[data-tooltip]::before {
-  background: rgba(40, 6, 28, 0.85);
+  background: rgb(40 6 28 / 85%);
   color: #ffd1ec;
-  border-color: rgba(255, 90, 190, 0.4);
+  border-color: rgb(255 90 190 / 40%);
   box-shadow:
-    0 6px 24px rgba(0, 0, 0, 0.5),
-    0 0 14px rgba(255, 40, 170, 0.25);
+    0 6px 24px rgb(0 0 0 / 50%),
+    0 0 14px rgb(255 40 170 / 25%);
 }
 
 /* ---------- Responsividade ---------- */
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .achievements-grid {
     padding: 14px 16px;
     gap: 10px;

@@ -146,7 +146,7 @@ npm run dev        # http://localhost:4321
 | `npm run preview`                               | Serve o build localmente                                             |
 | `npm run check`                                 | Só a checagem de tipos (`astro check`)                               |
 | `npm run lint` · `lint:fix`                     | ESLint                                                               |
-| `npm run lint:css` · `lint:css:fix`             | Stylelint (com teto de avisos que só pode diminuir)                  |
+| `npm run lint:css` · `lint:css:fix`             | Stylelint (tolerância zero: qualquer aviso reprova)                  |
 | `npm run format` · `format:check`               | Prettier                                                             |
 | `npm run spell`                                 | CSpell (inglês + português)                                          |
 | `npm run knip`                                  | Código, exports e dependências não usados                            |
@@ -256,7 +256,7 @@ docs/                   preview, desempenho, segurança (CSP, GitHub) e configur
 - **Font Awesome em subconjunto**: 90 ícones custam ~11 KB; SVGs inline custariam ~38 KB (medição com 85 ícones em [`docs/performance.md`](docs/performance.md)).
 - **Chart.js só com o radar**: `chart.js/auto` registra todos os tipos de gráfico; o site registra apenas radar, escala radial, ponto, linha, _filler_ e tooltip (~21 % menor em gzip). Um teste unitário monta o gráfico e falha se faltar algum registro.
 - **Sonda pelo plugin do Vite**: o `sonda/astro` não dispara no Astro 7 (o hook de build só roda com `target: "server"`), então o relatório usa `sonda/vite`, ligado só com `npm run analyze`.
-- **Stylelint com teto de avisos**: o CSS legado tem avisos que não valem uma reescrita; `lint:css --max-warnings` impede que entrem novos e o teto só desce.
+- **Stylelint com tolerância zero**: o CSS está limpo (0 avisos) e `lint:css` reprova qualquer problema novo. A regra `no-descending-specificity` fica ligada de propósito: foi esse tipo de conflito de cascata que deu problema antes. Convenção: base → estados → tema escuro, sempre de menor para maior especificidade. Classes, ids e `@keyframes` em kebab-case (exceção: `gtranslate_wrapper` e `gt_selector`, geradas pelo GTranslate) e media queries na notação de intervalo (`width <= 768px`).
 - **Supply chain**: actions fixadas por SHA, Dependabot com espera de 7 dias para versões novas, e zizmor, OSV-Scanner, Gitleaks e Scorecard no CI (detalhes em [`docs/security.md`](docs/security.md)).
 
 </details>
@@ -265,7 +265,6 @@ docs/                   preview, desempenho, segurança (CSP, GitHub) e configur
 
 - Coletar Core Web Vitals reais (`PUBLIC_VITALS_URL`) e ajustar os limites do Lighthouse CI.
 - Investigar o Speed Index da home em dispositivo real (abertura e animações contínuas).
-- Baixar o teto do `lint:css` (hoje 50 avisos) conforme o CSS for limpo.
 - Avaliar trocar o Swiper por CSS `scroll-snap` (o chunk do carrossel é o maior depois do gráfico).
 
 ## 🙏 Créditos

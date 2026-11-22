@@ -109,7 +109,7 @@ export function initLogoSecret() {
             75,
           );
         }
-        logo.style.animation = "logoSpin 1s ease";
+        logo.style.animation = "logo-spin 1s ease";
         setTimeout(() => {
           logo.style.animation = "";
         }, 1100);

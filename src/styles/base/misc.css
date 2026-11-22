@@ -6,7 +6,7 @@ body.booting {
 
 .log-system {
   color: var(--accent-blue);
-  text-shadow: 0 0 6px rgba(var(--accent-blue-rgb), 0.5);
+  text-shadow: 0 0 6px rgb(var(--accent-blue-rgb), 0.5);
 }
 
 .header-actions {
@@ -28,7 +28,7 @@ body.booting {
   position: relative;
   width: 100%;
   height: 6px;
-  background: rgba(36, 36, 36, 0.15);
+  background: rgb(36 36 36 / 15%);
   border-radius: 3px;
   margin: 0.5rem 0;
   overflow: hidden;
@@ -49,7 +49,7 @@ body.booting {
   background-size: 300% 300%;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: neonTitlePulse 6s ease-in-out infinite;
+  animation: neon-title-pulse 6s ease-in-out infinite;
   position: relative;
 }
 
@@ -64,10 +64,10 @@ body.booting {
   border-radius: 2px;
   background: linear-gradient(90deg, var(--grad-neon-stops));
   background-size: 300% 300%;
-  animation: neonTitlePulse 6s ease-in-out infinite;
+  animation: neon-title-pulse 6s ease-in-out infinite;
   box-shadow:
-    0 0 10px rgba(var(--accent-neon-rgb), 0.6),
-    0 0 20px rgba(var(--accent-blue-rgb), 0.4);
+    0 0 10px rgb(var(--accent-neon-rgb), 0.6),
+    0 0 20px rgb(var(--accent-blue-rgb), 0.4);
 }
 
 .toggle-btn {
@@ -88,16 +88,17 @@ body.booting {
   transform: scale(1.05);
 }
 
-@keyframes neonPulseLight {
+@keyframes neon-pulse-light {
   0% {
     box-shadow:
-      0 0 10px rgba(var(--accent-1-light-rgb), 0.55),
-      0 0 20px rgba(var(--accent-1-light-rgb), 0.28);
+      0 0 10px rgb(var(--accent-1-light-rgb), 0.55),
+      0 0 20px rgb(var(--accent-1-light-rgb), 0.28);
   }
+
   100% {
     box-shadow:
-      0 0 16px rgba(var(--accent-1-light-rgb), 0.8),
-      0 0 32px rgba(var(--accent-1-light-rgb), 0.42);
+      0 0 16px rgb(var(--accent-1-light-rgb), 0.8),
+      0 0 32px rgb(var(--accent-1-light-rgb), 0.42);
   }
 }
 
@@ -123,7 +124,7 @@ body.booting {
   font-size: 1.8rem;
   font-weight: 700;
   color: var(--accent-1);
-  text-shadow: 0 0 8px rgba(var(--accent-1-dark-rgb), 0.4);
+  text-shadow: 0 0 8px rgb(var(--accent-1-dark-rgb), 0.4);
 }
 
 .gh-stat-label {
@@ -183,12 +184,12 @@ body.booting {
   background: var(--glass-bg);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(var(--accent-1-light-rgb), 0.3);
+  border: 1px solid rgb(var(--accent-1-light-rgb), 0.3);
   border-radius: 30px;
   padding: 6px 16px;
   gap: 4px;
   z-index: 600;
-  box-shadow: 0 4px 20px rgba(0, 80, 80, 0.18);
+  box-shadow: 0 4px 20px rgb(0 80 80 / 18%);
 }
 
 /* Formulário de e-mail */
@@ -223,8 +224,8 @@ body.booting {
 .email-form textarea {
   width: 100%;
   box-sizing: border-box;
-  background: rgba(var(--accent-1-light-rgb), 0.05);
-  border: 1.5px solid rgba(var(--accent-1-light-rgb), 0.25);
+  background: rgb(var(--accent-1-light-rgb), 0.05);
+  border: 1.5px solid rgb(var(--accent-1-light-rgb), 0.25);
   border-radius: var(--radius-sm);
   padding: 10px 14px;
   font-size: 0.9rem;
@@ -239,14 +240,24 @@ body.booting {
 
 /* Foco dos campos */
 
+.email-form textarea {
+  min-height: 110px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent-1);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
 .email-form input:focus,
 .email-form textarea:focus {
   border-color: var(--accent-1);
-  box-shadow: 0 0 0 3px rgba(var(--accent-1-light-rgb), 0.15);
-}
-
-.email-form textarea {
-  min-height: 110px;
+  box-shadow: 0 0 0 3px rgb(var(--accent-1-light-rgb), 0.15);
 }
 
 .email-form-actions {
@@ -259,7 +270,7 @@ body.booting {
 .email-btn-cancel {
   padding: 10px 20px;
   border-radius: var(--radius-sm);
-  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  border: 1.5px solid rgb(0 0 0 / 12%);
   background: transparent;
   color: var(--text-sub);
   cursor: pointer;
@@ -269,7 +280,7 @@ body.booting {
 }
 
 .email-btn-cancel:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgb(0 0 0 / 5%);
   transform: translateY(-1px);
 }
 
@@ -286,13 +297,13 @@ body.booting {
   align-items: center;
   gap: 8px;
   transition: all 0.25s ease;
-  box-shadow: 0 4px 14px rgba(var(--shadow-teal-rgb), 0.3);
+  box-shadow: 0 4px 14px rgb(var(--shadow-teal-rgb), 0.3);
   position: relative;
   overflow: hidden;
 }
 
 .email-btn-send:hover {
-  box-shadow: 0 8px 24px rgba(var(--shadow-teal-rgb), 0.45);
+  box-shadow: 0 8px 24px rgb(var(--shadow-teal-rgb), 0.45);
   transform: translateY(-2px);
 }
 
@@ -318,7 +329,7 @@ body.booting {
 .email-success-icon {
   font-size: 3rem;
   color: var(--accent-1);
-  animation: achieveSpin 0.6s ease;
+  animation: achieve-spin 0.6s ease;
 }
 
 .email-success h4 {
@@ -333,39 +344,46 @@ body.booting {
   margin: 0;
 }
 
-@keyframes badgePop {
+@keyframes badge-pop {
   0% {
     transform: scale(1);
   }
+
   40% {
     transform: scale(1.8) rotate(10deg);
   }
+
   70% {
     transform: scale(0.88) rotate(-5deg);
   }
+
   100% {
     transform: scale(1) rotate(0deg);
   }
 }
 
 .hacking-icon {
-  animation: rotateIcon 4s linear;
+  animation: rotate-icon 4s linear;
   pointer-events: none;
 }
 
-@keyframes rotateIcon {
+@keyframes rotate-icon {
   0% {
     transform: scale(0.95) rotate(0deg);
   }
+
   25% {
     transform: scale(0.95) rotate(180deg);
   }
+
   50% {
     transform: scale(0.95) rotate(360deg);
   }
+
   75% {
     transform: scale(0.95) rotate(540deg);
   }
+
   100% {
     transform: scale(0.95) rotate(720deg);
   }
@@ -378,16 +396,6 @@ body.booting {
   outline-offset: 3px;
 }
 
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-[tabindex]:focus-visible {
-  outline: 2px solid var(--accent-1);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
-}
-
 .dark :focus-visible {
   outline-color: var(--accent-neon);
 }
@@ -396,6 +404,7 @@ textarea:focus-visible,
   0% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }

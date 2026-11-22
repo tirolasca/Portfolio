@@ -27,8 +27,9 @@
   position: relative;
   transform: translateY(30px) scale(0.95);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 15px 35px rgba(var(--accent-1-dark-rgb), 0.15);
+  box-shadow: 0 15px 35px rgb(var(--accent-1-dark-rgb), 0.15);
 }
+
 .modal-overlay.active .modal-content {
   transform: translateY(0) scale(1);
 }
@@ -46,6 +47,7 @@
     color var(--trans-fast),
     transform var(--trans-fast);
 }
+
 .close-modal:hover {
   color: #d81b60;
   transform: scale(1.1);
@@ -57,21 +59,23 @@
   gap: 15px;
   margin-bottom: 25px;
 }
+
 .gh-avatar {
   width: 65px;
   height: 65px;
   border-radius: 50%;
   border: 2px solid var(--accent-1);
   object-fit: cover;
-  box-shadow: 0 0 12px rgba(var(--accent-1-dark-rgb), 0.3);
+  box-shadow: 0 0 12px rgb(var(--accent-1-dark-rgb), 0.3);
 }
+
 .gh-stats {
   display: flex;
   justify-content: space-around;
-  background: rgba(var(--accent-1-dark-rgb), 0.05);
+  background: rgb(var(--accent-1-dark-rgb), 0.05);
   padding: 15px;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(var(--accent-1-dark-rgb), 0.1);
+  border: 1px solid rgb(var(--accent-1-dark-rgb), 0.1);
   margin-bottom: 25px;
 }
 
@@ -84,6 +88,7 @@
   z-index: 999998;
   opacity: 0;
   visibility: hidden;
+
   /* ao fechar, some só depois do fade; ao abrir (.active), fica visível na hora —
      assim o foco no primeiro campo não depende de a transição já ter avançado */
   transition:
@@ -100,9 +105,7 @@
     opacity 0.3s ease,
     visibility 0s linear 0s;
 }
-#email-modal-overlay.active .email-modal {
-  transform: none;
-}
+
 .email-modal {
   background: var(--glass-bg);
   border-radius: var(--radius-xl);
@@ -113,22 +116,25 @@
   transform: translateY(30px) scale(0.95);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.4),
-    0 0 30px rgba(var(--accent-1-dark-rgb), 0.12);
-  border: 1px solid rgba(var(--accent-1-dark-rgb), 0.15);
+    0 20px 60px rgb(0 0 0 / 40%),
+    0 0 30px rgb(var(--accent-1-dark-rgb), 0.12);
+  border: 1px solid rgb(var(--accent-1-dark-rgb), 0.15);
   overflow: hidden;
 }
 
 #email-modal-overlay.active .email-modal {
+  transform: none;
   -webkit-backdrop-filter: var(--glass-blur);
   backdrop-filter: var(--glass-blur);
 }
+
 .email-modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
 }
+
 .email-modal-header h3 {
   font-size: 1.3rem;
   font-weight: 700;
@@ -138,9 +144,11 @@
   align-items: center;
   gap: 10px;
 }
+
 .email-modal-header h3 i {
   color: var(--accent-1);
 }
+
 .email-modal-close {
   background: transparent;
   border: none;
@@ -155,11 +163,13 @@
   justify-content: center;
   transition: all 0.2s ease;
 }
+
 .email-modal-close:hover {
   color: #4f0a20;
-  background: rgba(255, 111, 145, 0.6);
+  background: rgb(255 111 145 / 60%);
   transform: scale(1.1);
 }
+
 .gh-avatar-skeleton {
   display: none;
   width: 65px;
@@ -168,16 +178,18 @@
   flex-shrink: 0;
   background: linear-gradient(
     90deg,
-    rgba(var(--accent-1-light-rgb), 0.15) 25%,
-    rgba(var(--accent-1-light-rgb), 0.35) 37%,
-    rgba(var(--accent-1-light-rgb), 0.15) 63%
+    rgb(var(--accent-1-light-rgb), 0.15) 25%,
+    rgb(var(--accent-1-light-rgb), 0.35) 37%,
+    rgb(var(--accent-1-light-rgb), 0.15) 63%
   );
   background-size: 400% 100%;
   animation: skeleton-shimmer 1.4s ease infinite;
 }
+
 .gh-loading #gh-avatar {
   display: none;
 }
+
 .gh-loading .gh-avatar-skeleton {
   display: block;
 }
@@ -186,9 +198,9 @@
   color: transparent;
   background: linear-gradient(
     90deg,
-    rgba(var(--accent-1-light-rgb), 0.15) 25%,
-    rgba(var(--accent-1-light-rgb), 0.35) 37%,
-    rgba(var(--accent-1-light-rgb), 0.15) 63%
+    rgb(var(--accent-1-light-rgb), 0.15) 25%,
+    rgb(var(--accent-1-light-rgb), 0.35) 37%,
+    rgb(var(--accent-1-light-rgb), 0.15) 63%
   );
   background-size: 400% 100%;
   animation: skeleton-shimmer 1.4s ease infinite;
@@ -214,26 +226,31 @@
   text-decoration: none;
   transition: all 0.3s ease;
 }
+
 .gh-activity-pill:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(var(--accent-1-light-rgb), 0.25);
+  box-shadow: 0 6px 18px rgb(var(--accent-1-light-rgb), 0.25);
 }
+
 .gh-activity-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: var(--accent-gold);
   flex-shrink: 0;
-  animation: ghDotPulse 1.6s ease-in-out infinite;
+  animation: gh-dot-pulse 1.6s ease-in-out infinite;
 }
+
 .gh-activity-pill.loaded .gh-activity-dot {
   background: var(--terminal-green);
 }
-@keyframes ghDotPulse {
+
+@keyframes gh-dot-pulse {
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.3;
   }
@@ -245,37 +262,44 @@
   font-size: 0.85rem;
   opacity: 0.8;
 }
+
 .email-meta {
   display: flex;
   justify-content: space-between;
   gap: 0.75rem;
   align-items: flex-start;
 }
+
 .email-counter {
   margin-left: auto;
   font-size: 0.75rem;
   opacity: 0.7;
   white-space: nowrap;
 }
+
 .email-field-error {
   margin: 0.3rem 0 0;
   font-size: 0.8rem;
   color: #ff6b6b;
 }
+
 .email-form-group.has-error input,
 .email-form-group.has-error textarea {
   border-color: #ff6b6b;
-  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15);
+  box-shadow: 0 0 0 3px rgb(255 107 107 / 15%);
 }
+
 .email-status {
   min-height: 1.2em;
   margin: 0.25rem 0 0;
   font-size: 0.85rem;
 }
+
 .email-fallback {
   font-size: 0.85rem;
   opacity: 0.85;
 }
+
 .email-hp {
   position: absolute;
   left: -9999px;
@@ -283,9 +307,11 @@
   height: 1px;
   overflow: hidden;
 }
+
 .email-success:focus {
   outline: none;
 }
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -293,7 +319,7 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
 }

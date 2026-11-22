@@ -36,7 +36,7 @@
     "check:links": "linkinator dist --config linkinator.config.json",
     "check:links:live": "linkinator https://lucastec.vercel.app --config linkinator.external.json",
     "quality": "npm run lint && npm run lint:css && npm run format:check && npm run check && npm run test && npm run knip && npm run spell",
-    "lint:css": "stylelint \"src/**/*.css\" --max-warnings 50",
+    "lint:css": "stylelint \"src/**/*.css\"",
     "lint:css:fix": "stylelint \"src/**/*.css\" --fix",
     "size": "size-limit",
     "prepare": "husky"
@@ -88,7 +88,7 @@
       "prettier --write"
     ],
     "*.css": [
-      "stylelint --max-warnings 50",
+      "stylelint",
       "prettier --write"
     ],
     "*.{json,md,yml,yaml}": [

@@ -11,14 +11,11 @@
   width: 0%;
   height: 3px;
   z-index: 1000;
-
   background: linear-gradient(90deg, var(--grad-neon-stops));
   background-size: 300% 100%;
-
-  box-shadow: 0 0 6px rgba(var(--accent-neon-rgb), 0.5);
-
+  box-shadow: 0 0 6px rgb(var(--accent-neon-rgb), 0.5);
   transition: width 0.1s ease-out;
-  animation: barShimmer 2.5s linear infinite;
+  animation: bar-shimmer 2.5s linear infinite;
   pointer-events: none;
 }
 
@@ -28,30 +25,21 @@
   position: fixed;
   right: 20px;
   bottom: 20px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 42px;
   height: 42px;
-
   border: 1px solid var(--glass-border);
   border-radius: 50%;
-
   background: var(--glass-bg);
   box-shadow: var(--glass-shadow);
-
   text-decoration: none;
-
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-
   transform: translateY(12px);
-
   z-index: 100;
-
   transition:
     opacity 0.3s ease,
     visibility 0.3s ease,
@@ -66,46 +54,43 @@
 .back-to-top.visible {
   -webkit-backdrop-filter: var(--glass-blur);
   backdrop-filter: var(--glass-blur);
-
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-
   transform: translateY(0);
+}
+
+/* Pulso (tema claro). Em hover a animação sai para o brilho do :hover aparecer;
+   no tema escuro quem manda é `.dark .back-to-top.visible`. */
+.back-to-top.visible:not(:hover) {
+  animation: neon-pulse-light 1.5s infinite alternate;
 }
 
 /* Seta */
 
 .back-to-top::after {
   content: "↑";
-
   font-size: 1.7rem;
   line-height: 1;
-
   background: linear-gradient(90deg, var(--grad-neon-alt-stops));
-
   background-size: 400% 400%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   animation:
-    floatRotate 3s ease-in-out infinite,
-    gradientFlow 2.5s linear infinite;
-
+    float-rotate 3s ease-in-out infinite,
+    gradient-flow 2.5s linear infinite;
   transition: transform 0.25s ease;
 }
 
 /* Hover */
 
 .back-to-top:hover {
-  background: rgba(255, 255, 255, 0.85);
-
+  background: rgb(255 255 255 / 85%);
   transform: translateY(-2px) scale(1.05);
-
   box-shadow:
-    0 6px 16px rgba(var(--shadow-teal-rgb), 0.2),
-    0 0 25px rgba(var(--accent-1-light-rgb), 0.35);
+    0 6px 16px rgb(var(--shadow-teal-rgb), 0.2),
+    0 0 25px rgb(var(--accent-1-light-rgb), 0.35);
 }
 
 .back-to-top:hover::after {
@@ -123,7 +108,7 @@
    RESPONSIVIDADE
    ========================================================================== */
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .back-to-top {
     width: 36px;
     height: 36px;

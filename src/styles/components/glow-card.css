@@ -8,7 +8,9 @@
     background var(--trans-normal),
     transform 0.15s ease-out;
 }
+
 .glow-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 0 18px var(--accent-1);
+  animation: border-glow 1.2s ease-in-out infinite alternate;
 }

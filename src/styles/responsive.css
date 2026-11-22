@@ -1,5 +1,5 @@
 /* Media queries (mobile/tablet) e prefers-reduced-motion */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .cursor-dot,
   .cursor-outline,
   .cursor-trail-dot,
@@ -91,7 +91,7 @@
     left: 50%;
     transform: translate(-50%, -100%);
     font-size: 0.9rem;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 2px 6px rgb(0 0 0 / 50%);
     z-index: 2;
   }
 
@@ -99,10 +99,10 @@
   .hero-container.active .hero-text {
     transform: translate(-50%, -110%) scale(1.05);
     opacity: 1;
-    animation: pulseFade 1.6s ease-in-out infinite;
+    animation: pulse-fade 1.6s ease-in-out infinite;
   }
 
-  @keyframes pulseFade {
+  @keyframes pulse-fade {
     0%,
     100% {
       opacity: 1;
@@ -323,7 +323,7 @@
 
   .social-btn:hover {
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 3px 6px rgb(0 0 0 / 25%);
   }
 
   .btn.download {
@@ -382,21 +382,21 @@
     top: calc(100% + 4px);
     transform: translateX(-50%) translateY(-6px);
     border-top-color: transparent;
-    border-bottom-color: rgba(255, 255, 255, 0.97);
+    border-bottom-color: rgb(255 255 255 / 97%);
   }
 
   .dark .achievement-card[data-tooltip]::after {
-    border-bottom-color: rgba(0, 14, 18, 0.97);
+    border-bottom-color: rgb(0 14 18 / 97%);
     border-top-color: transparent;
   }
 
   .achievement-card.locked[data-tooltip]::after {
-    border-bottom-color: rgba(235, 238, 240, 0.97);
+    border-bottom-color: rgb(235 238 240 / 97%);
     border-top-color: transparent;
   }
 
   .achievement-card.secret.locked[data-tooltip]::after {
-    border-bottom-color: rgba(24, 10, 42, 0.97);
+    border-bottom-color: rgb(24 10 42 / 97%);
     border-top-color: transparent;
   }
 
@@ -435,14 +435,14 @@
   }
 }
 
-@media (max-width: 1024px) and (min-width: 769px) {
+@media (width <= 1024px) and (width >= 769px) {
   .swot-track {
     grid-template-columns: repeat(2, 1fr);
     gap: 14px;
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .hero-content h2 {
     font-size: 1.2rem;
   }
@@ -486,7 +486,7 @@
 }
 
 /* Ajustes específicos para tablets e celulares */
-@media (max-width: 899px) {
+@media (width <= 899px) {
   .skills .skill-card {
     min-height: 180px;
     padding: 16px 14px;
@@ -497,7 +497,7 @@
   }
 }
 
-@media (max-width: 599px) {
+@media (width <= 599px) {
   .skills .skill-card {
     min-height: 0;
     padding: 16px 14px;

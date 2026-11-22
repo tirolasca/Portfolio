@@ -5,7 +5,7 @@
   pointer-events: none;
   z-index: 99999;
   transform: translate(-50%, -50%);
-  animation: particleBurst 0.8s ease-out forwards;
+  animation: particle-burst 0.8s ease-out forwards;
 }
 
 .ripple-effect {
@@ -13,36 +13,39 @@
   border-radius: 50%;
   background: radial-gradient(
     circle,
-    rgba(var(--accent-1-dark-rgb), 0.45) 0%,
-    rgba(var(--accent-blue-rgb), 0.2) 50%,
+    rgb(var(--accent-1-dark-rgb), 0.45) 0%,
+    rgb(var(--accent-blue-rgb), 0.2) 50%,
     transparent 70%
   );
   transform: scale(0);
-  animation: rippleAnim 0.75s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  animation: ripple-anim 0.75s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
   pointer-events: none;
   z-index: 9;
   box-shadow:
-    0 0 12px rgba(var(--accent-1-dark-rgb), 0.3),
-    0 0 24px rgba(var(--accent-blue-rgb), 0.15);
+    0 0 12px rgb(var(--accent-1-dark-rgb), 0.3),
+    0 0 24px rgb(var(--accent-blue-rgb), 0.15);
 }
 
 .ripple-ring {
   position: absolute;
   border-radius: 50%;
-  border: 2px solid rgba(var(--accent-1-dark-rgb), 0.35);
+  border: 2px solid rgb(var(--accent-1-dark-rgb), 0.35);
   transform: scale(0);
-  animation: rippleRingAnim 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  animation: ripple-ring-anim 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
   pointer-events: none;
   z-index: 8;
 }
-@keyframes rippleRingAnim {
+
+@keyframes ripple-ring-anim {
   0% {
     transform: scale(0);
     opacity: 0.8;
   }
+
   60% {
     opacity: 0.3;
   }
+
   100% {
     transform: scale(1);
     opacity: 0;

@@ -20,9 +20,10 @@
   overflow: hidden;
   border-radius: var(--radius-lg);
 }
+
 .project-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 22px rgb(0 0 0 / 10%);
 }
 
 .project-card img {
@@ -33,6 +34,7 @@
     transform 0.5s ease,
     filter 0.4s ease;
 }
+
 .project-card:hover img {
   transform: scale(1.06);
   filter: brightness(1.08) saturate(1.2);
@@ -40,21 +42,23 @@
 
 .project-card.tech-highlighted {
   transform: translateY(-6px);
-  animation: techGlowPulse 1.2s ease-in-out infinite;
+  animation: tech-glow-pulse 1.2s ease-in-out infinite;
 }
-@keyframes techGlowPulse {
+
+@keyframes tech-glow-pulse {
   0%,
   100% {
     box-shadow:
       0 0 0 3px var(--accent-1),
-      0 0 28px rgba(var(--accent-1-light-rgb), 0.5),
-      0 12px 28px rgba(var(--shadow-teal-rgb), 0.3);
+      0 0 28px rgb(var(--accent-1-light-rgb), 0.5),
+      0 12px 28px rgb(var(--shadow-teal-rgb), 0.3);
   }
+
   50% {
     box-shadow:
       0 0 0 3px var(--accent-1),
-      0 0 44px rgba(var(--accent-1-light-rgb), 0.8),
-      0 12px 28px rgba(var(--shadow-teal-rgb), 0.3);
+      0 0 44px rgb(var(--accent-1-light-rgb), 0.8),
+      0 12px 28px rgb(var(--shadow-teal-rgb), 0.3);
   }
 }
 
@@ -64,11 +68,13 @@
   flex-direction: column;
   gap: 8px;
 }
+
 .project-info h4 {
   color: #003f3a;
   margin-bottom: 0.5rem;
   font-size: 1.2rem;
 }
+
 .project-info p {
   color: var(--text-sub);
   font-size: 0.95rem;
@@ -79,6 +85,7 @@
   display: flex;
   gap: 1rem;
 }
+
 .project-links .btn.small {
   font-size: 1rem;
   padding: 0.4rem 0.8rem;
@@ -111,7 +118,7 @@
     background 0.25s ease,
     border-color 0.25s ease,
     box-shadow 0.25s ease;
-  animation: sidePulseLight 2.2s ease-in-out infinite;
+  animation: side-pulse-light 2.2s ease-in-out infinite;
 }
 
 .projects-swiper .swiper-button-prev {
@@ -142,7 +149,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  animation: gradientFlow 3s ease infinite;
+  animation: gradient-flow 3s ease infinite;
   transition: transform 0.25s ease;
 }
 
@@ -157,9 +164,8 @@
 .projects-swiper .swiper-button-prev:hover,
 .projects-swiper .swiper-button-next:hover {
   transform: scale(1.08);
-
   box-shadow:
-    0 0 15px rgba(0, 255, 224, 0.3),
+    0 0 15px rgb(0 255 224 / 30%),
     var(--glass-shadow);
 }
 
@@ -181,11 +187,13 @@
 .projects-swiper:not(.swiper-initialized) {
   overflow: hidden;
 }
+
 .projects-swiper:not(.swiper-initialized) .swiper-slide {
   flex: 0 0 calc((100% - 24px) / 2);
   margin-right: 24px;
 }
-@media (max-width: 768px) {
+
+@media (width <= 768px) {
   .projects-swiper:not(.swiper-initialized) .swiper-slide {
     flex-basis: 100%;
   }
