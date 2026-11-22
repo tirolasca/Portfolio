@@ -1,15 +1,15 @@
-
 name: Gitleaks
 
 # Procura segredos (tokens, chaves, senhas) no histórico e nos PRs.
-# Gratuito para contas pessoais.
+# gitleaks-action é gratuita para contas pessoais (tirolasca); em organização
+# exigiria o secret GITLEAKS_LICENSE.
 on:
   pull_request:
     branches: [main]
   push:
     branches: [main]
   schedule:
-    - cron: "11 5 * * 1"
+    - cron: "11 5 * * 1" # segundas, 05:11 UTC
 
 permissions:
   contents: read
@@ -23,21 +23,12 @@ jobs:
     name: Varredura de segredos
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
     steps:
-      - name: Checkout completo
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # histórico completo, senão segredos antigos passam batido
           persist-credentials: false
-
-      - name: Verificar histórico Git
-        run: |
-          git rev-parse --is-inside-work-tree
-          git log -1 --oneline
-
-      - name: Executar Gitleaks
-        uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
+      - uses: gitleaks/gitleaks-action@e0c47f4f8be36e29cdc102c57e68cb5cbf0e8d1e # v3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_ENABLE_COMMENTS: "false"
+          GITLEAKS_ENABLE_COMMENTS: "false" # sem comentar no PR = sem precisar de pull-requests: write
