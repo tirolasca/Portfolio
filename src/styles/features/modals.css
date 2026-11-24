@@ -12,10 +12,19 @@
 }
 
 .modal-overlay.active {
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
   opacity: 1;
   visibility: visible;
+}
+
+/* Camada própria: escurece e desfoca a página. Fica FORA do painel de propósito:
+   backdrop-filter no ancestral impediria o vidro do painel de desfocar o fundo. */
+.modal-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--modal-scrim);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .modal-content {
@@ -28,6 +37,21 @@
   transform: translateY(30px) scale(0.95);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 15px 35px rgb(var(--accent-1-dark-rgb), 0.15);
+}
+
+/* vidro fosco legível: translúcido, com desfoque forte (vence o .glow-card) */
+.modal-overlay .modal-content {
+  background: var(--modal-glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(28px) saturate(1.6);
+  backdrop-filter: blur(28px) saturate(1.6);
+}
+
+.dark .modal-overlay .modal-content {
+  background: var(--modal-glass-bg);
+  border-color: var(--glass-dark-border);
+  box-shadow: var(--glass-dark-shadow);
 }
 
 .modal-overlay.active .modal-content {

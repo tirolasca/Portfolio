@@ -45,13 +45,13 @@
     "@astrojs/sitemap": "^3.7.6",
     "@vercel/speed-insights": "^2.1.0",
     "astro": "^7.4.13",
-    "chart.js": "^4.6.1",
+    "chart.js": "^4.6.2",
     "swiper": "^14.4.0",
     "web-vitals": "^6.2.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
-    "@axe-core/playwright": "^4.14.0",
+    "@axe-core/playwright": "^4.14.1",
     "@cspell/dict-pt-br": "^2.4.4",
     "@eslint/js": "^10.0.1",
     "@fortawesome/fontawesome-free": "^7.3.1",
@@ -66,7 +66,7 @@
     "globals": "^17.14.0",
     "happy-dom": "^21.0.4",
     "husky": "^9.1.7",
-    "knip": "^6.47.0",
+    "knip": "^6.48.0",
     "linkinator": "^8.1.0",
     "lint-staged": "^17.6.2",
     "prettier": "^3.10.1",
@@ -78,8 +78,9 @@
     "stylelint-config-standard": "^41.1.0",
     "subset-font": "^2.9.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.73.0",
-    "vitest": "^5.1.1"
+    "typescript-eslint": "^8.74.0",
+    "vitest": "^5.1.1",
+    "yaml": "^2.9.1"
   },
   "description": "Portfólio de Lucas Santos — Astro + TypeScript",
   "lint-staged": {

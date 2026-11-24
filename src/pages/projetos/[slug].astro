@@ -1,0 +1,307 @@
+---
+import type { GetStaticPaths } from "astro";
+import { Picture } from "astro:assets";
+import { render } from "astro:content";
+import Base from "../../layouts/Base.astro";
+import Header from "../../components/Header.astro";
+import AchievementsDrawer from "../../components/AchievementsDrawer.astro";
+import TerminalOverlay from "../../components/TerminalOverlay.astro";
+import GithubModal from "../../components/GithubModal.astro";
+import Footer from "../../components/Footer.astro";
+import { SITE } from "../../data/site";
+import { TECH_LABELS } from "../../lib/project-schema";
+import { techBadge } from "../../lib/tech-badges";
+import {
+  getProjects,
+  plainText,
+  projectHref,
+  type Project,
+} from "../../lib/projects";
+
+interface Props {
+  project: Project;
+  previous: Project;
+  next: Project;
+  /** a navegação é circular: do último volta ao primeiro, e vice-versa */
+  wrapsPrevious: boolean;
+  wrapsNext: boolean;
+}
+
+export const getStaticPaths = (async () => {
+  const projects = await getProjects();
+  const total = projects.length;
+  return projects.map((project, i) => {
+    // navegação circular (módulo); o `?? project` só satisfaz o TypeScript
+    const around = (index: number) =>
+      projects[((index % total) + total) % total] ?? project;
+    return {
+      params: { slug: project.id },
+      props: {
+        project,
+        previous: around(i - 1),
+        next: around(i + 1),
+        wrapsPrevious: i === 0,
+        wrapsNext: i === total - 1,
+      },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { project, previous, next, wrapsPrevious, wrapsNext } = Astro.props;
+const { data: p } = project;
+const { Content } = await render(project);
+const summary = plainText(p.description);
+const pageUrl = new URL(projectHref(project.id), SITE.url).href;
+const host = (url: string) => new URL(url).hostname.replace(/^www\./, "");
+
+const jsonLdExtra = [
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Projetos",
+        item: `${SITE.url}/#projetos`,
+      },
+      { "@type": "ListItem", position: 2, name: p.title, item: pageUrl },
+    ],
+  },
+  {
+    "@type": "SoftwareSourceCode",
+    "@id": `${pageUrl}#project`,
+    name: p.title,
+    description: summary,
+    url: pageUrl,
+    codeRepository: p.repo,
+    programmingLanguage: p.tech.map((id) => TECH_LABELS[id]),
+    author: { "@id": `${SITE.url}/#person` },
+  },
+];
+---
+
+<Base
+  title={`${p.title} — Estudo de caso | ${SITE.name}`}
+  description={summary}
+  ogTitle={`${p.title} — ${p.subtitle}`}
+  ogDescription={summary}
+  ogImageAlt={p.imageAlt}
+  jsonLdExtra={jsonLdExtra}
+>
+  <Header isResume />
+  <AchievementsDrawer />
+  <TerminalOverlay />
+
+  <main id="conteudo" class="case-page">
+    <div class="container">
+      <nav class="case-breadcrumb" aria-label="Trilha de navegação">
+        <a href="/#projetos">Projetos</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{p.title}</span>
+      </nav>
+
+      <header class="case-hero" data-reveal="fade-up">
+        <p class="case-kicker">
+          <i class={p.subtitleIcon} aria-hidden="true"></i>
+          {p.subtitle}
+        </p>
+        <h2 class="case-title">
+          <i class={p.icon} aria-hidden="true"></i>
+          {p.title}
+        </h2>
+
+        <ul class="case-tech" aria-label="Tecnologias do projeto">
+          {p.tech.map((id) => {
+            const badge = techBadge(id);
+            return (
+              <li>
+                <img
+                  src={badge.src}
+                  alt={badge.alt}
+                  title={badge.alt}
+                  width={badge.width}
+                  height="28"
+                  decoding="async"
+                />
+              </li>
+            );
+          })}
+        </ul>
+
+        <div class="case-actions">
+          <a
+            href={p.demo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn primary no-magnet"
+          >
+            <i class={p.demoIcon} aria-hidden="true"></i> Ver projeto
+          </a>
+          <a
+            href={p.repo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn outline no-magnet"
+          >
+            <i class={p.repoIcon} aria-hidden="true"></i> Código no GitHub
+          </a>
+          {p.credentials && (
+            <button
+              type="button"
+              class="btn outline no-magnet project-help-btn"
+              aria-haspopup="dialog"
+              data-project={p.title}
+              data-credentials={JSON.stringify(p.credentials)}
+            >
+              <i class="fa-solid fa-key" aria-hidden="true" /> Contas de teste
+            </button>
+          )}
+        </div>
+      </header>
+
+      <figure class="case-cover" data-reveal="fade-up">
+        <Picture
+          src={p.image}
+          alt={p.imageAlt}
+          widths={[640, 1280]}
+          sizes="(max-width: 1100px) 92vw, 1040px"
+          formats={["avif"]}
+          fallbackFormat="webp"
+          quality={74}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </figure>
+
+      <div class="case-layout">
+        <div class="case-main">
+          <section class="case-panel" aria-labelledby="case-about">
+            <h3 id="case-about">
+              <i class={p.descriptionIcon} aria-hidden="true"></i>
+              Sobre o projeto
+            </h3>
+            <p set:html={p.description} />
+          </section>
+
+          {project.body?.trim() && (
+            <section class="case-panel" aria-labelledby="case-study">
+              <h3 id="case-study">
+                <i class="fa-solid fa-file-lines" aria-hidden="true"></i>
+                Estudo de caso
+              </h3>
+              <div class="case-prose">
+                <Content />
+              </div>
+            </section>
+          )}
+        </div>
+
+        <aside class="case-aside" aria-label="Ficha do projeto">
+          <section class="case-panel" aria-labelledby="case-links">
+            <h3 id="case-links">Links</h3>
+            <ul class="case-links">
+              <li>
+                <a href={p.demo} target="_blank" rel="noopener noreferrer">
+                  <i class={p.demoIcon} aria-hidden="true"></i>
+                  <span>
+                    Projeto online
+                    <small>{host(p.demo)}</small>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href={p.repo} target="_blank" rel="noopener noreferrer">
+                  <i class={p.repoIcon} aria-hidden="true"></i>
+                  <span>
+                    Repositório
+                    <small>{host(p.repo)}</small>
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+
+      <nav class="case-pager" aria-label="Outros projetos">
+        <a class="case-pager-link" href={projectHref(previous.id)} rel="prev">
+          <small>
+            <i
+              class={
+                wrapsPrevious
+                  ? "fa-solid fa-rotate-left"
+                  : "fa-solid fa-arrow-left"
+              }
+              aria-hidden="true"
+            ></i>
+            {wrapsPrevious ? "Ir ao último projeto" : "Projeto anterior"}
+          </small>
+          <span>{previous.data.title}</span>
+        </a>
+        <a
+          class="case-pager-link case-pager-next"
+          href={projectHref(next.id)}
+          rel="next"
+        >
+          <small>
+            {wrapsNext ? "Voltar ao primeiro projeto" : "Próximo projeto"}
+            <i
+              class={
+                wrapsNext
+                  ? "fa-solid fa-rotate-right"
+                  : "fa-solid fa-arrow-right"
+              }
+              aria-hidden="true"
+            ></i>
+          </small>
+          <span>{next.data.title}</span>
+        </a>
+      </nav>
+    </div>
+
+    <section class="case-contact container" id="contato">
+      <h3>Gostou do projeto?</h3>
+      <p>Fale comigo por onde preferir.</p>
+      <div class="contact-buttons">
+        <a
+          href={SITE.whatsapp}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn contact-btn whatsapp no-magnet"
+          title="WhatsApp"
+        >
+          <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+        </a>
+        <a
+          href={SITE.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn contact-btn linkedin no-magnet"
+          title="LinkedIn"
+        >
+          <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+        </a>
+        <a
+          href={SITE.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn contact-btn github no-magnet"
+          title="GitHub"
+        >
+          <i class="fab fa-github" aria-hidden="true"></i> GitHub
+        </a>
+        <a
+          href={`mailto:${SITE.email}`}
+          class="btn contact-btn email no-magnet"
+          title="E-mail"
+        >
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i> E-mail
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <GithubModal />
+  <Footer topHref="#top" />
+</Base>

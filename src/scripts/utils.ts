@@ -2,7 +2,7 @@ export function secureRandom() {
   if (window.crypto && typeof window.crypto.getRandomValues === "function") {
     const buffer = new Uint32Array(1);
     window.crypto.getRandomValues(buffer);
-    return buffer[0] / 0x100000000;
+    return (buffer[0] ?? 0) / 0x100000000;
   }
   return Math.random();
 }

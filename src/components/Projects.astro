@@ -1,6 +1,8 @@
 ---
 import { Picture } from "astro:assets";
-import { projects } from "../data/projects";
+import { getProjects, projectHref } from "../lib/projects";
+
+const projects = await getProjects();
 ---
 
 <section class="projects" id="projetos">
@@ -14,7 +16,7 @@ import { projects } from "../data/projects";
 
     <div class="swiper projects-swiper">
       <div class="swiper-wrapper">
-        {projects.map((p) => (
+        {projects.map(({ id, data: p }) => (
           <div class="swiper-slide">
             <div class="project-card glow-card" data-tech={p.tech.join(",")}>
               <Picture
@@ -48,7 +50,7 @@ import { projects } from "../data/projects";
                     href={p.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="btn small primary"
+                    class="btn small primary no-magnet"
                   >
                     <i class={p.demoIcon} aria-hidden="true" /> Ver Projeto
                   </a>
@@ -57,15 +59,20 @@ import { projects } from "../data/projects";
                     href={p.repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="btn small outline"
+                    class="btn small outline no-magnet"
                   >
                     <i class={p.repoIcon} aria-hidden="true" /> GitHub
+                  </a>
+
+                  <a href={projectHref(id)} class="btn small outline no-magnet">
+                    <i class="fa-solid fa-file-lines" aria-hidden="true" />{" "}
+                    Detalhes
                   </a>
 
                   {p.credentials && (
                     <button
                       type="button"
-                      class="btn small outline project-help-btn"
+                      class="btn small outline no-magnet project-help-btn"
                       aria-haspopup="dialog"
                       aria-label={`Credenciais de teste do ${p.title}`}
                       title="Credenciais de teste"

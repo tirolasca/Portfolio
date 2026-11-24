@@ -196,15 +196,18 @@ scripts/fa-subset.mjs   gera o subconjunto do Font Awesome a partir dos ícones 
 src/
   assets/               imagens e fontes processadas pelo Astro
   components/           Hero, Skills, Projects, Swot, Contact, Header, Footer, modais…
-  data/                 ← edite aqui: projects.ts, skills.ts, site.ts
+  content/projects/     ← edite aqui: um .md por projeto (Content Collection; vira /projetos/<slug>.html)
+  content.config.ts     coleção `projects` (loader glob + schema Zod)
+  data/                 ← edite aqui: skills.ts, site.ts
   layouts/Base.astro    <head> (SEO, JSON-LD), tema, estilos
-  lib/badges.ts         gera os badges de tecnologias (SVG) no build → /badges/*.svg
-  pages/                index.astro · curriculo.astro
+  lib/                  badges.ts (badges SVG no build → /badges/*.svg) · project-schema.ts (schema Zod + nomes das tecnologias) · projects.ts (consultas à coleção)
+  pages/                index.astro · curriculo.astro · projetos/[slug].astro (estudo de caso de cada projeto)
   styles/               index.css importa 36 módulos na ordem original (a cascata depende dela)
   scripts/
     main.ts             entrada: decide O QUE carrega e QUANDO
     deferred.ts         tudo que não é crítico (carregado em ociosidade)
-    core/ features/ effects/ data/   (core/storage.ts: acesso seguro a localStorage/sessionStorage)
+    core/ features/ effects/ data/   (core/storage.ts: acesso seguro a localStorage/sessionStorage;
+                                     core/http.ts + core/github-schema.ts: fetch com timeout e validação das respostas da API do GitHub)
 src/**/*.test.ts        testes unitários (Vitest), ao lado do código; inclui core/dialog e features/achievements
 tests/                  E2E (Playwright), acessibilidade (axe), SEO, segurança (CSP), tradução e formulário
 reports/                relatórios Markdown gerados localmente pelos scripts de teste
@@ -227,7 +230,7 @@ docs/                   preview, desempenho, segurança (CSP, GitHub) e configur
 
 ## ➕ Adicionando conteúdo
 
-- **Projeto novo**: acrescente um objeto em `src/data/projects.ts` (imagem em `src/assets/img/`). O campo `tech` usa os mesmos identificadores das skills (tipo `TechId`).
+- **Projeto novo**: crie `src/content/projects/<slug>.md` com o frontmatter dos demais (imagem em `src/assets/img/`, caminho relativo como nos outros arquivos). O build **valida** o arquivo contra o schema de `src/lib/project-schema.ts` (links `https`, `order` inteiro positivo, `tech` só com identificadores conhecidos) e falha se algo estiver errado. O corpo em Markdown é opcional: se existir, aparece na página `/projetos/<slug>.html` (estudo de caso). Tecnologia nova em `tech`? Acrescente o identificador e o nome em `TECH_LABELS` (mesmo arquivo).
 - **Tecnologia nova**: acrescente `{ alt, color, logo }` em `src/data/skills.ts` (o badge é gerado no build; `logo` é o slug do [simple-icons](https://simpleicons.org)). Esse arquivo é a **fonte única**: o badge aparece sozinho na home e no currículo (componente `SkillBadges.astro`).
 - **Contadores** do hero (projetos e tecnologias) e o total de conquistas/XP são **derivados dos dados**, nada para atualizar à mão.
 - **Ícone novo**: escreva a classe (`fa-solid fa-rocket`) no código; o subconjunto é regenerado sozinho.
@@ -251,6 +254,11 @@ docs/                   preview, desempenho, segurança (CSP, GitHub) e configur
 - **Formspree para o formulário**: o site é estático e não tem backend próprio. O Formspree recebe o `POST` JSON, e a origem `https://formspree.io` já está liberada em `connect-src` na CSP do `vercel.json`. A URL do formulário fica no JavaScript do navegador (é pública por natureza), então a proteção contra spam fica no painel do Formspree. Detalhes em [`docs/configuration.md`](docs/configuration.md).
 - **GTranslate no lugar do Google Tradutor**: o Google encerrou o _Website Translator Widget_ em 1/out/2026. O [GTranslate](https://gtranslate.io) gratuito (`core/translate.ts`) traduz no navegador, sem indexação das traduções, e é gratuito para sites pessoais/sem fins comerciais. Carrega em ociosidade e, se for bloqueado, o espaço reservado some.
 - **Seletor de idioma personalizado**: o widget "Dropdown" do GTranslate gera um `<select class="gt_selector">`, que fica na página só como **motor** (invisível). A interface é um dropdown próprio (`features/language-switcher.ts` + `styles/components/language-switcher.css`) com só **PT / EN / ES** e navegação por teclado (padrão WAI-ARIA de listbox). Ao escolher, o código atribui o valor no `<select>` e dispara `change`, o que aciona a tradução. Para mudar os idiomas, edite `LANGS` no `.ts` e `languages` em `core/translate.ts`.
+- **Content Collections para os projetos**: os 12 projetos saíram de um array TypeScript para arquivos `.md` validados por Zod (`astro/zod`, já embutido no Astro: nenhuma dependência nova). Ganhos: erro de build com mensagem clara quando falta campo ou há link inválido, tipos inferidos do schema (sem interface duplicada), páginas `/projetos/<slug>.html` geradas da mesma fonte, e espaço para um texto de estudo de caso por projeto sem mexer em código. Skills, SWOT e conquistas continuam em TypeScript: já estão bem organizadas e não ganhariam nada com a migração.
+- **`astro:env` para as variáveis públicas**: `PUBLIC_CONTACT_ENDPOINT` e `PUBLIC_VITALS_URL` são declaradas em `astro.config.mjs` (`context: "client"`, `access: "public"`, opcionais) e lidas por `astro:env/client`, sem `as string | undefined`. Valor vazio conta como "não definida".
+- **Respostas externas são validadas, não só tipadas**: `core/github-schema.ts` confere em tempo de execução os campos usados da API do GitHub (números válidos, avatar só `https` do domínio `avatars.githubusercontent.com`) e `core/http.ts` aplica timeout de 8 s. Resposta inesperada esconde o recurso, nunca quebra a página. Schema Zod ficou de fora do código do navegador de propósito (cada KB entra no orçamento do `size-limit`); a validação é feita com _type guards_ pequenos e testados.
+- **`tsconfig` mais estrito**: além do `astro/tsconfigs/strict`, o projeto liga `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `noImplicitOverride` e `noFallthroughCasesInSwitch`. `noPropertyAccessFromIndexSignature` **não** foi ligada: no código do navegador ela só força `el.dataset["id"]` em vez de `el.dataset.id` (DOM), o que piora a leitura sem evitar nenhum bug real. `verbatimModuleSyntax` e `isolatedModules` já vêm do Astro.
+- **Não adotados (e por quê)**: _Astro Actions_ e _Middleware_ exigiriam renderização sob demanda e adaptador, e o Formspree já resolve o formulário num site 100 % estático; `<ClientRouter />` não compensa em um site de poucas páginas e as transições nativas entre documentos (`@view-transition`) já estão ativas; o `prefetch` do Astro seria redundante com o `prefetchOnIntent` próprio dos módulos sob demanda.
 - **`compressHTML: false`**: a compressão padrão do Astro remove espaços entre tags inline e cola ícones ao texto.
 - **CSS cortado em sequência, sem reordenar**: preserva a cascata do CSS original.
 - **Font Awesome em subconjunto**: 90 ícones custam ~11 KB; SVGs inline custariam ~38 KB (medição com 85 ícones em [`docs/performance.md`](docs/performance.md)).

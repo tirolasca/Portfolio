@@ -798,11 +798,14 @@ html.dark.show-scrollbar {
 }
 
 .dark .summary-modal {
-  background: radial-gradient(
-    circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgb(var(--accent-1-dark-rgb), 0.15) 0%,
-    transparent 80%
-  );
+  /* brilho que segue o mouse sobre um fundo quase opaco (antes era transparente) */
+  background:
+    radial-gradient(
+      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgb(var(--accent-1-dark-rgb), 0.15) 0%,
+      transparent 80%
+    ),
+    var(--modal-bg);
   border-color: var(--glass-dark-border);
   box-shadow: var(--glass-dark-shadow);
 }

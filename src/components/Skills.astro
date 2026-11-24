@@ -2,7 +2,10 @@
 import { skillCategories } from "../data/skills";
 import SkillBadges from "./SkillBadges.astro";
 
-const total = skillCategories.reduce((sum, c) => sum + c.badges.length, 0);
+const total = skillCategories.reduce(
+  (sum, category) => sum + category.badges.length,
+  0,
+);
 ---
 
 <section class="skills" id="titulo">
@@ -20,26 +23,26 @@ const total = skillCategories.reduce((sum, c) => sum + c.badges.length, 0);
     </p>
 
     <div class="skills-grid">
-      {skillCategories.map((cat) => (
+      {skillCategories.map((category) => (
         <article class="skill-card glow-card">
           <h4 class="skill-card-head">
             <span class="skill-card-icon" aria-hidden="true">
-              <i class={cat.icon}></i>
+              <i class={category.icon}></i>
             </span>
 
-            <span class="skill-card-title">{cat.title}</span>
+            <span class="skill-card-title">{category.title}</span>
 
             <span
               class="skill-card-count"
-              title={`${cat.badges.length} tecnologias`}
+              title={`${category.badges.length} tecnologias`}
               aria-hidden="true"
             >
-              {cat.badges.length}
+              {category.badges.length}
             </span>
           </h4>
 
           <div class="skill-card-content">
-            <SkillBadges badges={cat.badges} />
+            <SkillBadges badges={category.badges} />
           </div>
         </article>
       ))}

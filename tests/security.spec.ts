@@ -16,7 +16,7 @@ const header = (name: string) =>
 
 const csp = header("Content-Security-Policy");
 
-const PAGES = ["/", "/curriculo.html"];
+const PAGES = ["/", "/curriculo.html", "/projetos/newelog.html"];
 
 test("cabeçalhos de segurança obrigatórios estão definidos", () => {
   for (const name of [

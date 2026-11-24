@@ -19,6 +19,8 @@ interface Props {
   ogImageAlt?: string;
   bodyClass?: string;
   noindex?: boolean;
+  /** nós extras do JSON-LD (ex.: BreadcrumbList, SoftwareSourceCode) */
+  jsonLdExtra?: Record<string, unknown>[];
 }
 
 const {
@@ -30,6 +32,7 @@ const {
   ogImageAlt = `${SITE.name} — ${SITE.role}`,
   bodyClass,
   noindex = false,
+  jsonLdExtra = [],
 } = Astro.props;
 
 // URL canônica: sempre absoluta; "/index.html" vira "/"
@@ -68,6 +71,7 @@ const jsonLd = {
       about: { "@id": `${SITE.url}/#person` },
       primaryImageOfPage: { "@type": "ImageObject", url: image },
     },
+    ...jsonLdExtra,
   ],
 };
 ---

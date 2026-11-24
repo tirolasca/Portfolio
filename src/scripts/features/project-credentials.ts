@@ -103,7 +103,7 @@ export function initProjectCredentials() {
     copyBtn.type = "button";
     copyBtn.setAttribute("aria-label", `Copiar ${name.toLowerCase()}`);
     copyBtn.title = `Copiar ${name.toLowerCase()}`;
-    const icon = el("i", "fa-regular fa-copy");
+    const icon = el("i", "fa-solid fa-copy");
     icon.setAttribute("aria-hidden", "true");
     copyBtn.appendChild(icon);
     copyBtn.addEventListener("click", () => {

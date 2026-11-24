@@ -69,7 +69,7 @@ function setupTerminal({
     );
   }
 
-  const COMMANDS: Record<string, () => void> = {
+  const COMMANDS = {
     help: () => {
       print("Comandos disponíveis:", "accent");
       [
@@ -87,7 +87,7 @@ function setupTerminal({
       ].forEach((l) => print("  " + l));
     },
 
-    ajuda: () => COMMANDS.help(),
+    ajuda: (): void => COMMANDS.help(),
 
     sobre: () => {
       print(
@@ -97,7 +97,7 @@ function setupTerminal({
       scrollToSection("#home");
     },
 
-    about: () => COMMANDS.sobre(),
+    about: (): void => COMMANDS.sobre(),
 
     skills: () => {
       print(
@@ -107,21 +107,21 @@ function setupTerminal({
       scrollToSection(".skills");
     },
 
-    habilidades: () => COMMANDS.skills(),
+    habilidades: (): void => COMMANDS.skills(),
 
     projetos: () => {
       print("Carregando vitrine de projetos...", "info");
       scrollToSection("#projetos");
     },
 
-    projects: () => COMMANDS.projetos(),
+    projects: (): void => COMMANDS.projetos(),
 
     experiencia: () => {
       print("Exibindo linha do tempo profissional...", "info");
       scrollToSection(".timeline");
     },
 
-    timeline: () => COMMANDS.experiencia(),
+    timeline: (): void => COMMANDS.experiencia(),
 
     swot: () => {
       print("Autoanálise carregada.", "info");
@@ -137,7 +137,7 @@ function setupTerminal({
       }, 250);
     },
 
-    contact: () => COMMANDS.contato(),
+    contact: (): void => COMMANDS.contato(),
 
     curriculo: () => {
       const a = document.querySelector<HTMLElement>("a[download]");
@@ -150,8 +150,8 @@ function setupTerminal({
       }
     },
 
-    resume: () => COMMANDS.curriculo(),
-    cv: () => COMMANDS.curriculo(),
+    resume: (): void => COMMANDS.curriculo(),
+    cv: (): void => COMMANDS.curriculo(),
 
     github: () => {
       const link = document.querySelector<HTMLElement>(
@@ -177,7 +177,7 @@ function setupTerminal({
       }
     },
 
-    theme: () => COMMANDS.tema(),
+    theme: (): void => COMMANDS.tema(),
 
     matrix: () => {
       print("Ativando protocolo...", "accent");
@@ -190,18 +190,23 @@ function setupTerminal({
 
     date: () => print(new Date().toLocaleString("pt-BR"), "info"),
 
-    data: () => COMMANDS.date(),
+    data: (): void => COMMANDS.date(),
 
     clear: () => {
       output.innerHTML = "";
     },
 
-    limpar: () => COMMANDS.clear(),
+    limpar: (): void => COMMANDS.clear(),
 
     exit: () => closeTerminal(),
     sair: () => closeTerminal(),
     quit: () => closeTerminal(),
-  };
+  } satisfies Record<string, () => void>;
+
+  type CommandName = keyof typeof COMMANDS;
+  // hasOwn evita que nomes herdados do Object (ex.: "constructor") virem comandos
+  const isCommand = (name: string): name is CommandName =>
+    Object.hasOwn(COMMANDS, name);
 
   function runCommand(raw: string) {
     const trimmed = raw.trim();
@@ -258,9 +263,9 @@ function setupTerminal({
       return;
     }
 
-    const cmd = lower.split(/\s+/)[0];
+    const cmd = lower.split(/\s+/)[0] ?? "";
 
-    if (COMMANDS[cmd]) {
+    if (isCommand(cmd)) {
       COMMANDS[cmd]();
       return;
     }

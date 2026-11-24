@@ -12,12 +12,15 @@ import { computeRoute, injectSpeedInsights } from "@vercel/speed-insights";
 export function initSpeedInsights() {
   const env = import.meta.env as Record<string, string | undefined>;
   // Astro (site estático, sem rotas dinâmicas): a rota é o próprio caminho da página.
+  const basePath = env.PUBLIC_VERCEL_OBSERVABILITY_BASEPATH;
+  const beforeSend = window.speedInsightsBeforeSend;
   injectSpeedInsights(
     {
       route: computeRoute(location.pathname, {}),
       framework: "astro",
-      basePath: env.PUBLIC_VERCEL_OBSERVABILITY_BASEPATH,
-      beforeSend: window.speedInsightsBeforeSend,
+      // com exactOptionalPropertyTypes só passamos as chaves que existem
+      ...(basePath !== undefined && { basePath }),
+      ...(beforeSend !== undefined && { beforeSend }),
     },
     env.PUBLIC_VERCEL_OBSERVABILITY_CLIENT_CONFIG,
   );

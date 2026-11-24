@@ -1,5 +1,9 @@
 import { describe, expect, it } from "vitest";
-import { projects } from "./projects";
+import { readdirSync, readFileSync } from "node:fs";
+import { join, resolve } from "node:path";
+import { z } from "astro/zod";
+import { parse as parseYaml } from "yaml";
+import { projectSchema } from "../lib/project-schema";
 import { SITE } from "./site";
 import { skillCategories } from "./skills";
 import {
@@ -23,21 +27,49 @@ describe("SITE", () => {
   });
 });
 
-describe("projects", () => {
-  it("não repete títulos", () => {
-    const titles = projects.map((p) => p.title);
-    expect(new Set(titles).size).toBe(titles.length);
+const PROJECTS_DIR = resolve("src/content/projects");
+
+/** Lê o frontmatter de cada projeto e valida com o mesmo schema usado no build. */
+const projects = readdirSync(PROJECTS_DIR)
+  .filter((file) => file.endsWith(".md"))
+  .map((file) => {
+    const raw = readFileSync(join(PROJECTS_DIR, file), "utf8");
+    const frontmatter = /^---\n([\s\S]*?)\n---/.exec(raw)?.[1] ?? "";
+    const schema = projectSchema(() => z.string());
+    return {
+      slug: file.replace(/\.md$/, ""),
+      result: schema.safeParse(parseYaml(frontmatter)),
+    };
   });
 
-  it.each(projects.map((p) => [p.title, p] as const))(
-    "%s tem links https e ao menos uma tecnologia",
-    (_title, p) => {
-      expect(isHttps(p.demo), p.demo).toBe(true);
-      expect(isHttps(p.repo), p.repo).toBe(true);
-      expect(p.tech.length).toBeGreaterThan(0);
-      expect(p.imageAlt.length).toBeGreaterThan(0);
+describe("projects", () => {
+  it("há ao menos um projeto", () => {
+    expect(projects.length).toBeGreaterThan(0);
+  });
+
+  it.each(projects.map((p) => [p.slug, p] as const))(
+    "%s segue o schema da coleção",
+    (_slug, p) => {
+      expect(p.result.error?.issues ?? []).toEqual([]);
     },
   );
+
+  it("slugs em kebab-case, sem repetição", () => {
+    const slugs = projects.map((p) => p.slug);
+    expect(new Set(slugs).size).toBe(slugs.length);
+    for (const slug of slugs) expect(slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
+  });
+
+  it("títulos e posições (order) não se repetem e formam 1..N", () => {
+    const data = projects.flatMap((p) =>
+      p.result.data ? [p.result.data] : [],
+    );
+    const titles = data.map((d) => d.title);
+    expect(new Set(titles).size).toBe(titles.length);
+    expect(data.map((d) => d.order).sort((a, b) => a - b)).toEqual(
+      data.map((_, i) => i + 1),
+    );
+  });
 });
 
 describe("skills", () => {

@@ -83,12 +83,71 @@
 .project-links {
   margin-top: 1rem;
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.6rem;
 }
 
+/* Botões dos cards: mesmo tamanho, ícone alinhado, sem brilho exagerado */
 .project-links .btn.small {
-  font-size: 1rem;
-  padding: 0.4rem 0.8rem;
+  display: inline-flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.project-links .btn.small i {
+  font-size: 0.9em;
+}
+
+.project-links .btn.small.primary {
+  border-color: transparent;
+  color: #fff;
+}
+
+.project-links .btn.small.outline {
+  border-color: rgb(var(--accent-1-light-rgb), 0.55);
+  background: transparent;
+  color: var(--accent-1-text);
+}
+
+.project-links .btn.small:hover {
+  transform: none;
+  box-shadow: 0 4px 14px rgb(var(--shadow-teal-rgb), 0.25);
+}
+
+.project-links .btn.small.outline:hover {
+  border-color: var(--accent-1);
+  background: rgb(var(--accent-1-light-rgb), 0.1);
+  color: var(--accent-1-text);
+}
+
+.project-links .btn.small:focus-visible {
+  outline: 2px solid var(--accent-1);
+  outline-offset: 2px;
+}
+
+.dark .project-links .btn.small.outline {
+  border-color: rgb(var(--accent-1-dark-rgb), 0.45);
+  background: rgb(var(--accent-1-dark-rgb), 0.05);
+  color: #e8ffff;
+}
+
+.dark .project-links .btn.small.outline:hover {
+  border-color: var(--accent-1);
+  background: rgb(var(--accent-1-dark-rgb), 0.12);
+  color: #fff;
+}
+
+.dark .project-links .btn.small:hover {
+  box-shadow: 0 0 14px rgb(var(--accent-1-dark-rgb), 0.35);
 }
 
 .projects-swiper.projects-swiper {

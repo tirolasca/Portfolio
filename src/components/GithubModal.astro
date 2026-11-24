@@ -1,4 +1,5 @@
 ---
+import { Image } from "astro:assets";
 import logo from "../assets/img/logo.webp";
 ---
 
@@ -9,31 +10,55 @@ import logo from "../assets/img/logo.webp";
     aria-modal="true"
     aria-label="Atividade no GitHub"
   >
-    <button class="close-modal" id="close-gh-modal" aria-label="Fechar">
+    <button
+      type="button"
+      class="close-modal"
+      id="close-gh-modal"
+      aria-label="Fechar"
+    >
       <i class="fa-solid fa-xmark" aria-hidden="true"></i>
     </button>
+
     <div class="gh-header">
+      <Image
+        id="gh-avatar-fallback"
+        src={logo}
+        alt="Avatar padrão do GitHub"
+        class="gh-avatar"
+        width={65}
+        height={65}
+        format="webp"
+        quality={80}
+      />
+
       <img
         id="gh-avatar"
-        src={logo.src}
-        alt="GitHub Avatar"
+        src=""
+        alt="Foto de perfil do GitHub de @tirolasca"
         class="gh-avatar"
         width="65"
         height="65"
+        hidden
       />
+
       <div class="gh-avatar-skeleton" aria-hidden="true"></div>
+
       <div class="gh-info">
         <h4>
-          <i class="fa-brands fa-github" aria-hidden="true"></i> @tirolasca
+          <i class="fa-brands fa-github" aria-hidden="true"></i>
+          @tirolasca
         </h4>
+
         <p class="muted" id="gh-bio">
           Conectando ao servidor...
         </p>
+
         <div class="gh-extra-info">
           <span id="gh-location-container" style="display: none">
             <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
             <span id="gh-location"></span>
           </span>
+
           <span id="gh-joined-container" style="display: none">
             <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
             <span id="gh-joined"></span>
@@ -41,6 +66,7 @@ import logo from "../assets/img/logo.webp";
         </div>
       </div>
     </div>
+
     <div class="gh-stats">
       <div class="gh-stat-box">
         <span class="gh-stat-value" id="gh-repos">
@@ -48,12 +74,14 @@ import logo from "../assets/img/logo.webp";
         </span>
         <span class="gh-stat-label">Repos</span>
       </div>
+
       <div class="gh-stat-box">
         <span class="gh-stat-value" id="gh-followers">
           -
         </span>
         <span class="gh-stat-label">Seguidores</span>
       </div>
+
       <div class="gh-stat-box">
         <span class="gh-stat-value" id="gh-following">
           -
@@ -61,13 +89,14 @@ import logo from "../assets/img/logo.webp";
         <span class="gh-stat-label">Seguindo</span>
       </div>
     </div>
+
     <a
       href="https://github.com/tirolasca"
       target="_blank"
       rel="noopener noreferrer"
       class="btn primary gh-btn"
     >
-      Acessar Perfil Completo{" "}
+      Acessar Perfil Completo
       <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
     </a>
   </div>

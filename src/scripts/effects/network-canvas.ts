@@ -80,15 +80,19 @@ function setupNetworkCanvas(
   function connect() {
     ctx.lineWidth = 0.8;
     for (let a = 0; a < particles.length; a++) {
+      const pa = particles[a];
+      if (!pa) continue;
       for (let b = a + 1; b < particles.length; b++) {
-        const dx = particles[a].x - particles[b].x;
+        const pb = particles[b];
+        if (!pb) continue;
+        const dx = pa.x - pb.x;
         if (dx * dx > LINK_DISTANCE_SQ) continue; // descarte barato
-        const d = dx * dx + (particles[a].y - particles[b].y) ** 2;
+        const d = dx * dx + (pa.y - pb.y) ** 2;
         if (d < LINK_DISTANCE_SQ) {
           ctx.strokeStyle = `rgba(0,255,224,${1 - d / LINK_DISTANCE_SQ})`;
           ctx.beginPath();
-          ctx.moveTo(particles[a].x, particles[a].y);
-          ctx.lineTo(particles[b].x, particles[b].y);
+          ctx.moveTo(pa.x, pa.y);
+          ctx.lineTo(pb.x, pb.y);
           ctx.stroke();
         }
       }
@@ -127,7 +131,7 @@ function setupNetworkCanvas(
   };
 
   const io = new IntersectionObserver(([entry]) => {
-    visible = entry.isIntersecting;
+    visible = entry?.isIntersecting ?? false;
     sync();
   });
   const themeObserver = new MutationObserver(sync);

@@ -11,7 +11,7 @@ export function initTypewriter() {
     ];
     // movimento reduzido: mostra a primeira frase parada, sem digitar/apagar em ciclo
     if (prefersReducedMotion) {
-      textEl.textContent = phrases[0];
+      textEl.textContent = phrases[0] ?? "";
       return;
     }
     let i = 0,
@@ -19,9 +19,9 @@ export function initTypewriter() {
       isDeleting = false;
     const currentPhrase: string[] = [];
     const loop = (): void => {
-      const phrase = phrases[i];
+      const phrase = phrases[i] ?? "";
       if (!isDeleting && j <= phrase.length) {
-        currentPhrase.push(phrase[j++]);
+        currentPhrase.push(phrase.charAt(j++));
         textEl.innerHTML = currentPhrase.join("");
       } else if (isDeleting && j >= 0) {
         currentPhrase.pop();

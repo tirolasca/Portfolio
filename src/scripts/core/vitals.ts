@@ -4,10 +4,11 @@
  *  - PUBLIC_VITALS_URL definido → envia com sendBeacon (seu próprio endpoint)
  * Sem nenhum dos dois, a biblioteca nem é baixada.
  */
+import { PUBLIC_VITALS_URL } from "astro:env/client";
 import type { Metric } from "web-vitals";
 
 export async function initVitals() {
-  const endpoint = import.meta.env.PUBLIC_VITALS_URL as string | undefined;
+  const endpoint = PUBLIC_VITALS_URL || undefined;
   const verbose =
     import.meta.env.DEV || new URLSearchParams(location.search).has("vitals");
   if (!endpoint && !verbose) return;

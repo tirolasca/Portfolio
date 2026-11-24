@@ -1,5 +1,35 @@
 import { closeDialog, openDialog } from "../core/dialog";
 
+/**
+ * Principais skills do resumo de 30 s, na ordem exibida. Cada nome é o `alt`
+ * do badge em src/data/skills.ts (ex.: "CSS3" aparece como "CSS").
+ */
+export const SUMMARY_SKILLS = [
+  "React",
+  "CSS3",
+  "Astro",
+  "TypeScript",
+  "Python",
+  "JavaScript",
+  "Java",
+  "PostgreSQL",
+  "Node.js",
+  "Spring Boot",
+] as const;
+
+/** Escolhe, na ordem de `wanted`, o primeiro badge de cada skill; ignora os que faltam. */
+export function pickSummarySkills(
+  badges: Iterable<HTMLImageElement>,
+  wanted: readonly string[] = SUMMARY_SKILLS,
+): { name: string; image: string }[] {
+  const byAlt = new Map<string, HTMLImageElement>();
+  for (const img of badges) if (!byAlt.has(img.alt)) byAlt.set(img.alt, img);
+  return wanted.flatMap((alt) => {
+    const img = byAlt.get(alt);
+    return img ? [{ name: img.alt, image: img.src }] : [];
+  });
+}
+
 export function initSummaryMode() {
   const trigger = document.getElementById("summary-mode-btn");
   if (!trigger) return;
@@ -85,14 +115,9 @@ export function initSummaryMode() {
         .querySelector<HTMLElement>(".brand-text .job")
         ?.textContent?.trim() || "";
 
-    const skills = Array.from(
+    const skills = pickSummarySkills(
       document.querySelectorAll<HTMLImageElement>(".skills .skill-badges img"),
-    )
-      .slice(0, 8)
-      .map((img) => ({
-        name: img.alt,
-        image: img.src,
-      }));
+    );
 
     const projects = Array.from(
       document.querySelectorAll<HTMLElement>(".projects .project-card"),

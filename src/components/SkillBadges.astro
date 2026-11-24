@@ -8,14 +8,17 @@ import { badgeSlug, renderBadge } from "../lib/badges";
 
 interface Props {
   badges: SkillBadge[];
+  loading?: "eager" | "lazy";
+  eagerCount?: number;
 }
 
-const { badges } = Astro.props;
+const { badges, loading = "lazy", eagerCount = 0 } = Astro.props;
 
-const items = badges.map((badge) => ({
+const items = badges.map((badge, index) => ({
   alt: badge.alt,
   src: `/badges/${badgeSlug(badge.alt)}.svg`,
   width: renderBadge(badge).width,
+  loading: index < eagerCount ? ("eager" as const) : loading,
 }));
 ---
 
@@ -27,7 +30,7 @@ const items = badges.map((badge) => ({
       title={badge.alt}
       width={badge.width}
       height="28"
-      loading="lazy"
+      loading={badge.loading}
       decoding="async"
     />
   ))}

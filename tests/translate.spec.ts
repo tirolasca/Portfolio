@@ -109,6 +109,9 @@ test.describe("seletor de idioma personalizado", () => {
     // o <select> do GTranslate segue na página, mas só como motor (fora da vista e dos leitores de tela)
     const engine = page.locator("select.gt_selector");
     await expect(engine).toHaveAttribute("aria-hidden", "true");
+    await expect(engine).toHaveAttribute("id", "gtranslate-language");
+    await expect(engine).toHaveAttribute("name", "language");
+    await expect(engine).toHaveAttribute("aria-label", "Idioma para tradução");
     await expect(engine).toHaveCSS("opacity", "0");
   });
 

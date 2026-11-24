@@ -53,7 +53,7 @@ function startMatrix() {
     ctx.fillStyle = "#00ffe0";
     ctx.font = "14px monospace";
     drops.forEach((y, i) => {
-      const c = chars[Math.floor(secureRandom() * chars.length)];
+      const c = chars[Math.floor(secureRandom() * chars.length)] ?? "";
       const white = secureRandom() > 251 / 256;
       ctx.fillStyle = white ? "#ffffff" : "#00ffe0";
       ctx.fillText(c, i * 20, y * 20);

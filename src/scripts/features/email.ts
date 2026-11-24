@@ -1,3 +1,4 @@
+import { PUBLIC_CONTACT_ENDPOINT } from "astro:env/client";
 import { session } from "../core/storage";
 import { SITE } from "../../data/site";
 import { closeDialog, openDialog } from "../core/dialog";
@@ -8,7 +9,8 @@ import { closeDialog, openDialog } from "../core/dialog";
  * - Caso contrário → abre o app de e-mail (mailto:).
  */
 
-const ENDPOINT = import.meta.env.PUBLIC_CONTACT_ENDPOINT as string | undefined;
+// string vazia (variável declarada sem valor no .env) = sem endpoint
+const ENDPOINT = PUBLIC_CONTACT_ENDPOINT || undefined;
 
 const DRAFT_KEY = "contactDraft";
 const MAX_MESSAGE = 2000;
@@ -422,12 +424,13 @@ async function onSubmit(event: Event): Promise<void> {
     (field) => !validateField(field),
   );
 
-  if (fields.length) {
+  const [firstInvalid] = fields;
+  if (firstInvalid) {
     els.status.textContent = `Corrija ${
       fields.length === 1 ? "o campo destacado" : "os campos destacados"
     } para enviar.`;
 
-    els[fields[0]].focus();
+    els[firstInvalid].focus();
     return;
   }
 

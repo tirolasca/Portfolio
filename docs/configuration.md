@@ -5,6 +5,8 @@
 > [!WARNING]
 > Toda variável `PUBLIC_*` é embutida no JavaScript do navegador: **qualquer pessoa consegue lê-la**. Nunca coloque chaves privadas, tokens ou segredos nelas.
 
+As variáveis são declaradas e validadas no build via `astro:env` (`astro.config.mjs`) e lidas no código por `astro:env/client`. Variável sem valor (ex.: `PUBLIC_VITALS_URL=` no `.env`) equivale a não definida.
+
 Depois de definir uma variável (Vercel → _Settings → Environment Variables_), faça um novo deploy e **confira se a origem do endpoint está em `connect-src`** na CSP do `vercel.json` (veja [`security.md`](security.md)); sem isso o navegador bloqueia a requisição.
 
 | Variável                                                                                | Para quê                                   | Origem na CSP                          |

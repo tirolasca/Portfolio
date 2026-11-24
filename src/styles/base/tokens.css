@@ -46,6 +46,11 @@
   --glass-shadow:
     0 8px 32px rgb(0 80 80 / 16%), inset 0 1px 0 rgb(255 255 255 / 65%);
   --glass-blur: blur(20px) saturate(1.8);
+
+  /* modais: painel quase opaco (texto legível) + película que escurece o fundo */
+  --modal-bg: rgb(255 255 255 / 92%);
+  --modal-glass-bg: rgb(255 255 255 / 58%);
+  --modal-scrim: rgb(0 30 32 / 30%);
   --glass-dark-bg: rgb(0 18 20 / 58%);
   --glass-dark-border: rgb(var(--accent-1-dark-rgb), 0.13);
   --glass-dark-shadow:
@@ -54,6 +59,9 @@
 }
 
 .dark {
+  --modal-bg: rgb(7 24 28 / 94%);
+  --modal-glass-bg: rgb(6 22 26 / 60%);
+  --modal-scrim: rgb(0 0 0 / 55%);
   --glitch-color: var(--accent-neon);
   --accent-1-text: var(--accent-1);
   --bg-main: #000;

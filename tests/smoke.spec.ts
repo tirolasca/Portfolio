@@ -79,8 +79,8 @@ test.describe("home", () => {
     await prepare(page);
     const chunks: string[] = [];
     page.on("request", (r) => {
-      const m = r.url().match(/\/_astro\/([a-z-]+)\./i);
-      if (m) chunks.push(m[1]);
+      const name = r.url().match(/\/_astro\/([a-z-]+)\./i)?.[1];
+      if (name) chunks.push(name);
     });
     await page.goto("/");
     await page.waitForLoadState("networkidle");
@@ -109,8 +109,8 @@ test("currículo: gráfico SWOT carrega só perto da tela", async ({ page }) => 
   const errors = collectErrors(page);
   const chunks: string[] = [];
   page.on("request", (r) => {
-    const m = r.url().match(/\/_astro\/([a-z-]+)\./i);
-    if (m) chunks.push(m[1]);
+    const name = r.url().match(/\/_astro\/([a-z-]+)\./i)?.[1];
+    if (name) chunks.push(name);
   });
   await page.goto("/curriculo.html");
   await page.waitForLoadState("networkidle");

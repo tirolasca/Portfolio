@@ -21,7 +21,7 @@ Chart.register(
 );
 
 /** `canvas.chart` expõe a instância (usado pelos testes E2E). */
-type SwotCanvas = HTMLCanvasElement & { chart?: Chart };
+type SwotCanvas = HTMLCanvasElement & { chart?: Chart | undefined };
 
 const LABELS = [
   "Frontend",
@@ -58,6 +58,7 @@ function palette(dark: boolean) {
 function applyPalette(chart: Chart<"radar">, dark: boolean) {
   const c = palette(dark);
   const ds = chart.data.datasets[0];
+  if (!ds) return;
   ds.backgroundColor = c.fill;
   ds.borderColor = c.accent;
   ds.pointBackgroundColor = c.accent;
@@ -151,7 +152,7 @@ export function initSwotChart() {
           titleFont: { family: FONT, size: 13, weight: 700 },
           bodyFont: { family: FONT, size: 12, weight: 500 },
           callbacks: {
-            title: (context) => context[0].label,
+            title: (context) => context[0]?.label ?? "",
             label: (context) => `Nível: ${context.raw}/10`,
           },
         },

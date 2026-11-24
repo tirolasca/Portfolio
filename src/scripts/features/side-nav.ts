@@ -72,6 +72,7 @@ export function updateSideNavDots() {
     >(".side-dot")
     .forEach((dot) => {
       const id = dot.href.split("#")[1];
+      if (!id) return;
       const el = document.getElementById(id);
       if (!el) return;
 

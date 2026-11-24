@@ -1,129 +1,188 @@
 ---
-import { Image, Picture } from "astro:assets";
+import { Picture } from "astro:assets";
 import perfil from "../assets/img/perfil.webp";
 import logo from "../assets/img/logo.webp";
-import { projects } from "../data/projects";
+import { getProjects } from "../lib/projects";
 import { skillCategories } from "../data/skills";
 
-// Contagens derivadas dos dados: basta editar src/data/*.ts
-const projectCount = projects.length;
+// Contagens derivadas dos dados: basta editar src/data/*.ts.
+const projectCount = (await getProjects()).length;
+
 const technologyCount = new Set(
-  skillCategories.flatMap((category) => category.badges.map((b) => b.alt)),
+  skillCategories.flatMap((category) =>
+    category.badges.map((badge) => badge.alt),
+  ),
 ).size;
 ---
 
-<section class="hero" id="home">
-  <canvas id="network-canvas"></canvas>
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <!-- Canvas decorativo: não precisa ser interpretado pelo leitor de tela. -->
+  <canvas id="network-canvas" aria-hidden="true"></canvas>
+
   <div class="container hero-inner">
     <div class="hero-content">
-      <h2>
-        👋 Olá, eu sou
+      <h2 id="hero-title">
+        <span aria-hidden="true">👋</span>
+        Olá, eu sou
         <span class="scramble-text" data-value="Lucas Santos">
           Lucas Santos
         </span>
       </h2>
+
       <h3 class="hero-subtitle">
-        <Image
+        <Picture
           src={logo}
-          alt="Logo"
+          alt="Logo Lucas Santos"
           class="hero-logo"
           width={50}
           densities={[1, 2]}
+          loading="eager"
+          decoding="async"
         />
-        <span id="typewriter"></span>
+        <span id="typewriter" aria-live="off"></span>
       </h3>
+
       <p class="lead">
-        Sou formado em <strong>Desenvolvimento de Sistemas</strong> e
+        Sou formado em
+        <strong>Desenvolvimento de Sistemas</strong> e
         <strong>Redes de Computadores</strong>, e atualmente curso
-        <strong>Desenvolvimento de Software Multiplataforma</strong> na FATEC.
-        Tenho paixão por tecnologia e busco unir
-        <strong>inovação</strong>, <strong>desempenho</strong> e
+        <strong>Desenvolvimento de Software Multiplataforma</strong>
+        na FATEC. Tenho paixão por tecnologia e busco unir
+        <strong>inovação</strong>,<strong>desempenho</strong> e
         <strong>impacto real</strong> em cada projeto.
       </p>
-      <div class="hero-cta">
+
+      <div
+        class="hero-cta"
+        role="group"
+        aria-label="Ações relacionadas ao currículo"
+      >
         <a href="/curriculo.html" class="btn primary">
-          <i class="fa-solid fa-user" aria-hidden="true"></i> Ver Currículo
-          Completo
+          <i class="fa-solid fa-user" aria-hidden="true"></i>
+          Ver Currículo Completo
         </a>
+
         <a
           href="/Lucas Santos - Currículo.pdf"
           download="Lucas Santos - Currículo.pdf"
           class="btn outline"
         >
-          <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i> Baixar
-          Currículo
+          <i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i>
+          Baixar Currículo
         </a>
       </div>
-      <div class="social-icons">
+
+      <div
+        class="social-icons"
+        role="group"
+        aria-label="Links de contato e redes sociais"
+      >
         <a
           href="https://wa.me/5512981718913"
           target="_blank"
           rel="noopener noreferrer"
           class="social-btn"
           title="WhatsApp"
+          aria-label="Entrar em contato pelo WhatsApp (abre em nova aba)"
         >
           <i class="fab fa-whatsapp fa-2x" aria-hidden="true"></i>
         </a>
+
         <a
           href="https://github.com/tirolasca"
           target="_blank"
           rel="noopener noreferrer"
           class="social-btn github"
           title="GitHub"
+          aria-label="Visitar perfil de Lucas Santos no GitHub (abre em nova aba)"
         >
           <i class="fab fa-github fa-2x" aria-hidden="true"></i>
         </a>
+
         <a
           href="https://linkedin.com/in/lucas-santostec/"
           target="_blank"
           rel="noopener noreferrer"
           class="social-btn"
           title="LinkedIn"
+          aria-label="Visitar perfil de Lucas Santos no LinkedIn (abre em nova aba)"
         >
           <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
         </a>
+
         <a
           href="mailto:lucasnascimento1245@gmail.com"
           class="social-btn"
           title="E-mail"
+          aria-label="Enviar e-mail para Lucas Santos"
         >
           <i class="fa-solid fa-envelope fa-2x" aria-hidden="true"></i>
         </a>
+
         <button type="button" id="summary-mode-btn" class="btn outline">
-          <i class="fa-solid fa-bolt" aria-hidden="true"></i> Resumo de 30s
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i>
+          Resumo de 30s
         </button>
       </div>
 
+      <!-- A própria mensagem dinâmica fornece o nome acessível do link. -->
       <a
         href="https://github.com/tirolasca"
         class="gh-activity-pill"
         id="gh-activity-pill"
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        <span class="gh-activity-dot"></span>
-        <span id="gh-activity-text">Verificando atividade no GitHub...</span>
+        <span class="gh-activity-dot" aria-hidden="true"></span>
+
+        <span
+          id="gh-activity-text"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          Verificando atividade no GitHub...
+        </span>
       </a>
 
-      <div class="hero-stats">
+      <!-- Estatísticas. -->
+      <div
+        class="hero-stats"
+        role="group"
+        aria-label="Estatísticas do portfólio"
+      >
         <div class="hero-stat">
-          <span class="hero-stat-number" data-count={projectCount}>
+          <span
+            class="hero-stat-number"
+            data-count={projectCount}
+            aria-label={`${projectCount} projetos`}
+          >
             0
           </span>
+
           <span class="hero-stat-label">Projetos</span>
         </div>
+
         <div class="hero-stat">
-          <span class="hero-stat-number" data-count={technologyCount}>
+          <span
+            class="hero-stat-number"
+            data-count={technologyCount}
+            aria-label={`${technologyCount} tecnologias`}
+          >
             0
           </span>
+
           <span class="hero-stat-label">Tecnologias</span>
         </div>
       </div>
     </div>
 
+    <!-- Imagem de perfil. -->
     <div class="hero-container" data-reveal="fade-left">
       <div class="hero-image">
         <Picture
           src={perfil}
-          alt="Lucas Santos"
+          alt="Foto de perfil de Lucas Santos"
           class="hero-avatar"
           widths={[240, 480]}
           sizes="240px"
@@ -133,7 +192,11 @@ const technologyCount = new Set(
           priority
         />
       </div>
-      <div class="hero-text">📱 Escaneie o QR Code!</div>
+
+      <div class="hero-text">
+        <span aria-hidden="true">📱</span>
+        Escaneie o QR Code!
+      </div>
     </div>
   </div>
 </section>

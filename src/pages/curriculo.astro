@@ -55,16 +55,18 @@ import Footer from "../components/Footer.astro";
               rel="noopener noreferrer"
               class="social-btn"
               title="WhatsApp"
+              aria-label="Entre em contato pelo WhatsApp"
             >
               <i class="fab fa-whatsapp fa-2x" aria-hidden="true"></i>
             </a>
 
             <a
-              class="social-btn github"
               href="https://github.com/tirolasca"
               target="_blank"
               rel="noopener noreferrer"
+              class="social-btn github"
               title="GitHub"
+              aria-label="Acesse meu perfil no GitHub"
             >
               <i class="fab fa-github fa-2x" aria-hidden="true"></i>
             </a>
@@ -75,13 +77,16 @@ import Footer from "../components/Footer.astro";
               rel="noopener noreferrer"
               class="social-btn"
               title="LinkedIn"
+              aria-label="Acesse meu perfil no LinkedIn"
             >
               <i class="fab fa-linkedin fa-2x" aria-hidden="true"></i>
             </a>
+
             <a
               href="mailto:lucasnascimento1245@gmail.com"
-              class="social-btn email"
+              class="social-btn"
               title="E-mail"
+              aria-label="Entre em contato por e-mail"
             >
               <i class="fa-solid fa-envelope fa-2x" aria-hidden="true"></i>
             </a>
@@ -277,7 +282,10 @@ import Footer from "../components/Footer.astro";
               <h5>
                 <i class={cat.icon} aria-hidden="true" /> {cat.title}
               </h5>
-              <SkillBadges badges={cat.badges} />
+              <SkillBadges
+                badges={cat.badges}
+                eagerCount={cat.title === "Frontend & UI" ? 3 : 0}
+              />
             </div>
           ))}
         </div>

@@ -1,4 +1,6 @@
 import { closeDialog, openDialog } from "../core/dialog";
+import { fetchJson } from "../core/http";
+import { parseGithubUser, parseLatestEventDate } from "../core/github-schema";
 import { prefersReducedMotion } from "../state";
 import { must } from "../utils";
 
@@ -7,16 +9,13 @@ export async function initGithubActivity() {
   const text = document.getElementById("gh-activity-text");
   if (!pill || !text) return;
   try {
-    const r = await fetch(
-      "https://api.github.com/users/tirolasca/events/public",
+    const last = parseLatestEventDate(
+      await fetchJson("https://api.github.com/users/tirolasca/events/public"),
     );
-    if (!r.ok) throw new Error("fail");
-    const events = await r.json();
-    if (!Array.isArray(events) || !events.length) {
+    if (!last) {
       pill.style.display = "none";
       return;
     }
-    const last = new Date(events[0].created_at);
     const days = Math.floor((Date.now() - last.getTime()) / 86400000);
     let label: string;
     if (days <= 0) label = "hoje";
@@ -61,23 +60,23 @@ export function initGithubModal() {
     if (fetched) return;
     ghModal.classList.add("gh-loading");
     try {
-      const r = await fetch("https://api.github.com/users/tirolasca");
-      if (!r.ok) throw new Error("GitHub request failed");
-      const d = await r.json();
-      must<HTMLImageElement>("gh-avatar").src = d.avatar_url;
-      must("gh-bio").innerText = d.bio || "Desenvolvedor Full Stack & Redes";
-      if (d.location) {
-        must("gh-location").innerText = d.location;
+      const user = parseGithubUser(
+        await fetchJson("https://api.github.com/users/tirolasca"),
+      );
+      if (!user) throw new Error("Resposta inesperada da API do GitHub");
+      must<HTMLImageElement>("gh-avatar").src = user.avatarUrl;
+      must("gh-bio").innerText = user.bio ?? "Desenvolvedor Full Stack & Redes";
+      if (user.location) {
+        must("gh-location").innerText = user.location;
         must("gh-location-container").style.display = "flex";
       }
-      if (d.created_at) {
-        must("gh-joined").innerText =
-          `Membro desde ${new Date(d.created_at).getFullYear()}`;
+      if (user.joinedYear !== null) {
+        must("gh-joined").innerText = `Membro desde ${user.joinedYear}`;
         must("gh-joined-container").style.display = "flex";
       }
-      animateVal("gh-repos", d.public_repos);
-      animateVal("gh-followers", d.followers);
-      animateVal("gh-following", d.following);
+      animateVal("gh-repos", user.publicRepos);
+      animateVal("gh-followers", user.followers);
+      animateVal("gh-following", user.following);
       fetched = true;
     } catch {
       must("gh-bio").innerText = "Sistema offline.";

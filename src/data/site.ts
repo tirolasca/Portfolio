@@ -6,6 +6,7 @@ export const SITE = {
   locale: "pt_BR",
   email: "lucasnascimento1245@gmail.com",
   github: "https://github.com/tirolasca",
+  whatsapp: "https://wa.me/5512981718913",
   linkedin: "https://linkedin.com/in/lucas-santostec/",
   description:
     "Portfólio de Lucas Santos, desenvolvedor de software formado em Desenvolvimento de Sistemas e Redes de Computadores. Projetos, habilidades e experiência.",

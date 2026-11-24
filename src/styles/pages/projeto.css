@@ -1,0 +1,308 @@
+/* Página de estudo de caso (/projetos/<slug>.html)
+   Superfícies estáticas de propósito: sem tilt, sem brilho que segue o mouse
+   e sem botões magnéticos, para o conteúdo poder ser lido com calma. */
+.case-page {
+  padding: 110px 0 40px;
+}
+
+.case-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+  font-size: 0.92rem;
+  color: var(--text-sub);
+}
+
+.case-breadcrumb a {
+  color: var(--accent-1-text);
+}
+
+/* ---------- Hero ---------- */
+.case-hero {
+  margin-bottom: 22px;
+}
+
+.case-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  padding: 4px 12px;
+  border: 1px solid rgb(var(--accent-1-light-rgb), 0.4);
+  border-radius: 999px;
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
+
+.case-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  color: var(--text-title);
+  font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.case-title i {
+  color: var(--accent-1-text);
+  font-size: 0.8em;
+}
+
+.case-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.case-tech li {
+  display: flex;
+}
+
+.case-tech img {
+  display: block;
+  width: auto;
+  height: 28px;
+}
+
+.case-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.case-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid transparent;
+}
+
+.case-actions .btn.outline {
+  border-color: rgb(var(--accent-1-light-rgb), 0.55);
+  background: transparent;
+  color: var(--accent-1-text);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.case-actions .btn:hover {
+  transform: none;
+}
+
+.case-actions .btn.outline:hover {
+  background: rgb(var(--accent-1-light-rgb), 0.1);
+}
+
+/* ---------- Capa ---------- */
+.case-cover {
+  margin: 0 0 26px;
+  overflow: hidden;
+  border: 1px solid rgb(var(--accent-1-light-rgb), 0.25);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.case-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 460px;
+  object-fit: cover;
+}
+
+/* ---------- Conteúdo ---------- */
+.case-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+  align-items: start;
+}
+
+.case-main,
+.case-aside {
+  display: grid;
+  gap: 18px;
+}
+
+.case-aside {
+  position: sticky;
+  top: 96px;
+}
+
+.case-panel {
+  padding: 22px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: var(--glass-blur);
+  backdrop-filter: var(--glass-blur);
+}
+
+.case-panel h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: var(--text-title);
+  font-size: 1.15rem;
+}
+
+.case-panel h3 i {
+  color: var(--accent-1-text);
+}
+
+.case-panel p {
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+
+.case-prose > * + * {
+  margin-top: 12px;
+}
+
+.case-prose ul,
+.case-prose ol {
+  padding-left: 1.3rem;
+}
+
+/* ---------- Links ---------- */
+.case-links {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-links a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid rgb(var(--accent-1-light-rgb), 0.3);
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  text-decoration: none;
+  transition:
+    border-color var(--trans-fast),
+    background var(--trans-fast);
+}
+
+.case-links a:hover,
+.case-links a:focus-visible {
+  border-color: var(--accent-1);
+  background: rgb(var(--accent-1-light-rgb), 0.1);
+}
+
+.case-links a i {
+  width: 1.2em;
+  text-align: center;
+  color: var(--accent-1-text);
+  font-size: 1.15rem;
+}
+
+.case-links span {
+  display: grid;
+  font-weight: 600;
+}
+
+.case-links small {
+  overflow-wrap: anywhere;
+  font-weight: 400;
+  color: var(--text-sub);
+}
+
+/* ---------- Navegação entre projetos ---------- */
+.case-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.case-pager-link {
+  display: grid;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid rgb(var(--accent-1-light-rgb), 0.3);
+  border-radius: var(--radius-md);
+  color: var(--text-title);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    border-color var(--trans-fast),
+    background var(--trans-fast);
+}
+
+.case-pager-link small {
+  font-weight: 400;
+  color: var(--text-sub);
+}
+
+.case-pager-next {
+  grid-column: 2;
+  text-align: right;
+}
+
+.case-pager-link:hover,
+.case-pager-link:focus-visible {
+  border-color: var(--accent-1);
+  background: rgb(var(--accent-1-light-rgb), 0.08);
+}
+
+/* ---------- Chamada final ---------- */
+.case-contact {
+  margin-top: 36px;
+  text-align: center;
+}
+
+.case-contact h3 {
+  margin-bottom: 6px;
+  color: var(--text-title);
+}
+
+.case-contact p {
+  margin-bottom: 14px;
+  color: var(--text-sub);
+}
+
+.dark .case-panel {
+  background: var(--glass-dark-bg);
+  border-color: var(--glass-dark-border);
+  box-shadow: var(--glass-dark-shadow);
+}
+
+@media (width <= 900px) {
+  .case-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .case-aside {
+    position: static;
+  }
+}
+
+@media (width <= 560px) {
+  .case-pager {
+    grid-template-columns: 1fr;
+  }
+
+  .case-pager-next {
+    grid-column: 1;
+  }
+
+  .case-actions .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .case-contact .contact-btn {
+    flex: 1 1 100%;
+  }
+}

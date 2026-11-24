@@ -58,7 +58,11 @@ export function enhanceLanguageSwitcher(
     </ul>`;
   wrapper.appendChild(sw);
 
-  // o <select> do GTranslate vira só o motor: fora da vista e da navegação
+  // O select original do GTranslate funciona apenas como mecanismo de tradução.
+  // Identificação explícita para auditorias de formulários e acessibilidade.
+  engine.id = "gtranslate-language";
+  engine.name = "language";
+  engine.setAttribute("aria-label", "Idioma para tradução");
   engine.setAttribute("aria-hidden", "true");
   engine.tabIndex = -1;
 
@@ -93,8 +97,10 @@ export function enhanceLanguageSwitcher(
     options.forEach((o, idx) =>
       o.classList.toggle("is-active", idx === active),
     );
-    menu.setAttribute("aria-activedescendant", options[active].id);
-    options[active].scrollIntoView({ block: "nearest" });
+    const current = options[active];
+    if (!current) return;
+    menu.setAttribute("aria-activedescendant", current.id);
+    current.scrollIntoView({ block: "nearest" });
   }
 
   const isOpen = () => sw.classList.contains("is-open");
@@ -169,7 +175,7 @@ export function enhanceLanguageSwitcher(
       case "Enter":
       case " ":
         e.preventDefault();
-        return choose(options[active].dataset.lang as LangCode);
+        return choose(options[active]?.dataset.lang as LangCode);
       case "Escape":
         e.preventDefault();
         e.stopPropagation();
@@ -185,8 +191,10 @@ export function enhanceLanguageSwitcher(
       const n = options.length;
       for (let k = 1; k <= n; k++) {
         const idx = (active + (typed.length === 1 ? k : 0)) % n;
+        const candidate = options[idx];
         if (
-          LANGS[options[idx].dataset.lang as LangCode].name
+          candidate &&
+          LANGS[candidate.dataset.lang as LangCode].name
             .toLowerCase()
             .startsWith(typed)
         ) {
