@@ -1,4 +1,7 @@
 import { getCollection, type CollectionEntry } from "astro:content";
+import { plainText } from "./plain-text";
+
+export { plainText };
 
 export type Project = CollectionEntry<"projects">;
 
@@ -8,12 +11,5 @@ export async function getProjects(): Promise<Project[]> {
   return entries.sort((a, b) => a.data.order - b.data.order);
 }
 
-/** Link da página de estudo de caso (o site usa `build.format: "file"`). */
+/** Link da página de estudo de caso. */
 export const projectHref = (id: string): string => `/projetos/${id}.html`;
-
-/** Texto puro de uma descrição em HTML inline (para meta description). */
-export const plainText = (html: string): string =>
-  html
-    .replace(/<[^>]+>/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
