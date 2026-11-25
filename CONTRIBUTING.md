@@ -139,3 +139,27 @@ Inclua, se possível, a descrição, os passos para reprodução, os componentes
 Ao enviar uma contribuição, você concorda que ela será disponibilizada sob a licença [MIT](LICENSE), nos termos dessa licença. Você mantém os direitos autorais sobre sua contribuição e concede os direitos previstos pela licença MIT para o material que enviar.
 
 Recursos de terceiros incluídos no projeto podem possuir licenças próprias; não presuma que a licença MIT deste repositório substitui os termos desses recursos.
+
+## Processo de releases
+
+O projeto utiliza Semantic Versioning (SemVer), no formato `MAJOR.MINOR.PATCH`.
+
+As versões oficiais são identificadas por tags Git no formato `vMAJOR.MINOR.PATCH`, associadas a releases do GitHub.
+
+### Regras de versionamento
+
+- **MAJOR:** alterações incompatíveis que exijam mudanças relevantes na utilização ou configuração do projeto.
+- **MINOR:** novas funcionalidades compatíveis com a versão anterior.
+- **PATCH:** correções de bugs e melhorias compatíveis.
+
+### Publicação de uma release
+
+1. Criar uma branch para preparar a release.
+2. Atualizar a versão no `package.json` e no `package-lock.json`, quando aplicável.
+3. Atualizar o `CHANGELOG.md` com as alterações efetivamente realizadas.
+4. Executar as verificações de qualidade, testes e build.
+5. Abrir um Pull Request para `main` e aguardar os checks obrigatórios.
+6. Após o merge, criar uma tag Git no commit integrado à `main`.
+7. Publicar uma GitHub Release associada à tag, com as notas da versão.
+
+O projeto utiliza entrega contínua na Vercel. A publicação de uma release documenta um marco estável do projeto e não substitui o processo automatizado de deploy.
