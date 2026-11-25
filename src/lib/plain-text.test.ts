@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import fc from "fast-check";
 import { plainText } from "./plain-text";
 
 describe("plainText", () => {
@@ -34,5 +35,54 @@ describe("plainText", () => {
 
   it("lida com entradas vazias", () => {
     expect(plainText("")).toBe("");
+  });
+});
+
+describe("plainText - testes baseados em propriedades", () => {
+  it("sempre retorna uma string para entradas arbitrárias", () => {
+    fc.assert(
+      fc.property(fc.string({ maxLength: 500 }), (input) => {
+        expect(typeof plainText(input)).toBe("string");
+      }),
+      { numRuns: 200 },
+    );
+  });
+
+  it("sempre remove espaços nas extremidades e espaços repetidos", () => {
+    fc.assert(
+      fc.property(fc.string({ maxLength: 500 }), (input) => {
+        const result = plainText(input);
+
+        expect(result).toBe(result.trim());
+        expect(result).not.toMatch(/\s{2,}/);
+      }),
+      { numRuns: 200 },
+    );
+  });
+
+  it("sempre ignora o conteúdo de script", () => {
+    const payload = fc
+      .array(fc.constantFrom("a", "Z", "0", " ", "\n", "&", "/", "-"))
+      .map((characters) => characters.join(""));
+
+    fc.assert(
+      fc.property(payload, (content) => {
+        expect(plainText(`<script>${content}</script>visível`)).toBe("visível");
+      }),
+      { numRuns: 200 },
+    );
+  });
+
+  it("sempre ignora o conteúdo de style", () => {
+    const payload = fc
+      .array(fc.constantFrom("a", "Z", "0", " ", "\n", "&", "/", "-"))
+      .map((characters) => characters.join(""));
+
+    fc.assert(
+      fc.property(payload, (content) => {
+        expect(plainText(`<style>${content}</style>visível`)).toBe("visível");
+      }),
+      { numRuns: 200 },
+    );
   });
 });
