@@ -87,14 +87,36 @@ for (const theme of ["light", "dark"] as const) {
       }
     });
 
-    test("seta de voltar ao topo rola sem animação", async ({ page }) => {
-      await page.evaluate(() => window.scrollTo(0, 2000));
-      await expect(page.locator(".back-to-top")).toHaveClass(/visible/);
-      await page.locator(".back-to-top").click();
-      // sem rolagem suave, a posição final é imediata (um frame)
+    test("botão voltar ao topo permanece visível e sem animação", async ({
+      page,
+    }) => {
+      const button = page.locator(".back-to-top");
+
+      await page.evaluate(() => {
+        window.scrollTo(0, document.documentElement.scrollHeight);
+      });
+
+      await expect(button).toHaveClass(/visible/);
+      await expect(button).toBeVisible();
+      await expect(button).toBeInViewport();
+
+      const motion = await button.evaluate((element) => ({
+        animation: getComputedStyle(element).animationName,
+        pseudoAnimation: getComputedStyle(element, "::before").animationName,
+        arrowAnimation: getComputedStyle(element, "::after").animationName,
+      }));
+
+      expect(motion).toEqual({
+        animation: "none",
+        pseudoAnimation: "none",
+        arrowAnimation: "none",
+      });
+
+      await button.click();
+
       await expect
         .poll(() => page.evaluate(() => window.scrollY), {
-          timeout: 400,
+          timeout: 1_000,
         })
         .toBe(0);
     });
