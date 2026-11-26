@@ -172,3 +172,32 @@ for (const path of PAGES) {
     expect(errors.filter((error) => /pageerror/.test(error))).toEqual([]);
   });
 }
+
+/**
+ * Verifica a resposta realmente entregue pela Vercel, não apenas o vercel.json.
+ * DEPLOYMENT_URL permite testar um Preview Deployment; por padrão, usa produção.
+ */
+test("Vercel entrega os cabeçalhos HTTP de segurança", async ({ request }) => {
+  const deployment = process.env.DEPLOYMENT_URL ?? "https://lucastec.vercel.app";
+  const url = new URL("/", deployment).toString();
+  const response = await request.get(url, { timeout: 20_000 });
+
+  expect(response.ok(), `GET ${url} deve responder com sucesso`).toBeTruthy();
+
+  const headers = response.headers();
+
+  for (const name of [
+    "content-security-policy",
+    "permissions-policy",
+    "referrer-policy",
+    "x-content-type-options",
+    "x-frame-options",
+    "cross-origin-opener-policy",
+  ]) {
+    expect(headers[name], `cabeçalho HTTP ausente: ${name}`).toBeTruthy();
+  }
+
+  expect(headers["content-security-policy"]).toContain("default-src 'self'");
+  expect(headers["x-content-type-options"]).toBe("nosniff");
+  expect(headers["x-frame-options"]).toMatch(/^(SAMEORIGIN|DENY)$/);
+});
