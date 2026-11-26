@@ -470,7 +470,6 @@
   background: linear-gradient(90deg, #a07000, var(--accent-gold), #a07000);
   background-size: 200% 100%;
   transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: bar-shimmer 2.8s linear infinite;
 }
 
 .achievements-xp-count {

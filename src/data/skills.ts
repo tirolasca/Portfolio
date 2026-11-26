@@ -36,6 +36,12 @@ export const skillCategories: SkillCategory[] = [
       { alt: "Astro", color: "BC52EE", logo: "astro", logoColor: "white" },
       { alt: "Vite", color: "646CFF", logo: "vite", logoColor: "white" },
       {
+        alt: "Tailwind CSS",
+        color: "06B6D4",
+        logo: "tailwindcss",
+        logoColor: "white",
+      },
+      {
         alt: "Chart.js",
         color: "FF6384",
         logo: "chartdotjs",
@@ -217,7 +223,12 @@ export const skillCategories: SkillCategory[] = [
         logo: "osv-scanner",
         logoColor: "white",
       },
-
+      {
+        alt: "OWASP ZAP",
+        color: "00549E",
+        logo: "owasp",
+        logoColor: "white",
+      },
       {
         alt: "OpenSSF Scorecard",
         color: "1F6FEB",
@@ -372,6 +383,30 @@ export const skillCategories: SkillCategory[] = [
         alt: "lint-staged",
         color: "2F855A",
         logo: "lint-staged",
+        logoColor: "white",
+      },
+      {
+        alt: "Jira",
+        color: "0052CC",
+        logo: "jira",
+        logoColor: "white",
+      },
+      {
+        alt: "Canva",
+        color: "00C4CC",
+        logo: "canva",
+        logoColor: "white",
+      },
+      {
+        alt: "Trello",
+        color: "0052CC",
+        logo: "trello",
+        logoColor: "white",
+      },
+      {
+        alt: "Figma",
+        color: "F24E1E",
+        logo: "figma",
         logoColor: "white",
       },
     ],

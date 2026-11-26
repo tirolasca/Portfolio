@@ -45,22 +45,6 @@
   opacity: 0.9;
 }
 
-.dark body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: repeating-linear-gradient(
-    0deg,
-    transparent,
-    transparent 2px,
-    rgb(var(--accent-1-dark-rgb), 0.012) 2px,
-    rgb(var(--accent-1-dark-rgb), 0.012) 4px
-  );
-  pointer-events: none;
-  z-index: 9990;
-  animation: scan-move 8s linear infinite;
-}
-
 html.dark.show-scrollbar::-webkit-scrollbar-track {
   background: #000;
 }
@@ -158,8 +142,19 @@ html.dark.show-scrollbar {
 }
 
 .dark .hero-image {
-  box-shadow: 0 0 30px var(--accent-1);
-  animation: neon-pulse 2.4s infinite ease-in-out;
+  /* estado de repouso do pulso; o pico vem da camada .hero-container::before */
+  box-shadow:
+    0 0 12px rgb(var(--accent-neon-rgb), 0.6),
+    0 0 20px rgb(var(--accent-blue-rgb), 0.3);
+  filter: drop-shadow(0 0 6px var(--accent-1));
+}
+
+.dark .hero-container::before {
+  box-shadow:
+    0 0 20px rgb(var(--accent-neon-rgb), 0.8),
+    0 0 30px rgb(var(--accent-blue-rgb), 0.5),
+    0 0 18px var(--accent-1);
+  animation: glow-breathe-loop 2.4s infinite ease-in-out;
 }
 
 .dark #network-canvas {
@@ -821,4 +816,13 @@ html.dark.show-scrollbar {
 
 .dark .summary-projects a {
   background: rgb(var(--accent-1-dark-rgb), 0.05);
+}
+
+/* movimento reduzido: o brilho do avatar fica no estado de repouso
+   (fica aqui, no fim, para vencer as regras do tema escuro acima) */
+@media (prefers-reduced-motion: reduce) {
+  .hero-container::before,
+  .dark .hero-container::before {
+    animation: none;
+  }
 }

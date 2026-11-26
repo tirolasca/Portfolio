@@ -9,7 +9,13 @@
  */
 import { computeRoute, injectSpeedInsights } from "@vercel/speed-insights";
 
+/** `/_vercel/speed-insights/script.js` só existe na Vercel: em preview/CI local (Lighthouse CI)
+ *  a requisição dá 404 com `text/html` e vira erro de console. Nada é coletado ali mesmo. */
+const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "[::1]"]);
+
 export function initSpeedInsights() {
+  // em `astro dev` mantém o modo de depuração da biblioteca
+  if (!import.meta.env.DEV && LOCAL_HOSTS.has(location.hostname)) return;
   const env = import.meta.env as Record<string, string | undefined>;
   // Astro (site estático, sem rotas dinâmicas): a rota é o próprio caminho da página.
   const basePath = env.PUBLIC_VERCEL_OBSERVABILITY_BASEPATH;

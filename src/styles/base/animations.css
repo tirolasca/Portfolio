@@ -19,16 +19,6 @@
   }
 }
 
-@keyframes scan-move {
-  from {
-    background-position-y: 0;
-  }
-
-  to {
-    background-position-y: 100px;
-  }
-}
-
 @keyframes print-line {
   to {
     opacity: 1;
@@ -152,13 +142,12 @@
 }
 
 @keyframes neon-pulse-job {
-  0% {
-    filter: drop-shadow(0 0 5px rgb(var(--accent-neon-rgb), 0.4));
+  from {
+    opacity: 0;
   }
 
-  100% {
-    filter: drop-shadow(0 0 12px rgb(var(--accent-neon-rgb), 0.9))
-      drop-shadow(0 0 25px rgb(var(--accent-blue-rgb), 0.5));
+  to {
+    opacity: 1;
   }
 }
 
@@ -378,13 +367,91 @@
   }
 }
 
+/* Brilho das barras. Anima `transform` (composto na GPU) em vez de
+   `background-position` (repinta a cada quadro). O gradiente fica num ::after
+   com 3 ladrilhos de largura; deslocar 2 ladrilhos (-66,667%) recomeça igual. */
 @keyframes bar-shimmer {
-  0% {
-    background-position: 200% 0;
+  to {
+    transform: translateX(-66.6667%);
+  }
+}
+
+/* `position` real de cada barra vem do arquivo dela (fixed/absolute); aqui só
+   garantimos um contexto de posicionamento para o ::after e o corte do brilho. */
+#reading-progress,
+.progress-bar,
+.achievements-xp-fill {
+  position: relative;
+  overflow: hidden;
+}
+
+#reading-progress::after,
+.progress-bar::after,
+.achievements-xp-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+
+  /* largura = 3 ladrilhos; cada ladrilho = background-size original da barra */
+  width: calc(var(--shimmer-tile, 3) * 300%);
+  background: inherit;
+  background-size: calc(100% / 3) 100%;
+  box-shadow: none;
+  animation: bar-shimmer var(--shimmer-duration, 2.5s) linear infinite;
+  pointer-events: none;
+}
+
+.progress-bar {
+  --shimmer-tile: 2;
+  --shimmer-duration: 4s;
+}
+
+.achievements-xp-fill {
+  --shimmer-tile: 2;
+  --shimmer-duration: 3.7s;
+}
+
+.dark .progress-bar {
+  --shimmer-tile: 3;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #reading-progress::after,
+  .progress-bar::after,
+  .achievements-xp-fill::after {
+    animation: none;
+  }
+}
+
+/* Pulso de brilho por opacidade (composto): usado em camadas ::after com box-shadow */
+@keyframes glow-fade {
+  from {
+    opacity: 0.25;
   }
 
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes glow-breathe {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes glow-breathe-loop {
+  0%,
   100% {
-    background-position: -100% 0;
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
   }
 }
 

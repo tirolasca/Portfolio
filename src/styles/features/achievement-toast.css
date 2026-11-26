@@ -60,7 +60,17 @@
   padding: 4px 10px;
   white-space: nowrap;
   text-shadow: 0 0 8px rgb(var(--accent-gold-rgb), 0.5);
+  position: relative;
+  box-shadow: 0 0 4px rgb(var(--accent-gold-rgb), 0.45);
+}
 
-  /* brilho dourado só enquanto o toast está na tela */
-  animation: golden-glow 0.8s ease-in-out 4 alternate;
+/* brilho dourado só enquanto o toast está na tela (opacidade = composto) */
+.achievement-xp::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 10px rgb(var(--accent-gold-rgb), 0.9);
+  animation: glow-fade 0.8s ease-in-out 4 alternate;
+  pointer-events: none;
 }

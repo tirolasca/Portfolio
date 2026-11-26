@@ -15,7 +15,6 @@
   background-size: 300% 100%;
   box-shadow: 0 0 6px rgb(var(--accent-neon-rgb), 0.5);
   transition: width 0.1s ease-out;
-  animation: bar-shimmer 2.5s linear infinite;
   pointer-events: none;
 }
 

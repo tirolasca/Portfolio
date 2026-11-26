@@ -15,6 +15,7 @@ const FA_FALLBACK: Record<string, string> = {
   "c-sharp": "solid/hashtag",
   "microsoft-sql-server": "solid/database",
   amazonaws: "brands/aws",
+  canva: "solid/palette",
   aiven: "solid/cloud",
   windows: "brands/windows",
   visualstudiocode: "brands/visual-studio",

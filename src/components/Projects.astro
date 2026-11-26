@@ -51,6 +51,7 @@ const projects = await getProjects();
                     target="_blank"
                     rel="noopener noreferrer"
                     class="btn small primary no-magnet"
+                    aria-label={`Ver Projeto ${p.title}`}
                   >
                     <i class={p.demoIcon} aria-hidden="true" /> Ver Projeto
                   </a>
@@ -60,11 +61,16 @@ const projects = await getProjects();
                     target="_blank"
                     rel="noopener noreferrer"
                     class="btn small outline no-magnet"
+                    aria-label={`GitHub: repositório de ${p.title}`}
                   >
                     <i class={p.repoIcon} aria-hidden="true" /> GitHub
                   </a>
 
-                  <a href={projectHref(id)} class="btn small outline no-magnet">
+                  <a
+                    href={projectHref(id)}
+                    class="btn small outline no-magnet"
+                    aria-label={`Detalhes do projeto ${p.title}`}
+                  >
                     <i class="fa-solid fa-file-lines" aria-hidden="true" />{" "}
                     Detalhes
                   </a>
