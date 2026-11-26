@@ -47,8 +47,11 @@ function setupNetworkCanvas(
   });
 
   function resize() {
+    // lê o layout ANTES de escrever no canvas: escrever `width` e depois ler
+    // `offsetHeight` forçava um recálculo de layout síncrono
+    const height = canvas.parentElement?.offsetHeight ?? 0;
     canvas.width = window.innerWidth;
-    canvas.height = canvas.parentElement?.offsetHeight ?? 0;
+    canvas.height = height;
     const mobile = canvas.width < MOBILE_MAX_WIDTH;
     const wanted = Math.floor(
       (canvas.width * canvas.height) /

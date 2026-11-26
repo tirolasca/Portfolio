@@ -138,8 +138,9 @@
   border-radius: 50%;
   overflow: hidden;
   background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-  box-shadow: 0 8px 30px rgb(var(--shadow-teal-rgb), 0.25);
-  animation: neon-pulse-light 2.4s infinite alternate ease-in-out;
+  box-shadow:
+    0 0 10px rgb(var(--accent-1-light-rgb), 0.55),
+    0 0 20px rgb(var(--accent-1-light-rgb), 0.28);
   cursor: pointer;
   transition:
     border-radius 0.4s ease,
@@ -192,6 +193,33 @@
 .hero-container {
   position: relative;
   display: inline-block;
+}
+
+/* Brilho pulsante do avatar. Animar `box-shadow` repintava o círculo a cada
+   quadro; aqui a sombra de pico é estática numa camada atrás da foto e só a
+   OPACIDADE pulsa (composto). Não pode ser filha de `.hero-image`, que corta
+   o que passa da borda (overflow: hidden). */
+.hero-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow:
+    0 0 16px rgb(var(--accent-1-light-rgb), 0.8),
+    0 0 32px rgb(var(--accent-1-light-rgb), 0.42);
+  opacity: 0;
+  animation: glow-breathe 2.4s infinite alternate ease-in-out;
+  pointer-events: none;
+  transition:
+    border-radius 0.4s ease,
+    transform 0.4s ease;
+}
+
+/* acompanha a foto quando ela vira o QR code (quadrado e ampliado) */
+.hero-container:hover::before,
+.hero-container.active::before {
+  border-radius: 0;
+  transform: scale(1.03);
 }
 
 .hero-text {

@@ -14,12 +14,15 @@ export function initReveal() {
   // Só anima o que está abaixo da primeira tela: o conteúdo inicial nunca fica
   // escondido esperando o JS (isso atrasaria o LCP).
   const fold = window.innerHeight - OFFSET;
-  const items = [...all].filter((el) => {
-    if (el.getBoundingClientRect().top < fold) {
-      el.removeAttribute("data-reveal");
-      return false;
-    }
-    return true;
+  const list = [...all];
+  // 1) só leituras de layout, todas juntas: intercalar `removeAttribute`
+  //    (escrita) entre elas forçava um recálculo de layout por elemento.
+  const aboveFold = list.map((el) => el.getBoundingClientRect().top < fold);
+  // 2) depois, só escritas
+  const items = list.filter((el, i) => {
+    if (!aboveFold[i]) return true;
+    el.removeAttribute("data-reveal");
+    return false;
   });
 
   if (prefersReducedMotion || !("IntersectionObserver" in window)) return;

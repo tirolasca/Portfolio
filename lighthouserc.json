@@ -2,7 +2,7 @@
   "ci": {
     "collect": {
       "staticDistDir": "./dist",
-      "url": ["/index.html", "/curriculo.html"],
+      "url": ["/index.html", "/curriculo.html", "/projetos/newelog.html"],
       "numberOfRuns": 3
     },
     "assert": {

@@ -5,6 +5,7 @@
  *  3. por perto → carrossel, constelação de skills e gráfico SWOT (Chart.js)
  *  4. no clique → terminal, resumo de 30s, credenciais de teste e formulário de e-mail
  */
+import { PUBLIC_VITALS_URL } from "astro:env/client";
 import { initCursor } from "./core/cursor";
 import {
   lazyFeature,
@@ -40,11 +41,18 @@ function init() {
     2500,
     "deferred",
   );
-  onIdle(
-    () => import("./core/vitals").then((m) => m.initVitals()),
-    5000,
-    "vitals",
-  );
+  // só pede o chunk de vitals quando há destino para as métricas (a regra
+  // completa continua em vitals.ts)
+  if (
+    PUBLIC_VITALS_URL ||
+    import.meta.env.DEV ||
+    new URLSearchParams(location.search).has("vitals")
+  )
+    onIdle(
+      () => import("./core/vitals").then((m) => m.initVitals()),
+      5000,
+      "vitals",
+    );
   onIdle(
     () => import("./core/speed-insights").then((m) => m.initSpeedInsights()),
     2500,

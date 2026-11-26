@@ -1,0 +1,29 @@
+/* =========================================================
+   EXPERIMENTO: content-visibility nas seções abaixo da dobra
+
+   Faz o navegador pular estilo, layout e pintura das seções fora da tela
+   até elas se aproximarem da viewport, reduzindo o trabalho da primeira
+   renderização. Para desligar, comente o @import em index.css.
+
+   Fora de propósito (leem geometria ou medem tamanho ao iniciar):
+   - #projetos  (Swiper mede a largura do contêiner ao iniciar)
+   - #titulo    (constelação de skills lê getBoundingClientRect)
+   - #home      (acima da dobra)
+   ========================================================= */
+
+/* `auto <altura>` lembra a altura real depois da primeira renderização,
+   então o placeholder só vale até a seção aparecer uma vez (menos CLS). */
+.swot-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+
+  /* `content-visibility: auto` aplica `contain: paint`, que cortaria brilhos e
+     sombras neon nas bordas da seção; esta margem devolve esse espaço. */
+  overflow-clip-margin: 48px;
+}
+
+.contact {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 520px;
+  overflow-clip-margin: 48px;
+}
