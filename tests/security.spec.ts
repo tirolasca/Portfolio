@@ -178,11 +178,15 @@ for (const path of PAGES) {
  * DEPLOYMENT_URL permite testar um Preview Deployment; por padrão, usa produção.
  */
 test("Vercel entrega os cabeçalhos HTTP de segurança", async ({ request }) => {
-  const deployment = process.env.DEPLOYMENT_URL ?? "https://lucastec.vercel.app";
+  const deployment =
+    process.env.DEPLOYMENT_URL ?? "https://lucastec.vercel.app";
   const url = new URL("/", deployment).toString();
   const response = await request.get(url, { timeout: 20_000 });
 
-  expect(response.ok(), `GET ${url} deve responder com sucesso`).toBeTruthy();
+  expect(
+    response.ok(),
+    `GET ${url} deve responder com sucesso`,
+  ).toBeTruthy();
 
   const headers = response.headers();
 
@@ -197,7 +201,9 @@ test("Vercel entrega os cabeçalhos HTTP de segurança", async ({ request }) => 
     expect(headers[name], `cabeçalho HTTP ausente: ${name}`).toBeTruthy();
   }
 
-  expect(headers["content-security-policy"]).toContain("default-src 'self'");
+  expect(headers["content-security-policy"]).toContain(
+    "default-src 'self'",
+  );
   expect(headers["x-content-type-options"]).toBe("nosniff");
   expect(headers["x-frame-options"]).toMatch(/^(SAMEORIGIN|DENY)$/);
 });
